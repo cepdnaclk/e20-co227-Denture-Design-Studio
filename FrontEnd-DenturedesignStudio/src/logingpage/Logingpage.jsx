@@ -41,7 +41,7 @@ function Loginpage() {
             <div onClick={() => setShowPassword(!showPassword)} className="eyeicon1">
             <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} />
           </div>
-            <p id='forget'><link rel="#" href="" onc />Forgot Password?</p>
+            <p id='forget'><link rel="#" href=""  />Forgot Password?</p>
           </div>
           <div>
             <button type='submit' className="login2">Login</button>
