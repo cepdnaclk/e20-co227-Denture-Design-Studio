@@ -46,7 +46,7 @@ box-sizing: border-box;
 
 position: absolute;
 width: 21.109vw;
-height: 1.937vw;
+height: 2.5vw;
 left: 0;
 top: 1.9vw;
 
@@ -92,7 +92,6 @@ font-style: normal;
 font-weight: 400;
 font-size: 1.603vw;
 line-height: 1.937vw;
-/* identical to box height */
 display: flex;
 align-items: center;
 margin: 0;
@@ -102,8 +101,8 @@ color: #0C4B29;
 }
 .eyeicon{
    position: absolute;
-   left: 97%;
-   top: 65%;
+   left: 19.5vw;
+   top: 2.8vw;
    cursor: pointer;
 }
  #Student1{
