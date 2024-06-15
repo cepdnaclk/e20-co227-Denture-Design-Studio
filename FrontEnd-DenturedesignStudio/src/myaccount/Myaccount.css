@@ -23,13 +23,13 @@
     cursor: pointer;
 }
 
-@media(max-width:1000px){
+@media(max-width:768px){
   .myaccount{
     font-size: 3vw;
     width: 16vw;
     img{
-        height: 10vw;
-        width: 10vw;
+        height: 7vw;
+        width: 7vw;
         background-color: transparent;
     }
   }
