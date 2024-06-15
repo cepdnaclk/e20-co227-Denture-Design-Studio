@@ -54,12 +54,12 @@ mix-blend-mode: multiply;
 box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 border: none;
 font-family: 'salsa';
-font-size: large;
+font-size: 1.3vw;
 }
 .signinput input:focus{
 
    font-family: 'salsa';
-   font-size: large;
+   font-size: 1.3vw;
 }
 .signhead{
    position: absolute;
@@ -205,4 +205,74 @@ color: #0C4B29;
     width: 80vw;
     height: 60vw;
     }
+    .contentbox2{
+      position: absolute;
+      width: 55vw;
+      height: 60vw;
+      left: 13.093vw;
+      top: 1.306vw;
+    }
+    
+      .signinput input{
+   
+         box-sizing: border-box;
+         
+         position: absolute;
+         width: 31vw;
+         height: 3vw;
+         left: 0;
+         top: 1.9vw;
+         font-size: 1.6vw;
+    }
+    .signinput input:focus{
+         font-size: 1.6vw;
+    }
+    #signinput1{ 
+      top: 7vw;
+      
+   }
+   #signinput2{ 
+      top: 14vw;
+   }
+   #signinput3{ 
+      top: 21vw;
+   }
+   #signinput4{ 
+      top: 28vw;
+   }
+   #signinput5{ 
+      top: 35vw;
+   }
+   #signinput6{ 
+      top: 42vw;
+   }
+   .sign2{
+      position: absolute;
+      width: 17.038vw;
+      height: 4vw;
+      left: 18vw;
+      top: 52vw;
+   }
+   .role{
+      position: absolute;
+   width: 18.838vw;
+   height: 6.004vw;
+   left: 40.617vw;
+   top: 8vw;
+  
  }
+
+#Student2{
+   top: 5vw;
+   left: 5.5vw;
+}
+
+#Assessor2{
+
+   top: 7.5vw;
+   left: 5.5vw;
+}
+.eyeicon{
+   left: 28vw;
+}
+}
