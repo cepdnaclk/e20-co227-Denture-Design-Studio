@@ -75,6 +75,7 @@ body {
   position: absolute;
   left: 180%;
   top: 6vw;
+  cursor: pointer;
  }
 
   .inputs {
@@ -148,6 +149,13 @@ body {
   
 
   @media (max-width: 768px) {
+    .eyeicon1{
+      position: absolute;
+      left: 35vw;
+      top: 8.5vw;
+      width: 2vw;
+      height: 1vw;
+     }
     .contentbox {
       width: 60vw; 
       height: 75vw; 

@@ -1,0 +1,24 @@
+.exitbutton{
+    position: absolute;
+    
+    width: 100px;
+    background-color: transparent;
+    border:none ;
+    top: 4vh;
+    left: 92vw;
+    img{
+        width: 3.34vw;
+        height: auto;
+    }
+}
+.exitbutton:hover{
+    cursor: pointer;
+}
+@media(max-width:1000px){
+    .exitbutton{
+        left: 85vw;
+        img{
+            width: 6vw;
+        }
+    }
+}
