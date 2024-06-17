@@ -1,0 +1,104 @@
+body{
+    /* Create a Patient Case - 1 */
+
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    margin: 0 ;
+    background: linear-gradient(270deg, rgba(72, 148, 135, 0.83) 0%, rgba(42, 78, 98, 0.83) 101.07%);
+    overflow: hidden;
+
+}
+
+.rectangle1{
+    /* Rectangle 24 */
+    position: absolute;
+    width: 40.00vw; /* 672px */
+    height: 42.7vw; /* 639px */
+    right: 3vw; /* 785px */
+    top: 3vw; /* 45px */
+    background: #30505B;
+    box-shadow: 0.67vw 0.67vw 0.74vw rgba(0, 0, 0, 0.42); /* 10px 10px 11px */
+    border-radius: 3.34vw; /* 50px */
+}
+
+.teethBackground{
+    /* Rectangle 40 */
+    position: absolute;
+    width: 21.31vw; /* 319px */
+    height: 42.7vw; /* 523px */
+    left: 7vw; /* 286px */
+    top: 3vw; /* 113px */
+    background: #D3ECFF;
+    border-radius: 3.34vw; /* 50px */
+}
+
+.rectangle2{
+    /* Rectangle 23 */
+    position: absolute;
+    width: 38vw; /* 577px */
+    height: 15.1vw; /* 226px */
+    right: 4vw; /* 833px */
+    top: 10.36vw; /* 155px */
+    background: #A3D1D4;
+    box-shadow: 10px 10px 14px rgba(0, 0, 0, 0.3); /* 10px 10px 14px */
+    border-radius: 3.21vw; /* 48px */
+}
+
+
+.CreateAPatientCase{
+    
+    position: absolute;
+    width: 30.32vw; /* 454px */
+    height: 4.75vw; /* 71px */
+    right: 6vw; /* 914px */
+    top: 12vw; /* 268px */
+
+    font-family: 'Salsa';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 2.14vw; /* 32px */
+    line-height: 134.77%;
+    display: flex;
+    align-items: center;
+    color: #252724;
+
+}
+
+.steps {
+    position: absolute;
+    width: 30.32vw; /* Already in vw */
+    height: 10.88vw; /* Converted from 209px */
+    left: 47.03vw; /* Converted from 903px */
+    top: 13.65vw; /* Converted from 262px */
+
+    font-family: 'Salsa';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.67vw; /* Converted from 32px */
+    line-height: 134.77%; /* Keeping the percentage as it is or use 2.24vw if you prefer */
+    /* or 2.24vw (converted from 43px) */
+    display: flex;
+    align-items: center;
+
+    color: #252724;
+}
+
+.button{
+    /* create upload */
+    position: absolute;
+    width: 22.51vw; /* 337px */
+    height: 4.34vh; /* 65px */
+    left: 64.34vw; /* 963px */
+    top: 32.87vw; /* 492px */
+    background: #66D8D8;
+    border-bottom: 0.2vw solid #000000; /* 3px */
+    box-shadow: 0.67vw 0.53vw 0.8vw rgba(0, 0, 0, 0.35); /* 10px 8px 12px */
+    border-radius: 1.34vw; /* 20px */
+    cursor: pointer; 
+}
+
+.button:hover {
+    background-color: #083A74;
+  }
+
