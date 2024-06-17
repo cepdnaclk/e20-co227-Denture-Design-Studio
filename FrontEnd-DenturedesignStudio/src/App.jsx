@@ -5,6 +5,7 @@ import Loginpage from './logingpage/Logingpage';
 import Signup from './Signinpage/signup';
 import Studenthome from './StudentHome/Studenthome';
 import UploadPatientCase from './uploadPatientCase/UploadPatientCase';
+import AddSaddles from './AddSaddles/AddSaddles';
 import Assessorhome from './AssessorHome/Assessorhome';
 import Adminhome from './AdminHome/Adminhome';
 import './App.css';
@@ -20,6 +21,7 @@ function App() {
         <Route exact path='/assessorhome' element={<Assessorhome/>}/>
         <Route exact path='/adminhome' element={<Adminhome/>}/>
         <Route exact path='/createuploadpatient' element={<UploadPatientCase/>}/>
+        <Route exact path='/addSaddles' element={<AddSaddles/>}/>
       </Routes>
     </Router>
   );

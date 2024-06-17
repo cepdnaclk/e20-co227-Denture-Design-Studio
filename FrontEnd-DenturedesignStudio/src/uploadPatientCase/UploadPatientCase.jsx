@@ -18,9 +18,9 @@ function UploadPatientCases() {
         <Home onClick={() => handleClick("/studenthome")}></Home>
         <div>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Salsa&display=swap" />
+        <div className='teethBackground'></div>
         <div className="rectangle1"></div>
         <div className="rectangle2"></div>
-        <div className="teethBackground"></div>
           <h2 className='CreateAPatientCase'>Create and Upload a Patient Case</h2>
           <h1 className='steps'>
             step 1 : Select missing teeth<br />
