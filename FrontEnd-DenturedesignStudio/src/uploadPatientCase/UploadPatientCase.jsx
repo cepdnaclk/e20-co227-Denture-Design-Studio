@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import './UploadPatientCases.css';
+import './UploadPatientCase.css';
 
 function UploadPatientCases() {
   let navigate = useNavigate();
@@ -11,7 +11,7 @@ function UploadPatientCases() {
 
   return (
     <>
-      <div className="UploadPatientCases">
+      <div className="UploadPatientCase">
         <div>
           <h2 className='CreateAPatientCase'>Create and Upload a Patient Case</h2>
           <h1 className='steps'>
