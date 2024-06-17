@@ -47,7 +47,7 @@ body{
 
 
 .CreateAPatientCase{
-    /* step 1 : Select missing teeth step 2 : Click Create & Upload! */
+    
     position: absolute;
     width: 30.32vw; /* 454px */
     height: 4.75vw; /* 71px */
@@ -62,55 +62,43 @@ body{
     display: flex;
     align-items: center;
     color: #252724;
+
 }
 
-.text1{
-    /* Text */
+.steps {
     position: absolute;
-    height: 3.34vh; /* 100px */
-    left: 59vw; /* 874px */
-    right: 8.55vw; /* 128px */
-    top: calc(50% - 3.34vw/2 - 9.92vw); /* 50% - 100px/2 - 148.5px */
+    width: 30.32vw; /* Already in vw */
+    height: 10.88vw; /* Converted from 209px */
+    left: 47.03vw; /* Converted from 903px */
+    top: 13.65vw; /* Converted from 262px */
 
     font-family: 'Salsa';
     font-style: normal;
     font-weight: 400;
-    font-size: 2.47vw; /* 37px */
-    line-height: 134.77%;
+    font-size: 1.67vw; /* Converted from 32px */
+    line-height: 134.77%; /* Keeping the percentage as it is or use 2.24vw if you prefer */
+    /* or 2.24vw (converted from 43px) */
     display: flex;
     align-items: center;
-    text-align: center;
-    color: #000000;
-    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+    color: #252724;
 }
 
-.CreateAndUpload {
+.button{
     /* create upload */
     position: absolute;
     width: 22.51vw; /* 337px */
-    height: 4.34vw; /* 65px */
+    height: 4.34vh; /* 65px */
     left: 64.34vw; /* 963px */
     top: 32.87vw; /* 492px */
     background: #66D8D8;
     border-bottom: 0.2vw solid #000000; /* 3px */
     box-shadow: 0.67vw 0.53vw 0.8vw rgba(0, 0, 0, 0.35); /* 10px 8px 12px */
     border-radius: 1.34vw; /* 20px */
-    cursor: pointer; /* Add cursor pointer for better UX */
+    cursor: pointer; 
 }
 
-.CreateAndUpload span {
-    /* Text */
-    position: relative;
-    height: 2.94vw; /* 44px */
-    display: inline-block; /* Add display inline-block */
-    line-height: 2.94vw; /* Center the text vertically */
-    font-family: 'Salsa';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 2.14vw; /* 32px */
-    text-align: center;
-    color: #000000;
-    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-}
-
+.button:hover {
+    background-color: #083A74;
+  }
 
