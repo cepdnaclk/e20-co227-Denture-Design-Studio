@@ -4,6 +4,7 @@ import Homepage from './first-page/Homepage';
 import Loginpage from './logingpage/Logingpage';
 import Signup from './Signinpage/signup';
 import Studenthome from './StudentHome/Studenthome';
+import UploadPatientCases from './uploadPatientCases/UploadPatientCases';
 import Assessorhome from './AssessorHome/Assessorhome';
 import Adminhome from './AdminHome/Adminhome';
 import './App.css';
@@ -15,7 +16,7 @@ function App() {
         <Route exact path='/' element={<Homepage />} />
         <Route exact path='/login' element={<Loginpage />} />
         <Route exact path='/signup' element={<Signup/>}/>
-        <Route path="/upload" element={<UploadPatientCases />} />
+        <Route exact path="/upload" element={<UploadPatientCases />} />
         <Route exact path='/studenthome' element={<Studenthome/>}/>
         <Route exact path='/assessorhome' element={<Assessorhome/>}/>
         <Route exact path='/adminhome' element={<Adminhome/>}/>
