@@ -1,104 +1,119 @@
-body{
+body {
     /* Create a Patient Case - 1 */
-
     position: relative;
     width: 100vw;
     height: 100vh;
-    margin: 0 ;
+    margin: 0;
     background: linear-gradient(270deg, rgba(72, 148, 135, 0.83) 0%, rgba(42, 78, 98, 0.83) 101.07%);
     overflow: hidden;
-
 }
 
-.rectangle1{
+.rectangle1 {
     /* Rectangle 24 */
     position: absolute;
-    width: 40.00vw; /* 672px */
-    height: 42.7vw; /* 639px */
+    width: 40.00vw; /* Adjusted width */
+    height: 38vw; /* Covering the full height */
     right: 3vw; /* 785px */
-    top: 3vw; /* 45px */
+    top: 6vw; /* Adjusted to cover from top */
+    bottom: 6vw;
     background: #30505B;
     box-shadow: 0.67vw 0.67vw 0.74vw rgba(0, 0, 0, 0.42); /* 10px 10px 11px */
     border-radius: 3.34vw; /* 50px */
+    z-index: -1; /* Send it behind other elements */
 }
 
-.teethBackground{
+.teethBackground {
     /* Rectangle 40 */
     position: absolute;
-    width: 21.31vw; /* 319px */
-    height: 42.7vw; /* 523px */
+    width: 40.31vw; /* Adjusted width */
+    height: 38vw; /* Covering the full height */
     left: 7vw; /* 286px */
-    top: 3vw; /* 113px */
+    top: 6vw; /* Adjusted to cover from top */
     background: #D3ECFF;
     border-radius: 3.34vw; /* 50px */
+    z-index: -2; /* Send it behind all other elements */
 }
 
-.rectangle2{
+.rectangle2 {
     /* Rectangle 23 */
     position: absolute;
-    width: 38vw; /* 577px */
+    width: 36vw; /* 577px */
     height: 15.1vw; /* 226px */
-    right: 4vw; /* 833px */
+    right: 5vw; /* 833px */
     top: 10.36vw; /* 155px */
     background: #A3D1D4;
     box-shadow: 10px 10px 14px rgba(0, 0, 0, 0.3); /* 10px 10px 14px */
     border-radius: 3.21vw; /* 48px */
 }
 
-
-.CreateAPatientCase{
-    
+.CreateAPatientCase {
     position: absolute;
-    width: 30.32vw; /* 454px */
+    width: 35.32vw; /* 454px */
     height: 4.75vw; /* 71px */
-    right: 6vw; /* 914px */
+    right: 3vw; /* 914px */
     top: 12vw; /* 268px */
-
     font-family: 'Salsa';
     font-style: normal;
     font-weight: 400;
-    font-size: 2.14vw; /* 32px */
+    font-size: 2vw; /* 32px */
     line-height: 134.77%;
     display: flex;
     align-items: center;
     color: #252724;
-
 }
 
 .steps {
     position: absolute;
     width: 30.32vw; /* Already in vw */
     height: 10.88vw; /* Converted from 209px */
-    left: 47.03vw; /* Converted from 903px */
+    left: 65.00vw; /* Adjusted position */
     top: 13.65vw; /* Converted from 262px */
-
     font-family: 'Salsa';
     font-style: normal;
     font-weight: 400;
-    font-size: 1.67vw; /* Converted from 32px */
-    line-height: 134.77%; /* Keeping the percentage as it is or use 2.24vw if you prefer */
-    /* or 2.24vw (converted from 43px) */
+    font-size: 1.5vw; /* Converted from 32px */
+    line-height: 134.77%;
     display: flex;
     align-items: center;
-
     color: #252724;
 }
 
-.button{
-    /* create upload */
+.button {
     position: absolute;
-    width: 22.51vw; /* 337px */
-    height: 4.34vh; /* 65px */
-    left: 64.34vw; /* 963px */
-    top: 32.87vw; /* 492px */
+    width: 22.51vw;
+    height: 6.34vh;
+    left: 66.34vw;
+    top: 32.87vw;
     background: #66D8D8;
-    border-bottom: 0.2vw solid #000000; /* 3px */
-    box-shadow: 0.67vw 0.53vw 0.8vw rgba(0, 0, 0, 0.35); /* 10px 8px 12px */
-    border-radius: 1.34vw; /* 20px */
-    cursor: pointer; 
+    border-bottom: 0.2vw solid #000000;
+    box-shadow: 0.67vw 0.53vw 0.8vw rgba(0, 0, 0, 0.35);
+    border-radius: 1.34vw;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
+
+.buttontext {
+    /* Text */
+    position: absolute;
+    height: 2.94vw;
+    left: 2.33vw;
+    right: 2.14vw;
+    top: calc(50% - 2.94vw / 2 + 0.5px);
+    font-family: 'Salsa';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 2.14vw;
+    line-height: 134.77%;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #000000;
+    text-shadow: 0px 1.07vw 1.07vw rgba(0, 0, 0, 0.25);
+}
+
 
 .button:hover {
     background-color: #083A74;
-  }
-
+}
