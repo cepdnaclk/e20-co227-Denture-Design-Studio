@@ -7,6 +7,7 @@ import Studenthome from './StudentHome/Studenthome';
 import UploadPatientCase from './uploadPatientCase/UploadPatientCase';
 import Assessorhome from './AssessorHome/Assessorhome';
 import Adminhome from './AdminHome/Adminhome';
+import UploadPatientCases from './uploadPatientCase/UploadPatientCase';
 import './App.css';
 
 function App() {
@@ -20,7 +21,7 @@ function App() {
         <Route exact path='/studenthome' element={<Studenthome/>}/>
         <Route exact path='/assessorhome' element={<Assessorhome/>}/>
         <Route exact path='/adminhome' element={<Adminhome/>}/>
-
+        <Route exact path='/createuploadpatient' element={<UploadPatientCase/>}/>
       </Routes>
     </Router>
   );
