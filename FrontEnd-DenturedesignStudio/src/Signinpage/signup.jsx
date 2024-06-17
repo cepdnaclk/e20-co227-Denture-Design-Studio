@@ -27,7 +27,7 @@ function Signup() {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(firstname, lastname, email, username, password, compassword, role);
-    clickhandle("/");
+  navigate (role==='student'? '/studenthome':role==='assessor'? '/assessorhome':'');
   };
 
   return (

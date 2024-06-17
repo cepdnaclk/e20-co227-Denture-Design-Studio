@@ -3,7 +3,9 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Homepage from './first-page/Homepage';
 import Loginpage from './logingpage/Logingpage';
 import Signup from './Signinpage/signup';
-import UploadPatientCases from './uploadPatientCases/UploadPatientCases';
+import Studenthome from './StudentHome/Studenthome';
+import Assessorhome from './AssessorHome/Assessorhome';
+import Adminhome from './AdminHome/Adminhome';
 import './App.css';
 
 function App() {
@@ -14,6 +16,9 @@ function App() {
         <Route exact path='/login' element={<Loginpage />} />
         <Route exact path='/signup' element={<Signup/>}/>
         <Route path="/upload" element={<UploadPatientCases />} />
+        <Route exact path='/studenthome' element={<Studenthome/>}/>
+        <Route exact path='/assessorhome' element={<Assessorhome/>}/>
+        <Route exact path='/adminhome' element={<Adminhome/>}/>
 
       </Routes>
     </Router>
