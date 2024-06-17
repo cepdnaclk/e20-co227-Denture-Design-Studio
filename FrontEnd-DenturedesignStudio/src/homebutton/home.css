@@ -1,0 +1,22 @@
+.homebutton{
+    width: 3.34vw;
+    height: 3.34vw;
+    margin: 0;
+    padding: 0;
+    border-radius: 3.34vw;
+    border: none;
+    img{
+        height: 40px;
+        width: 40px;
+        background-color:transparent ;
+       
+        margin: 0;
+        padding: 0;
+        border: transparent;
+        border-radius: 60px;
+        
+    }
+}
+.homebutton:hover{
+    cursor: pointer;
+}
