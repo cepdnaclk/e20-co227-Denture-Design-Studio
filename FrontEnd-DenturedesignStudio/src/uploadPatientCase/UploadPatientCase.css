@@ -1,0 +1,114 @@
+body {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    background: linear-gradient(270deg, rgba(72, 148, 135, 0.83) 0%, rgba(42, 78, 98, 0.83) 101.07%);
+    overflow: hidden;
+}
+
+.rectangle1 {
+    position: absolute;
+    width: 40.00vw;
+    height: 38vw;
+    right: 5vw;
+    top: 6vw;
+    bottom: 6vw;
+    background: #30505B;
+    box-shadow: 0.67vw 0.67vw 0.74vw rgba(0, 0, 0, 0.42);
+    border-radius: 3.34vw;
+    z-index: -1;
+}
+
+.teethBackground {
+    position: absolute ;
+    width: 20vw ;
+    height: 35vw ;
+    left: 19vw ;
+    top: 8vw ;
+    background: #D3ECFF ;
+    border-radius: 3.34vw ;
+    z-index: -2 ;
+}
+
+
+.rectangle2 {
+    position: absolute;
+    width: 36vw;
+    height: 15.1vw;
+    right: 7vw;
+    top: 10.36vw;
+    background: #A3D1D4;
+    box-shadow: 10px 10px 14px rgba(0, 0, 0, 0.3);
+    border-radius: 3.21vw;
+}
+
+.CreateAPatientCase {
+    position: absolute;
+    width: 35.32vw;
+    height: 4.75vw;
+    right: 5vw;
+    top: 12vw;
+    font-family: 'Salsa';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 2vw;
+    line-height: 134.77%;
+    display: flex;
+    align-items: center;
+    color: #252724;
+}
+
+.steps {
+    position: absolute;
+    width: 30.32vw;
+    height: 10.88vw;
+    left: 64.00vw;
+    top: 13.65vw;
+    font-family: 'Salsa';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.5vw;
+    line-height: 134.77%;
+    display: flex;
+    align-items: center;
+    color: #252724;
+}
+
+.button {
+    position: absolute;
+    width: 22.51vw;
+    height: 6.34vh;
+    left: 64.34vw;
+    top: 32.87vw;
+    background: #66D8D8;
+    border-bottom: 0.2vw solid #000000;
+    box-shadow: 0.67vw 0.53vw 0.8vw rgba(0, 0, 0, 0.35);
+    border-radius: 1.34vw;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.buttontext {
+    position: absolute;
+    height: 2.94vw;
+    left: 2.33vw;
+    right: 2.14vw;
+    top: calc(50% - 2.94vw / 2 + 0.5px);
+    font-family: 'Salsa';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 2.14vw;
+    line-height: 134.77%;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #000000;
+    text-shadow: 0px 1.07vw 1.07vw rgba(0, 0, 0, 0.25);
+}
+
+.button:hover {
+    background-color: #083A74;
+}
