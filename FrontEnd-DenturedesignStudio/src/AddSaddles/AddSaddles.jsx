@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import './AddSaddles.css';
-import Home from 'E:/e20-co225-Denture-Design-Studio/FrontEnd-DenturedesignStudio/src/homebutton/home.jsx';
+import Home from '../homebutton/home';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 
