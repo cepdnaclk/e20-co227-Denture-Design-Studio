@@ -1,0 +1,41 @@
+.backComp {
+    background-color: transparent;
+    width: 3vw;
+    height: 3vw;
+    margin: 0; 
+    padding: 0;
+    position: fixed;
+    bottom: 3vh; 
+    left: 1vw;
+    border-radius: 3.34vw;
+    border: none;
+}
+
+.backComp img {
+    height: 3vw;
+    width: 3vw ;
+    background-color: transparent;
+    margin: 0;
+    padding: 0;
+    border: transparent;
+    border-radius: 60px;
+}
+
+.backComp:hover {
+    cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+    .backComp {
+        width: 5vw;
+        height: 5vw;
+        margin: 0;
+        bottom: 5vw;
+        left: 1vw; 
+    }
+
+    .backComp img {
+        height: 30px;
+        width: 30px;
+    }
+}
