@@ -3,16 +3,8 @@ body {
     width: 100vw;
     height: 100vh;
     margin: 0;
+    background: linear-gradient(270deg, rgba(72, 148, 135, 0.83) 0%, rgba(42, 78, 98, 0.83) 101.07%);
     overflow: hidden;
-}
-.saddlespage{
-    position: absolute;
-    width: 100vw;
-    height: 100vh;
-background: linear-gradient(270deg, rgb(60 123 113) 0%, rgb(36 69 84) 101.07%);
-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-
-
 }
 .Questionbox {
     position: absolute;
@@ -24,72 +16,22 @@ box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 2.6vw; 
 }
 
-.teethBackground1 {
-    position: absolute;
-    width: 23.9vw; 
-    aspect-ratio: 459 / 700; 
-    left: 40.96vw;
-    top: 14vh;
-    background: #D3ECFF;
-    border-radius: 2.6vw; 
-}
-
-.yourQuestion {
-    position: absolute;
-    width: 38.23vw; 
-    height: 6.11vh;
-    left: 11vw; 
-    top: 13vh; 
-
-    font-family: 'Salsa';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 1.95vw; 
-    line-height: 134.77%;
-
-    display: flex;
-    align-items: center;
-    color: #000000;
-}
-
-.AddSaddles {
-    position: absolute;
-    height: 4.63vh; /* 50px / 1080px * 100 */
-    left: 12vw; /* 108px / 1920px * 100 */
-    right: 49.58vw; /* 952px / 1920px * 100 */
-    width: 50vw;
-    top: 0.25vw;
-
-    font-family: 'Salsa';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 2.5vw; /* 37px / 1920px * 100 */
-    line-height: 134.77%;
-    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-
-
-    display: flex;
-    align-items: center;
-    text-align: center;
-    color: #92DADA;
-    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-}
-
 .skipButton {
     position: absolute;
-    width: 17.14vw; /* 329px / 1920px * 100 */
-    height: 5.37vh; /* 58px / 1080px * 100 */
-    left: 8.44vw; /* 162px / 1920px * 100 */
-    top: 80vh; /* 573px / 1080px * 100 */
+    width: 17.14vw;
+    height: 3.37vw;
+    bottom: 20px; /* Adjust bottom position */
+    left: 50%; /* Adjust left position */
+    transform: translateX(-50%); /* Center horizontally */
     
     background: #66D8D8;
     box-shadow: 0.67vw 0.53vw 0.8vw rgba(0, 0, 0, 0.35);
-    border-radius: 1.34vw;
+    border-radius: 1vw;
     
     display: flex;
     justify-content: center;
     align-items: center;
-    cursor: pointer
+    cursor: pointer;
 }
 
 .skipButtonText {
@@ -115,45 +57,27 @@ box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-.yourCase {
+
+.teethBackground1 {
     position: absolute;
-    width: 22.81vw; /* 438px / 1920px * 100 */
-    height: 6.39vh; /* 69px / 1080px * 100 */
-    left: 33.30vw; /* 601px / 1920px * 100 */
-    top: 8.89vh; /* 96px / 1080px * 100 */
-    
-    font-family: 'Salsa';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 1.56vw; /* 30px / 1920px * 100 */
-    line-height: 134.77%;
-    
-    display: flex;
-    align-items: center;
-    text-align: center;
-    color: #E8E9E9;
-    text-shadow: 8px 7px 15px rgba(0, 0, 0, 0.54);
-}
-
-
-
-
-
-.skipButton:hover {
-    background-color: #66D8D8;
+    width: 23.9vw; 
+    aspect-ratio: 459 / 700; 
+    left: 40.96vw;
+    top: 14vh;
+    background: #D3ECFF;
+    border-radius: 2.6vw; 
 }
 
 .addRests {
     position: absolute;
     width: 17.14vw;
-    height: 5.37vh;
-    left: 80vw;
-    top: 80vh;
-    border-radius: 1.34vw; 
+    height: 3.37vw;
+    left:26vw;
+    top: 33vw;
+    border-radius: 1vw; 
     background: #66D8D8;
     box-shadow: 0.67vw 0.53vw 0.8vw rgba(0, 0, 0, 0.35);
 }
-
 
 .addRestsText {
     position: absolute;
@@ -174,3 +98,72 @@ box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     color: #000000;
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
+
+
+.yourQuestion {
+    position: absolute;
+    width: 38.23vw; 
+    height: 6.11vh;
+    left: 11vw; 
+    top: 13vh; 
+
+    font-family: 'Salsa';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.95vw; 
+    line-height: 134.77%;
+
+    display: flex;
+    align-items: center;
+    color: #000000;
+}
+
+.AddSaddles {
+    position: absolute;
+    height: 4.63vh; /* 50px / 1080px * 100 */
+    left: 10vw; /* 108px / 1920px * 100 */
+    right: 49.58vw; /* 952px / 1920px * 100 */
+    width: 50vw;
+    top: 0.25vw;
+
+    font-family: 'Salsa';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 2.5vw; /* 37px / 1920px * 100 */
+    line-height: 134.77%;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #92DADA;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+
+.yourCase {
+    position: absolute;
+    width: 22.81vw; /* 438px / 1920px * 100 */
+    height: 6.39vh; /* 69px / 1080px * 100 */
+    left: 33.30vw; /* 601px / 1920px * 100 */
+    top: 8.89vh; /* 96px / 1080px * 100 */
+    
+    font-family: 'Salsa';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.56vw; /* 30px / 1920px * 100 */
+    line-height: 134.77%;
+    
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #E8E9E9;
+    text-shadow: 8px 7px 15px rgba(0, 0, 0, 0.54);
+}
+
+.skipButton:hover {
+    background-color: #66D8D8;
+}
+
+
