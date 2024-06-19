@@ -10,6 +10,7 @@ function Adminhome() {
     let username='ravindu';
     let navigate = useNavigate();
     return (
+        <div className='homepages'>
         <div className="adminhome">
             <Exitbutton/>
             <Myaccount />
@@ -30,6 +31,7 @@ function Adminhome() {
                     
                 
             </div>
+        </div>
         </div>
     );
 }

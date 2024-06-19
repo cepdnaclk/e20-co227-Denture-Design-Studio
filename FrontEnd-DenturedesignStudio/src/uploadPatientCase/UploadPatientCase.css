@@ -3,9 +3,26 @@ body {
     width: 100vw;
     height: 100vh;
     margin: 0;
-    background: linear-gradient(270deg, rgba(72, 148, 135, 0.83) 0%, rgba(42, 78, 98, 0.83) 101.07%);
     overflow: hidden;
 }
+/* Upload Patient Cases */
+.UploadPatientCase{
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    
+}
+.UploadPatientCase::before{
+    content: "";
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(270deg, rgb(60 123 113) 0%, rgb(36 69 84) 101.07%);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    z-index: -3;
+}
+
 
 .rectangle1 {
     position: absolute;
@@ -78,7 +95,7 @@ body {
 .button {
     position: absolute;
     width: 22.51vw;
-    height: 6.34vh;
+    height: 6.34vw;
     left: 64.34vw;
     top: 32.87vw;
     background: #66D8D8;
