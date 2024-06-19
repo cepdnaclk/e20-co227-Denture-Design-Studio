@@ -3,7 +3,6 @@ body {
   width: 100vw;
   height: 100vh;
   margin: 0;
-  background: linear-gradient(90deg, #2f5770 -1.26%, #609c94 100%);
   overflow: hidden;
 }
 .Homepage::before {
@@ -13,11 +12,12 @@ body {
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-image: url(./homebackground.png);
+  background:linear-gradient(90deg, #2f5770 -1.26%, #609c94 100%),url(./homebackground.png);
   background-size: cover;
   background-position: center;
-  opacity: 0.78; /* Set the opacity of the background image */
-  z-index: -1; /* Ensure the pseudo-element is behind other content */
+  background-blend-mode:overlay;
+  opacity: 0.78; 
+  z-index: -1;
 }
 .appname {
   position: absolute;

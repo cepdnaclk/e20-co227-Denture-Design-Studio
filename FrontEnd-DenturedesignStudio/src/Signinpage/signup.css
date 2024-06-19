@@ -4,8 +4,17 @@ body {
     height: 100vh;
     margin: 0;
     padding: 0;
-    background: linear-gradient(-90deg, #2f5770 -1.26%, #609c94 100%);
     overflow: hidden;
+  }
+  .signuppage{
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 100vw;
+   height: 100vh;
+   background: linear-gradient(-90deg, #2f5770 -1.26%, #609c94 100%);
+
+
   }
  .signuppage::before{
     content: "";
@@ -18,7 +27,7 @@ body {
     background-size: cover;
     background-position: center;
     opacity: 1;
-    z-index: -1;  
+    z-index: 0;  
 
  }
  .contentbox2{
