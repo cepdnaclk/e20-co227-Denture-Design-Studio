@@ -3,8 +3,18 @@ body {
     width: 100vw;
     height: 100vh;
     margin: 0;
-    background: linear-gradient(-90deg, #2f5770 -1.26%, #609c94 100%);
+    padding: 0;
     overflow: hidden;
+  }
+  .signuppage{
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 100vw;
+   height: 100vh;
+   background: linear-gradient(-90deg, #2f5770 -1.26%, #609c94 100%);
+
+
   }
  .signuppage::before{
     content: "";
@@ -17,7 +27,7 @@ body {
     background-size: cover;
     background-position: center;
     opacity: 1;
-    z-index: -1;  
+    z-index: 0;  
 
  }
  .contentbox2{
@@ -26,7 +36,7 @@ width: 47.361vw;
 height: 43vw;
 left: 13.093vw;
 top: 1.306vw;
-
+max-width: 700px;
 background: #D9D9D9;
 box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 border-radius: 3vw;
@@ -45,7 +55,7 @@ box-sizing: border-box;
 
 position: absolute;
 width: 21.109vw;
-height: 1.937vw;
+height: 2.5vw;
 left: 0;
 top: 1.9vw;
 
@@ -91,7 +101,6 @@ font-style: normal;
 font-weight: 400;
 font-size: 1.603vw;
 line-height: 1.937vw;
-/* identical to box height */
 display: flex;
 align-items: center;
 margin: 0;
@@ -101,8 +110,8 @@ color: #0C4B29;
 }
 .eyeicon{
    position: absolute;
-   left: 97%;
-   top: 65%;
+   left: 19.5vw;
+   top: 2.8vw;
    cursor: pointer;
 }
  #Student1{
@@ -204,6 +213,7 @@ color: #0C4B29;
     left: 25vw;
     width: 80vw;
     height: 60vw;
+    
     }
     .contentbox2{
       position: absolute;
@@ -211,6 +221,7 @@ color: #0C4B29;
       height: 60vw;
       left: 13.093vw;
       top: 1.306vw;
+      max-width: 450px;
     }
     
       .signinput input{
@@ -274,5 +285,103 @@ color: #0C4B29;
 }
 .eyeicon{
    left: 28vw;
+}
+}
+@media (max-width: 391px) {
+   .signuppage::before{
+       top: 30vh;
+   left: 25vw;
+   width: 80vw;
+   height: 65vw;
+   
+   }
+   .contentbox2{
+     position: absolute;
+     width: 68vw;
+     height: 85vw;
+     left: 13.093vw;
+     top: 20vw;
+     max-width: 450px;
+
+   }
+   
+     .signinput input{
+  
+        box-sizing: border-box;
+        
+        position: absolute;
+        width: 38vw;
+        height: 5vw;
+        left: 0;
+        top: 3vw;
+        font-size: 1.6vw;
+   }
+   .signinput input:focus{
+        font-size: 1.6vw;
+   }
+   #signinput1{ 
+     top: 10vw;
+     
+  }
+  #signinput2{ 
+     top: 20vw;
+  }
+  #signinput3{ 
+     top: 30vw;
+  }
+  #signinput4{ 
+     top: 40vw;
+  }
+  #signinput5{ 
+     top: 50vw;
+  }
+  #signinput6{ 
+     top: 60vw;
+  }
+  .sign2{
+     position: absolute;
+     width: 20vw;
+     height: 5vw;
+     left: 25vw;
+     top: 75vw;
+  }
+  .role{
+     position: absolute;
+  width: 18.838vw;
+  height: 6.004vw;
+  left: 48.617vw;
+  top: 8vw;
+  font-size: 3vw;
+ 
+}
+.header2{
+   left: 15vw;
+   width: 40vw;
+   font-size: 4vw;
+   top: 3vw;
+}
+.signhead{
+   font-size: 3vw;
+   width: 35vw;
+
+}
+#Student2{
+  top: 6.8vw;
+  left: 6.5vw;
+}
+#Student1{
+   top: 6vw;
+}
+#Assessor1{
+   top: 10vw;
+}
+#Assessor2{
+
+  top: 10.8vw;
+  left: 6.5vw;
+}
+.eyeicon{
+  left: 33vw;
+  top: 3.5vw;
 }
 }

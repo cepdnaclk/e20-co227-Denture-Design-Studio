@@ -16,10 +16,10 @@ function Studenthome() {
             <div className='stdhomecontent'>
                 <h1>Welcome {username}</h1>
                 <div id='studenth1'>
-                <Homecomp name={'Create a Patient Case'} click ={()=>navigate('/patientcase')}/>
+                <Homecomp name={'Create a Patient Case'} click ={()=>navigate('/createuploadpatient')}/>
                 </div>
                 <div id='studenth2'>
-                <Homecomp name={'Solve a Patient Case'} click ={()=>navigate('/solvepatient')}/>
+                <Homecomp name={'Solve a Patient Case'} click ={()=>navigate('/addSaddles')}/>
                 </div>
                 <div id='studenth3'>
                 <Homecomp name={'Content'} click ={()=>navigate('/content')}/>

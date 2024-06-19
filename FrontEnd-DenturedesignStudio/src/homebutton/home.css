@@ -1,22 +1,64 @@
-.homebutton{
-    width: 3.34vw;
-    height: 3.34vw;
+.homebutton {
+    position: absolute;
+    width: 3vw;
+    height: 3vw;
+    top: 0;
+    left: 0;
     margin: 0;
-    padding: 0;
-    border-radius: 3.34vw;
+    padding: auto;
+    border-radius: 1.002vw;
     border: none;
     img{
-        height: 40px;
-        width: 40px;
-        background-color:transparent ;
-       
-        margin: 0;
+        position: absolute;
+        width: 3vw;
+        left: 28vw;
         padding: 0;
-        border: transparent;
-        border-radius: 60px;
-        
+        margin: 0;
+  
     }
-}
-.homebutton:hover{
+  
+  }
+  .homebutton:hover{
+    width: 33vw;
+    height: 5vw;
     cursor: pointer;
-}
+    top: -0.2vw;
+    left: -0.2vw;
+    img{
+      position: absolute;
+      width: 3vw;
+      left: 28.5vw;
+      padding: 0;
+      margin: 0;
+    }
+  }
+  @media(max-width:1000px){
+    .homebutton{
+      width: 50vw;
+      height: 8vw;
+      font-size: 4vw;
+      img{
+        position: absolute;
+        width: 5vw;
+        left: 43vw;
+        padding: 0;
+        margin: 0;
+      
+      }
+    }
+    .homebutton:hover{
+      width: 50.5vw;
+      height: 8.5vw;
+      cursor: pointer;
+      top: -0.2vw;
+      left: -0.2vw;
+      img{
+        position: absolute;
+        width: 5vw;
+        left: 43.5vw;
+        padding: 0;
+        margin: 0;
+      
+      }
+    }
+  }

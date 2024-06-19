@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import "./Logingpage.css";
-import Back from 'E:/e20-co225-Denture-Design-Studio/FrontEnd-DenturedesignStudio/src/backbutton/Back.jsx';
+import Back from '../backbutton/Back';
 import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
@@ -41,7 +41,7 @@ function Loginpage() {
             <div onClick={() => setShowPassword(!showPassword)} className="eyeicon1">
             <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} />
           </div>
-            <p id='forget'><link rel="#" href="" onc />Forgot Password?</p>
+            <p id='forget'><link rel="#" href=""  />Forgot Password?</p>
           </div>
           <div>
             <button type='submit' className="login2">Login</button>
