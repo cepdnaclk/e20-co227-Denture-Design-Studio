@@ -1,4 +1,4 @@
-import back from "E:/e20-co225-Denture-Design-Studio/FrontEnd-DenturedesignStudio/src/backbutton/back.png"
+import back from "../backbutton/back.png"
 import "./Back.css"
 function Back({onclick}){
     return(

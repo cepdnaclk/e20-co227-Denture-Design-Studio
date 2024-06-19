@@ -46,10 +46,11 @@ img{
     margin: 0;
   }
 }
-@media(max-width:1000px){
+@media(max-width:768px){
   .homecompbtn{
     width: 50vw;
-    height: 8vw;
+    height: 7vw;
+  
     font-size: 4vw;
     img{
       position: absolute;
