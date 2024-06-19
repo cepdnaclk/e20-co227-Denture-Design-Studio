@@ -1,4 +1,5 @@
 body {
+<<<<<<< HEAD
     position: relative;
     width: 100vw;
     height: 100vh;
@@ -20,97 +21,119 @@ body {
     background-position: center;
     background-blend-mode:normal;
     opacity: 1;
+=======
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  overflow: hidden;
+}
+
+.Assessorhome::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #86C2F9;
+  background-image:  url(./assessorhomeng.png);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  background-size: cover;
+  background-position: center;
+  background-blend-mode:normal;
+  opacity: 1;
+  
+}
+#assessorh1{
+  position: absolute;
+  top: 11vw;
+  left: 8vw;
+}
+#assessorh2{
+  position: absolute;
+  top: 19vw;
+  left: 8vw;
+}
+#assessorh3{
+  position: absolute;
+  top: 27vw;
+  left: 8vw;
+}
+#assessorh4{
+  position: absolute;
+  top: 35vw;
+  left: 8vw;
+}
+.assessorhomecontent{
+position: absolute;
+left: 25vw;
+align-items: center;
+text-align: center;
+height: 52vw;
+width: 50vw;
+top: 3vw;
+ h1{
+
+position: absolute;
+width: 45.959vw;
+height: 6.146vw;
+margin: 0;
+padding: 0;
+top: 1vw;
+left: 4vw;
+font-family: 'Salsa';
+font-style: normal;
+font-weight: 400;
+font-size: 5.344vw;
+
+display: flex;
+align-items: center;
+text-align: center;
+
+background: linear-gradient(90deg, #1D5641 0%, #243984 100%);
+
+-webkit-text-fill-color: transparent;
+background-clip: text;
+
+text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);
+
+ }
+}
+
+@media(max-width:768px){
+  .assessorhomecontent {
+    width: 80vw;
+    height: 80vw;
+    left: 15vw;
+    top: 20vw;
+    h1{
+      position: absolute;
+width: 80vw;
+height: 10vw;
+margin: 0;
+padding: 0;
+font-size: 8vw;
+    }
+>>>>>>> abdec659d5feb2d65ef7bca16a1233e1ab3792a8
     
   }
   #assessorh1{
     position: absolute;
-    top: 11vw;
-    left: 8vw;
+    top: 17vh;
+    left: 12%;
   }
   #assessorh2{
     position: absolute;
-    top: 19vw;
-    left: 8vw;
+    top: 30vh;
+    left: 12%;
   }
   #assessorh3{
     position: absolute;
-    top: 27vw;
-    left: 8vw;
+    top: 43vh;
+    left: 12%;
   }
-  #assessorh4{
-    position: absolute;
-    top: 35vw;
-    left: 8vw;
-  }
-  .assessorhomecontent{
-  position: absolute;
-  left: 25vw;
-  align-items: center;
-  text-align: center;
-  height: 52vw;
-  width: 50vw;
-  top: 3vw;
-   h1{
-  
-  position: absolute;
-  width: 45.959vw;
-  height: 6.146vw;
-  margin: 0;
-  padding: 0;
-  top: 1vw;
-  left: 4vw;
-  font-family: 'Salsa';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 5.344vw;
-  
-  display: flex;
-  align-items: center;
-  text-align: center;
-  
-  background: linear-gradient(90deg, #1D5641 0%, #243984 100%);
-  
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  
-  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);
-  
-   }
-  }
-  
-  @media(max-width:768px){
-    .assessorhomecontent {
-      width: 80vw;
-      height: 80vw;
-      left: 15vw;
-      top: 20vw;
-      h1{
-        position: absolute;
-  width: 80vw;
-  height: 10vw;
-  margin: 0;
-  padding: 0;
-  font-size: 8vw;
-      }
-      
-    }
-    #assessorh1{
-      position: absolute;
-      top: 17vh;
-      left: 12%;
-    }
-    #assessorh2{
-      position: absolute;
-      top: 30vh;
-      left: 12%;
-    }
-    #assessorh3{
-      position: absolute;
-      top: 43vh;
-      left: 12%;
-    }
-   
-  
-   
-  }
-  
+ 
+
+ 
+}

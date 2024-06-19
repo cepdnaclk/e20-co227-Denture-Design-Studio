@@ -1,233 +1,232 @@
 body {
-    position: relative;
-    width: 100vw;
-    height: 100vh;
-    margin: 0;
-    overflow: hidden;
-  }
-  .logingpage{
-    position: relative;
-    width: 100vw;
-    height: 100vh;
-    background: linear-gradient(-90deg, #2f5770 -1.26%, #609c94 100%);
-  }
-  .logingpage::before {
-    content: "";
-    position: absolute;
-    top: 12.625vh;
-    left: 49.967vw;
-    width: 45.291vw;
-    height: 34.335vw;
-    background-image: url(./logingbackground.png);
-    background-size: cover;
-    background-position: center;
-    opacity: 1;
-  }
-  
-  .contentbox {
-    position: absolute;
-    width: 35.605vw;
-    height: 40.414vw;
-    left: 8.417vw;
-    top: 3.006vw;
-    background: #d9d9d9;
-    box-shadow: 7px 7px 7px rgba(0, 0, 0, 0.45);
-    border-radius: 3.34vw;
-  }
-  
-  .header {
-    position: absolute;
-    width: 27.455vw;
-    height: 4.342vw;
-    max-width: 420px;
-    left: 4.2vw;
-    top: 1vw;
-    font-family: "Salsa";
-    font-style: normal;
-    font-weight: 400;
-    font-size: 2.672vw;
-    line-height: 49px;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    color: #0c4b29;
-  }
-  
-  .userinput {
-    position: absolute;
-    width: 14.228vw;
-    height: 1.804vw;
-    line-height: 0;
-  }
-  
-  .userinput input {
-   
-    width: 27.856vw;
-    height: 2.806vw;
-    left: 12.291vw;
-    top: 17.234vw;
-    mix-blend-mode: multiply;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    background: #d3ebdd;
-    border-radius: 0.468vw;
-    font-family: 'salsa';
-    font-size: x-large;
-    border: none;
-  }
- .eyeicon1{
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  overflow: hidden;
+}
+.logingpage{
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(-90deg, #2f5770 -1.26%, #609c94 100%);
+}
+.logingpage::before {
+  content: "";
   position: absolute;
-  left: 180%;
-  top: 6vw;
+  top: 12.625vh;
+  left: 49.967vw;
+  width: 45.291vw;
+  height: 34.335vw;
+  background-image: url(./logingbackground.png);
+  background-size: cover;
+  background-position: center;
+  opacity: 1;
+}
+
+.contentbox {
+  position: absolute;
+  width: 35.605vw;
+  height: 40.414vw;
+  left: 8.417vw;
+  top: 3.006vw;
+  background: #d9d9d9;
+  box-shadow: 7px 7px 7px rgba(0, 0, 0, 0.45);
+  border-radius: 3.34vw;
+}
+
+.header {
+  position: absolute;
+  width: 27.455vw;
+  height: 4.342vw;
+  max-width: 420px;
+  left: 4.2vw;
+  top: 1vw;
+  font-family: "Salsa";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 2.672vw;
+  line-height: 49px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #0c4b29;
+}
+
+.userinput {
+  position: absolute;
+  width: 14.228vw;
+  height: 1.804vw;
+  line-height: 0;
+}
+
+.userinput input {
+ 
+  width: 27.856vw;
+  height: 2.806vw;
+  left: 12.291vw;
+  top: 17.234vw;
+  mix-blend-mode: multiply;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  background: #d3ebdd;
+  border-radius: 0.468vw;
+  font-family: 'salsa';
+  font-size: x-large;
+  border: none;
+}
+.eyeicon1{
+position: absolute;
+left: 180%;
+top: 6vw;
+cursor: pointer;
+}
+
+.inputs {
+  right: 20vw;
+  height: 1vw;
+  font-family: "Salsa";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 2.004vw;
+  line-height: 3px;
+  display: flex;
+  align-items: center;
+  color: #0c4b29;
+}
+
+#input1 {
+  top: 10vw;
+  left: 4vw;
+}
+
+#input2 {
+  top: 20vw;
+  left: 4vw;
+}
+
+#forget {
+  position: absolute;
+  top: 8vw;
+  left: 7vw;
+  width: 13vw;
+  font-size: 1.5vw;
+  font-family: "salsa";
+  color: #0c4b29;
+}
+
+#forget:hover {
   cursor: pointer;
- }
+}
+
+.login2 {
+  position: absolute;
+  width: 17.038vw;
+  height: 4vw;
+  left: 9vw;
+  top: 33vw;
+  background: #519b97;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(2px);
+  border-radius: 1.336vw;
+  font-family: "Salsa";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 2.138vw;
+  line-height: 134.77%;
+  border: none;
+  color: #0c4b29;
+}
+.login2:hover{
+  width: 17.3vw;
+  height: 4.3vw;
+  cursor: pointer;
+  border-radius: 1.4vw;
+
+}
+
+.back {
+  position: absolute;
+  top: 1vw;
+  left: 2vw;
+}
+
+
+@media (max-width: 768px) {
+  .eyeicon1{
+    position: absolute;
+    left: 35vw;
+    top: 8.5vw;
+    width: 2vw;
+    height: 1vw;
+   }
+  .contentbox {
+    width: 60vw; 
+    height: 75vw; 
+    left: 4vw;   
+    top: 14vh;    
+    border-radius: 3vw; 
+  }
+
+  .header {
+    width: 50vw;  
+    font-size: 4vw; 
+    left: 8vw;   
+    top: 2vw;    
+  }
+
+
+  .userinput input {
+    width: 40vw;
+    height: 5vw;  
+    left: 7vw;   
+    top: 50vw;   
+    border-radius: 5px; 
+  }
 
   .inputs {
-    right: 20vw;
-    height: 1vw;
-    font-family: "Salsa";
-    font-style: normal;
-    font-weight: 400;
-    font-size: 2.004vw;
-    line-height: 3px;
-    display: flex;
-    align-items: center;
-    color: #0c4b29;
+    font-size: 3vw; 
   }
-  
-  #input1 {
-    top: 10vw;
-    left: 4vw;
+
+  #input1{
+      top: 14vw;   
+      left: 8vw;  
   }
   
   #input2 {
-    top: 20vw;
-    left: 4vw;
+    top: 30vw;   
+    left: 8vw;  
   }
-  
+
   #forget {
-    position: absolute;
-    top: 8vw;
-    left: 7vw;
-    width: 13vw;
-    font-size: 1.5vw;
-    font-family: "salsa";
-    color: #0c4b29;
+      top: 15vw;
+    font-size: 2.5vw;
+    width: 25vw; 
+    left: 9vw;  
   }
-  
-  #forget:hover {
-    cursor: pointer;
-  }
-  
+
   .login2 {
-    position: absolute;
-    width: 17.038vw;
-    height: 4vw;
-    left: 9vw;
-    top: 33vw;
-    background: #519b97;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    backdrop-filter: blur(2px);
-    border-radius: 1.336vw;
-    font-family: "Salsa";
-    font-style: normal;
-    font-weight: 400;
-    font-size: 2.138vw;
-    line-height: 134.77%;
-    border: none;
-    color: #0c4b29;
+    width: 25vw;  
+    height: 7vw;  
+    left: 17vw;  
+    top: 60vw;   
+    border-radius: 2vw; 
+    font-size: 4vw; 
   }
   .login2:hover{
-    width: 17.3vw;
-    height: 4.3vw;
-    cursor: pointer;
-    border-radius: 1.4vw;
-
+      width: 25.5vw;
+      height: 7.5vw;
+      cursor: pointer;
+      border-radius: 2.3vw;
+    }
+  .logingpage::before{
+      top: 40vh;
+  left: 25vw;
+  width: 80vw;
+  height: 60vw;
   }
-  
   .back {
-    position: absolute;
-    top: 1vw;
-    left: 2vw;
-  }
-  
+      top: 3vw;
+      left: 3vw;
 
-  @media (max-width: 768px) {
-    .eyeicon1{
-      position: absolute;
-      left: 35vw;
-      top: 8.5vw;
-      width: 2vw;
-      height: 1vw;
-     }
-    .contentbox {
-      width: 60vw; 
-      height: 75vw; 
-      left: 4vw;   
-      top: 14vh;    
-      border-radius: 3vw; 
     }
-  
-    .header {
-      width: 50vw;  
-      font-size: 4vw; 
-      left: 8vw;   
-      top: 2vw;    
-    }
- 
-  
-    .userinput input {
-      width: 40vw;
-      height: 5vw;  
-      left: 7vw;   
-      top: 50vw;   
-      border-radius: 5px; 
-    }
-  
-    .inputs {
-      font-size: 3vw; 
-    }
-  
-    #input1{
-        top: 14vw;   
-        left: 8vw;  
-    }
-    
-    #input2 {
-      top: 30vw;   
-      left: 8vw;  
-    }
-  
-    #forget {
-        top: 15vw;
-      font-size: 2.5vw;
-      width: 25vw; 
-      left: 9vw;  
-    }
-  
-    .login2 {
-      width: 25vw;  
-      height: 7vw;  
-      left: 17vw;  
-      top: 60vw;   
-      border-radius: 2vw; 
-      font-size: 4vw; 
-    }
-    .login2:hover{
-        width: 25.5vw;
-        height: 7.5vw;
-        cursor: pointer;
-        border-radius: 2.3vw;
-      }
-    .logingpage::before{
-        top: 40vh;
-    left: 25vw;
-    width: 80vw;
-    height: 60vw;
-    }
-    .back {
-        top: 3vw;
-        left: 3vw;
-
-      }
-  }
-  
+}
