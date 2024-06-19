@@ -1,4 +1,3 @@
-import home from "../homebutton/home.png"
 import home from "/home.png"
 import "./home.css"
 function Home({onClick}){

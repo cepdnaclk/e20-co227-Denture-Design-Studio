@@ -1,5 +1,4 @@
 body {
-    /* Create a Patient Case - 1 */
     position: relative;
     width: 100vw;
     height: 100vh;
@@ -21,9 +20,9 @@ body {
     position: absolute;
     width: 17.14vw;
     height: 3.37vw;
-    bottom: 20px; /* Adjust bottom position */
-    left: 50%; /* Adjust left position */
-    transform: translateX(-50%); /* Center horizontally */
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%); 
     
     background: #66D8D8;
     box-shadow: 0.67vw 0.53vw 0.8vw rgba(0, 0, 0, 0.35);
@@ -37,15 +36,15 @@ body {
 
 .skipButtonText {
     position: absolute;
-    height: 4.07vh; /* 44px / 1080px * 100 */
-    left: 3vw; /* 17px / 1920px * 100 */
-    right: 0.83vw; /* 16px / 1920px * 100 */
+    height: 4.07vh; 
+    left: 3vw; 
+    right: 0.83vw; 
     top: calc(50% - 4.07vh / 2);
     
     font-family: 'Salsa';
     font-style: normal;
     font-weight: 400;
-    font-size: 1.67vw; /* 32px / 1920px * 100 */
+    font-size: 1.67vw; 
     line-height: 134.77%;
     
     display: flex;
@@ -121,9 +120,9 @@ body {
 
 .AddSaddles {
     position: absolute;
-    height: 4.63vh; /* 50px / 1080px * 100 */
-    left: 10vw; /* 108px / 1920px * 100 */
-    right: 49.58vw; /* 952px / 1920px * 100 */
+    height: 4.63vh;
+    left: 10vw; 
+    right: 49.58vw; 
     width: 50vw;
     top: 0.25vw;
 
@@ -145,15 +144,13 @@ body {
 
 .yourCase {
     position: absolute;
-    width: 22.81vw; /* 438px / 1920px * 100 */
-    height: 6.39vh; /* 69px / 1080px * 100 */
-    left: 33.30vw; /* 601px / 1920px * 100 */
-    top: 8.89vh; /* 96px / 1080px * 100 */
-    
+    width: 22.81vw; 
+    height: 6.39vh; 
+    left: 33.30vw; 
     font-family: 'Salsa';
     font-style: normal;
     font-weight: 400;
-    font-size: 1.56vw; /* 30px / 1920px * 100 */
+    font-size: 1.56vw;
     line-height: 134.77%;
     
     display: flex;
