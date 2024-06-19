@@ -13,7 +13,7 @@ function AddSaddles() {
   }
 
   return (
-    <>
+    <div className='saddlespage'>
       <div className="AddSaddles">
       <Home onClick={() => handleClick("/studenthome")}></Home>
         
@@ -37,7 +37,7 @@ function AddSaddles() {
           </div>
         </button>
       
-    </>
+    </div>
   );
 }
 
