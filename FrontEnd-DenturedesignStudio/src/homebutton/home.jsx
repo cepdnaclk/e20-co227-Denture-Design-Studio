@@ -1,4 +1,4 @@
-import home from "E:/e20-co225-Denture-Design-Studio/FrontEnd-DenturedesignStudio/src/homebutton/home.png"
+import home from "/home.png"
 import "./home.css"
 function Home({onClick}){
     return(
