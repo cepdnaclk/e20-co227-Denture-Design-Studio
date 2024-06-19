@@ -19,7 +19,7 @@ function Studenthome() {
                 <Homecomp name={'Create a Patient Case'} click ={()=>navigate('/createuploadpatient')}/>
                 </div>
                 <div id='studenth2'>
-                <Homecomp name={'Solve a Patient Case'} click ={()=>navigate('/solvepatient')}/>
+                <Homecomp name={'Solve a Patient Case'} click ={()=>navigate('/addSaddles')}/>
                 </div>
                 <div id='studenth3'>
                 <Homecomp name={'Content'} click ={()=>navigate('/content')}/>
