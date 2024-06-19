@@ -12,29 +12,32 @@ function AddSaddles() {
   }
 
   return (
-    <div className='saddlespage'>
-      <div className="AddSaddles">
-      <Home onClick={() => handleClick("/studenthome")}></Home>
-        
+    <div className='designPage'>
+    <Home onClick={() => handleClick("/studenthome")}></Home>
+
+      <div className="AddSaddles">        
         <div>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Salsa&display=swap" />
-        <div className="Questionbox"></div>
-        <div className="teethBackground1"></div>
-          <h2 className='AddSaddles'>Add Saddles</h2>
-          <h2 className='yourQuestion'>Your Question</h2>
-          <h1 className='yourCase'>Your Case :</h1>
-        </div>
+        <div className="Questionbox">
         <button className='skipButton' onClick={() => handleClick('/addSaddles')}>
           <div className="skipButtonText">
             <span className="skipButtonText">Skip</span>
           </div>
         </button>
-      </div>
+        </div>
+        <div className="teethBackground1">
         <button className='addRests' onClick={() => handleClick('/addRests')}>
           <div className="addRestsText">
-            <span className="addRestsText">Add Rests</span>
+            <span className="addRestText">Add Rests</span>
           </div>
         </button>
+        </div>
+          <h2 className='AddSaddles'>Add Saddles</h2>
+          <h2 className='yourQuestion'>Your Question</h2>
+          <h1 className='yourCase'>Your Case :</h1>
+        </div>
+        
+      </div>
       
     </div>
   );

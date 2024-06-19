@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import './AddRests.css';
-import Home from 'E:/e20-co225-Denture-Design-Studio/FrontEnd-DenturedesignStudio/src/homebutton/home.jsx';
+import Home from '../homebutton/home';
 import BackComp from '../backComp/backComp';
 
 
@@ -14,9 +14,10 @@ function AddRests() {
 
   return (
     <>
+    <div className='designPage'>
+    <Home onClick={() => handleClick("/studenthome")}></Home>
+    <BackComp onClick={() => handleClick("/AddSaddles")}></BackComp>
       <div className="AddRests">
-      <Home onClick={() => handleClick("/studenthome")}></Home>
-      <BackComp onClick={() => handleClick("/AddSaddles")}></BackComp>
         <div>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Salsa&display=swap" />
         <div className="Questionbox">
@@ -40,8 +41,8 @@ function AddRests() {
           <h1 className='yourCase'>Your Case :</h1>
         </div>
         
-      </div>
-        
+        </div>
+      </div>    
     </>
   );
 }

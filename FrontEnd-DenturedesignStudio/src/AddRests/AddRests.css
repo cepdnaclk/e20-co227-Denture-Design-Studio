@@ -3,9 +3,9 @@ body {
     width: 100vw;
     height: 100vh;
     margin: 0;
-    background: linear-gradient(270deg, rgba(72, 148, 135, 0.83) 0%, rgba(42, 78, 98, 0.83) 101.07%);
     overflow: hidden;
 }
+
 .Questionbox {
     position: absolute;
     width: 23.9vw; 
