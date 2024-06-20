@@ -1,11 +1,11 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import './AddIndirectRetentions.css';
+import './AddConnectors.css';
 import Home from '../homebutton/home';
 import BackComp from '../backComp/backComp';
 
 
-function AddIndirectRetentions() {
+function AddConnectors() {
   let navigate = useNavigate();
 
   function handleClick(path) {
@@ -16,27 +16,26 @@ function AddIndirectRetentions() {
     <>
     <div className='designPage'>
     <Home onClick={() => handleClick("/studenthome")}></Home>
-    <BackComp onClick={() => handleClick("/AddReciprocations")}></BackComp>
-      <div className="AddIndirectRetentions">
+    <BackComp onClick={() => handleClick("/AddIndirectRetentions")}></BackComp>
+      <div className="AddConnectors">
         <div>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Salsa&display=swap" />
         <div className="Questionbox">
         </div>
         <div className="teethBackground1">
-        <button className='addConnectors' onClick={() => handleClick('/AddConnectors')}>
-          <div className="addConnectText">
-            <span className="addConnectText">Add Connectors</span>
+        <button className='Done' onClick={() => handleClick('/reviewAnswer')}>
+          <div className="DoneText">
+            <span className="DoneText">Done</span>
           </div>
         </button>
         
-        <ul className="rests-list">
-            <li className="rests" onClick={() => handleClick()}>Occlusal Rests :</li>
-            <li className="rests" onClick={() => handleClick()}>Cingulum Rests :</li>
-            <li className="rests" onClick={() => handleClick()}>Incisal Rests :</li>
+        <ul className="connectors-list">
+            <li className="connectors" onClick={() => handleClick()}>Upper</li>
+            <li className="connectors" onClick={() => handleClick()}>Lower</li>
         </ul>
   
         </div>
-          <h2 className='AddIndirectRetentions'>Add Indirect Retentions</h2>
+          <h2 className='AddConnectors'>Add Connectors</h2>
           <h2 className='yourQuestion'>Your Question</h2>
           <h1 className='yourCase'>Your Case :</h1>
         </div>
@@ -47,4 +46,4 @@ function AddIndirectRetentions() {
   );
 }
 
-export default AddIndirectRetentions;
+export default AddConnectors;
