@@ -11,6 +11,7 @@ import AddRetentions from "./AddRetentions/AddRetentions";
 import Assessorhome from "./AssessorHome/Assessorhome";
 import Adminhome from "./AdminHome/Adminhome";
 import ModelAnswer from "./ModelAnswer/ModelAnswer";
+import Reviewanswer from "./ReviewAnswer/ReviewAnswer";
 import "./App.css";
 
 function App() {
@@ -32,6 +33,7 @@ function App() {
         <Route exact path="/addRests" element={<AddRests />} />
         <Route exact path="/addRetentions" element={<AddRetentions />} />
         <Route exact path="/modelanswer" element={<ModelAnswer />} />
+        <Route exact path="/reviewanswer" element={<Reviewanswer />} />
       </Routes>
     </Router>
   );
