@@ -14,6 +14,7 @@ import AddConnectors from "./AddConnectors/AddConnectors";
 import Assessorhome from "./AssessorHome/Assessorhome";
 import Adminhome from "./AdminHome/Adminhome";
 import ModelAnswer from "./ModelAnswer/ModelAnswer";
+import Reviewanswer from "./ReviewAnswer/ReviewAnswer";
 import "./App.css";
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
         <Route exact path="/addIndirectRetentions" element={<AddIndirectRetentions />} />
         <Route exact path="/addConnectors" element={<AddConnectors />} />
         <Route exact path="/modelanswer" element={<ModelAnswer />} />
+        <Route exact path="/reviewanswer" element={<Reviewanswer />} />
       </Routes>
     </Router>
   );
