@@ -9,6 +9,7 @@ import AddSaddles from "./AddSaddles/AddSaddles";
 import AddRests from "./AddRests/AddRests";
 import AddRetentions from "./AddRetentions/AddRetentions";
 import AddReciprocations from "./AddReciprocations/AddReciprocations";
+import AddIndirectRetentions from "./AddIndirectRetentions/AddIndirectRetentions";
 import Assessorhome from "./AssessorHome/Assessorhome";
 import Adminhome from "./AdminHome/Adminhome";
 import ModelAnswer from "./ModelAnswer/ModelAnswer";
@@ -29,6 +30,7 @@ function App() {
         <Route exact path="/addRests" element={<AddRests />} />
         <Route exact path="/addRetentions" element={<AddRetentions />} />
         <Route exact path="/addReciprocations" element={<AddReciprocations />} />
+        <Route exact path="/addIndirectRetentions" element={<AddIndirectRetentions />} />
         <Route exact path="/modelanswer" element={<ModelAnswer />} />
       </Routes>
     </Router>
