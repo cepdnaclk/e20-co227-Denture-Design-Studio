@@ -1,11 +1,12 @@
-.UploadPatientCase1{
+.CreatePatientCase1 {
     position: relative;
     width: 100vw;
     height: 100vh;
+    margin: 0;
     overflow: hidden;
-    
 }
-.UploadPatientCase1::before{
+
+.CreatePatientCase1::before{
     content: "";
     position: absolute;
     width: 100vw;
@@ -52,19 +53,17 @@
     border-radius: 3.21vw;
 }
 
-.uploadAPatientCase {
+.createAPatientCase1 {
     position: absolute;
     width: 35.32vw;
     height: 4.75vw;
-    left: 60vw;
-    top: 12vw;
-
+    left: 65vw;
+    top: 11vw;
     font-family: 'Salsa';
     font-style: normal;
     font-weight: 400;
     font-size: 2vw;
     line-height: 134.77%;
-    
     display: flex;
     align-items: center;
     color: #252724;
@@ -74,7 +73,7 @@
     position: absolute;
     width: 30.32vw;
     height: 10.88vw;
-    left: 64.00vw;
+    left: 65.00vw;
     top: 13.65vw;
     font-family: 'Salsa';
     font-style: normal;
@@ -86,6 +85,6 @@
     color: #252724;
 }
 
-#addUndercuts2{
+#addUndercuts1{
     position: absolute ;
 }

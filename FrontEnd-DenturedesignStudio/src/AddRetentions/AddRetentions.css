@@ -6,6 +6,14 @@ body {
     overflow: hidden;
 }
 
+.designPage{
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(270deg, rgb(60 123 113) 0%, rgb(36 69 84) 101.07%);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
 .Questionbox {
     position: absolute;
     width: 23.9vw; 
@@ -122,37 +130,50 @@ body {
     text-shadow: 8px 7px 15px rgba(0, 0, 0, 0.54);
 }
 
-.retensions{
-
-position: relative;
-width: 22vw; 
-height: 6.39vh;
-left: 110%;
-top: 6%;
-
-font-family: 'Salsa';
-font-style: normal;
-font-weight: 400;
-font-size: 1.56vw;
-line-height: 134.77%;
-display: flex;
-align-items: center;
-
-color: #D1ECEC;
-
+.retentions {
+    position: relative;
+    width: 22.81vw; 
+    height: 6.39vh;
+    top: 6%;
+    
+    font-family: 'Salsa';
+    font-style: normal;
+    font-weight: 400;
+    line-height: 134.77%;
+    display: flex;
+    align-items: center;
+    
+    color: #D1ECEC;
 }
 
-.retensions:hover {
+.retentions:hover {
     transform: scale(1.05);
-  }
+}
 
-ul.retensions-list {
-    position: relative; 
+ul.retentions-list {
+    position: absolute; 
     list-style-type: none;
+    left: 25%;
+    font-size: 1.56vw;
     padding: 0;
     margin: 0;
-  }
+}
 
-  .retensions-list .retensions:nth-child(2) {
-    top: 12%; 
-  }
+ul.retentions-list li {
+    padding-left: 22.81vw;
+    white-space: nowrap;
+}
+
+ul.retentions-list li:hover {
+    transform: scale(1.05);
+    color: #ffffff; 
+}
+
+#occlusally {
+    top: 0;    
+}
+
+#gingivilly {
+    top: 12%;
+}
+

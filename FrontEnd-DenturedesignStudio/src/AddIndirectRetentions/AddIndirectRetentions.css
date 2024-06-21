@@ -6,12 +6,12 @@ body {
     overflow: hidden;
 }
 
-.designPage {
+.designPage{
     position: absolute;
     width: 100vw;
     height: 100vh;
     background: linear-gradient(270deg, rgb(60 123 113) 0%, rgb(36 69 84) 101.07%);
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    box-shadow: 0px 4px 4px rgba(9, 9, 9, 0.25);
 }
 
 .Questionbox {
@@ -24,6 +24,7 @@ body {
     border-radius: 2.6vw; 
 }
 
+
 .teethBackground1 {
     position: absolute;
     width: 23.9vw; 
@@ -34,18 +35,19 @@ body {
     border-radius: 2.6vw; 
 }
 
-.addRetentions {
+.addConnectors {
     position: absolute;
     width: 17.14vw;
     height: 3.37vw;
-    left: 26vw;
+    left:26vw;
     top: 33vw;
     border-radius: 1vw; 
     background: #66D8D8;
     box-shadow: 0.67vw 0.53vw 0.8vw rgba(0, 0, 0, 0.35);
+    
 }
 
-.addRetenText {
+.addConnectText {
     position: absolute;
     height: 4.07vh;
     width: 40vw;
@@ -66,6 +68,7 @@ body {
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
+
 .yourQuestion {
     position: absolute;
     width: 38.23vw; 
@@ -84,7 +87,7 @@ body {
     color: #000000;
 }
 
-.AddRests {
+.AddIndirectRetentions {
     position: absolute;
     height: 4.63vh; 
     left: 10vw; 
@@ -99,12 +102,14 @@ body {
     line-height: 134.77%;
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 
+
     display: flex;
     align-items: center;
     text-align: center;
     color: #92DADA;
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
+
 
 .yourCase {
     position: absolute;
@@ -116,7 +121,7 @@ body {
     font-family: 'Salsa';
     font-style: normal;
     font-weight: 400;
-    font-size: 1.56vw; 
+    font-size: 1.56vw;
     line-height: 134.77%;
     
     display: flex;
@@ -125,7 +130,6 @@ body {
     color: #E8E9E9;
     text-shadow: 8px 7px 15px rgba(0, 0, 0, 0.54);
 }
-
 .rests {
     position: relative;
     width: 22.81vw; 
@@ -149,15 +153,19 @@ body {
 ul.rests-list {
     position: absolute; 
     list-style-type: none;
-    left: 25%;
+    left: 30%;
     font-size: 1.56vw;
     padding: 0;
     margin: 0;
+    display: flex;
+    flex-direction: column;
 }
 
 ul.rests-list li {
-    padding-left: 22.81vw; 
+    text-align: left;
     white-space: nowrap;
+    display: flex;
+    align-items: center;
 }
 
 ul.rests-list li:hover {
@@ -165,14 +173,14 @@ ul.rests-list li:hover {
     color: #ffffff;
 }
 
-#occlusalRests {
+#occlusalRestsI {
     top: 0;    
 }
 
-#cingulumRests {
+#cingulumRestsI {
     top: 12%;
 }
 
-#incisalRests {
+#incisalRestsI {
     top: 26%;
 }
