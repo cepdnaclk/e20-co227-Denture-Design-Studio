@@ -130,38 +130,49 @@ body {
     text-shadow: 8px 7px 15px rgba(0, 0, 0, 0.54);
 }
 
-.connectors{
-
-position: relative;
-width: 22.81vw; 
-height: 6.39vh;
-left: 110%;
-top: 6%;
-
-font-family: 'Salsa';
-font-style: normal;
-font-weight: 400;
-font-size: 1.56vw;
-line-height: 134.77%;
-display: flex;
-align-items: center;
-
-color: #D1ECEC;
-
+.connectors {
+    position: relative;
+    width: 22.81vw; 
+    height: 6.39vh;
+    top: 6%;
+    
+    font-family: 'Salsa';
+    font-style: normal;
+    font-weight: 400;
+    line-height: 134.77%;
+    display: flex;
+    align-items: center;
+    
+    color: #D1ECEC;
 }
 
 .connectors:hover {
     transform: scale(1.05);
-  }
+}
 
 ul.connectors-list {
-    position: relative; 
+    position: absolute; 
     list-style-type: none;
+    left: 25%;
+    font-size: 1.56vw;
     padding: 0;
     margin: 0;
-  }
+}
 
-  .connectors-list .connectors:nth-child(2) {
-    top: 12%; 
-  }
+ul.connectors-list li {
+    padding-left: 22.81vw;
+    white-space: nowrap;
+}
 
+ul.connectors-list li:hover {
+    transform: scale(1.05);
+    color: #ffffff; 
+}
+
+#upper {
+    top: 0;    
+}
+
+#lower {
+    top: 12%;
+}

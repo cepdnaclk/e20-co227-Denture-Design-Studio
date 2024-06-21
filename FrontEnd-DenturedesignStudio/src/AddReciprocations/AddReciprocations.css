@@ -131,38 +131,92 @@ body {
     text-shadow: 8px 7px 15px rgba(0, 0, 0, 0.54);
 }
 
-.reciprocations{
+.AddRetentions {
+    position: absolute;
+    height: 4.63vh; 
+    left: 10vw; 
+    right: 49.58vw; 
+    width: 50vw;
+    top: 0.25vw;
 
-position: relative;
-width: 22.81vw; 
-height: 6.39vh;
-left: 110%;
-top: 6%;
+    font-family: 'Salsa';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 2.5vw;
+    line-height: 134.77%;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 
-font-family: 'Salsa';
-font-style: normal;
-font-weight: 400;
-font-size: 1.56vw;
-line-height: 134.77%;
-display: flex;
-align-items: center;
 
-color: #D1ECEC;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #92DADA;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
 
+.yourCase {
+    position: absolute;
+    width: 22.81vw; 
+    height: 6.39vh; 
+    left: 33.30vw; 
+    top: 8.89vh; 
+    
+    font-family: 'Salsa';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.56vw; 
+    line-height: 134.77%;
+    
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #E8E9E9;
+    text-shadow: 8px 7px 15px rgba(0, 0, 0, 0.54);
+}
+
+.reciprocations {
+    position: relative;
+    width: 22.81vw; 
+    height: 6.39vh;
+    top: 6%;
+    
+    font-family: 'Salsa';
+    font-style: normal;
+    font-weight: 400;
+    line-height: 134.77%;
+    display: flex;
+    align-items: center;
+    
+    color: #D1ECEC;
 }
 
 .reciprocations:hover {
     transform: scale(1.05);
-  }
+}
 
 ul.reciprocations-list {
-    position: relative; 
+    position: absolute; 
     list-style-type: none;
+    left: 25%;
+    font-size: 1.56vw;
     padding: 0;
     margin: 0;
-  }
+}
 
-  .reciprocations-list .reciprocations:nth-child(2) {
-    top: 12%; 
-  }
+ul.reciprocations-list li {
+    padding-left: 22.81vw;
+    white-space: nowrap;
+}
 
+ul.reciprocations-list li:hover {
+    transform: scale(1.05);
+    color: #ffffff; 
+}
+
+#clasp {
+    top: 0;    
+}
+
+#plate {
+    top: 12%;
+}

@@ -29,9 +29,9 @@ function AddRetentions() {
           </div>
         </button>
         
-        <ul className="retensions-list">
-            <li className="retensions" onClick={() => handleClick()}>Occlusally Approaching :</li>
-            <li className="retensions" onClick={() => handleClick()}>Gingivilly Approaching :</li>
+        <ul className="retentions-list">
+            <li id = "occlusally" onClick={() => handleClick()}>Occlusally Approaching :</li>
+            <li id = "gingivilly" onClick={() => handleClick()}>Gingivilly Approaching :</li>
         </ul>
   
         </div>

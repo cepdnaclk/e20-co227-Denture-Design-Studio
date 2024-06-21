@@ -30,10 +30,10 @@ function AddIndirectRetentions() {
         </button>
         
         <ul className="rests-list">
-            <li className="rests" onClick={() => handleClick()}>Occlusal Rests :</li>
-            <li className="rests" onClick={() => handleClick()}>Cingulum Rests :</li>
-            <li className="rests" onClick={() => handleClick()}>Incisal Rests :</li>
-        </ul>
+                <li id="occlusalRestsI" onClick={() => handleClick()}>Occlusal Rests :</li>
+                <li id="cingulumRestsI" onClick={() => handleClick()}>Cingulum Rests :</li>
+                <li id="incisalRestsI" onClick={() => handleClick()}>Incisal Rests :</li>
+              </ul>
   
         </div>
           <h2 className='AddIndirectRetentions'>Add Indirect Retentions</h2>

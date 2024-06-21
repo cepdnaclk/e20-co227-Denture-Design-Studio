@@ -30,8 +30,8 @@ function AddConnectors() {
         </button>
         
         <ul className="connectors-list">
-            <li className="connectors" onClick={() => handleClick()}>Upper</li>
-            <li className="connectors" onClick={() => handleClick()}>Lower</li>
+            <li id ="upper" onClick={() => handleClick()}>Upper</li>
+            <li id ="lower" onClick={() => handleClick()}>Lower</li>
         </ul>
   
         </div>

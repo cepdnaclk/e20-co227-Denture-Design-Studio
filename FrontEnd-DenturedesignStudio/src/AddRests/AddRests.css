@@ -6,7 +6,7 @@ body {
     overflow: hidden;
 }
 
-.designPage{
+.designPage {
     position: absolute;
     width: 100vw;
     height: 100vh;
@@ -24,7 +24,6 @@ body {
     border-radius: 2.6vw; 
 }
 
-
 .teethBackground1 {
     position: absolute;
     width: 23.9vw; 
@@ -39,12 +38,11 @@ body {
     position: absolute;
     width: 17.14vw;
     height: 3.37vw;
-    left:26vw;
+    left: 26vw;
     top: 33vw;
     border-radius: 1vw; 
     background: #66D8D8;
     box-shadow: 0.67vw 0.53vw 0.8vw rgba(0, 0, 0, 0.35);
-    
 }
 
 .addRetenText {
@@ -67,7 +65,6 @@ body {
     color: #000000;
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
-
 
 .yourQuestion {
     position: absolute;
@@ -102,14 +99,12 @@ body {
     line-height: 134.77%;
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 
-
     display: flex;
     align-items: center;
     text-align: center;
     color: #92DADA;
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
-
 
 .yourCase {
     position: absolute;
@@ -121,7 +116,7 @@ body {
     font-family: 'Salsa';
     font-style: normal;
     font-weight: 400;
-    font-size: 1.56vw; /* 30px / 1920px * 100 */
+    font-size: 1.56vw; 
     line-height: 134.77%;
     
     display: flex;
@@ -131,41 +126,53 @@ body {
     text-shadow: 8px 7px 15px rgba(0, 0, 0, 0.54);
 }
 
-.rests{
-
-position: relative;
-width: 22.81vw; 
-height: 6.39vh;
-left: 110%;
-top: 6%;
-
-font-family: 'Salsa';
-font-style: normal;
-font-weight: 400;
-font-size: 1.56vw;
-line-height: 134.77%;
-display: flex;
-align-items: center;
-
-color: #D1ECEC;
-
+.rests {
+    position: relative;
+    width: 22.81vw; 
+    height: 6.39vh;
+    top: 6%;
+    
+    font-family: 'Salsa';
+    font-style: normal;
+    font-weight: 400;
+    line-height: 134.77%;
+    display: flex;
+    align-items: center;
+    
+    color: #D1ECEC;
 }
 
 .rests:hover {
     transform: scale(1.05);
-  }
+}
 
 ul.rests-list {
-    position: relative; 
+    position: absolute; 
     list-style-type: none;
+    left: 25%;
+    font-size: 1.56vw;
     padding: 0;
     margin: 0;
-  }
+}
 
-  .rests-list .rests:nth-child(2) {
-    top: 12%; 
-  }
+ul.rests-list li {
+    padding-left: 22.81vw; 
+    white-space: nowrap;
+}
 
-  .rests-list .rests:nth-child(3) {
-    top: 26%; 
-  }
+ul.rests-list li:hover {
+    transform: scale(1.05);
+    color: #ffffff;
+}
+
+#occlusalRests {
+    top: 0;    
+}
+
+#cingulumRests {
+    top: 12%;
+}
+
+#incisalRests {
+    top: 26%;
+}

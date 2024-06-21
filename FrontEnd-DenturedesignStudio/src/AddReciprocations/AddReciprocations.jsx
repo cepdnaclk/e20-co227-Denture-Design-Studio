@@ -30,8 +30,8 @@ function AddReciprocations() {
         </button>
         
         <ul className="reciprocations-list">
-            <li className="reciprocations" onClick={() => handleClick()}>Clasp :</li>
-            <li className="reciprocations" onClick={() => handleClick()}>Plate :</li>
+            <li id="clasp" onClick={() => handleClick()}>Clasp :</li>
+            <li id="plate" onClick={() => handleClick()}>Plate :</li>
         </ul>
   
         </div>
