@@ -16,7 +16,7 @@ function Assessorhome() {
             <div className='assessorhomecontent'>
                 <h1>Welcome {username}</h1>
                 <div id='assessorh1'>
-                <Homecomp name={'Create a Patient Case'} click ={()=>navigate('/patientcase')}/>
+                <Homecomp name={'Create a Patient Case'} click ={()=>navigate('/uploadpatient')}/>
                 </div>
                 <div id='assessorh2'>
                 <Homecomp name={'Content'} click ={()=>navigate('/assessorcontent')} imge={true}/>

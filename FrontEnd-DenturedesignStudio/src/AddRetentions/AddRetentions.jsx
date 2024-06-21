@@ -5,7 +5,7 @@ import Home from '../homebutton/home';
 import BackComp from '../backComp/backComp';
 
 
-function AddRetensions() {
+function AddRetentions() {
   let navigate = useNavigate();
 
   function handleClick(path) {
@@ -15,7 +15,7 @@ function AddRetensions() {
   return (
     <>
     <div className='designPage'>
-      <div className="AddRetensions">
+      <div className="AddRetentions">
       <Home onClick={() => handleClick("/studenthome")}></Home>
       <BackComp onClick={() => handleClick("/addRests")}></BackComp>
         <div>
@@ -29,9 +29,9 @@ function AddRetensions() {
           </div>
         </button>
         
-        <ul className="retensions-list">
-            <li className="retensions" onClick={() => handleClick()}>Occlusally Approaching :</li>
-            <li className="retensions" onClick={() => handleClick()}>Gingivilly Approaching :</li>
+        <ul className="retentions-list">
+            <li id = "occlusally" onClick={() => handleClick()}>Occlusally Approaching :</li>
+            <li id = "gingivilly" onClick={() => handleClick()}>Gingivilly Approaching :</li>
         </ul>
   
         </div>
@@ -46,4 +46,4 @@ function AddRetensions() {
   );
 }
 
-export default AddRetensions;
+export default AddRetentions;
