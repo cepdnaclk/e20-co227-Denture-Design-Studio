@@ -37,13 +37,13 @@ function Reviewanswer() {
         <div id="Addreciprocation">
           <Gotobutton
             Name={"Add Reciprocation"}
-            Pagetogo={() => navigate("/addrest")}
+            Pagetogo={() => navigate("/addReciprocations")}
           />
         </div>
         <div id="Addconnectors">
           <Gotobutton
             Name={"Add Connectors"}
-            Pagetogo={() => navigate("/addrest")}
+            Pagetogo={() => navigate("/addConnectors")}
           />
         </div>
       </div>
