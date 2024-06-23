@@ -17,6 +17,8 @@ import Assessorhome from "./AssessorHome/Assessorhome";
 import Adminhome from "./AdminHome/Adminhome";
 import ModelAnswer from "./ModelAnswer/ModelAnswer";
 import Reviewanswer from "./ReviewAnswer/ReviewAnswer";
+import UserAccount from "./UserAccount/UserAccount";
+import UserEngagement from "./UserEngagement/UserEngagement";
 import "./App.css";
 
 function App() {
@@ -40,6 +42,8 @@ function App() {
         <Route exact path="/reviewanswer" element={<Reviewanswer />} />
         <Route exact path="/createpatient" element={<CreatePatientCase />}/>
         <Route exact path="/createpatient2" element={<CreatePatientStep2 />}/>
+        <Route exact path="/useraccount" element={<UserAccount/>}/>
+        <Route exact path="/userengagement" element={<UserEngagement/>}/>
 
 
       </Routes>

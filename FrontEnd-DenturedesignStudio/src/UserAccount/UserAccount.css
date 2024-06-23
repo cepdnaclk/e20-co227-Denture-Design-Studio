@@ -1,0 +1,122 @@
+
+body {
+  font-family: 'Salsa', sans-serif; /* Use Salsa font */
+}
+
+
+.user-account-page {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(270deg, rgb(36 69 84) 0%, rgb(60 123 113) 101.07%);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  overflow: hidden; /* Prevents overall page from scrolling */
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: center;
+  background: linear-gradient(270deg, rgb(36 69 84) 0%, rgb(60 123 113) 101.07%);
+  z-index: 1000;
+  padding: 1vw;
+}
+
+.home-icon {
+  position: absolute;
+  left: 1vw; /* Adjust as needed */
+}
+
+.header h2 {
+  font-family: 'Salsa', sans-serif;
+  font-size: 3vw; /* Using vw for font-size */
+  color: #bff9f2;
+  margin: 0;
+}
+
+.account-list {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10vw; /* To offset the fixed header height */
+  margin-left: 10vw;
+  width: 90vw; /* Using vw for width */
+  overflow-y: auto; /* Allows the account list to scroll */
+  height: calc(100vh - 10vw); /* To fill the remaining space below the header */
+}
+
+.account-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 1vw; /* Using vw for border-radius */
+  padding: 1vw 2vw; /* Using vw for padding */
+  margin-bottom: 1vw; /* Using vw for margin */
+  box-shadow: 0 0.4vw 0.6vw rgba(0, 0, 0, 0.1); /* Using vw for box-shadow */
+}
+
+.username {
+  font-family: 'Salsa', sans-serif;
+  font-size: 1vw; /* Using vw for font-size */
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+}
+
+.user-icon {
+  width: 2.5vw; /* Using vw for width */
+  height: 2.5vw; /* Using vw for height */
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin-right: 1vw; /* Using vw for margin */
+}
+
+.delete-button,
+.reset-button {
+  font-family: 'Salsa', sans-serif;
+  font-size: 1vw; /* Using vw for font-size */
+  padding: 1vw 1.5vw; /* Using vw for padding */
+  margin-left: 0.5vw; /* Using vw for margin */
+  border: none;
+  border-radius: 0.5vw; /* Using vw for border-radius */
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.delete-button {
+  background: #66d8d8;
+  color: #000;
+  box-shadow: 0.67vw 0.53vw 0.8vw rgba(0, 0, 0, 0.35); /* Using vw for box-shadow */
+  border-radius: 0.8vw;
+}
+
+.reset-button {
+  background: #66d8d8;
+  color: #000;
+  box-shadow: 0.67vw 0.53vw 0.8vw rgba(0, 0, 0, 0.35); /* Using vw for box-shadow */
+  border-radius: 0.8vw;
+}
+
+.delete-button:hover,
+.reset-button:hover {
+  transform: scale(1.05);
+}
+
+.confirmation-dialog {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 0.3rem 0.6rem rgba(0, 0, 0, 0.1);
+  z-index: 1100;
+}
+
+.confirmation-dialog p {
+  margin-bottom: 1rem;
+}
