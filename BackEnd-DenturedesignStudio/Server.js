@@ -17,6 +17,12 @@ mongoose.connect(URL, {
     useUnifiedTopology:true
 });
 
+const studentrouter = require("../BackEnd-DenturedesignStudio/Routes/Studentroute.js")
+const assessorrouter = require("../BackEnd-DenturedesignStudio/Routes/Assessorroute.js")
+
+app.use("/student",studentrouter)
+app.use("/assessor",assessorrouter)
+
 const connection = mongoose.connection;
 connection.once("open", () => {
     console.log("mongodb connection success");  
