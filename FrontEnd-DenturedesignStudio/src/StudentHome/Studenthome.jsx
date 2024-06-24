@@ -3,10 +3,13 @@ import Myaccount from "../myaccount/Myaccount";
 import Homecomp from "../homecomp/Homecomp";
 import Exitbutton from "../Exitbutton/Exitbutton";
 import "./Studenthome.css";
-import { useNavigate } from "react-router-dom";
+import { useNavigate,useLocation } from "react-router-dom";
 
 function Studenthome() {
-  let username = "ravindu";
+  const location = useLocation();
+  const usedata = location.state?.userdata;
+  const username =usedata?.first_name;
+
   let navigate = useNavigate();
   return (
     <div className="studenthome">
