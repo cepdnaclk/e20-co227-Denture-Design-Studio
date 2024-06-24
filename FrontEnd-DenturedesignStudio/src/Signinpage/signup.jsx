@@ -4,12 +4,13 @@ import Back from '../backbutton/Back';
 import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
+import axios from 'axios'
 
 function Signup() {
-  const [firstname, setFirstname] = useState("");
-  const [lastname, setLastname] = useState("");
+  const [first_name, setFirstname] = useState("");
+  const [last_name, setLastname] = useState("");
   const [email, setEmail] = useState("");
-  const [username, setUsername] = useState("");
+  const [user_name, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [compassword, setCompassword] = useState("");
   const [role, setRole] = useState("");
@@ -24,10 +25,24 @@ function Signup() {
     navigate(path);
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(firstname, lastname, email, username, password, compassword, role);
-  navigate (role==='student'? '/studenthome':role==='assessor'? '/assessorhome':'');
+    console.log(first_name, last_name, email, user_name, password, compassword, role);
+    try{
+      let url =''
+      if(role===student){
+        url ='http://localhost:5000/student/add'
+      }else if(role=== Assessor){
+        url = 'http://localhost:5000/assessor/add'
+      }
+      const response = await axios.post(url,{ first_name, last_name,email, user_name,password});
+      alert(response.data);
+      navigate ('/login');
+    }catch(err){
+      alert("error"+err.message);
+    }
+
+
   };
 
   return (

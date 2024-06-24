@@ -30,20 +30,19 @@ router.route("/").get(async (req, res) => {
         });
 });
 
-router.route("/get/:id").get(async (req, res) => {
-    let { id } = req.params;
-     await Assessor.findById(id)
-        .then((assessor) => {
-            if (assessor) {
-                res.status(200).send({ status: "User fetched", assessor });
-            } else {
-                res.status(404).send({ status: "User not found" });
-            }
-        })
-        .catch((err) => {
-            console.log(err.message);
-            res.status(500).send({ status: "Error fetching user", error: err.message });
-        });
-});
+router.post("/get", async (req, res) => {
+    const { user_name } = req.body;
+    try {
+      const assessor = await Assessor.findOne({ user_name });
+      if (assessor) {
+        res.status(200).send({ status: "User fetched", assessor });
+      } else {
+        res.status(404).send({ status: "User not found" });
+      }
+    } catch (err) {
+      console.log(err.message);
+      res.status(500).send({ status: "Error fetching user", error: err.message });
+    }
+  });
 
 module.exports = router;
