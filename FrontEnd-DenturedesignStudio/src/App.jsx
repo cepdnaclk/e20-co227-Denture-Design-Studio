@@ -17,6 +17,8 @@ import Assessorhome from "./AssessorHome/Assessorhome";
 import Adminhome from "./AdminHome/Adminhome";
 import ModelAnswer from "./ModelAnswer/ModelAnswer";
 import Reviewanswer from "./ReviewAnswer/ReviewAnswer";
+import UploadeAnswerandMaterial from "./UploadeAnswerandMaterial/UploadeAnswerandMaterial";
+import AssessorCreatePatientStep2 from "./AssessorsCreatePatientCase2/AssessorsCreatePatientCase2";
 import "./App.css";
 
 function App() {
@@ -29,19 +31,35 @@ function App() {
         <Route exact path="/studenthome" element={<Studenthome />} />
         <Route exact path="/assessorhome" element={<Assessorhome />} />
         <Route exact path="/adminhome" element={<Adminhome />} />
-        <Route exact path="/uploadpatient" element={<UploadPatientCase />}/>
+        <Route exact path="/uploadpatient" element={<UploadPatientCase />} />
         <Route exact path="/addSaddles" element={<AddSaddles />} />
         <Route exact path="/addRests" element={<AddRests />} />
         <Route exact path="/addRetentions" element={<AddRetentions />} />
-        <Route exact path="/addReciprocations" element={<AddReciprocations />} />
-        <Route exact path="/addIndirectRetentions" element={<AddIndirectRetentions />} />
+        <Route
+          exact
+          path="/addReciprocations"
+          element={<AddReciprocations />}
+        />
+        <Route
+          exact
+          path="/addIndirectRetentions"
+          element={<AddIndirectRetentions />}
+        />
         <Route exact path="/addConnectors" element={<AddConnectors />} />
         <Route exact path="/modelanswer" element={<ModelAnswer />} />
         <Route exact path="/reviewanswer" element={<Reviewanswer />} />
-        <Route exact path="/createpatient" element={<CreatePatientCase />}/>
-        <Route exact path="/createpatient2" element={<CreatePatientStep2 />}/>
-
-
+        <Route exact path="/createpatient" element={<CreatePatientCase />} />
+        <Route exact path="/createpatient2" element={<CreatePatientStep2 />} />
+        <Route
+          exact
+          path="/uploadanswerandmaterial"
+          element={<UploadeAnswerandMaterial />}
+        />
+        <Route
+          exact
+          path="/assessorcreatepatientcase"
+          element={<AssessorCreatePatientStep2 />}
+        />
       </Routes>
     </Router>
   );

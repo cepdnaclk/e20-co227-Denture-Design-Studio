@@ -1,9 +1,7 @@
 .Goto {
-  /* Add Saddles */
-
   position: absolute;
-  width: 29vw;
-  height: 3.3vw;
+  width: 24vw;
+  height: 3.2vw;
   margin: 0;
 
   background: #66d8d8;
@@ -15,7 +13,7 @@
   font-family: "Salsa";
   font-style: normal;
   font-weight: 400;
-  font-size: 2.138vw;
+  font-size: 1.8vw;
 
   align-items: center;
   text-align: center;
@@ -26,12 +24,16 @@
   img {
     position: absolute;
     width: 3vw;
-    left: 26vw;
+    left: 20.5vw;
+    top: 0.4vw;
   }
 }
 .Goto:hover {
-  width: 29.4vw;
-  height: 3.5vw;
+  width: 24.4vw;
+  height: 3.6vw;
+  img {
+    width: 3.4vw;
+  }
 }
 
 @media (max-width: 900px) {
@@ -39,9 +41,17 @@
     width: 30vw;
     height: 4.3vw;
     font-size: 2.5vw;
+    img {
+      left: 26vw;
+      top: 0.7vw;
+      width: 3.5vw;
+    }
   }
   .Goto:hover {
     width: 30.4vw;
     height: 4.5vw;
+    img {
+      width: 3.9vw;
+    }
   }
 }

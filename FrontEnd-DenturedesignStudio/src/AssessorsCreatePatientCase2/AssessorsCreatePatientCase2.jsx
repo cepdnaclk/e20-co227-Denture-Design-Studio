@@ -1,9 +1,10 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import "./UploadPatientCase.css";
+import "./AssessorsCreatePatientCase2.css";
 import Home from "../homebutton/home";
 import CreateUploadButton from "../CreateUploadButton/CreateUploadButton";
 import BackComp from "../backComp/backComp";
+
 function AssessorCreatePatientStep2() {
   const navigate = useNavigate();
 
@@ -14,7 +15,7 @@ function AssessorCreatePatientStep2() {
   return (
     <div className="CreatePatientCase2">
       <Home onClick={() => handleClick("/assessorhome")} />
-      <BackComp onClick={() => handleClick("/assessorhome")} />
+      <BackComp onClick={() => handleClick("/uploadpatient")} />
       <div>
         <link
           rel="stylesheet"
@@ -26,16 +27,18 @@ function AssessorCreatePatientStep2() {
         <div className="text">
           <h2 id="createAPatientCase2">Create a Patient Case</h2>
           <h1 id="steps2">
-            step 1 : Select missing teeth
+            step 3 : Select undercuts
             <br />
-            step 2 : Click Add undercuts
+            step 4 : Click Create & Upload
           </h1>
         </div>
       </div>
       <div id="create1">
+        {" "}
+        {/* Fixed the id to be without the # symbol */}
         <CreateUploadButton
-          Name="Add Undercuts"
-          Pagetogo="/assessorcreatepatientcase"
+          Name="Create & Upload"
+          Pagetogo="/uploadanswerandmaterial"
         />
       </div>
     </div>
