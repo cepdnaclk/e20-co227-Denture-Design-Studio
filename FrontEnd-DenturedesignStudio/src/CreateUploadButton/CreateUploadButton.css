@@ -1,31 +1,45 @@
 .Create {
-    position: absolute;
-    width: 22.51vw;
-    height: 4vw;
-    left: 64.34vw ;
-    top: 32.87vw;
-    background: #66D8D8;
+  position: absolute;
+  width: 21.51vw;
+  height: 3.5vw;
+  left: 64.34vw;
+  top: 32.87vw;
+  background: #66d8d8;
 
-    border-bottom: 0.2vw solid #000000;
-    box-shadow: 0.67vw 0.53vw 0.8vw rgba(0, 0, 0, 0.35);
-    border-radius: 1.34vw;
+  border-bottom: 0.2vw solid #000000;
+  box-shadow: 0.67vw 0.53vw 0.8vw rgba(0, 0, 0, 0.35);
+  border-radius: 1.34vw;
 
-    font-family: 'Salsa', sans-serif;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 2.14vw;
-    line-height: 134.77%;
-    color: #000000;
+  font-family: "Salsa", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.8vw;
+  line-height: 134.77%;
+  color: #000000;
 
-    text-shadow: 0 1.07vw 1.07vw rgba(0, 0, 0, 0.25);
-    
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  text-shadow: 0 1.07vw 1.07vw rgba(0, 0, 0, 0.25);
+
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .Create:hover {
-    width: 22.91vw;
-    height: 4.74vw;
+  width: 21.91vw;
+  height: 3.7vw;
+}
+
+@media (max-width: 900px) {
+  .Create {
+    top: 48vw;
+    left: 55vw;
+    width: 30.51vw;
+    height: 4.5vw;
+    font-size: 2.5vw;
+  }
+  .Create:hover {
+    width: 30.9vw;
+    height: 4.9vw;
+  }
 }
