@@ -1,6 +1,6 @@
 
 body {
-  font-family: 'Salsa', sans-serif; /* Use Salsa font */
+  font-family: 'Salsa', sans-serif;
 }
 
 
@@ -10,7 +10,7 @@ body {
   height: 100vh;
   background: linear-gradient(270deg, rgb(36 69 84) 0%, rgb(60 123 113) 101.07%);
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  overflow: hidden; /* Prevents overall page from scrolling */
+  overflow: hidden;
 }
 
 .header {
@@ -28,12 +28,12 @@ body {
 
 .home-icon {
   position: absolute;
-  left: 1vw; /* Adjust as needed */
+  left: 1vw;
 }
 
 .header h2 {
   font-family: 'Salsa', sans-serif;
-  font-size: 3vw; /* Using vw for font-size */
+  font-size: 3vw;
   color: #bff9f2;
   margin: 0;
 }
