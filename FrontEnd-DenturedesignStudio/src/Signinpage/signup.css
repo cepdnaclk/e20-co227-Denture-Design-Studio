@@ -48,7 +48,57 @@ border-radius: 3vw;
    height: 3.804vw;
    line-height: 0;
    left: 5vw;
+   h5{
+    position: absolute;
+    left: 20vw;
+    height: 4vw;
+    width: 18vw;
+   }
 }
+
+.swt-popup{
+  
+  width: 25vw;
+  height: 15vw; 
+  border-radius: 3vw;
+  font-family: 'salsa';
+ line-height:normal;
+  margin: 0;
+   
+}
+.swt-text{
+  position: absolute;
+  font-size: 2vw;
+  margin:0;
+  padding:0;
+  width:20vw;
+  left: 2.5vw;
+  top:4vw;
+  color: rgb(255, 82, 82);
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.swt-text1{
+  position: absolute;
+  font-size: 2vw;
+  margin:0;
+  padding:0;
+  width:20vw;
+  left: 2.5vw;
+  top:1.6vw;
+  color: rgb(255, 82, 82);
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.custom-ok{
+  background-color: #3085d6;
+  color: rgb(34, 18, 18); 
+  border: none; 
+  border-radius: 2vw; 
+  padding: 0;
+  width: 5vw;
+  height: 3vw; 
+  font-size: 3vw;
+}
+
 .signinput input{
   
 box-sizing: border-box;
