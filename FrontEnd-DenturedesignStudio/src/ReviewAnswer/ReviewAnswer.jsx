@@ -13,7 +13,7 @@ function Reviewanswer() {
   return (
     <div className="designPage">
       <Home onClick={() => handleClick("/studenthome")} />
-      <BackComp onClick={() => handleClick("/back")} />
+      <BackComp onClick={() => handleClick("/AddConnectors")} />
       <link
         rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Salsa&display=swap"
@@ -49,7 +49,7 @@ function Reviewanswer() {
       </div>
       <button
         className="FinishDesigning"
-        onClick={() => navigate("/addSaddles")}
+        onClick={() => navigate("/modelanswer")}
       >
         Finish Designing
       </button>

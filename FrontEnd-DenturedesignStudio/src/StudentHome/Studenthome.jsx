@@ -30,7 +30,7 @@ function Studenthome() {
           />
         </div>
         <div id="studenth3">
-          <Homecomp name={"Content"} click={() => navigate("/content")} />
+          <Homecomp name={"Content"} click={() => navigate("/studentscontents")} />
         </div>
         <div id="studenth4">
           <Homecomp
