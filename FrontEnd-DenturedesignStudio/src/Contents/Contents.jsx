@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './Contents.css'; // Ensure you have the CSS file with correct class names
+import './Contents.css';
 import Home from '../homebutton/home';
 import materialIcon from './materialIcon.png';
 
@@ -34,28 +34,31 @@ const Contents = () => {
   };
 
   return (
-    <div className="contents-page">
-      <header>
-        <div className="home-icon">
-          <Home onClick={() => navigate('/adminhome')} />
-        </div>
-        <h1>Content</h1>
-      </header>
-      <div className="content">
-        {materials.map((material, index) => (
-          <div className="material" key={index}>
-            <img src={materialIcon} alt="Material Icon" className="material-icon" />
-            <span>{material}</span>
-            <div className="actions">
-              <button onClick={() => handleOpen(material)}>Open</button>
-              <button onClick={() => handleDownload(material)}>Download</button>
-              <button onClick={() => handleRemove(material)}>Remove</button>
-            </div>
+    <>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Salsa&display=swap" />
+      <div className="contents-page">
+        <header>
+          <div className="home-icon">
+            <Home onClick={() => navigate('/adminhome')} />
           </div>
-        ))}
+          <h1>Content</h1>
+        </header>
+        <div className="content">
+          {materials.map((material, index) => (
+            <div className="material" key={index}>
+              <img src={materialIcon} alt="Material Icon" className="material-icon" />
+              <span>{material}</span>
+              <div className="actions">
+                <button onClick={() => handleOpen(material)}>Open</button>
+                <button onClick={() => handleDownload(material)}>Download</button>
+                <button onClick={() => handleRemove(material)}>Remove</button>
+              </div>
+            </div>
+          ))}
+        </div>
+        <button className="upload-button" onClick={addMaterial}>Upload Material</button>
       </div>
-      <button className="upload-button" onClick={addMaterial}>Upload Material</button>
-    </div>
+    </>
   );
 };
 

@@ -31,24 +31,27 @@ const UserEngagement = () => {
     const [users] = useState(initialUsers);
 
     return (
-        <div className="user-engagement-page">
-            <div className="header">              
-                <div className="home-icon">
-                  <Home onClick={() => navigate('/assessorhome')} />
-              </div>
-                <h2>User Engagement</h2>
-            </div>
-            <div className="engagement-list">
-                {users.map(user => (
-                    <div key={user.id} className="engagement-item">
-                        <div className="username">
-                            <img src={userIcon} alt="User Icon" className="user-icon" />
-                            {user.username}
+        <>
+            <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Salsa&display=swap" />
+           <div className="userengagementpage">
+                <header>              
+                    <div className="home-icon">
+                    <Home onClick={() => navigate('/assessorhome')} />
+                </div>
+                    <h1>User Engagement</h1>
+                </header>
+                <div className="engagement-list">
+                    {users.map(user => (
+                        <div key={user.id} className="engagement-item">
+                            <div className="username">
+                                <img src={userIcon} alt="User Icon" className="user-icon" />
+                                {user.username}
+                            </div>
                         </div>
-                    </div>
-                ))}
+                    ))}
+                </div>
             </div>
-        </div>
+        </>             
     );
 };
 

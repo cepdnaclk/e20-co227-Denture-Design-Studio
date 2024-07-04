@@ -1,10 +1,8 @@
-// StudentsContents.js
-
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './StudentsContents.css'; // Corrected import for CSS file
-import Home from '../homebutton/home'; // Assuming Home component import
-import materialIcon from '../Contents/materialIcon.png'; // Assuming materialIcon import
+import './StudentsContents.css'; 
+import Home from '../homebutton/home';
+import materialIcon from '../Contents/materialIcon.png';
 
 const StudentsContents = () => {
   const [materials, setMaterials] = useState([
@@ -36,29 +34,32 @@ const StudentsContents = () => {
   };
 
   return (
-    <div className="contents-page">
-      <header>
-        <div className="home-icon">
-          <Home onClick={() => navigate('/adminhome')} /> {/* Assuming Home component usage */}
-        </div>
-        <h1>Content</h1>
-      </header>
-      <div className="content">
-        {materials.map((material, index) => (
-          <div className="material" key={index}>
-            <img src={materialIcon} alt="Material Icon" className="material-icon" />
-            <span>{material}</span>
-            <div className="actions">
-              <button onClick={() => handleOpen(material)}>Open</button>
-              <button onClick={() => handleDownload(material)}>Download</button>
-            </div>
+    <>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Salsa&display=swap" />
+      <div className="studentscontentspage">
+        <header>
+          <div className="home-icon">
+            <Home onClick={() => navigate('/studenthome')} />
           </div>
-        ))}
+          <h1>Content</h1>
+        </header>
+        <div className="content">
+          {materials.map((material, index) => (
+            <div className="material" key={index}>
+              <img src={materialIcon} alt="Material Icon" className="material-icon" />
+              <span>{material}</span>
+              <div className="actions">
+                <button onClick={() => handleOpen(material)}>Open</button>
+                <button onClick={() => handleDownload(material)}>Download</button>
+              </div>
+            </div>
+          ))}
+        </div>
+        <button className="upload-button" onClick={addMaterial}>Upload Material</button>
+        
       </div>
-      <button className="upload-button" onClick={addMaterial}>Upload Material</button>
-    </div>
+    </>
   );
 };
 
 export default StudentsContents;
-

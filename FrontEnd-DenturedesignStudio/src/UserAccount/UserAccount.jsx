@@ -30,30 +30,27 @@ const UserAccount = () => {
   };
 
   const confirmDelete = (id) => {
-    // Filter out the user with the given id
     const updatedUsers = users.filter((user) => user.id !== id);
     setUsers(updatedUsers);
-    setSelectedUser(null); // Reset selectedUser state
+    setSelectedUser(null);
   };
 
   const cancelDelete = () => {
-    setSelectedUser(null); // Reset selectedUser state
+    setSelectedUser(null);
   };
 
-  const handleResetConfirmation = (user) => {
+  const handleResetConfirmation = (id) => {
+    const user = users.find((user) => user.id === id);
     setSelectedUser(user);
     setShowResetConfirmation(true);
   };
 
   const handleResetPassword = () => {
-    // Implement your reset password logic here
-    // For example, make an API call to reset the password
     const updatedUsers = users.map((user) =>
       user.id === selectedUser.id ? { ...user, password: 'new_password' } : user
     );
     setUsers(updatedUsers);
-    
-    setShowResetConfirmation(false); // Close the confirmation dialog
+    setShowResetConfirmation(false);
   };
 
   const handleCancelReset = () => {
@@ -61,44 +58,47 @@ const UserAccount = () => {
   };
 
   return (
-    <div className="user-account-page">
-      <div className="header">
-        <div className="home-icon">
-          <Home onClick={() => navigate('/adminhome')} />
-        </div>
-        <h2>User Accounts</h2>
-      </div>
-      <div className="account-list">
-        {users.map((user) => (
-          <div key={user.id} className="account-item">
-            <div className="username">
-              <img src={usericon} alt="User Icon" className="user-icon" />
-              {user.username}
-            </div>
-            <button onClick={() => handleDelete(user.id)} className="delete-button">
-              Delete Account
-            </button>
-            <button onClick={() => handleResetConfirmation(user.id)} className="reset-button">
-              Reset Password
-            </button>
+    <>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Salsa&display=swap" />
+      <div className="useraccountpage">
+        <header>
+          <div className="home-icon">
+            <Home onClick={() => navigate('/adminhome')} />
           </div>
-        ))}
+          <h1>User Accounts</h1>
+        </header>
+        <div className="account-list">
+          {users.map((user) => (
+            <div key={user.id} className="account-item">
+              <div className="username">
+                <img src={usericon} alt="User Icon" className="user-icon" />
+                {user.username}
+              </div>
+              <button onClick={() => handleDelete(user.id)} className="delete-button">
+                Delete Account
+              </button>
+              <button onClick={() => handleResetConfirmation(user)} className="reset-button">
+                Reset Password
+              </button>
+            </div>
+          ))}
+        </div>
+        {selectedUser && (
+          <DeleteConfirmationDialog
+            user={users.find((user) => user.id === selectedUser)}
+            onDelete={confirmDelete}
+            onCancel={cancelDelete}
+          />
+        )}
+        {showResetConfirmation && (
+          <ResetConfirmationDialog
+            username={selectedUser.username}
+            onReset={handleResetPassword}
+            onCancel={handleCancelReset}
+          />
+        )}
       </div>
-      {selectedUser && (
-        <DeleteConfirmationDialog
-          user={users.find((user) => user.id === selectedUser)}
-          onDelete={confirmDelete}
-          onCancel={cancelDelete}
-        />
-      )}
-      {showResetConfirmation && (
-        <ResetConfirmationDialog
-          username={selectedUser.username}
-          onReset={handleResetPassword}
-          onCancel={handleCancelReset}
-        />
-      )}
-    </div>
+    </>
   );
 };
 
