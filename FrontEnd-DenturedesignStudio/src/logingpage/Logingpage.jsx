@@ -17,7 +17,7 @@ function Loginpage() {
   const [user_name, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-
+  const [usererror,setuserError] =useState(false);
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(user_name, password);
@@ -25,7 +25,8 @@ function Loginpage() {
       let response;
       let role = 'student';
       let userdata;
-
+      
+      
       try {
         response = await Axios.post('http://localhost:5000/student/get', { user_name });
         userdata = response.data.student;
@@ -41,7 +42,8 @@ function Loginpage() {
             throw new Error("Assessor not found or invalid password");
           }
         } catch (assessorError) {
-          alert('Invalid username or password');
+            setuserError(true);
+          
           return;
         }
       }
@@ -76,11 +78,12 @@ function Loginpage() {
           </div>
           <div className="userinput" id='input2'>
             <h3 className='inputs'>Password:</h3>
-            <input type={showPassword ? "text" : "password"} onChange={(e) => setPassword(e.target.value)} />
+            <h6>{usererror?"Invalid username or password":""}</h6>
+            <input type={showPassword ? "text" : "password"}  onChange={(e) => setPassword(e.target.value)} />
             <div onClick={() => setShowPassword(!showPassword)} className="eyeicon1">
               <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} />
             </div>
-            <p id='forget'><a href="#">Forgot Password?</a></p>
+            <p id='forget'><a href="/">Forgot Password?</a></p>
           </div>
           <div>
             <button type='submit' className="login2">Login</button>

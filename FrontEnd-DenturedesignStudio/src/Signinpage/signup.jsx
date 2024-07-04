@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios'
+import Swal from 'sweetalert2'
 
 function Signup() {
   const [first_name, setFirstname] = useState("");
@@ -16,7 +17,7 @@ function Signup() {
   const [role, setRole] = useState("");
   const [showPassword, setShowPassword] = useState(false); 
   const [showComPassword, setShowComPassword] = useState(false); 
-
+  const [pwequal,setpwequal] = useState(false);
   let navigate = useNavigate();
   const student = 'student';
   const Assessor = 'assessor';
@@ -30,16 +31,51 @@ function Signup() {
     console.log(first_name, last_name, email, user_name, password, compassword, role);
     try{
       let url =''
-      if(role===student){
+      if((role===student) &&(password===compassword)){
         url ='http://localhost:5000/student/add'
-      }else if(role=== Assessor){
+      }else if((role=== Assessor)&&(password===compassword)){
         url = 'http://localhost:5000/assessor/add'
       }
       const response = await axios.post(url,{ first_name, last_name,email, user_name,password});
-      alert(response.data);
-      navigate ('/login');
+   await Swal.fire({
+          title:'Account create success',
+          text:'please login to your account',
+          icon:'success',
+          background: '#2f5770',
+          color:'whiteS',
+
+      });
+ navigate ('/login');
+      
+      
     }catch(err){
-      alert("error"+err.message);
+      if (password!==compassword) {
+         Swal.fire({
+          html:'<span class="swt-text1">The password is not matched please recheck!</span>',
+          confirmButtonColor:'#3085d6',
+          showConfirmButton:true,
+          color:'white',
+          background:"#2f5770",
+         customClass:{  
+          popup:'swt-popup',
+         },
+         confirmButtonText:'OK',
+        });
+      }else if(err.response.status===400){
+        Swal.fire({
+          html:'<span class="swt-text">User already exist!</span>',
+          confirmButtonColor:'#3085d6',
+          showConfirmButton:true,
+          color:'white',
+          background:"#2f5770",
+         customClass:{  
+          popup:'swt-popup',
+         },
+         confirmButtonText:'OK',
+        });
+      }
+      
+     
     }
 
 
@@ -92,6 +128,7 @@ function Signup() {
             type={showComPassword ? "text" : "password"}
             onChange={(e) => setCompassword(e.target.value)}
           />
+         
           <div onClick={() => setShowComPassword(!showComPassword)} className="eyeicon">
             <FontAwesomeIcon icon={showComPassword ? faEyeSlash : faEye} />
           </div>
@@ -101,6 +138,7 @@ function Signup() {
             Signup
           </button>
         </div>
+        
       </form>
     </div>
   );
