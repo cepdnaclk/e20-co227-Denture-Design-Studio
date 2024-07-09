@@ -1,36 +1,60 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import './UserAccount.css';
-import Home from '../homebutton/home';
-import usericon from './usericon.png';
-import DeleteConfirmationDialog from '../DeleteConfirmationDialog/DeleteConfirmationDialog';
-import ResetConfirmationDialog from '../ResetConfirmationDialog/ResetConfirmationDialog';
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import "./UserAccount.css";
+import Home from "../homebutton/home";
+import usericon from "./usericon.png";
+import DeleteConfirmationDialog from "../DeleteConfirmationDialog/DeleteConfirmationDialog";
 
+import axios from "axios";
 const UserAccount = () => {
   const navigate = useNavigate();
-
-  // Initial dummy user data
-  const initialUsers = [
-    { id: 1, username: 'Username_1' },
-    { id: 2, username: 'Username_2' },
-    { id: 3, username: 'Username_3' },
-    { id: 4, username: 'Username_4' },
-    { id: 5, username: 'Username_5' },
-    { id: 6, username: 'Username_6' },
-    { id: 7, username: 'Username_7' },
-    { id: 8, username: 'Username_8' },
-  ];
-
-  const [users, setUsers] = useState(initialUsers);
+  const [users, setUsers] = useState([]);
   const [selectedUser, setSelectedUser] = useState(null);
-  const [showResetConfirmation, setShowResetConfirmation] = useState(false);
+
+  useEffect(() => {
+    const fetchAssessors = axios.get("http://localhost:5000/assessor");
+    const fetchStudents = axios.get("http://localhost:5000/student");
+    const fetchAdmin = axios.get("http://localhost:5000/admin");
+
+    Promise.all([fetchAssessors, fetchStudents, fetchAdmin])
+      .then(([assessorRes, studentRes, adminres]) => {
+        setUsers([...assessorRes.data, ...studentRes.data, ...adminres.data]);
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
+  }, []);
 
   const handleDelete = (id) => {
     setSelectedUser(id);
   };
 
-  const confirmDelete = (id) => {
-    const updatedUsers = users.filter((user) => user.id !== id);
+  const confirmDelete = async (_id) => {
+    console.log(_id);
+    const user = users.find((user) => user._id === _id);
+    try {
+      if (!user) {
+      }
+      await axios.delete("http://localhost:5000/student/delete", {
+        data: { user_name: user.user_name },
+      });
+    } catch (studenterror) {
+      try {
+        await axios.delete("http://localhost:5000/assessor/delete", {
+          data: { user_name: user.user_name },
+        });
+      } catch (assessorerror) {
+        try {
+          await axios.delete("http://localhost:5000/admin/delete", {
+            data: { user_name: user.user_name },
+          });
+        } catch (adminerr) {
+          console.error("Error deleting user:", error.message);
+        }
+      }
+    }
+    const updatedUsers = users.filter((user) => user._id !== _id);
+
     setUsers(updatedUsers);
     setSelectedUser(null);
   };
@@ -39,62 +63,44 @@ const UserAccount = () => {
     setSelectedUser(null);
   };
 
-  const handleResetConfirmation = (id) => {
-    const user = users.find((user) => user.id === id);
-    setSelectedUser(user);
-    setShowResetConfirmation(true);
-  };
-
-  const handleResetPassword = () => {
-    const updatedUsers = users.map((user) =>
-      user.id === selectedUser.id ? { ...user, password: 'new_password' } : user
-    );
-    setUsers(updatedUsers);
-    setShowResetConfirmation(false);
-  };
-
-  const handleCancelReset = () => {
-    setShowResetConfirmation(false);
-  };
-
   return (
     <>
-      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Salsa&display=swap" />
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Salsa&display=swap"
+      />
       <div className="useraccountpage">
-        <header>
+        <header className="userheader">
           <div className="home-icon">
-            <Home onClick={() => navigate('/adminhome')} />
+            <Home onClick={() => navigate("/adminhome")} />
           </div>
           <h1>User Accounts</h1>
         </header>
         <div className="account-list">
           {users.map((user) => (
-            <div key={user.id} className="account-item">
-              <div className="username">
-                <img src={usericon} alt="User Icon" className="user-icon" />
-                {user.username}
+            <div key={user._id} className="account-item">
+              <div className="useraccountname">
+                <img
+                  src={usericon}
+                  alt="User Icon"
+                  className="user-icon-account"
+                />
+                {user.user_name}
               </div>
-              <button onClick={() => handleDelete(user.id)} className="delete-button">
+              <button
+                onClick={() => handleDelete(user._id)}
+                className="delete-button"
+              >
                 Delete Account
-              </button>
-              <button onClick={() => handleResetConfirmation(user)} className="reset-button">
-                Reset Password
               </button>
             </div>
           ))}
         </div>
         {selectedUser && (
           <DeleteConfirmationDialog
-            user={users.find((user) => user.id === selectedUser)}
+            user={users.find((user) => user._id === selectedUser)}
             onDelete={confirmDelete}
             onCancel={cancelDelete}
-          />
-        )}
-        {showResetConfirmation && (
-          <ResetConfirmationDialog
-            username={selectedUser.username}
-            onReset={handleResetPassword}
-            onCancel={handleCancelReset}
           />
         )}
       </div>
