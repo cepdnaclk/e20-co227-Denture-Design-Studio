@@ -34,6 +34,8 @@ router.post("/get", async (req, res) => {
   const { user_name } = req.body;
   try {
     const student = await Student.findOne({ user_name });
+    student.lastAccessed = new Date();
+    await student.save();
     if (student) {
       res.status(200).send({ status: "User fetched", student });
     } else {
@@ -44,5 +46,34 @@ router.post("/get", async (req, res) => {
     res.status(500).send({ status: "Error fetching user", error: err.message });
   }
 });
+
+
+
+router.delete('/delete',async (req,res)=>{
+  try {
+    const {user_name} = req.body;
+    const student = await Student.findOne({user_name});
+
+    if(student){
+      await student.deleteOne({user_name});    
+      return res.status(200).send({status:'user delete',student});
+
+    }else{
+      res.status(404).send({ status: "User not found" });
+    }
+  } catch (err) {
+    console.log(err.message);
+    res.status(500).send({ status: "Error delete user", error: err.message });
+  }
+});
+
+router.put('/edit',async (req,res)=>{
+  try {
+    
+  } catch (error) {
+    
+  }
+});
+
 
 module.exports = router;

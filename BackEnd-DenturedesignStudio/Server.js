@@ -19,9 +19,10 @@ mongoose.connect(URL, {
 
 const studentrouter = require("../BackEnd-DenturedesignStudio/Routes/Studentroute.js")
 const assessorrouter = require("../BackEnd-DenturedesignStudio/Routes/Assessorroute.js")
-
+const adminrouter = require("../BackEnd-DenturedesignStudio/Routes/Adminroute.js")
 app.use("/student",studentrouter)
 app.use("/assessor",assessorrouter)
+app.use("/admin",adminrouter)
 
 const connection = mongoose.connection;
 connection.once("open", () => {

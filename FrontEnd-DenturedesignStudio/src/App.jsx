@@ -21,6 +21,8 @@ import UserAccount from "./UserAccount/UserAccount";
 import UserEngagement from "./UserEngagement/UserEngagement";
 import Contents from "./Contents/Contents";
 import StudentsContents from "./StudentsContents/StudentsContents";
+import UserEngage from "./userengage/Usserengage";
+import Studentprogress from "./studentProgress/Studentprogress";
 import "./App.css";
 
 function App() {
@@ -37,19 +39,27 @@ function App() {
         <Route exact path="/addSaddles" element={<AddSaddles />} />
         <Route exact path="/addRests" element={<AddRests />} />
         <Route exact path="/addRetentions" element={<AddRetentions />} />
-        <Route exact path="/addReciprocations" element={<AddReciprocations />} />
-        <Route exact path="/addIndirectRetentions" element={<AddIndirectRetentions />} />
+        <Route
+          exact
+          path="/addReciprocations"
+          element={<AddReciprocations />}
+        />
+        <Route
+          exact
+          path="/addIndirectRetentions"
+          element={<AddIndirectRetentions />}
+        />
         <Route exact path="/addConnectors" element={<AddConnectors />} />
         <Route exact path="/modelanswer" element={<ModelAnswer />} />
         <Route exact path="/reviewanswer" element={<Reviewanswer />} />
-        <Route exact path="/createpatient" element={<CreatePatientCase />}/>
-        <Route exact path="/createpatient2" element={<CreatePatientStep2 />}/>
-        <Route exact path="/useraccount" element={<UserAccount />}/>
-        <Route exact path="/userengagement" element={<UserEngagement />}/>
-        <Route exact path="/contents" element={<Contents />}/>
-        <Route exact path="/studentscontents" element={<StudentsContents />}/>
-
-
+        <Route exact path="/createpatient" element={<CreatePatientCase />} />
+        <Route exact path="/createpatient2" element={<CreatePatientStep2 />} />
+        <Route exact path="/useraccount" element={<UserAccount />} />
+        <Route exact path="/usersengagement" element={<UserEngagement />} />
+        <Route exact path="/contents" element={<Contents />} />
+        <Route exact path="/studentscontents" element={<StudentsContents />} />
+        <Route exact path="/userengagement" element={<UserEngage />} />
+        <Route exact path="/Viewprogress" element={<Studentprogress />} />
       </Routes>
     </Router>
   );
