@@ -18,7 +18,7 @@ function Adminhome() {
     <div className="homepages">
       <div className="adminhome">
         <Exitbutton />
-        <Myaccount user={"adminhome"} />
+        <Myaccount user={role} userdata={userdata} />
         <div className="adminhomecontent">
           <h1>Welcome {username}</h1>
           <div id="adminh1">

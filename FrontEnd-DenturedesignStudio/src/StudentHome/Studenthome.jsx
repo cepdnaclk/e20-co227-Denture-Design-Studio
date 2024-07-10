@@ -14,7 +14,7 @@ function Studenthome() {
   return (
     <div className="studenthome">
       <Exitbutton />
-      <Myaccount user={"studenthome"} userdata={userdata} />
+      <Myaccount user={"/studenthome"} userdata={userdata} />
       <div className="stdhomecontent">
         <h1>Welcome {username}</h1>
         <div id="studenth1">

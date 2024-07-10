@@ -9,6 +9,7 @@ function UserEngage() {
   const location = useLocation();
   const user = location.state?.user;
   const userdata = location.state?.userdata;
+  const role = location.state?.role;
   console.log(user);
 
   const formatdate = (datestring) => {
@@ -29,10 +30,10 @@ function UserEngage() {
     <div className="userdetail-engage">
       <Back
         onclick={() => {
-          navigate("/usersengagement", { state: { userdata } });
+          navigate("/usersengagement", { state: { userdata, role } });
         }}
       />
-      <Myaccount />
+      <Myaccount user={role} userdata={userdata} />
       <div className="username-engage">
         <img src={usericon} alt="" />
         <h2>{user?.user_name}</h2>

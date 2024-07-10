@@ -9,6 +9,7 @@ const UserEngagement = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const userdata = location.state?.userdata;
+  const role = location.state?.role;
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
@@ -31,11 +32,7 @@ const UserEngagement = () => {
       <div className="userengagementpage">
         <header className="engagementheader">
           <div className="home-icon">
-            <Home
-              onClick={() =>
-                navigate(location.state?.role, { state: { userdata } })
-              }
-            />
+            <Home onClick={() => navigate(role, { state: { userdata } })} />
           </div>
           <h1>User Engagement</h1>
         </header>
@@ -45,7 +42,9 @@ const UserEngagement = () => {
               <button
                 className="username"
                 onClick={() =>
-                  navigate("/userengagement", { state: { user, userdata } })
+                  navigate("/userengagement", {
+                    state: { user, userdata, role },
+                  })
                 }
               >
                 <img src={userIcon} alt="User Icon" className="user-icon" />

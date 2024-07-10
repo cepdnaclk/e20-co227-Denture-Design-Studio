@@ -16,7 +16,7 @@ function Assessorhome() {
   return (
     <div className="Assessorhome">
       <Exitbutton />
-      <Myaccount user={"assessorhome"} userdata={userdata} />
+      <Myaccount user={role} userdata={userdata} />
       <div className="assessorhomecontent">
         <h1>Welcome {username}</h1>
         <div id="assessorh1">

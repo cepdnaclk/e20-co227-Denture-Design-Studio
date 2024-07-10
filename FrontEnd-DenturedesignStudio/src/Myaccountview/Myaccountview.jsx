@@ -9,7 +9,7 @@ function Myaccountview() {
 
   return (
     <div className="my-account-view">
-      <Home onClick={() => navigate(`/${user}`, { state: { userdata } })} />
+      <Home onClick={() => navigate(user, { state: { userdata } })} />
       <div>{userdata.user_name}</div>
     </div>
   );
