@@ -63,8 +63,6 @@ function Loginpage() {
           } catch (error) {
             setuserError(true);
           }
-
-          return;
         }
       }
 

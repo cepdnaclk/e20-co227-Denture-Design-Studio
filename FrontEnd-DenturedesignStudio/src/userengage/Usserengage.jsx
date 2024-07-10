@@ -7,8 +7,9 @@ import "./Userengage.css";
 function UserEngage() {
   const navigate = useNavigate();
   const location = useLocation();
-  const userdata = location.state?.user;
-  console.log(userdata);
+  const user = location.state?.user;
+  const userdata = location.state?.userdata;
+  console.log(user);
 
   const formatdate = (datestring) => {
     const date = new Date(datestring);
@@ -28,14 +29,14 @@ function UserEngage() {
     <div className="userdetail-engage">
       <Back
         onclick={() => {
-          navigate("/usersengagement");
+          navigate("/usersengagement", { state: { userdata } });
         }}
       />
       <Myaccount />
       <div className="username-engage">
         <img src={usericon} alt="" />
-        <h2>{userdata?.user_name}</h2>
-        <h4>{userdata?.email}</h4>
+        <h2>{user?.user_name}</h2>
+        <h4>{user?.email}</h4>
       </div>
       <div className="userdetail">
         <h2 className="header" id="user-detail1">
@@ -46,7 +47,7 @@ function UserEngage() {
           Name :
         </h2>
         <h3 className="user-name-value" id="user-detail3">
-          {userdata.first_name} {userdata.last_name}
+          {user.first_name} {user.last_name}
         </h3>
         <h2 className="header" id="user-detail4">
           {" "}
@@ -56,13 +57,13 @@ function UserEngage() {
           First access to the site:
         </h2>
         <h3 className="dates-value" id="user-detail6">
-          {formatdate(userdata.createdAt)}
+          {formatdate(user.createdAt)}
         </h3>
         <h2 className="access-date" id="user-detail7">
           Last access to the site:
         </h2>
         <h3 className="dates-value" id="user-detail8">
-          {formatdate(userdata.lastAccessed)}
+          {formatdate(user.lastAccessed)}
         </h3>
       </div>
       <div className="engagementactivity">

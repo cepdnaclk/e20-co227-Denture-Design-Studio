@@ -1,11 +1,11 @@
 import "./signup.css";
-import React, { useState } from 'react';
-import Back from '../backbutton/Back';
-import { useNavigate } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
-import axios from 'axios'
-import Swal from 'sweetalert2'
+import React, { useState } from "react";
+import Back from "../backbutton/Back";
+import { useNavigate } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
+import axios from "axios";
+import Swal from "sweetalert2";
 
 function Signup() {
   const [first_name, setFirstname] = useState("");
@@ -15,12 +15,11 @@ function Signup() {
   const [password, setPassword] = useState("");
   const [compassword, setCompassword] = useState("");
   const [role, setRole] = useState("");
-  const [showPassword, setShowPassword] = useState(false); 
-  const [showComPassword, setShowComPassword] = useState(false); 
-  const [pwequal,setpwequal] = useState(false);
-  let navigate = useNavigate();
-  const student = 'student';
-  const Assessor = 'assessor';
+  const [showPassword, setShowPassword] = useState(false);
+  const [showComPassword, setShowComPassword] = useState(false);
+  const navigate = useNavigate();
+  const student = "student";
+  const assessor = "assessor";
 
   function clickhandle(path) {
     navigate(path);
@@ -28,73 +27,95 @@ function Signup() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(first_name, last_name, email, user_name, password, compassword, role);
-    try{
-      let url =''
-      if((role===student) &&(password===compassword)){
-        url ='http://localhost:5000/student/add'
-      }else if((role=== Assessor)&&(password===compassword)){
-        url = 'http://localhost:5000/assessor/add'
-      }
-      const response = await axios.post(url,{ first_name, last_name,email, user_name,password});
-   await Swal.fire({
-          title:'Account create success',
-          text:'please login to your account',
-          icon:'success',
-          background: '#2f5770',
-          color:'whiteS',
-
+    if (password !== compassword) {
+      Swal.fire({
+        html: '<span class="swt-text1">The password does not match, please recheck!</span>',
+        confirmButtonColor: "#3085d6",
+        showConfirmButton: true,
+        color: "white",
+        background: "#2f5770",
+        customClass: {
+          popup: "swt-popup",
+        },
+        confirmButtonText: "OK",
       });
- navigate ('/login');
-      
-      
-    }catch(err){
-      if (password!==compassword) {
-         Swal.fire({
-          html:'<span class="swt-text1">The password is not matched please recheck!</span>',
-          confirmButtonColor:'#3085d6',
-          showConfirmButton:true,
-          color:'white',
-          background:"#2f5770",
-         customClass:{  
-          popup:'swt-popup',
-         },
-         confirmButtonText:'OK',
-        });
-      }else if(err.response.status===400){
-        Swal.fire({
-          html:'<span class="swt-text">User already exist!</span>',
-          confirmButtonColor:'#3085d6',
-          showConfirmButton:true,
-          color:'white',
-          background:"#2f5770",
-         customClass:{  
-          popup:'swt-popup',
-         },
-         confirmButtonText:'OK',
-        });
-      }
-      
-     
+      return;
     }
 
+    try {
+      let url = "";
+      if (role === student) {
+        url = "http://localhost:5000/student/add";
+        await axios.post("http://localhost:5000/progress/add", { user_name });
+      } else if (role === assessor) {
+        url = "http://localhost:5000/assessor/add";
+      }
 
+      await axios.post(url, {
+        first_name,
+        last_name,
+        email,
+        user_name,
+        password,
+      });
+
+      await Swal.fire({
+        title: "Account created successfully",
+        text: "Please log in to your account",
+        icon: "success",
+        background: "#2f5770",
+        color: "white",
+      });
+
+      navigate("/login");
+    } catch (err) {
+      if (err.response && err.response.status === 400) {
+        Swal.fire({
+          html: '<span class="swt-text">User already exists!</span>',
+          confirmButtonColor: "#3085d6",
+          showConfirmButton: true,
+          color: "white",
+          background: "#2f5770",
+          customClass: {
+            popup: "swt-popup",
+          },
+          confirmButtonText: "OK",
+        });
+      }
+    }
   };
 
   return (
     <div className="signuppage">
       <div className="back">
-        <Back onclick={() => clickhandle("/")}></Back>
+        <Back onclick={() => clickhandle("/")} />
       </div>
-      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Salsa&display=swap" />
-      <form className='contentbox2' onSubmit={handleSubmit}>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Salsa&display=swap"
+      />
+      <form className="contentbox2" onSubmit={handleSubmit}>
         <div>
           <h1 className="header2">Create a new account</h1>
         </div>
         <div className="role">
           <h3>Role:</h3>
-          <input type="radio" name="role" value={student} id="Student1" onChange={(e) => setRole(e.target.value)} /><p id="Student2">Student</p>
-          <input type="radio" name="role" value={Assessor} id="Assessor1" onChange={(e) => setRole(e.target.value)} /><p id="Assessor2">Assessor</p>
+          <input
+            type="radio"
+            name="role"
+            value={student}
+            id="Student1"
+            onChange={(e) => setRole(e.target.value)}
+          />
+          <p id="Student2">Student</p>
+          <input
+            type="radio"
+            name="role"
+            value={assessor}
+            id="Assessor1"
+            onChange={(e) => setRole(e.target.value)}
+          />
+          <p id="Assessor2">Assessor</p>
         </div>
         <div className="signinput" id="signinput1">
           <h3 className="signhead">First name:</h3>
@@ -118,7 +139,10 @@ function Signup() {
             type={showPassword ? "text" : "password"}
             onChange={(e) => setPassword(e.target.value)}
           />
-          <div onClick={() => setShowPassword(!showPassword)} className="eyeicon">
+          <div
+            onClick={() => setShowPassword(!showPassword)}
+            className="eyeicon"
+          >
             <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} />
           </div>
         </div>
@@ -128,8 +152,11 @@ function Signup() {
             type={showComPassword ? "text" : "password"}
             onChange={(e) => setCompassword(e.target.value)}
           />
-         
-          <div onClick={() => setShowComPassword(!showComPassword)} className="eyeicon">
+
+          <div
+            onClick={() => setShowComPassword(!showComPassword)}
+            className="eyeicon"
+          >
             <FontAwesomeIcon icon={showComPassword ? faEyeSlash : faEye} />
           </div>
         </div>
@@ -138,7 +165,6 @@ function Signup() {
             Signup
           </button>
         </div>
-        
       </form>
     </div>
   );

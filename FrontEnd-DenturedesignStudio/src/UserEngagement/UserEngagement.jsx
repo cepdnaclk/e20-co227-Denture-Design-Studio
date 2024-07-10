@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import "./UserEngagement.css";
 import Home from "../homebutton/home";
 import userIcon from "../UserAccount/usericon.png";
@@ -7,6 +7,8 @@ import axios from "axios";
 
 const UserEngagement = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const userdata = location.state?.userdata;
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
@@ -29,7 +31,11 @@ const UserEngagement = () => {
       <div className="userengagementpage">
         <header className="engagementheader">
           <div className="home-icon">
-            <Home onClick={() => navigate("/assessorhome")} />
+            <Home
+              onClick={() =>
+                navigate(location.state?.role, { state: { userdata } })
+              }
+            />
           </div>
           <h1>User Engagement</h1>
         </header>
@@ -38,7 +44,9 @@ const UserEngagement = () => {
             <div key={user.id} className="engagement-item">
               <button
                 className="username"
-                onClick={() => navigate("/userengagement", { state: { user } })}
+                onClick={() =>
+                  navigate("/userengagement", { state: { user, userdata } })
+                }
               >
                 <img src={userIcon} alt="User Icon" className="user-icon" />
                 {user.user_name}

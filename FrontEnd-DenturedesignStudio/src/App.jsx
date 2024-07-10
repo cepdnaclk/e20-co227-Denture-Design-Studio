@@ -4,7 +4,7 @@ import Homepage from "./first-page/Homepage";
 import Loginpage from "./logingpage/Logingpage";
 import Signup from "./Signinpage/signup";
 import Studenthome from "./StudentHome/Studenthome";
-import CreatePatientCase from "./createPatientCase/createPatientCase";
+import CreatePatientStep1 from "./createPatientCase/createPatientCase";
 import CreatePatientStep2 from "./createPatientCase2/createPatientCase2";
 import UploadPatientCase from "./uploadPatientCase/UploadPatientCase";
 import AddSaddles from "./AddSaddles/AddSaddles";
@@ -23,6 +23,7 @@ import Contents from "./Contents/Contents";
 import StudentsContents from "./StudentsContents/StudentsContents";
 import UserEngage from "./userengage/Usserengage";
 import Studentprogress from "./studentProgress/Studentprogress";
+import Myaccountview from "./Myaccountview/Myaccountview";
 import "./App.css";
 
 function App() {
@@ -52,7 +53,7 @@ function App() {
         <Route exact path="/addConnectors" element={<AddConnectors />} />
         <Route exact path="/modelanswer" element={<ModelAnswer />} />
         <Route exact path="/reviewanswer" element={<Reviewanswer />} />
-        <Route exact path="/createpatient" element={<CreatePatientCase />} />
+        <Route exact path="/createpatient" element={<CreatePatientStep1 />} />
         <Route exact path="/createpatient2" element={<CreatePatientStep2 />} />
         <Route exact path="/useraccount" element={<UserAccount />} />
         <Route exact path="/usersengagement" element={<UserEngagement />} />
@@ -60,6 +61,7 @@ function App() {
         <Route exact path="/studentscontents" element={<StudentsContents />} />
         <Route exact path="/userengagement" element={<UserEngage />} />
         <Route exact path="/Viewprogress" element={<Studentprogress />} />
+        <Route exact path="/myaccount" element={<Myaccountview />} />
       </Routes>
     </Router>
   );

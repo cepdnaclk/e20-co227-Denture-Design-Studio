@@ -9,33 +9,35 @@ function Assessorhome() {
   const location = useLocation();
   const userdata = location.state?.userdata;
   const username = userdata?.first_name;
-
+  const role = "/assessorhome";
   console.log(username);
 
   let navigate = useNavigate();
   return (
     <div className="Assessorhome">
       <Exitbutton />
-      <Myaccount />
+      <Myaccount user={"assessorhome"} userdata={userdata} />
       <div className="assessorhomecontent">
         <h1>Welcome {username}</h1>
         <div id="assessorh1">
           <Homecomp
             name={"Create a Patient Case"}
-            click={() => navigate("/uploadpatient")}
+            click={() => navigate("/uploadpatient", { state: { userdata } })}
           />
         </div>
         <div id="assessorh2">
           <Homecomp
             name={"Content"}
-            click={() => navigate("/assessorcontent")}
+            click={() => navigate("/assessorcontent", { state: { userdata } })}
             imge={true}
           />
         </div>
         <div id="assessorh3">
           <Homecomp
             name={"Engagement Metrics"}
-            click={() => navigate("/usersengagement")}
+            click={() =>
+              navigate("/usersengagement", { state: { userdata, role } })
+            }
             imge={false}
           />
         </div>
