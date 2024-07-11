@@ -1,17 +1,21 @@
 body {
-  font-family: 'Salsa', sans-serif;
+  font-family: "Salsa", sans-serif;
 }
 
 .studentscontentspage {
   position: relative;
   width: 100vw;
   height: 100vh;
-  background: linear-gradient(270deg, rgb(36, 69, 84) 0%, rgb(60, 123, 113) 101.07%);
+  background: linear-gradient(
+    270deg,
+    rgb(36, 69, 84) 0%,
+    rgb(60, 123, 113) 101.07%
+  );
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   overflow: hidden;
 }
 
-header {
+.contentheader {
   position: fixed;
   top: 0;
   left: 0;
@@ -19,7 +23,11 @@ header {
   align-items: center;
   width: 100%;
   justify-content: center;
-  background: linear-gradient(270deg, rgb(36, 69, 84) 0%, rgb(60, 123, 113) 101.07%);
+  background: linear-gradient(
+    270deg,
+    rgb(36, 69, 84) 0%,
+    rgb(60, 123, 113) 101.07%
+  );
   z-index: 1000;
   padding: 1vw;
 }
@@ -31,7 +39,7 @@ header {
 }
 
 header h1 {
-  font-family: 'Salsa', sans-serif;
+  font-family: "Salsa", sans-serif;
   font-size: 3vw;
   color: #bff9f2;
   margin: 0;
@@ -70,7 +78,7 @@ header h1 {
 }
 
 .actions button {
-  font-family: 'Salsa', sans-serif;
+  font-family: "Salsa", sans-serif;
   font-size: 1vw;
   padding: 0.5vw 1.5vw;
   border: none;

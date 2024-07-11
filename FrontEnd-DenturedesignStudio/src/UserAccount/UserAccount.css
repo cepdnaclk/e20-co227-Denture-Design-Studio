@@ -2,12 +2,16 @@
   position: relative;
   width: 100vw;
   height: 100vh;
-  background: linear-gradient(270deg, rgb(36 69 84) 0%, rgb(60 123 113) 101.07%);
+  background: linear-gradient(
+    270deg,
+    rgb(36 69 84) 0%,
+    rgb(60 123 113) 101.07%
+  );
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   overflow: hidden;
 }
 
-.header {
+.userheader {
   position: fixed;
   top: 0;
   left: 0;
@@ -16,7 +20,11 @@
   width: 100%;
   padding: 1vw;
   justify-content: center;
-  background: linear-gradient(270deg, rgb(36, 69, 84) 0%, rgb(60, 123, 113) 101.07%);
+  background: linear-gradient(
+    270deg,
+    rgb(36, 69, 84) 0%,
+    rgb(60, 123, 113) 101.07%
+  );
   z-index: 1000;
 }
 
@@ -33,10 +41,14 @@
 }
 
 .account-list {
+  position: absolute;
+
   display: flex;
   flex-direction: column;
-  margin-top: 10vw;
-  margin-left: 10vw;
+  margin-top: 0;
+  margin-left: 0;
+  top: 10vw;
+  left: 5vw;
   width: 90vw;
   overflow-y: auto;
   height: calc(100vh - 10vw);
@@ -48,34 +60,34 @@
   align-items: center;
   border-radius: 1vw;
   padding: 1vw 2vw;
-  margin-bottom: 1vw; 
+  margin-bottom: 1vw;
   box-shadow: 0 0.4vw 0.6vw rgba(0, 0, 0, 0.1);
 }
 
-.username {
-  font-family: 'Salsa', sans-serif;
-  font-size: 1vw;
+.useraccountname {
+  font-family: "Salsa", sans-serif;
+  font-size: 2.1vw;
   color: #ffffff;
   display: flex;
   align-items: center;
 }
 
-.user-icon {
-  width: 2.5vw; 
-  height: 2.5vw;
+.user-icon-account {
+  position: relative;
+  width: 4vw;
+  height: 4vw;
   background-size: contain;
   background-repeat: no-repeat;
   margin-right: 1vw;
 }
 
-.delete-button,
-.reset-button {
-  font-family: 'Salsa', sans-serif;
-  font-size: 1vw; 
-  padding: 1vw 1.5vw; 
-  margin-left: 0.5vw; 
+.delete-button {
+  font-family: "Salsa", sans-serif;
+  font-size: 2vw;
+  padding: 1vw 1.5vw;
+  margin-left: 0.5vw;
   border: none;
-  border-radius: 0.5vw;
+  border-radius: 1vw;
   cursor: pointer;
   transition: all 0.3s ease;
 }
@@ -84,7 +96,7 @@
   background: #66d8d8;
   color: #000;
   box-shadow: 0.67vw 0.53vw 0.8vw rgba(0, 0, 0, 0.35);
-  border-radius: 0.8vw;
+  border-radius: 1.3vw;
 }
 
 .reset-button {

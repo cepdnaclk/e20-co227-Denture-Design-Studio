@@ -3,13 +3,13 @@ import Myaccount from "../myaccount/Myaccount";
 import Homecomp from "../homecomp/Homecomp";
 import Exitbutton from "../Exitbutton/Exitbutton";
 import "./Studenthome.css";
-import { useNavigate,useLocation } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 function Studenthome() {
   const location = useLocation();
   const usedata = location.state?.userdata;
-  const username =usedata?.first_name;
-
+  const username = usedata?.first_name;
+  console.log(usedata);
   let navigate = useNavigate();
   return (
     <div className="studenthome">
@@ -30,7 +30,10 @@ function Studenthome() {
           />
         </div>
         <div id="studenth3">
-          <Homecomp name={"Content"} click={() => navigate("/studentscontents")} />
+          <Homecomp
+            name={"Content"}
+            click={() => navigate("/studentscontents")}
+          />
         </div>
         <div id="studenth4">
           <Homecomp
