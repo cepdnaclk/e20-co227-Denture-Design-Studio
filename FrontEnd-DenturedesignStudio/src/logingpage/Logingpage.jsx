@@ -18,18 +18,21 @@ function Loginpage() {
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [usererror, setuserError] = useState(false);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setuserError(false);
 
     try {
       let response;
-      let role = "student";
+      let role = "";
       let userdata;
 
       try {
         response = await Axios.post("http://localhost:5000/student/get", {
           user_name,
         });
+        role = "student";
         userdata = response.data.student;
         if (!userdata || !(await matchPassword(password, userdata.password))) {
           throw new Error("Student not found or invalid password");
@@ -58,13 +61,11 @@ function Loginpage() {
               !userdata ||
               !(await matchPassword(password, userdata.password))
             ) {
-              throw new Error("admin not found or invalid password");
+              throw new Error("Admin not found or invalid password");
             }
-          } catch (error) {
-            setuserError(true);
+          } catch (adminError) {
+            throw new Error("User not found or invalid password");
           }
-
-          return;
         }
       }
 
@@ -76,7 +77,7 @@ function Loginpage() {
         clickhandle("/adminhome", userdata);
       }
     } catch (error) {
-      alert("An error occurred during login");
+      setuserError(true);
     }
   };
 

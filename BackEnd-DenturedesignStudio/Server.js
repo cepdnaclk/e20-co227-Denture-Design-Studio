@@ -13,22 +13,24 @@ app.use(bodyParser.json());
 const URL = process.env.MONGODB_URL;
 
 mongoose.connect(URL, {
-    useNewUrlParser: true,
-    useUnifiedTopology:true
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
 });
 
-const studentrouter = require("../BackEnd-DenturedesignStudio/Routes/Studentroute.js")
-const assessorrouter = require("../BackEnd-DenturedesignStudio/Routes/Assessorroute.js")
-const adminrouter = require("../BackEnd-DenturedesignStudio/Routes/Adminroute.js")
-app.use("/student",studentrouter)
-app.use("/assessor",assessorrouter)
-app.use("/admin",adminrouter)
+const studentrouter = require("../BackEnd-DenturedesignStudio/Routes/Studentroute.js");
+const assessorrouter = require("../BackEnd-DenturedesignStudio/Routes/Assessorroute.js");
+const adminrouter = require("../BackEnd-DenturedesignStudio/Routes/Adminroute.js");
+const progressrouter = require("../BackEnd-DenturedesignStudio/Routes/Progressroute.js");
+app.use("/student", studentrouter);
+app.use("/assessor", assessorrouter);
+app.use("/admin", adminrouter);
+app.use("/progress", progressrouter);
 
 const connection = mongoose.connection;
 connection.once("open", () => {
-    console.log("mongodb connection success");  
+  console.log("mongodb connection success");
 });
 
 app.listen(PORT, () => {
-    console.log(`server is up and running on port ${PORT}`);
+  console.log(`server is up and running on port ${PORT}`);
 });

@@ -9,6 +9,7 @@ function Adminhome() {
   const location = useLocation();
   const userdata = location.state?.userdata;
   const username = userdata?.first_name;
+  const role = "/adminhome";
 
   console.log(username);
 
@@ -17,26 +18,30 @@ function Adminhome() {
     <div className="homepages">
       <div className="adminhome">
         <Exitbutton />
-        <Myaccount />
+        <Myaccount user={role} userdata={userdata} />
         <div className="adminhomecontent">
           <h1>Welcome {username}</h1>
           <div id="adminh1">
             <Homecomp
               name={"User Account"}
-              click={() => navigate("/useraccount")}
+              click={() => navigate("/useraccount", { state: { userdata } })}
             />
           </div>
           <div id="adminh2">
             <Homecomp
               name={"Content"}
-              click={() => navigate("/assessorcontent")}
+              click={() =>
+                navigate("/assessorcontent", { state: { userdata } })
+              }
               imge={true}
             />
           </div>
           <div id="adminh3">
             <Homecomp
               name={"Engagement Metrics"}
-              click={() => navigate("/usersengagement")}
+              click={() =>
+                navigate("/usersengagement", { state: { userdata, role } })
+              }
               imge={false}
             />
           </div>

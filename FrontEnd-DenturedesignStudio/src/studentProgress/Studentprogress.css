@@ -39,6 +39,7 @@
 
   background: #5271de;
   border-radius: 2.472vw;
+  box-shadow: 0 0.5vw 0.5vw rgba(0, 0, 0, 0.3);
   h1 {
     position: absolute;
     padding: 0;
@@ -144,6 +145,7 @@
 
   background: #c14848;
   border-radius: 2.472vw;
+  box-shadow: 0 0.5vw 0.5vw rgba(0, 0, 0, 0.3);
   h1 {
     position: absolute;
     padding: 0;
