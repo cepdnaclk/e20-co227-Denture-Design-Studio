@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import "./StudentsContents.css";
 import Home from "../homebutton/home";
 import materialIcon from "../Contents/materialIcon.png";
@@ -13,7 +13,8 @@ const StudentsContents = () => {
   ]);
 
   const navigate = useNavigate();
-
+  const location = useLocation();
+  const userdata = location.state?.userdata;
   const addMaterial = () => {
     const newMaterial = `Material_${materials.length + 1}`;
     setMaterials([...materials, newMaterial]);
@@ -42,7 +43,9 @@ const StudentsContents = () => {
       <div className="studentscontentspage">
         <header className="contentheader">
           <div className="home-icon">
-            <Home onClick={() => navigate("/studenthome")} />
+            <Home
+              onClick={() => navigate("/studenthome", { state: { userdata } })}
+            />
           </div>
           <h1>Content</h1>
         </header>
