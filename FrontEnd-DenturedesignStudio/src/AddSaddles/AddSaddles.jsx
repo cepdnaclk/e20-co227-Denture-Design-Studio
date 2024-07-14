@@ -2,11 +2,16 @@ import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import "./AddSaddles.css";
 import Home from "../homebutton/home";
+import Teeth from "../TeethComp/Teeth";
 
 function AddSaddles() {
   const navigate = useNavigate();
   const location = useLocation();
   const userdata = location.state?.userdata;
+
+  const handleClick = (path) => {
+    navigate(path, { state: { userdata } });
+  };
 
   return (
     <div className="designPage">
@@ -29,8 +34,6 @@ function AddSaddles() {
                 <span className="skipButtonText">Skip</span>
               </div>
             </button>
-          </div>
-          <div className="teethBackground1">
             <button
               className="addRests"
               onClick={() => handleClick("/addRests")}
@@ -39,6 +42,10 @@ function AddSaddles() {
                 <span className="addRestText">Add Rests</span>
               </div>
             </button>
+          </div>
+          <div >
+          <Teeth click={(index) => console.log(`Clicked tooth ${index}`)} />
+  
           </div>
           <h2 className="AddSaddles">Add Saddles</h2>
           <h2 className="yourQuestion">Your Question</h2>

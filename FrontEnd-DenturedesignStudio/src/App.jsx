@@ -24,6 +24,7 @@ import StudentsContents from "./StudentsContents/StudentsContents";
 import UserEngage from "./userengage/Usserengage";
 import Studentprogress from "./studentProgress/Studentprogress";
 import Myaccountview from "./Myaccountview/Myaccountview";
+import Teeth from "./TeethComp/Teeth";
 import "./App.css";
 
 function App() {
@@ -62,6 +63,7 @@ function App() {
         <Route exact path="/userengagement" element={<UserEngage />} />
         <Route exact path="/Viewprogress" element={<Studentprogress />} />
         <Route exact path="/myaccount" element={<Myaccountview />} />
+        <Route exact path="/teeth" element={<Teeth />} />
       </Routes>
     </Router>
   );
