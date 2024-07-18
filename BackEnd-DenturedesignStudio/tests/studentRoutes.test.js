@@ -2,15 +2,14 @@ const request = require("supertest");
 const express = require("express");
 const mongoose = require("mongoose");
 const Student = require("../model/Student");
-const studentRoutes = require("../Routes/Studentroute"); // Adjust the path to your routes file
+const studentRoutes = require("../Routes/Studentroute");
 
 const app = express();
 app.use(express.json());
 app.use("/students", studentRoutes);
 
-describe("Student API Routes", () => {
+describe("Student API s testing Routes", () => {
   beforeAll(async () => {
-    // Connect to a test database
     const url = `mongodb+srv://e20439:20020111@cluster0.ckgo02o.mongodb.net/denture-design-studio?retryWrites=true&w=majority&appName=Cluster0`;
     await mongoose.connect(url, {
       useNewUrlParser: true,
@@ -19,13 +18,11 @@ describe("Student API Routes", () => {
   });
 
   afterAll(async () => {
-    // Clear the database and close the connection
     await mongoose.connection.dropDatabase();
     await mongoose.connection.close();
   });
 
   afterEach(async () => {
-    // Clear the Student collection after each test
     await Student.deleteMany();
   });
 
