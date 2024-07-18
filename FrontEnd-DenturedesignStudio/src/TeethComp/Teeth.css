@@ -1,11 +1,11 @@
 .teethBackground1 {
   position: relative;
-  width: 21.9vw; 
-  aspect-ratio: 459 / 700; 
+  width: 21.9vw;
+  aspect-ratio: 459 / 700;
   left: 40.96vw;
   top: 14vh;
-  background: #D3ECFF;
-  border-radius: 2.6vw; 
+  background: #d3ecff;
+  border-radius: 2.6vw;
 }
 
 .teeth-btn {
@@ -17,7 +17,7 @@
 }
 
 .teeth-btn:hover {
-  transform: scale(1.2); 
+  transform: scale(1.2);
 }
 
 .teeth-btn:nth-child(1) {
@@ -137,7 +137,7 @@
 .teeth-btn:nth-child(17) {
   width: 2.7vw;
   height: 2.7vw;
-  left:68%;
+  left: 68%;
   top: 52%;
 }
 
