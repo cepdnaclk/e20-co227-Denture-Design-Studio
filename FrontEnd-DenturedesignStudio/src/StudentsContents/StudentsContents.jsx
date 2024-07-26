@@ -15,13 +15,15 @@ const StudentsContents = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const userdata = location.state?.userdata;
+
   const addMaterial = () => {
     const newMaterial = `Material_${materials.length + 1}`;
     setMaterials([...materials, newMaterial]);
   };
 
   const handleOpen = (material) => {
-    alert(`Opening ${material}`);
+    const roles = "/studentscontents";
+    navigate("/viewcontent", { state: { material, roles } });
     // Implement logic to open the material
   };
 
@@ -47,18 +49,23 @@ const StudentsContents = () => {
               onClick={() => navigate("/studenthome", { state: { userdata } })}
             />
           </div>
-          <h1>Content</h1>
+          <h1>Contents</h1>
         </header>
         <div className="content">
           {materials.map((material, index) => (
             <div className="material" key={index}>
-              <img
-                src={materialIcon}
-                alt="Material Icon"
-                className="material-icon"
-              />
-              <span>{material}</span>
-              <div className="actions">
+              <div className="material-detail">
+                <img
+                  src={materialIcon}
+                  alt="Material Icon"
+                  className="material-icon"
+                />
+                <span className="material-title" title={material}>
+                  {material}
+                </span>
+              </div>
+
+              <div className="actions2">
                 <button onClick={() => handleOpen(material)}>Open</button>
                 <button onClick={() => handleDownload(material)}>
                   Download
@@ -67,9 +74,6 @@ const StudentsContents = () => {
             </div>
           ))}
         </div>
-        <button className="upload-button" onClick={addMaterial}>
-          Upload Material
-        </button>
       </div>
     </>
   );

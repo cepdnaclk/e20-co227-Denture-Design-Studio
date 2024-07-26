@@ -1,0 +1,122 @@
+.upload-content {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60vw;
+  height: 86vh;
+  padding: 0;
+  background: #30505b;
+  color: #bff9f2;
+  border-radius: 2vw;
+  box-shadow: 0.668vw 0.668vw 0.668vw rgba(0, 0, 0, 0.3);
+  z-index: 1100;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.upload-content h1 {
+  font-family: "Salsa";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 3vw;
+  line-height: 134.77%;
+  align-items: center;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  top: 1.5vw;
+  color: #ffffff;
+}
+.upload-content h2 {
+  position: absolute;
+  font-family: "Salsa";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.8vw;
+  line-height: 134.77%;
+  align-items: center;
+  color: #99ffc8;
+  left: 7.5vw;
+}
+.upload-content .add-title {
+  top: 10vh;
+}
+.upload-content .add-video {
+  top: 26vh;
+}
+.upload-content .add-description {
+  top: 40vh;
+}
+.upload-content .upload-btn {
+  background-color: #66d8d8;
+  color: #000;
+  border: none;
+  border-radius: 0.8vw;
+  cursor: pointer;
+  position: absolute;
+  font-family: "salsa";
+  font-size: 1.5vw;
+  margin: 0;
+  width: 12.5vw;
+  height: 3.5vw;
+  top: 74vh;
+  right: 3vw;
+  box-shadow: 0.67vw 0.53vw 0.8vw rgba(0, 0, 0, 0.35);
+}
+.upload-content .back-btn {
+  position: absolute;
+  background: transparent;
+  border: none;
+  width: 2vw;
+  height: 2vw;
+  img {
+    width: 3.5vw;
+    position: absolute;
+    left: -0.5vw;
+    top: -0.5vw;
+  }
+  left: 3vw;
+  top: 76vh;
+  cursor: pointer;
+}
+.upload-content .title {
+  position: absolute;
+  top: 18vh;
+  width: 45vw;
+  height: 4.5vw;
+  border: none;
+  font-family: "salsa";
+  font-size: 1.5vw;
+  background: #d9d9d9;
+}
+.upload-content .content-description {
+  width: 45vw;
+  height: 10vw;
+  position: absolute;
+  top: 50vh;
+  font-family: "salsa";
+  font-size: 1.3vw;
+  border: none;
+  resize: none;
+  background: #d9d9d9;
+}
+.upload-content .content-video {
+  width: 40vw;
+  position: absolute;
+  top: 36vh;
+  font-family: "salsa";
+  font-size: 1.3vw;
+}
+.upload-content-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(3px);
+  z-index: 1000;
+}

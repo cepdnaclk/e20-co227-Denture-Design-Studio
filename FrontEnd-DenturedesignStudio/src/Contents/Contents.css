@@ -2,7 +2,11 @@
   position: relative;
   width: 100vw;
   height: 100vh;
-  background: linear-gradient(270deg, rgb(36, 69, 84) 0%, rgb(60, 123, 113) 101.07%);
+  background: linear-gradient(
+    270deg,
+    rgb(36, 69, 84) 0%,
+    rgb(60, 123, 113) 101.07%
+  );
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   overflow: hidden;
 }
@@ -15,7 +19,11 @@ header {
   align-items: center;
   width: 100%;
   justify-content: center;
-  background: linear-gradient(270deg, rgb(36, 69, 84) 0%, rgb(60, 123, 113) 101.07%);
+  background: linear-gradient(
+    270deg,
+    rgb(36, 69, 84) 0%,
+    rgb(60, 123, 113) 101.07%
+  );
   z-index: 1000;
   padding: 1vw;
 }
@@ -31,7 +39,41 @@ header h1 {
   color: #bff9f2;
   margin: 0;
 }
+.material-detail {
+  width: 45vw;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
 
+.material-title {
+  position: relative;
+  font-family: "Salsa";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 2vw;
+  color: #ffffff;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: block;
+}
+
+.material-title:hover ::after {
+  content: attr(title);
+  position: absolute;
+  left: 0;
+  bottom: 100%;
+  white-space: normal;
+  background-color: #333;
+  color: #fff;
+  padding: 5px;
+  font-family: "salsa";
+  border-radius: 5px;
+  z-index: 10;
+  width: max-content;
+  max-width: 400px;
+}
 .content {
   margin-top: 10vw;
   max-height: calc(100vh - 12vw);
@@ -57,25 +99,30 @@ header h1 {
 }
 
 .material-icon {
-  width: 5vw;
-  margin-right: 1vw;
+  width: 10vw;
+  margin: 0;
+  padding: 0;
 }
 
 .actions {
+  position: relative;
+  left: -5vw;
+  align-items: center;
+  width: 35vw;
   display: flex;
-  gap: 0.5vw;
+  gap: 5vw;
 }
 
 .actions button {
-  font-size: 1vw;
-  padding: 1vw 1.5vw;
+  font-family: "Salsa", sans-serif;
+  font-size: 2vw;
+  padding: 0.5vw 1.5vw;
   border: none;
   border-radius: 0.5vw;
   cursor: pointer;
   transition: all 0.3s ease;
-  background: #66d8d8;
-  color: #000;
-  box-shadow: 0.67vw 0.53vw 0.8vw rgba(0, 0, 0, 0.35);
+  color: #95f8c4;
+  background-color: transparent;
 }
 
 .actions button:hover {
@@ -90,8 +137,10 @@ header h1 {
   border-radius: 0.8vw;
   cursor: pointer;
   position: absolute;
-  bottom: 2vw;
-  right: 2vw;
+  font-family: "salsa";
+  font-size: 1.5vw;
+  top: 6vw;
+  right: 3vw;
   box-shadow: 0.67vw 0.53vw 0.8vw rgba(0, 0, 0, 0.35);
 }
 

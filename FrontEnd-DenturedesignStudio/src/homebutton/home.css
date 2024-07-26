@@ -17,14 +17,6 @@
   height: 3vw;
 }
 
-.homebutton:hover {
-  width: 4.4vw;
-  height: 4.4vw;
-  cursor: pointer;
-  top: -0.2vw;
-  left: -0.2vw;
-}
-
 @media (max-width: 1000px) {
   .homebutton {
     width: 4vw;

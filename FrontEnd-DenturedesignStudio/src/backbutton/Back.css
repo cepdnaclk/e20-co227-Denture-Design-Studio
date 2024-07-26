@@ -1,23 +1,25 @@
-.backbutton{
-background-color: transparent;
-    width: 3.34vw;
-    height: 3.34vw;
+.backbutton {
+  background-color: transparent;
+  width: 3.34vw;
+  height: 3.34vw;
+  margin: 0;
+  padding: 0;
+  border-radius: 3.34vw;
+  border: none;
+  position: absolute;
+  left: 1vw;
+  top: 2vh;
+  img {
+    height: 40px;
+    width: 40px;
+    background-color: transparent;
+
     margin: 0;
     padding: 0;
-    border-radius: 3.34vw;
-    border: none;
-    img{
-        height: 40px;
-        width: 40px;
-        background-color:transparent ;
-       
-        margin: 0;
-        padding: 0;
-        border: transparent;
-        border-radius: 60px;
-        
-    }
+    border: transparent;
+    border-radius: 60px;
+  }
 }
-.backbutton:hover{
-    cursor: pointer;
+.backbutton:hover {
+  cursor: pointer;
 }

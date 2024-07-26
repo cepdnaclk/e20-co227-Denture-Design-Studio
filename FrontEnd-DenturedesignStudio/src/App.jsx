@@ -25,6 +25,7 @@ import UserEngage from "./userengage/Usserengage";
 import Studentprogress from "./studentProgress/Studentprogress";
 import Myaccountview from "./Myaccountview/Myaccountview";
 import Teeth from "./TeethComp/Teeth";
+import Viewcontent from "./viewContent/Viewcontent";
 import "./App.css";
 
 function App() {
@@ -58,12 +59,13 @@ function App() {
         <Route exact path="/createpatient2" element={<CreatePatientStep2 />} />
         <Route exact path="/useraccount" element={<UserAccount />} />
         <Route exact path="/usersengagement" element={<UserEngagement />} />
-        <Route exact path="/contents" element={<Contents />} />
+        <Route exact path="/assessorcontent" element={<Contents />} />
         <Route exact path="/studentscontents" element={<StudentsContents />} />
         <Route exact path="/userengagement" element={<UserEngage />} />
         <Route exact path="/Viewprogress" element={<Studentprogress />} />
         <Route exact path="/myaccount" element={<Myaccountview />} />
         <Route exact path="/teeth" element={<Teeth />} />
+        <Route exact path="/viewcontent" element={<Viewcontent />} />
       </Routes>
     </Router>
   );
