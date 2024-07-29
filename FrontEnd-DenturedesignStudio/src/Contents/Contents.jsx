@@ -1,12 +1,13 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import "./Contents.css";
 import Home from "../homebutton/home";
 import materialIcon from "./materialIcon.png";
 import Uploadcontent from "../Uploadcontent/Uploadcontent";
+import axios from "axios";
 
 const Contents = () => {
-  const [materials, setMaterials] = useState(["content title 1"]);
+  const [materials, setMaterials] = useState([]);
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -15,11 +16,18 @@ const Contents = () => {
   const [addcontent, setAddcontent] = useState(false);
 
   const addMaterial = (content) => {
-    const newMaterial = content;
-    setMaterials([...materials, newMaterial]);
     setAddcontent(false);
-    console.log(content);
   };
+  useEffect(() => {
+    axios
+      .get("http://localhost:5000/lecture")
+      .then((response) => {
+        setMaterials(response.data);
+      })
+      .catch((error) => {
+        console.error("There was an error fetching the lectures!", error);
+      });
+  }, [addMaterial]);
 
   const handleOpen = (material) => {
     const roles = "/assessorcontent";
@@ -31,7 +39,17 @@ const Contents = () => {
   };
 
   const handleRemove = (material) => {
-    setMaterials(materials.filter((m) => m !== material));
+    console.log("Deleting lecture with ID:", material._id);
+    axios
+      .delete(`http://localhost:5000/lecture/delete/${material._id}`)
+      .then((response) => {
+        console.log("Response:", response.data);
+        setMaterials(materials.filter((m) => m !== material));
+      })
+      .catch((error) => {
+        console.error("There was an error deleting the lecture!", error);
+        alert("Failed to delete lecture");
+      });
   };
 
   return (
