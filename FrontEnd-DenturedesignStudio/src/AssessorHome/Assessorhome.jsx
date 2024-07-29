@@ -28,7 +28,9 @@ function Assessorhome() {
         <div id="assessorh2">
           <Homecomp
             name={"Content"}
-            click={() => navigate("/assessorcontent", { state: { userdata } })}
+            click={() =>
+              navigate("/assessorcontent", { state: { userdata, role } })
+            }
             imge={true}
           />
         </div>

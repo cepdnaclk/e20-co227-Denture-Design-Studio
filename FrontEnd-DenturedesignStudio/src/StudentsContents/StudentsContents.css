@@ -67,46 +67,70 @@ header h1 {
   margin-bottom: 0;
 }
 
-.material-icon {
-  width: 3vw;
-  margin-right: 1vw;
-}
-
-.actions {
+.material-detail {
+  width: 45vw; /* Adjust this width to fit your design */
   display: flex;
-  gap: 0.5vw;
+  align-items: center;
+  overflow: hidden; /* Ensure the content doesn't overflow */
 }
 
-.actions button {
+.material-title {
+  position: relative;
+  font-family: "Salsa";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 2vw;
+  color: #ffffff;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: block;
+}
+
+.material-title:hover ::after {
+  content: attr(title);
+  position: absolute;
+  left: 0;
+  bottom: 100%;
+  white-space: normal;
+  background-color: #333;
+  color: #fff;
+  padding: 5px;
+  font-family: "salsa";
+  border-radius: 5px;
+  z-index: 10;
+  width: max-content;
+  max-width: 400px;
+}
+
+.material-icon {
+  width: 10vw;
+  margin: 0;
+  padding: 0;
+}
+
+.actions2 {
+  position: relative;
+
+  align-items: center;
+  width: 30vw;
+  display: flex;
+  gap: 7vw;
+}
+
+.actions2 button {
   font-family: "Salsa", sans-serif;
-  font-size: 1vw;
+  font-size: 2vw;
   padding: 0.5vw 1.5vw;
   border: none;
   border-radius: 0.5vw;
   cursor: pointer;
   transition: all 0.3s ease;
-  background: #66d8d8;
-  color: #000;
-  box-shadow: 0.67vw 0.53vw 0.8vw rgba(0, 0, 0, 0.35);
+  color: #95f8c4;
+  background-color: transparent;
+  padding: 0;
 }
 
-.actions button:hover {
-  transform: scale(1.05);
-}
-
-.upload-button {
-  background-color: #66d8d8;
-  color: #000;
-  border: none;
-  padding: 1vw 2vw;
-  border-radius: 0.8vw;
-  cursor: pointer;
-  position: absolute;
-  bottom: 2vw;
-  right: 2vw;
-  box-shadow: 0.67vw 0.53vw 0.8vw rgba(0, 0, 0, 0.35);
-}
-
-.upload-button:hover {
+.actions2 button:hover {
   transform: scale(1.05);
 }
