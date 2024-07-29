@@ -31,7 +31,7 @@ function Adminhome() {
             <Homecomp
               name={"Content"}
               click={() =>
-                navigate("/assessorcontent", { state: { userdata } })
+                navigate("/assessorcontent", { state: { userdata, role } })
               }
               imge={true}
             />
