@@ -1,4 +1,3 @@
-import video from "./Project 4.mp4";
 import "./Viewcontent.css";
 import { useLocation, useNavigate } from "react-router-dom";
 import Back from "../backbutton/Back";
@@ -9,7 +8,7 @@ function Viewcontent() {
   const material = location.state?.material;
   const roles = location.state?.roles;
   const role = location.state?.role;
-
+  const video = material.file;
   return (
     <div className="viewcontent">
       <link
@@ -20,7 +19,7 @@ function Viewcontent() {
       <div>
         <h1 className="lecture-title">{material.title}</h1>
         <Back onclick={() => navigate(roles, { state: { role } })} />
-        <video className="lecture-video" src={material.file} controls></video>
+        <video className="lecture-video" src={video} controls></video>
         <div className="lecture-note-container">
           <p className="lecture-note">{material.description}</p>
         </div>

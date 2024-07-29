@@ -16,6 +16,22 @@
   align-items: center;
   text-align: center;
 }
+.upload-progress {
+  width: 40vw;
+  position: absolute;
+  top: 33vh;
+  font-family: "salsa";
+  font-size: 1.3vw;
+  progress {
+    width: 30vw;
+    height: 2vw;
+  }
+  p {
+    padding: 0;
+    margin: 0;
+    font-size: 1.5vw;
+  }
+}
 .upload-content h1 {
   font-family: "Salsa";
   font-style: normal;
