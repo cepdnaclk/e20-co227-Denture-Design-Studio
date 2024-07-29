@@ -3,6 +3,8 @@ import "./ReviewAnswer.css";
 import { useNavigate } from "react-router-dom";
 import Home from "../homebutton/home";
 import Gotobutton from "../Goto/Goto";
+import Teeth from "../TeethComp/Teeth";
+
 function Reviewanswer() {
   let navigate = useNavigate();
 
@@ -20,7 +22,9 @@ function Reviewanswer() {
       />
       <h1 className="HeaderRA">Add/Remove Components</h1>
       <p className="YouranswerRA">Your Answer :</p>
-      <div className="TeethboxRA"></div>
+      <div className="TeethboxRA">
+        <Teeth click={(index) => console.log(`Clicked tooth ${index}`)} />
+      </div>
       <div className="ButtonboxRA">
         <div id="Addrests">
           <Gotobutton

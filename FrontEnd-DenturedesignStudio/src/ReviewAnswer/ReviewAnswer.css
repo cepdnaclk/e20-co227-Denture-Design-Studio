@@ -43,18 +43,13 @@
 
 .TeethboxRA {
   position: absolute;
-  width: 23.9vw;
-  height: 76.937vh;
-  left: 25.269vw;
-  top: 8.152vw;
-
-  background: #d3ecff;
-  border-radius: 3.34vw;
+  left: -8vw;
+  top: 2.152vw;
 }
 
 .ButtonboxRA {
   position: absolute;
-  top: 8vw;
+  top: 10vw;
   left: 65vw;
 }
 #Addrests {
@@ -81,7 +76,7 @@
   position: absolute;
   width: 24vw;
   height: 3.2vw;
-  top: 36vw;
+  top: 38vw;
   left: 65vw;
   margin: 0;
 
