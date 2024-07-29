@@ -5,21 +5,11 @@ import Home from "../homebutton/home";
 import materialIcon from "../Contents/materialIcon.png";
 
 const StudentsContents = () => {
-  const [materials, setMaterials] = useState([
-    "Material_1",
-    "Material_2",
-    "Material_3",
-    "Material_4",
-  ]);
+  const [materials, setMaterials] = useState([]);
 
   const navigate = useNavigate();
   const location = useLocation();
   const userdata = location.state?.userdata;
-
-  const addMaterial = () => {
-    const newMaterial = `Material_${materials.length + 1}`;
-    setMaterials([...materials, newMaterial]);
-  };
 
   const handleOpen = (material) => {
     const roles = "/studentscontents";
@@ -30,10 +20,6 @@ const StudentsContents = () => {
   const handleDownload = (material) => {
     alert(`Downloading ${material}`);
     // Implement logic to download the material
-  };
-
-  const handleRemove = (material) => {
-    setMaterials(materials.filter((m) => m !== material));
   };
 
   return (

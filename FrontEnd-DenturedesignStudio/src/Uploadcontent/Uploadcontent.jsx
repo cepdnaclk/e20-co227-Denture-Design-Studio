@@ -8,6 +8,7 @@ import {
 import { initializeApp } from "firebase/app";
 import "./Uploadcontent.css";
 import back from "./back.png";
+import axios from "axios";
 
 const firebaseConfig = {
   apiKey: "AIzaSyD-3rkJLYHfuHJaT1ED3d7xjaBnm509KTU",
@@ -52,10 +53,18 @@ function Uploadcontent({ onUpload, onback }) {
           console.error("Upload failed", error);
         },
         async () => {
-          const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
+          const videoUrl = await getDownloadURL(uploadTask.snapshot.ref);
 
-          onUpload({ title, file: downloadURL, description });
-
+          onUpload({ title, file: videoUrl, description });
+          try {
+            axios.post("http://localhost:5000/lecture/add", {
+              title,
+              videoUrl,
+              description,
+            });
+          } catch (err) {
+            console.log(err.message);
+          }
           setTitle("");
           setFile(null);
           setDescription("");
@@ -77,6 +86,7 @@ function Uploadcontent({ onUpload, onback }) {
           type="text"
           className="title"
           value={title}
+          required
           onChange={(e) => setTitle(e.target.value)}
         />
         <h2 className="add-video">Add video/pdf</h2>
