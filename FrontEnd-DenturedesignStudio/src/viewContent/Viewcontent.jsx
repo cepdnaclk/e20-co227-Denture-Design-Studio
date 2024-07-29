@@ -8,7 +8,8 @@ function Viewcontent() {
   const material = location.state?.material;
   const roles = location.state?.roles;
   const role = location.state?.role;
-  const video = material.file;
+  const video = material.videoUrl;
+  console.log(material);
   return (
     <div className="viewcontent">
       <link
