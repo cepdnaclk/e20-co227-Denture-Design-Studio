@@ -1,7 +1,7 @@
 import React from "react";
-import Myaccount from "../myaccount/Myaccount";
-import Homecomp from "../homecomp/Homecomp";
-import Exitbutton from "../Exitbutton/Exitbutton";
+import Myaccount from "../../myaccount/Myaccount";
+import Homecomp from "../../homecomp/Homecomp";
+import Exitbutton from "../../Exitbutton/Exitbutton";
 import "./Assessorhome.css";
 import { useNavigate, useLocation } from "react-router-dom";
 

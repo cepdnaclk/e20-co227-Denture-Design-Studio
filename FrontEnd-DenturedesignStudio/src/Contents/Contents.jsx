@@ -35,7 +35,7 @@ const Contents = () => {
 
   const handleOpen = (material) => {
     const roles = "/assessorcontent";
-    navigate("/viewcontent", { state: { material, role, roles } });
+    navigate("/viewcontent", { state: { material, role, roles, userdata } });
   };
 
   const handleDownload = (material) => {

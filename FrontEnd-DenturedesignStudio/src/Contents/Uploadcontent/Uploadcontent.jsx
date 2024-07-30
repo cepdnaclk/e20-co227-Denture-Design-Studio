@@ -23,7 +23,7 @@ function Uploadcontent({ onUpload, onback }) {
     const currentDate = new Date().toISOString().split("T")[0];
 
     const originalFileName = file.name;
-    const newFileName = `${currentDate}_${originalFileName}`;
+    const newFileName = `${currentDate}_${title}`;
 
     const folder = file.type.startsWith("video") ? "videos" : "pdfs";
     const storageRef = ref(storage, `lectures/${folder}/${newFileName}`);
@@ -103,6 +103,7 @@ function Uploadcontent({ onUpload, onback }) {
               className="content-video-file"
               onChange={(e) => setFile(e.target.files[0])}
               hidden
+              accept="video/*"
             />
             {file ? (
               <h4>{file.name}</h4>
