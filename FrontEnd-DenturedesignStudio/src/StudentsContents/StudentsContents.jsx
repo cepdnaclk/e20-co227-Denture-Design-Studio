@@ -25,7 +25,7 @@ const StudentsContents = () => {
 
   const handleOpen = (material) => {
     const roles = "/studentscontents";
-    navigate("/viewcontent", { state: { material, role, roles } });
+    navigate("/viewcontent", { state: { material, role, roles, userdata } });
   };
 
   const handleDownload = (material) => {
@@ -42,7 +42,7 @@ const StudentsContents = () => {
       <div className="studentscontentspage">
         <header className="contentheader">
           <div className="home-icon">
-            <Home onClick={() => navigate(role)} />
+            <Home onClick={() => navigate(role, { state: { userdata } })} />
           </div>
           <h1>Contents</h1>
         </header>

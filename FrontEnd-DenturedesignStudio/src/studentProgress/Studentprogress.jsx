@@ -11,7 +11,6 @@ function Studentprogress() {
   const user_name = userdata?.user_name;
   const first_name = userdata?.first_name;
   const [lecture_time, setLectime] = useState(0);
-  const [create_time, setCreatetime] = useState(0);
   const [solveTime, setSolveTime] = useState(0);
   const [createCases, setCreateCases] = useState(0);
   const [solveCases, setSolveCases] = useState(0);
@@ -28,11 +27,11 @@ function Studentprogress() {
         );
 
         const progress = response.data.progress;
+
         setSolveTime(progress.solveTime);
         setCreateCases(progress.createCase);
         setSolveCases(progress.solveCase);
         setLectime(progress.lectureTime);
-        setCreatetime(progress.createTime);
         setLeccomplete(progress.completedLecture);
       } catch (error) {
         console.log(error.message);
@@ -42,6 +41,7 @@ function Studentprogress() {
   }, [user_name]);
 
   const formatTime = (time) => {
+    console.log(time);
     const hours = Math.floor(time / 3600);
     const minutes = Math.floor((time % 3600) / 60);
     const seconds = time % 60;
@@ -51,11 +51,10 @@ function Studentprogress() {
   };
 
   const percentage = (lecturecomplete / totalLecture) * 100;
-  const time = lecture_time + create_time + solveTime;
+  const time = lecture_time + solveTime;
+  console.log(lecture_time);
   const lectureProgress = (lecture_time / time) * 100;
-  const creatingProgress = (create_time / time) * 100;
   const solvingProgress = (solveTime / time) * 100;
-
   return (
     <div className="studentprogress">
       <link
@@ -103,15 +102,7 @@ function Studentprogress() {
               ></div>
             </div>
           </div>
-          <div className="progress-bar">
-            <label>Creating patient cases : {creatingProgress}%</label>
-            <div className="progress">
-              <div
-                className="progress-inner"
-                style={{ width: `${creatingProgress}%` }}
-              ></div>
-            </div>
-          </div>
+
           <div className="progress-bar">
             <label>Solving patient cases : {solvingProgress}%</label>
             <div className="progress">
