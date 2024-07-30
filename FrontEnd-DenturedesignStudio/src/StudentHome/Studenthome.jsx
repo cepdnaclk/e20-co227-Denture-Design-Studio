@@ -9,6 +9,7 @@ function Studenthome() {
   const location = useLocation();
   const userdata = location.state?.userdata;
   const username = userdata?.first_name;
+  const role = "/studenthome";
   console.log(userdata);
   let navigate = useNavigate();
   return (
@@ -32,7 +33,9 @@ function Studenthome() {
         <div id="studenth3">
           <Homecomp
             name={"Content"}
-            click={() => navigate("/studentscontents", { state: { userdata } })}
+            click={() =>
+              navigate("/studentscontents", { state: { userdata, role } })
+            }
           />
         </div>
         <div id="studenth4">

@@ -64,7 +64,7 @@
   top: 26vh;
 }
 .upload-content .add-description {
-  top: 40vh;
+  top: 41vh;
 }
 .upload-content .upload-btn {
   background-color: #66d8d8;
@@ -108,6 +108,12 @@
   font-size: 1.5vw;
   background: #d9d9d9;
 }
+.upload-content .title::placeholder {
+  color: red;
+  opacity: 0.5;
+  align-items: center;
+  text-align: center;
+}
 .upload-content .content-description {
   width: 45vw;
   height: 10vw;
@@ -120,12 +126,17 @@
   background: #d9d9d9;
 }
 .upload-content .content-video {
-  width: 40vw;
+  width: 45vw;
   position: absolute;
-  top: 36vh;
+  top: 35vh;
   font-family: "salsa";
   font-size: 1.3vw;
+  color: #30505b;
+  background: #d9d9d9;
+  height: 4vw;
+  cursor: pointer;
 }
+
 .upload-content-overlay {
   position: fixed;
   top: 0;
