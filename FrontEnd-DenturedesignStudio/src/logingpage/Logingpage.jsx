@@ -2,10 +2,9 @@ import React, { useState } from "react";
 import "./Logingpage.css";
 import Back from "../backbutton/Back";
 import { useNavigate } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import Axios from "axios";
 import bcrypt from "bcryptjs";
+import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 
 function Loginpage() {
   let navigate = useNavigate();
@@ -112,7 +111,11 @@ function Loginpage() {
               onClick={() => setShowPassword(!showPassword)}
               className="eyeicon1"
             >
-              <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} />
+              {showPassword ? (
+                <AiFillEyeInvisible size={"1.4vw"} />
+              ) : (
+                <AiFillEye size={"1.4vw"} />
+              )}
             </div>
             <p id="forget">
               <a href="/">Forgot Password?</a>
