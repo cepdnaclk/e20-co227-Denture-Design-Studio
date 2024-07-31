@@ -3,7 +3,8 @@ import { useLocation, useNavigate } from "react-router-dom";
 import "./Contents.css";
 import Home from "../homebutton/home";
 import materialIcon from "./materialIcon.png";
-import Uploadcontent from "../Uploadcontent/Uploadcontent";
+import Uploadcontent from "./Uploadcontent/Uploadcontent";
+import Removecontent from "./Removecontent/Removecontent";
 import axios from "axios";
 
 const Contents = () => {
@@ -14,10 +15,13 @@ const Contents = () => {
   const userdata = location.state?.userdata;
   const role = location.state?.role;
   const [addcontent, setAddcontent] = useState(false);
+  const [removecontent, setremovecontent] = useState(false);
+  const [materialToRemove, setMaterialToRemove] = useState(null);
 
   const addMaterial = (content) => {
     setAddcontent(false);
   };
+
   useEffect(() => {
     axios
       .get("http://localhost:5000/lecture")
@@ -31,7 +35,7 @@ const Contents = () => {
 
   const handleOpen = (material) => {
     const roles = "/assessorcontent";
-    navigate("/viewcontent", { state: { material, role, roles } });
+    navigate("/viewcontent", { state: { material, role, roles, userdata } });
   };
 
   const handleDownload = (material) => {
@@ -40,16 +44,8 @@ const Contents = () => {
 
   const handleRemove = (material) => {
     console.log("Deleting lecture with ID:", material._id);
-    axios
-      .delete(`http://localhost:5000/lecture/delete/${material._id}`)
-      .then((response) => {
-        console.log("Response:", response.data);
-        setMaterials(materials.filter((m) => m !== material));
-      })
-      .catch((error) => {
-        console.error("There was an error deleting the lecture!", error);
-        alert("Failed to delete lecture");
-      });
+    setMaterials(materials.filter((m) => m !== material));
+    setremovecontent(false);
   };
 
   return (
@@ -83,7 +79,14 @@ const Contents = () => {
                 <button onClick={() => handleDownload(material)}>
                   Download
                 </button>
-                <button onClick={() => handleRemove(material)}>Remove</button>
+                <button
+                  onClick={() => {
+                    setremovecontent(true);
+                    setMaterialToRemove(material);
+                  }}
+                >
+                  Remove
+                </button>
               </div>
             </div>
           ))}
@@ -95,6 +98,13 @@ const Contents = () => {
           <Uploadcontent
             onUpload={addMaterial}
             onback={() => setAddcontent(false)}
+          />
+        )}
+        {removecontent && materialToRemove && (
+          <Removecontent
+            material={materialToRemove}
+            remove={handleRemove}
+            back={() => setremovecontent(false)}
           />
         )}
       </div>

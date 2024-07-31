@@ -1,20 +1,31 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import "./StudentsContents.css";
-import Home from "../homebutton/home";
+import Home from "../homebutton/home"; // Ensure the correct path
 import materialIcon from "../Contents/materialIcon.png";
+import axios from "axios";
 
 const StudentsContents = () => {
   const [materials, setMaterials] = useState([]);
-
   const navigate = useNavigate();
   const location = useLocation();
+  const role = location.state?.role;
   const userdata = location.state?.userdata;
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:5000/lecture")
+      .then((response) => {
+        setMaterials(response.data);
+      })
+      .catch((error) => {
+        console.error("There was an error fetching the lectures!", error);
+      });
+  }, []);
 
   const handleOpen = (material) => {
     const roles = "/studentscontents";
-    navigate("/viewcontent", { state: { material, roles } });
-    // Implement logic to open the material
+    navigate("/viewcontent", { state: { material, role, roles, userdata } });
   };
 
   const handleDownload = (material) => {
@@ -31,9 +42,7 @@ const StudentsContents = () => {
       <div className="studentscontentspage">
         <header className="contentheader">
           <div className="home-icon">
-            <Home
-              onClick={() => navigate("/studenthome", { state: { userdata } })}
-            />
+            <Home onClick={() => navigate(role, { state: { userdata } })} />
           </div>
           <h1>Contents</h1>
         </header>
@@ -46,11 +55,10 @@ const StudentsContents = () => {
                   alt="Material Icon"
                   className="material-icon"
                 />
-                <span className="material-title" title={material}>
-                  {material}
+                <span className="material-title" title={material.title}>
+                  {material.title}
                 </span>
               </div>
-
               <div className="actions2">
                 <button onClick={() => handleOpen(material)}>Open</button>
                 <button onClick={() => handleDownload(material)}>

@@ -2,8 +2,7 @@ import "./signup.css";
 import React, { useState } from "react";
 import Back from "../backbutton/Back";
 import { useNavigate } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
+import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import axios from "axios";
 import Swal from "sweetalert2";
 
@@ -143,7 +142,11 @@ function Signup() {
             onClick={() => setShowPassword(!showPassword)}
             className="eyeicon"
           >
-            <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} />
+            {showPassword ? (
+              <AiFillEyeInvisible size={"1.4vw"} />
+            ) : (
+              <AiFillEye size={"1.4vw"} />
+            )}
           </div>
         </div>
         <div className="signinput" id="signinput6">
@@ -157,7 +160,11 @@ function Signup() {
             onClick={() => setShowComPassword(!showComPassword)}
             className="eyeicon"
           >
-            <FontAwesomeIcon icon={showComPassword ? faEyeSlash : faEye} />
+            {showPassword ? (
+              <AiFillEyeInvisible size={"1.4vw"} />
+            ) : (
+              <AiFillEye size={"1.4vw"} />
+            )}
           </div>
         </div>
         <div>

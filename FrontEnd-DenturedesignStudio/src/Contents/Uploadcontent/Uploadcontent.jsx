@@ -1,43 +1,32 @@
 import React, { useState } from "react";
-import {
-  getStorage,
-  ref,
-  uploadBytesResumable,
-  getDownloadURL,
-} from "firebase/storage";
-import { initializeApp } from "firebase/app";
+import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import { storage } from "../../../firebase.config";
 import "./Uploadcontent.css";
 import back from "./back.png";
 import axios from "axios";
-
-const firebaseConfig = {
-  apiKey: "AIzaSyD-3rkJLYHfuHJaT1ED3d7xjaBnm509KTU",
-  authDomain: "denture-design.firebaseapp.com",
-  projectId: "denture-design",
-  storageBucket: "denture-design.appspot.com",
-  messagingSenderId: "1017446132796",
-  appId: "1:1017446132796:web:2310bde5d03176e7b86739",
-};
-
-const app = initializeApp(firebaseConfig);
-const storage = getStorage(app);
+import { WiCloudUp } from "react-icons/wi";
 
 function Uploadcontent({ onUpload, onback }) {
   const [title, setTitle] = useState("");
   const [file, setFile] = useState(null);
   const [description, setDescription] = useState("");
   const [uploadProgress, setUploadProgress] = useState(0);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleUpload = async () => {
+    if (!title) {
+      setErrorMessage("Title is required!");
+      return;
+    }
     if (!file) return;
 
     const currentDate = new Date().toISOString().split("T")[0];
 
     const originalFileName = file.name;
-    const newFileName = `${currentDate}_${originalFileName}`;
+    const newFileName = `${currentDate}_${title}`;
 
     const folder = file.type.startsWith("video") ? "videos" : "pdfs";
-    const storageRef = ref(storage, `${folder}/${newFileName}`);
+    const storageRef = ref(storage, `lectures/${folder}/${newFileName}`);
 
     try {
       const uploadTask = uploadBytesResumable(storageRef, file);
@@ -69,6 +58,7 @@ function Uploadcontent({ onUpload, onback }) {
           setFile(null);
           setDescription("");
           setUploadProgress(0);
+          setErrorMessage("");
         }
       );
     } catch (error) {
@@ -87,7 +77,13 @@ function Uploadcontent({ onUpload, onback }) {
           className="title"
           value={title}
           required
-          onChange={(e) => setTitle(e.target.value)}
+          placeholder={errorMessage ? errorMessage : ""}
+          onChange={(e) => {
+            setTitle(e.target.value);
+            if (errorMessage) {
+              setErrorMessage("");
+            }
+          }}
         />
         <h2 className="add-video">Add video/pdf</h2>
         {uploadProgress > 0 && uploadProgress < 100 ? (
@@ -96,11 +92,25 @@ function Uploadcontent({ onUpload, onback }) {
             <progress value={uploadProgress} max="100" />
           </div>
         ) : (
-          <input
-            type="file"
+          <div
             className="content-video"
-            onChange={(e) => setFile(e.target.files[0])}
-          />
+            onClick={() =>
+              document.querySelector(".content-video-file").click()
+            }
+          >
+            <input
+              type="file"
+              className="content-video-file"
+              onChange={(e) => setFile(e.target.files[0])}
+              hidden
+              accept="video/*"
+            />
+            {file ? (
+              <h4>{file.name}</h4>
+            ) : (
+              <WiCloudUp size={"4vw"} color="black" opacity={0.55} />
+            )}
+          </div>
         )}
         <h2 className="add-description">Add description</h2>
         <textarea

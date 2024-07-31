@@ -227,7 +227,7 @@
 .progress-bar {
   display: flex;
   flex-direction: column;
-  margin-top: 6vh;
+  margin-top: 10vh;
 
   label {
     font-family: "Salsa";
