@@ -1,15 +1,10 @@
 import React, { useState } from "react";
-import {
-  getStorage,
-  ref,
-  uploadBytesResumable,
-  getDownloadURL,
-} from "firebase/storage";
+import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { storage } from "../../firebase.config";
 import { WiCloudUp } from "react-icons/wi";
 import Swal from "sweetalert2";
 
-const AddMaterial = ({ handleClose }) => {
+const AddImage = ({ handleClose }) => {
   const [img, setImg] = useState(null);
 
   const uploadImg = () => {
@@ -18,7 +13,7 @@ const AddMaterial = ({ handleClose }) => {
       return;
     }
     const fileName = img.name;
-    const imgRef = ref(storage, `Material/${fileName}`);
+    const imgRef = ref(storage, `Answer/${fileName}`);
     const uploadTask = uploadBytesResumable(imgRef, img);
 
     uploadTask.on(
@@ -43,16 +38,17 @@ const AddMaterial = ({ handleClose }) => {
       }
     );
   };
+
   return (
-    <div className="AMoverly">
-      <div className="AMcontent">
-        <button className="AMclose-button" onClick={handleClose}>
+    <div className="AIoverly">
+      <div className="AIcontent">
+        <button className="AIclose-button" onClick={handleClose}>
           X
         </button>
-        <h2 className="AMheader">Upload Material</h2>
-        <p className="AMformat">Supported formats: .png, .jpg, .jpeg</p>
+        <h2 className="AIheader">Upload Image</h2>
+        <p className="AIformat">Supported formats: .png, .jpg, .jpeg</p>
         <div
-          className="AMimageUpload"
+          className="AImageUpload"
           onClick={() => document.querySelector(".inputimage").click()}
         >
           <input
@@ -67,12 +63,12 @@ const AddMaterial = ({ handleClose }) => {
             <WiCloudUp size={"4vw"} color="black" opacity={0.55} />
           )}
         </div>
-        <button className="AMUpload" onClick={uploadImg}>
-          Upload Material
+        <button className="AIUpload" onClick={uploadImg}>
+          Upload Image
         </button>
       </div>
     </div>
   );
 };
 
-export default AddMaterial;
+export default AddImage;
