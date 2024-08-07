@@ -23,13 +23,8 @@
 
 .UAMTeethBackground {
   position: absolute;
-  width: 23.9vw;
-  height: 76.937vh;
-  left: 25.269vw;
-  top: 8.152vw;
-
-  background: #d3ecff;
-  border-radius: 3.34vw;
+  left: -15vw;
+  top: 2.152vw;
 }
 
 .UAMButtons {
@@ -55,6 +50,10 @@
   color: #000000;
   text-shadow: 0vw 0.267vw 0.267vw rgba(0, 0, 0, 0.25);
   cursor: pointer;
+  transition: all 0.5s ease-in-out;
+}
+.UAMButtons:hover {
+  transform: scale(1.03);
 }
 #Addanswer {
   position: absolute;
@@ -76,19 +75,6 @@
   top: 15vw;
   left: 60vw;
 }
-.ADoverly {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-}
-
 .ADcontent {
   background: #30505b;
 
@@ -101,17 +87,8 @@
 }
 
 .close-button {
-  position: absolute;
-  background: #000;
-  border: none;
-  color: white;
-  padding: 0.8vw;
-  cursor: pointer;
-  border-radius: 1vw;
-  position: absolute;
   top: 9vw;
   left: 71.5vw;
-  box-shadow: 0.668vw 0.534vw 0.802vw rgba(0, 0, 0, 0.35);
 }
 
 .descriptionTextarea {
@@ -133,22 +110,24 @@
 
   color: #000;
 }
-.ADheader {
+.ADheader,
+.AAheader,
+.AMheader,
+.AIheader {
   position: absolute;
-  left: 41vw;
-  top: 7vw;
-
   font-family: "Salsa";
   font-style: normal;
   font-weight: 400;
-  font-size: 2.7vw;
   line-height: 134.77%;
-  /* or 65px */
   display: flex;
   align-items: center;
   text-align: center;
-
   color: #cdf8fd;
+}
+.ADheader {
+  left: 41vw;
+  top: 7vw;
+  font-size: 2.7vw;
 }
 
 .ADUpload {
@@ -176,8 +155,12 @@
   color: #000000;
   text-shadow: 0vw 0.267vw 0.267vw rgba(0, 0, 0, 0.25);
   cursor: pointer;
+  transition: all 0.5s ease-in-out;
 }
-.AAoverly {
+.AAoverly,
+.AIoverly,
+.ADoverly,
+.AMoverly {
   position: fixed;
   top: 0;
   left: 0;
@@ -200,21 +183,9 @@
   text-align: center;
 }
 .AAheader {
-  position: absolute;
   left: 42vw;
   top: 10vw;
-
-  font-family: "Salsa";
-  font-style: normal;
-  font-weight: 400;
   font-size: 2.7vw;
-  line-height: 134.77%;
-  /* or 65px */
-  display: flex;
-  align-items: center;
-  text-align: center;
-
-  color: #cdf8fd;
 }
 
 .AAUploadImage {
@@ -242,6 +213,7 @@
   color: #000000;
   text-shadow: 0vw 0.267vw 0.267vw rgba(0, 0, 0, 0.25);
   cursor: pointer;
+  transition: all 0.5s ease-in-out;
 }
 .AADesign {
   position: absolute;
@@ -268,32 +240,11 @@
   color: #000000;
   text-shadow: 0vw 0.267vw 0.267vw rgba(0, 0, 0, 0.25);
   cursor: pointer;
+  transition: all 0.5s ease-in-out;
 }
 .AAclose-button {
-  position: absolute;
-  background: #000;
-  border: none;
-  color: white;
-  padding: 0.8vw;
-  cursor: pointer;
-  border-radius: 1vw;
-  position: absolute;
-  top: 11.5vw;
+  top: 12.5vw;
   left: 66.9vw;
-  box-shadow: 0.668vw 0.534vw 0.802vw rgba(0, 0, 0, 0.35);
-}
-
-.AMoverly {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
 }
 
 .AMcontent {
@@ -308,17 +259,8 @@
 }
 
 .AMclose-button {
-  position: absolute;
-  background: #000;
-  border: none;
-  color: white;
-  padding: 0.8vw;
-  cursor: pointer;
-  border-radius: 1vw;
-  position: absolute;
   top: 9vw;
   left: 66.5vw;
-  box-shadow: 0.668vw 0.534vw 0.802vw rgba(0, 0, 0, 0.35);
 }
 
 .AMdescriptionTextarea {
@@ -341,21 +283,9 @@
   color: #000;
 }
 .AMheader {
-  position: absolute;
   left: 41vw;
   top: 7vw;
-
-  font-family: "Salsa";
-  font-style: normal;
-  font-weight: 400;
   font-size: 2.7vw;
-  line-height: 134.77%;
-  /* or 65px */
-  display: flex;
-  align-items: center;
-  text-align: center;
-
-  color: #cdf8fd;
 }
 
 .AMUpload {
@@ -383,6 +313,7 @@
   color: #000000;
   text-shadow: 0vw 0.267vw 0.267vw rgba(0, 0, 0, 0.25);
   cursor: pointer;
+  transition: all 0.5s ease-in-out;
 }
 .AMformat {
   position: absolute;
@@ -400,6 +331,143 @@
   text-align: center;
 
   color: #7dede7;
+}
+.AMimageUpload {
+  position: absolute;
+  width: 30vw;
+  height: 10vw;
+  left: 35vw;
+  top: 18.5vw;
+  background-color: #d3ecff;
+  font-family: "Salsa";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.3vw;
+  line-height: 134.77%;
+  /* or 65px */
+  display: flex;
+  align-items: center;
+  text-align: center;
+  vertical-align: center;
+  color: #000;
+  justify-content: center;
+}
+
+.AIcontent {
+  background: #30505b;
+
+  width: 40vw;
+  height: 30vw;
+
+  border-radius: 20px;
+  box-shadow: 10px 10px 11px rgba(0, 0, 0, 0.42);
+  text-align: center;
+  align-items: center;
+}
+
+.AIclose-button {
+  top: 9.5vw;
+  left: 67vw;
+}
+.AImageUpload {
+  position: absolute;
+  width: 30vw;
+  height: 10vw;
+  left: 35vw;
+  top: 18.5vw;
+  background-color: #d3ecff;
+  font-family: "Salsa";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.3vw;
+  line-height: 134.77%;
+  /* or 65px */
+  display: flex;
+  align-items: center;
+  text-align: center;
+  vertical-align: center;
+  color: #000;
+  justify-content: center;
+}
+
+.AIheader {
+  left: 41vw;
+  top: 7vw;
+  font-size: 2.7vw;
+}
+
+.AIUpload {
+  position: absolute;
+  width: 19vw;
+  height: 3vw;
+  margin: 0;
+  left: 40vw;
+  top: 31.5vw;
+
+  background: #66d8d8;
+  border-bottom: 0.2vw solid #000000;
+  box-shadow: 0.668vw 0.534vw 0.802vw rgba(0, 0, 0, 0.35);
+  border-radius: 1.336vw;
+  border: none;
+
+  font-family: "Salsa";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.5vw;
+
+  align-items: center;
+  text-align: center;
+
+  color: #000000;
+  text-shadow: 0vw 0.267vw 0.267vw rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+  transition: all 0.5s ease-in-out;
+}
+
+.AIformat {
+  position: absolute;
+  left: 35vw;
+  top: 14vw;
+
+  font-family: "Salsa";
+  font-style: normal;
+  font-weight: 200;
+  font-size: 1.2vw;
+  line-height: 134.77%;
+  /* or 65px */
+  display: flex;
+  align-items: center;
+  text-align: center;
+
+  color: #7dede7;
+}
+
+.AIclose-button,
+.AMclose-button,
+.AAclose-button,
+.close-button {
+  position: absolute;
+  background: #000;
+  border: none;
+  color: white;
+  padding: 0.8vw;
+  cursor: pointer;
+  border-radius: 1vw;
+  position: absolute;
+
+  box-shadow: 0.668vw 0.534vw 0.802vw rgba(0, 0, 0, 0.35);
+  transition: all 0.5s ease-in-out;
+}
+.AIUpload:hover,
+.AIclose-button:hover,
+.AADesign:hover,
+.AAUploadImage:hover,
+.AAclose-button:hover,
+.ADUpload:hover,
+.close-button:hover,
+.AMclose-button:hover,
+.AMUpload:hover {
+  transform: scale(1.03);
 }
 
 @media (max-width: 900px) {

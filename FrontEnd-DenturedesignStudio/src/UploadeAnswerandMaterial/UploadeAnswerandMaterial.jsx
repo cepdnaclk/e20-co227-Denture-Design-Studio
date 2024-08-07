@@ -6,6 +6,7 @@ import React, { useState } from "react";
 import AddDescription from "./AddDescription.jsx";
 import AddMaterial from "./AddMaterials.jsx";
 import AddAnswer from "./AddAnswer.jsx";
+import Teeth from "../TeethComp/Teeth.jsx";
 
 function UploadeAnswerandMaterial() {
   let navigate = useNavigate();
@@ -17,6 +18,7 @@ function UploadeAnswerandMaterial() {
   const [isAddDescriptionOpen, setIsAddDescriptionOpen] = useState(false);
   const [isAddAnswerOpen, setIsAddAnswerOpen] = useState(false);
   const [isAddMaterialsOpen, setIsAddMaterialsOpen] = useState(false);
+  const [isAddImageOpen, setIsAddImageOpen] = useState(false);
 
   const openAddDescription = () => {
     setIsAddDescriptionOpen(true);
@@ -32,6 +34,7 @@ function UploadeAnswerandMaterial() {
   };
   const closeAddAnswer = () => {
     setIsAddAnswerOpen(false);
+    setIsAddImageOpen(false);
     document.body.classList.remove("active-popup");
   };
   const openAddMaterials = () => {
@@ -42,7 +45,10 @@ function UploadeAnswerandMaterial() {
     setIsAddMaterialsOpen(false);
     document.body.classList.remove("active-popup");
   };
-
+  const openAddImage = () => {
+    setIsAddImageOpen(true);
+    document.body.classList.remove("active-popup");
+  };
   return (
     <div className="designPage">
       <Home onClick={() => handleClick("/assessorhome")}></Home>
@@ -56,12 +62,21 @@ function UploadeAnswerandMaterial() {
 
       <h1 className="UAMHeader">Upload Answer/ Material/ Description</h1>
 
-      <div className="UAMTeethBackground"></div>
+      <div className="UAMTeethBackground">
+        <Teeth click={(index) => console.log(`Clicked tooth ${index}`)} />
+      </div>
       <div className="UAMButtonsbox">
         <button className="UAMButtons" id="Addanswer" onClick={openAddAnswer}>
           Add Answer
         </button>
-        {isAddAnswerOpen && <AddAnswer handleClose={closeAddAnswer} />}
+        {isAddAnswerOpen && (
+          <AddAnswer
+            handleClose={closeAddAnswer}
+            openAddImage={openAddImage}
+            isAddImageOpen={isAddImageOpen}
+            closeAddImage={closeAddAnswer}
+          />
+        )}
 
         <button
           className="UAMButtons"

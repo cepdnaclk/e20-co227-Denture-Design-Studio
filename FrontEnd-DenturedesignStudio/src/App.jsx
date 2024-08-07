@@ -27,6 +27,7 @@ import Studentprogress from "./studentProgress/Studentprogress";
 import Myaccountview from "./Myaccountview/Myaccountview";
 import Teeth from "./TeethComp/Teeth";
 import Viewcontent from "./viewContent/Viewcontent";
+import UploadeAnswerandMaterial from "./UploadeAnswerandMaterial/UploadeAnswerandMaterial";
 import VerifyEmail from "./Signinpage/verify/Verify";
 import "./App.css";
 
@@ -77,7 +78,14 @@ function App() {
           <Route exact path="/myaccount" element={<Myaccountview />} />
           <Route exact path="/teeth" element={<Teeth />} />
           <Route exact path="/viewcontent" element={<Viewcontent />} />
+          <Route
+            exact
+            path="/uploadanswerandmaterial"
+            element={<UploadeAnswerandMaterial />}
+          />
+
           <Route exact path="/verify/:token" element={<VerifyEmail />} />
+
         </Routes>
       </Router>
     </TimeProvider>
