@@ -5,12 +5,22 @@ import { useNavigate } from "react-router-dom";
 import Axios from "axios";
 import bcrypt from "bcryptjs";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
-
+import Swal from "sweetalert2";
 function Loginpage() {
   let navigate = useNavigate();
 
   function clickhandle(path, userdata) {
-    navigate(path, { state: { userdata } });
+    if (userdata.isVerified) {
+      navigate(path, { state: { userdata } });
+    } else {
+      Swal.fire({
+        title: "Error logging",
+        text: "You have to verify youre account first!",
+        icon: "error",
+        background: "#2f5770",
+        color: "white",
+      });
+    }
   }
 
   const [user_name, setUsername] = useState("");
@@ -87,7 +97,7 @@ function Loginpage() {
   return (
     <div className="logingpage">
       <div className="back">
-        <Back onclick={() => clickhandle("/")} />
+        <Back onclick={() => navigate("/")} />
       </div>
       <link
         rel="stylesheet"
