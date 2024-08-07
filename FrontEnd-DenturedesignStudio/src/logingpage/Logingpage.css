@@ -151,10 +151,9 @@ body {
   color: #0c4b29;
 }
 .login2:hover {
-  width: 17.3vw;
-  height: 4.3vw;
+  transform: scale(1.03);
   cursor: pointer;
-  border-radius: 1.4vw;
+  transition: all 0.5s ease;
 }
 
 .back {

@@ -59,8 +59,8 @@ function Signup() {
       });
 
       await Swal.fire({
-        title: "Account created successfully",
-        text: "Please log in to your account",
+        title: "Thank you for registering.  ",
+        text: "A verification email has been sent to your provided email address. Please check your inbox ",
         icon: "success",
         background: "#2f5770",
         color: "white",
@@ -160,7 +160,7 @@ function Signup() {
             onClick={() => setShowComPassword(!showComPassword)}
             className="eyeicon"
           >
-            {showPassword ? (
+            {showComPassword ? (
               <AiFillEyeInvisible size={"1.4vw"} />
             ) : (
               <AiFillEye size={"1.4vw"} />
