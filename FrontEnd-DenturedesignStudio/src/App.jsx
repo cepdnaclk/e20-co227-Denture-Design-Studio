@@ -28,6 +28,7 @@ import Myaccountview from "./Myaccountview/Myaccountview";
 import Teeth from "./TeethComp/Teeth";
 import Viewcontent from "./viewContent/Viewcontent";
 import UploadeAnswerandMaterial from "./UploadeAnswerandMaterial/UploadeAnswerandMaterial";
+import VerifyEmail from "./Signinpage/verify/Verify";
 import "./App.css";
 
 function App() {
@@ -82,6 +83,9 @@ function App() {
             path="/uploadanswerandmaterial"
             element={<UploadeAnswerandMaterial />}
           />
+
+          <Route exact path="/verify/:token" element={<VerifyEmail />} />
+
         </Routes>
       </Router>
     </TimeProvider>
