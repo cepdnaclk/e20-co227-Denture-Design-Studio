@@ -10,7 +10,6 @@ import Teeth from "../TeethComp/Teeth.jsx";
 
 function UploadeAnswerandMaterial() {
   let navigate = useNavigate();
-
   function handleClick(path) {
     navigate(path);
   }
