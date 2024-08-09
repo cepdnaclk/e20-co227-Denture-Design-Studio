@@ -12,11 +12,12 @@ body {
   left: 0;
   width: 100vw;
   height: 100vh;
-  background:linear-gradient(90deg, #2f5770 -1.26%, #609c94 100%),url(./homebackground.png);
+  background: linear-gradient(90deg, #2f5770 -1.26%, #609c94 100%),
+    url(./homebackground.png);
   background-size: cover;
   background-position: center;
-  background-blend-mode:overlay;
-  opacity: 0.78; 
+  background-blend-mode: overlay;
+  opacity: 0.78;
   z-index: -1;
 }
 .appname {
@@ -93,18 +94,10 @@ body {
   font-size: 2.138vw;
   line-height: 134.77%;
   border: none;
+  transition: all 0.5s ease;
 }
 .login:hover {
-  position: absolute;
-  left: 7%;
-  max-width: 300px;
-  width: 20.04vw;
-  height: 5.01vw;
-  top: 82%;
-  background: #66d8d8;
-  border-bottom: 3px solid #000000;
-  box-shadow: 10px 8px 12px rgba(0, 0, 0, 0.35);
-  border-radius: 1.336vw;
+  transform: scale(1.03);
   cursor: pointer;
   border: none;
 }
@@ -126,18 +119,10 @@ body {
   font-size: 2.138vw;
   line-height: 134.77%;
   border: none;
+  transition: all 0.5s ease;
 }
 .signup:hover {
-  position: absolute;
-  left: 30%;
-  max-width: 300px;
-  width: 20.04vw;
-  height: 5.01vw;
-  top: 82%;
-  background: #66d8d8;
-  border-bottom: 3px solid #000000;
-  box-shadow: 10px 8px 12px rgba(0, 0, 0, 0.35);
-  border-radius: 1.336vw;
+  transform: scale(1.03);
   cursor: pointer;
   border: none;
 }
@@ -165,22 +150,21 @@ body {
 @media (max-width: 480px) {
   .appname {
     font-size: 10vw;
-    
+
     width: 69vw;
     left: 10%;
-
   }
 
   .welcome {
     font-size: 8vw;
   }
 
-  .login{
+  .login {
     font-size: 5vw;
     left: 15%;
     width: 25vw;
     height: 7vw;
-    top: 60%; 
+    top: 60%;
   }
   .signup {
     font-size: 5vw;
@@ -189,14 +173,14 @@ body {
     width: 25vw;
     height: 7vw;
   }
-  .login:hover{
+  .login:hover {
     font-size: 5vw;
     left: 15%;
     width: 25.5vw;
     height: 7.5vw;
     top: 60%;
   }
-  .signup:hover{
+  .signup:hover {
     font-size: 5vw;
     left: 45%;
     top: 60%;

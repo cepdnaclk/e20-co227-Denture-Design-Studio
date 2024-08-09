@@ -55,4 +55,5 @@
   font-size: 1.5vw;
   color: #ffffff;
   line-height: 1.5;
+  white-space: pre-wrap;
 }

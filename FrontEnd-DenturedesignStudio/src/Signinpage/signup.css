@@ -1,170 +1,161 @@
 body {
-   position: relative;
-   width: 100vw;
-   height: 100vh;
-   margin: 0;
-   padding: 0;
-   overflow: hidden;
- }
- .signuppage{
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+.signuppage {
   position: absolute;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
   background: linear-gradient(-90deg, #2f5770 -1.26%, #609c94 100%);
-
-
- }
-.signuppage::before{
-   content: "";
-   position: absolute;
-   top: 12.625vh;
-   left: 49.967vw;
-   width: 45.291vw;
-   height: 34.335vw;
-   background-image: url(./signupbackground.png);
-   background-size: cover;
-   background-position: center;
-   opacity: 1;
-   z-index: 0;  
-
 }
-.contentbox2{
-   position: absolute;
-width: 47.361vw;
-height: 43vw;
-left: 13.093vw;
-top: 1.306vw;
-max-width: 700px;
-background: #D9D9D9;
-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-border-radius: 3vw;
-
-}
-.signinput{
+.signuppage::before {
+  content: "";
   position: absolute;
-   width: 20.228vw;
-   height: 3.804vw;
-   line-height: 0;
-   left: 5vw;
-   h5{
+  top: 12.625vh;
+  left: 49.967vw;
+  width: 45.291vw;
+  height: 34.335vw;
+  background-image: url(./signupbackground.png);
+  background-size: cover;
+  background-position: center;
+  opacity: 1;
+  z-index: 0;
+}
+.contentbox2 {
+  position: absolute;
+  width: 47.361vw;
+  height: 43vw;
+  left: 13.093vw;
+  top: 1.306vw;
+  max-width: 700px;
+  background: #d9d9d9;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 3vw;
+}
+.signinput {
+  position: absolute;
+  width: 20.228vw;
+  height: 3.804vw;
+  line-height: 0;
+  left: 5vw;
+  h5 {
     position: absolute;
     left: 20vw;
     height: 4vw;
     width: 18vw;
-   }
+  }
 }
 
-.swt-popup{
-  
+.swt-popup {
   width: 25vw;
-  height: 15vw; 
+  height: 15vw;
   border-radius: 3vw;
-  font-family: 'salsa';
- line-height:normal;
+  font-family: "salsa";
+  line-height: normal;
   margin: 0;
-   
 }
-.swt-text{
+.swt-text {
   position: absolute;
   font-size: 2vw;
-  margin:0;
-  padding:0;
-  width:20vw;
+  margin: 0;
+  padding: 0;
+  width: 20vw;
   left: 2.5vw;
-  top:4vw;
+  top: 4vw;
   color: rgb(255, 82, 82);
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
-.swt-text1{
+.swt-text1 {
   position: absolute;
   font-size: 2vw;
-  margin:0;
-  padding:0;
-  width:20vw;
+  margin: 0;
+  padding: 0;
+  width: 20vw;
   left: 2.5vw;
-  top:1.6vw;
+  top: 1.6vw;
   color: rgb(255, 82, 82);
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
-.custom-ok{
+.custom-ok {
   background-color: #3085d6;
-  color: rgb(34, 18, 18); 
-  border: none; 
-  border-radius: 2vw; 
+  color: rgb(34, 18, 18);
+  border: none;
+  border-radius: 2vw;
   padding: 0;
   width: 5vw;
-  height: 3vw; 
+  height: 3vw;
   font-size: 3vw;
 }
 
-.signinput input{
-  
-box-sizing: border-box;
+.signinput input {
+  box-sizing: border-box;
 
-position: absolute;
-width: 21.109vw;
-height: 2.5vw;
-left: 0;
-top: 1.9vw;
+  position: absolute;
+  width: 21.109vw;
+  height: 2.5vw;
+  left: 0;
+  top: 1.9vw;
 
-background: #D3EBDD;
-mix-blend-mode: multiply;
-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-border: none;
-font-family: 'salsa';
-font-size: 1.3vw;
-}
-.signinput input:focus{
-
-  font-family: 'salsa';
+  background: #d3ebdd;
+  mix-blend-mode: multiply;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border: none;
+  font-family: "salsa";
   font-size: 1.3vw;
 }
-.signhead{
-  position: absolute;
-width: 21.109vw;
-height: 2.004vw;
-left: 0vw;
-top: 0vw;
-
-font-family: 'Salsa';
-font-style: normal;
-font-weight: 40;
-font-size: 1.603vw;
-line-height: 0px;
-display: flex;
-align-items: center;
-padding: 0;
-margin: 0;
-color: #0C4B29;
+.signinput input:focus {
+  font-family: "salsa";
+  font-size: 1.3vw;
 }
-.role{
+.signhead {
   position: absolute;
-width: 18.838vw;
-height: 6.004vw;
-left: 30.617vw;
-top: 7.018vw;
+  width: 21.109vw;
+  height: 2.004vw;
+  left: 0vw;
+  top: 0vw;
 
-font-family: 'Salsa';
-font-style: normal;
-font-weight: 400;
-font-size: 1.603vw;
-line-height: 1.937vw;
-display: flex;
-align-items: center;
-margin: 0;
-padding: 0;
-color: #0C4B29;
-
+  font-family: "Salsa";
+  font-style: normal;
+  font-weight: 40;
+  font-size: 1.603vw;
+  line-height: 0px;
+  display: flex;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+  color: #0c4b29;
 }
-.eyeicon{
+.role {
+  position: absolute;
+  width: 18.838vw;
+  height: 6.004vw;
+  left: 30.617vw;
+  top: 7.018vw;
+
+  font-family: "Salsa";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.603vw;
+  line-height: 1.937vw;
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  color: #0c4b29;
+}
+.eyeicon {
   position: absolute;
   left: 19.5vw;
   top: 2.8vw;
   cursor: pointer;
 }
-#Student1{
+#Student1 {
   margin: 0;
   padding: 0;
   position: absolute;
@@ -172,14 +163,14 @@ color: #0C4B29;
   left: 3vw;
   cursor: pointer;
 }
-#Student2{
+#Student2 {
   margin: 0;
   padding: 0;
   position: absolute;
   top: 4.5vw;
   left: 4.5vw;
 }
-#Assessor1{
+#Assessor1 {
   margin: 0;
   padding: 0;
   position: absolute;
@@ -187,54 +178,52 @@ color: #0C4B29;
   left: 3vw;
   cursor: pointer;
 }
-#Assessor2{
+#Assessor2 {
   margin: 0;
   padding: 0;
   position: absolute;
   top: 7vw;
   left: 4.5vw;
 }
-.header2{
+.header2 {
   position: absolute;
-width: 36.473vw;
-height: 4.676vw;
-left: 6.804vw;
-top: 1.14vw;
-margin: 0;
-padding: 0;
+  width: 36.473vw;
+  height: 4.676vw;
+  left: 6.804vw;
+  top: 1.14vw;
+  margin: 0;
+  padding: 0;
 
-font-family: 'Salsa';
-font-style: normal;
-font-weight: 400;
-font-size: 3.206vw;
-line-height: 3.941vw;
-display: flex;
-align-items: center;
-text-align: center;
+  font-family: "Salsa";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 3.206vw;
+  line-height: 3.941vw;
+  display: flex;
+  align-items: center;
+  text-align: center;
 
-color: #0C4B29;
-
+  color: #0c4b29;
 }
-#signinput1{ 
+#signinput1 {
   top: 7vw;
-  
 }
-#signinput2{ 
+#signinput2 {
   top: 12vw;
 }
-#signinput3{ 
+#signinput3 {
   top: 17vw;
 }
-#signinput4{ 
+#signinput4 {
   top: 22vw;
 }
-#signinput5{ 
+#signinput5 {
   top: 27vw;
 }
-#signinput6{ 
+#signinput6 {
   top: 32vw;
 }
-.sign2{
+.sign2 {
   position: absolute;
   width: 17.038vw;
   height: 4vw;
@@ -251,187 +240,175 @@ color: #0C4B29;
   line-height: 134.77%;
   border: none;
   color: #0c4b29;
+  transition: all 0.5s ease;
 }
-.sign2:hover{
-  width: 17.5vw;
-  height: 4.4vw;
+.sign2:hover {
+  transform: scale(1.03);
   cursor: pointer;
 }
 @media (max-width: 768px) {
-   .signuppage::before{
-       top: 30vh;
-   left: 25vw;
-   width: 80vw;
-   height: 60vw;
-   
-   }
-   .contentbox2{
-     position: absolute;
-     width: 55vw;
-     height: 60vw;
-     left: 13.093vw;
-     top: 1.306vw;
-     max-width: 450px;
-   }
-   
-     .signinput input{
-  
-        box-sizing: border-box;
-        
-        position: absolute;
-        width: 31vw;
-        height: 3vw;
-        left: 0;
-        top: 1.9vw;
-        font-size: 1.6vw;
-   }
-   .signinput input:focus{
-        font-size: 1.6vw;
-   }
-   #signinput1{ 
-     top: 7vw;
-     
+  .signuppage::before {
+    top: 30vh;
+    left: 25vw;
+    width: 80vw;
+    height: 60vw;
   }
-  #signinput2{ 
-     top: 14vw;
+  .contentbox2 {
+    position: absolute;
+    width: 55vw;
+    height: 60vw;
+    left: 13.093vw;
+    top: 1.306vw;
+    max-width: 450px;
   }
-  #signinput3{ 
-     top: 21vw;
-  }
-  #signinput4{ 
-     top: 28vw;
-  }
-  #signinput5{ 
-     top: 35vw;
-  }
-  #signinput6{ 
-     top: 42vw;
-  }
-  .sign2{
-     position: absolute;
-     width: 17.038vw;
-     height: 4vw;
-     left: 18vw;
-     top: 52vw;
-  }
-  .role{
-     position: absolute;
-  width: 18.838vw;
-  height: 6.004vw;
-  left: 40.617vw;
-  top: 8vw;
- 
-}
 
-#Student2{
-  top: 5vw;
-  left: 5.5vw;
-}
+  .signinput input {
+    box-sizing: border-box;
 
-#Assessor2{
+    position: absolute;
+    width: 31vw;
+    height: 3vw;
+    left: 0;
+    top: 1.9vw;
+    font-size: 1.6vw;
+  }
+  .signinput input:focus {
+    font-size: 1.6vw;
+  }
+  #signinput1 {
+    top: 7vw;
+  }
+  #signinput2 {
+    top: 14vw;
+  }
+  #signinput3 {
+    top: 21vw;
+  }
+  #signinput4 {
+    top: 28vw;
+  }
+  #signinput5 {
+    top: 35vw;
+  }
+  #signinput6 {
+    top: 42vw;
+  }
+  .sign2 {
+    position: absolute;
+    width: 17.038vw;
+    height: 4vw;
+    left: 18vw;
+    top: 52vw;
+  }
+  .role {
+    position: absolute;
+    width: 18.838vw;
+    height: 6.004vw;
+    left: 40.617vw;
+    top: 8vw;
+  }
 
-  top: 7.5vw;
-  left: 5.5vw;
-}
-.eyeicon{
-  left: 28vw;
-}
+  #Student2 {
+    top: 5vw;
+    left: 5.5vw;
+  }
+
+  #Assessor2 {
+    top: 7.5vw;
+    left: 5.5vw;
+  }
+  .eyeicon {
+    left: 28vw;
+  }
 }
 @media (max-width: 391px) {
-  .signuppage::before{
-      top: 30vh;
-  left: 25vw;
-  width: 80vw;
-  height: 65vw;
-  
+  .signuppage::before {
+    top: 30vh;
+    left: 25vw;
+    width: 80vw;
+    height: 65vw;
   }
-  .contentbox2{
+  .contentbox2 {
     position: absolute;
     width: 68vw;
     height: 85vw;
     left: 13.093vw;
     top: 20vw;
     max-width: 450px;
+  }
 
+  .signinput input {
+    box-sizing: border-box;
+
+    position: absolute;
+    width: 38vw;
+    height: 5vw;
+    left: 0;
+    top: 3vw;
+    font-size: 1.6vw;
   }
-  
-    .signinput input{
- 
-       box-sizing: border-box;
-       
-       position: absolute;
-       width: 38vw;
-       height: 5vw;
-       left: 0;
-       top: 3vw;
-       font-size: 1.6vw;
+  .signinput input:focus {
+    font-size: 1.6vw;
   }
-  .signinput input:focus{
-       font-size: 1.6vw;
-  }
-  #signinput1{ 
+  #signinput1 {
     top: 10vw;
-    
- }
- #signinput2{ 
+  }
+  #signinput2 {
     top: 20vw;
- }
- #signinput3{ 
+  }
+  #signinput3 {
     top: 30vw;
- }
- #signinput4{ 
+  }
+  #signinput4 {
     top: 40vw;
- }
- #signinput5{ 
+  }
+  #signinput5 {
     top: 50vw;
- }
- #signinput6{ 
+  }
+  #signinput6 {
     top: 60vw;
- }
- .sign2{
+  }
+  .sign2 {
     position: absolute;
     width: 20vw;
     height: 5vw;
     left: 25vw;
     top: 75vw;
- }
- .role{
+  }
+  .role {
     position: absolute;
- width: 18.838vw;
- height: 6.004vw;
- left: 48.617vw;
- top: 8vw;
- font-size: 3vw;
-
-}
-.header2{
-  left: 15vw;
-  width: 40vw;
-  font-size: 4vw;
-  top: 3vw;
-}
-.signhead{
-  font-size: 3vw;
-  width: 35vw;
-
-}
-#Student2{
- top: 6.8vw;
- left: 6.5vw;
-}
-#Student1{
-  top: 6vw;
-}
-#Assessor1{
-  top: 10vw;
-}
-#Assessor2{
-
- top: 10.8vw;
- left: 6.5vw;
-}
-.eyeicon{
- left: 33vw;
- top: 3.5vw;
-}
+    width: 18.838vw;
+    height: 6.004vw;
+    left: 48.617vw;
+    top: 8vw;
+    font-size: 3vw;
+  }
+  .header2 {
+    left: 15vw;
+    width: 40vw;
+    font-size: 4vw;
+    top: 3vw;
+  }
+  .signhead {
+    font-size: 3vw;
+    width: 35vw;
+  }
+  #Student2 {
+    top: 6.8vw;
+    left: 6.5vw;
+  }
+  #Student1 {
+    top: 6vw;
+  }
+  #Assessor1 {
+    top: 10vw;
+  }
+  #Assessor2 {
+    top: 10.8vw;
+    left: 6.5vw;
+  }
+  .eyeicon {
+    left: 33vw;
+    top: 3.5vw;
+  }
 }

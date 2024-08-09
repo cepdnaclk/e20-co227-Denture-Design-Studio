@@ -10,70 +10,56 @@
   font-family: "Salsa";
   font-weight: 400;
   font-size: 2.138vw;
-  
 
   color: #0a4626;
 
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  
-background: linear-gradient(90deg, #9ADECE 0%, #0B78B5 100%);
 
-box-shadow:  0.267vw 0.267vw 0.267vw rgba(3, 0.3, 0, 0.3);
+  background: linear-gradient(90deg, #9adece 0%, #0b78b5 100%);
 
-border-radius: 1.002vw;
-border: none;
-img{
-  position: absolute;
-  width: 3vw;
-  left: 28vw;
-  padding: 0;
-  margin: 0;
+  box-shadow: 0.267vw 0.267vw 0.267vw rgba(3, 0.3, 0, 0.3);
 
-}
-
-}
-.homecompbtn:hover{
-  width: 33vw;
-  height: 5vw;
-  cursor: pointer;
-  top: -0.2vw;
-  left: -0.2vw;
-  img{
+  border-radius: 1.002vw;
+  border: none;
+  transition: all 0.5s ease;
+  img {
     position: absolute;
     width: 3vw;
-    left: 28.5vw;
+    left: 28vw;
     padding: 0;
     margin: 0;
   }
 }
-@media(max-width:768px){
-  .homecompbtn{
+.homecompbtn:hover {
+  transform: scale(1.03);
+  cursor: pointer;
+}
+@media (max-width: 768px) {
+  .homecompbtn {
     width: 50vw;
     height: 7vw;
-  
+
     font-size: 4vw;
-    img{
+    img {
       position: absolute;
       width: 5vw;
       left: 43vw;
       padding: 0;
       margin: 0;
-    
     }
   }
-  .homecompbtn:hover{
+  .homecompbtn:hover {
     width: 50.5vw;
     height: 8.5vw;
     cursor: pointer;
     top: -0.2vw;
     left: -0.2vw;
-    img{
+    img {
       position: absolute;
       width: 5vw;
       left: 43.5vw;
       padding: 0;
       margin: 0;
-    
     }
   }
 }
