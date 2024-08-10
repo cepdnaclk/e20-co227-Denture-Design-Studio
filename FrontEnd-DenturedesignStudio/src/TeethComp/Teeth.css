@@ -21,14 +21,22 @@
   padding: 0;
   width: 2vw;
   height: 2vw;
+  opacity: 1;
+  transition: opacity 0.3s ease;
   img {
     width: 2.3vw;
   }
 }
 
-.teeth-btn:hover {
-  transform: scale(1.2);
+.teeth-btn.selected {
+  opacity: 0.5;
 }
+
+.teeth-btn:hover {
+  opacity: 0.7; /* Slightly reduced opacity on hover */
+}
+
+
 
 .teeth-btn:nth-child(1) {
   left: 19.5%;
