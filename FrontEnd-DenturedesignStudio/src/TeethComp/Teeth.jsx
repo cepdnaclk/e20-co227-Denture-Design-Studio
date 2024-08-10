@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Teeth.css";
 
 // Import all the images
@@ -72,13 +72,29 @@ const images = [
 ];
 
 const Teeth = ({ click }) => {
-  const handleClick = (index) => () => click(index);
+  // State to track which buttons are selected
+  const [selectedTeeth, setSelectedTeeth] = useState(Array(32).fill(false));
+
+  const handleClick = (index) => {
+  
+
+    // Toggle the selected state for the clicked tooth
+    setSelectedTeeth(prevState => {
+      const newState = [...prevState];
+      newState[index] = !newState[index];
+      return newState;
+    });
+  };
 
   return (
     <div className="teethBackground2">
       {Array.from({ length: 32 }, (_, index) => (
-        <button key={index} className="teeth-btn" onClick={handleClick(index)}>
-          <img src={images[index]} alt={"teeth"} />
+        <button
+          key={index}
+          className={`teeth-btn ${selectedTeeth[index] ? 'selected' : ''}`}
+          onClick={() => handleClick(index)}
+        >
+          <img src={images[index]} alt={`Tooth ${index + 1}`} />
         </button>
       ))}
     </div>
