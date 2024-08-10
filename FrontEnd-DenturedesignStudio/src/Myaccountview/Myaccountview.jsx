@@ -10,7 +10,7 @@ function Myaccountview() {
   const navigate = useNavigate();
   const location = useLocation();
   const user = location.state?.user;
-  const userdata = location.state?.userdata;
+  const [userdata, setUserdata] = useState(location.state?.userdata);
   const [editdetails, seteditdetails] = useState(false);
 
   const formatdate = (datestring) => {
@@ -24,7 +24,13 @@ function Myaccountview() {
       second: "2-digit",
     });
   };
-
+  const handleSave = (updatedData) => {
+    setUserdata((prevData) => ({
+      ...prevData,
+      ...updatedData,
+    }));
+    seteditdetails(false);
+  };
   return (
     <div className="my-account-view">
       <link
@@ -53,7 +59,14 @@ function Myaccountview() {
         <h3 id="email-show">Email address:</h3>
         <h4 id="email">{userdata.email}</h4>
       </div>
-      {editdetails && <Editdetails userdata={userdata} />}
+      {editdetails && (
+        <Editdetails
+          user={user}
+          userdata={userdata}
+          cancel={() => seteditdetails(false)}
+          save={handleSave}
+        />
+      )}
       <div className="loging-activity-container">
         <h2>Login activity</h2>
         <h3 className="first-access">First access to the site :</h3>

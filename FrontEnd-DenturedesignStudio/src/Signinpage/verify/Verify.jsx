@@ -16,7 +16,15 @@ const VerifyEmail = () => {
         console.log(response);
       })
       .catch((error) => {
-        setStatus("Verification failed. Invalid or expired token.");
+        axios
+          .get(`http://localhost:5000/assessor/verify/${token}`)
+          .then((response) => {
+            setStatus("Email verified successfully!");
+            console.log(response);
+          })
+          .catch((err) => {
+            setStatus("Verification failed. Invalid or expired token.");
+          });
       });
   }, [token]);
 
