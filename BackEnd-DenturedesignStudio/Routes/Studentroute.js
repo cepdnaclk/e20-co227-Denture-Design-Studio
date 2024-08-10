@@ -137,7 +137,7 @@ router.put("/edit", async (req, res) => {
   try {
     const student = await Student.findOne({ user_name });
     const existstudent = await Student.findOne({ user_name: newuser_name });
-    if (existstudent) {
+    if (existstudent && existstudent.email !== student.email) {
       return res.status(409).send({ status: "user name is already taken" });
     }
 
