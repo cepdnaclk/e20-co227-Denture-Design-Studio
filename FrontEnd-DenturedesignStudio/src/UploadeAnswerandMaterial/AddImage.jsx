@@ -4,9 +4,16 @@ import { storage } from "../../firebase.config";
 import { WiCloudUp } from "react-icons/wi";
 import Swal from "sweetalert2";
 
-const AddImage = ({ handleClose }) => {
+const AddImage = ({ handleClose, setIsImageUpload }) => {
   const [img, setImg] = useState(null);
+  const handleClick = (e) => {
+    const file = e.target.files[0];
 
+    if (file) {
+      setImg(file);
+      setIsImageUpload(true);
+    }
+  };
   const uploadImg = () => {
     if (!img) {
       console.error("No image selected for upload");
@@ -33,6 +40,7 @@ const AddImage = ({ handleClose }) => {
           color: "#d3ecff",
           confirmButtonColor: "#66d8d8",
         }).then(() => {
+          setIsImageUpload(false);
           handleClose();
         });
       }
@@ -54,7 +62,7 @@ const AddImage = ({ handleClose }) => {
           <input
             className="inputimage"
             type="file"
-            onChange={(e) => setImg(e.target.files[0])}
+            onChange={handleClick}
             hidden
           />
           {img ? (
