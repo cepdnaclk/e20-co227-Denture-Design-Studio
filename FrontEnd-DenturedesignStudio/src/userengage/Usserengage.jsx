@@ -3,6 +3,8 @@ import usericon from "./usericon.png";
 import Myaccount from "../myaccount/Myaccount";
 import Back from "../backbutton/Back";
 import "./Userengage.css";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 function UserEngage() {
   const navigate = useNavigate();
@@ -10,6 +12,12 @@ function UserEngage() {
   const user = location.state?.user;
   const userdata = location.state?.userdata;
   const role = location.state?.role;
+  const user_name = user.user_name;
+  const [solvedpatientcase, setSolveCases] = useState();
+  const [createdpatient, setCreateCases] = useState();
+  const [lectime, setLectime] = useState();
+  const [solvetime, setSolveTime] = useState();
+
   console.log(user);
 
   const formatdate = (datestring) => {
@@ -23,9 +31,39 @@ function UserEngage() {
       second: "2-digit",
     });
   };
-  const solvedpatientcase = 23;
-  const timespent = 14;
-  const createdpatient = 5;
+  useEffect(() => {
+    const fetchProgress = async () => {
+      try {
+        const response = await axios.post(
+          "http://localhost:5000/progress/get",
+          {
+            user_name,
+          }
+        );
+
+        const progress = response.data.progress;
+
+        setSolveTime(progress.solveTime);
+        setCreateCases(progress.createCase);
+        setSolveCases(progress.solveCase);
+        setLectime(progress.lectureTime);
+      } catch (error) {
+        console.log(error.message);
+      }
+    };
+    fetchProgress();
+  }, [user_name]);
+  console.log(solvetime + lectime, solvedpatientcase, createdpatient);
+  const formatTime = (time) => {
+    console.log(time);
+    const hours = Math.floor(time / 3600);
+    const minutes = Math.floor((time % 3600) / 60);
+    const seconds = time % 60;
+    return `${hours.toString().padStart(2, "0")}:${minutes
+      .toString()
+      .padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
+  };
+
   return (
     <div className="userdetail-engage">
       <Back
@@ -72,7 +110,9 @@ function UserEngage() {
         <h3 className="solved-patient">
           Solved Patient Case: {solvedpatientcase}
         </h3>
-        <h3 className="timespent">Time spent : {timespent}</h3>
+        <h3 className="timespent">
+          Time spent : {formatTime(solvetime + lectime)}
+        </h3>
         <h3 className="createdpatient">
           Created patient case : {createdpatient}
         </h3>

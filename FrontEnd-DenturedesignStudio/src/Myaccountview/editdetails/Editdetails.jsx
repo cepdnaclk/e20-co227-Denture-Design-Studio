@@ -78,6 +78,7 @@ function Editdetails({ userdata, cancel, save, user }) {
 
   return (
     <div>
+      <div className="edit-details-cover"></div>
       <div className="edit-details">
         <h1>Edit your Details here!</h1>
 
