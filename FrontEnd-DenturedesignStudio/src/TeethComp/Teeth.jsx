@@ -98,7 +98,6 @@ import m24crest from "./rests/m24crest.gif";
 import m25crest from "./rests/m25crest.gif";
 import m26crest from "./rests/m26crest.gif";
 
-
 const TeethImages = [
   t0,
   t1,
@@ -197,11 +196,7 @@ const RestImages = [
   m24crest,
   m25crest,
   m26crest,
-
 ];
-
-
-
 
 const Teeth = ({ disableSelection }) => {
   // State to track which buttons are selected
@@ -209,14 +204,13 @@ const Teeth = ({ disableSelection }) => {
 
   const [selectedRests, setSelectedRests] = useState(Array(60).fill(false));
 
-
   const handleToothClick = (index) => {
     // Only allow interaction if selection is not disabled
-    
+
     if (!disableSelection) {
       // Toggle the selected state for the clicked tooth
-      
-      setSelectedTeeth(prevState => {
+
+      setSelectedTeeth((prevState) => {
         const newState = [...prevState];
         newState[index] = !newState[index];
         return newState;
@@ -226,8 +220,7 @@ const Teeth = ({ disableSelection }) => {
 
   const handleRestClick = (index) => {
     if (!disableSelection) {
-      setSelectedRests(prevState => {
-
+      setSelectedRests((prevState) => {
         const newState = [...prevState];
         newState[index] = !newState[index];
         return newState;
@@ -240,7 +233,7 @@ const Teeth = ({ disableSelection }) => {
       {Array.from({ length: 32 }, (_, index) => (
         <button
           key={index}
-          className={`teeth-btn ${selectedTeeth[index] ? 'selected' : ''}`}
+          className={`teeth-btn ${selectedTeeth[index] ? "selected" : ""}`}
           onClick={() => handleClick(index)}
         >
           <img src={TeethImages[index]} alt={`Tooth ${index + 1}`} />
@@ -250,7 +243,8 @@ const Teeth = ({ disableSelection }) => {
       {Array.from({ length: 60 }, (_, index) => (
         <button
           key={index}
-          className={`rest-btn ${selectedRests[index] ? 'selected' : ''}`}
+          className={`rest-btn ${selectedRests[index] ? "selected" : ""}`}
+          id={`rest-btn-${index + 1}`}
           onClick={() => handleRestClick(index)}
         >
           <img src={RestImages[index]} alt={`Rest ${index + 1}`} />
@@ -259,6 +253,5 @@ const Teeth = ({ disableSelection }) => {
     </div>
   );
 };
-
 
 export default Teeth;
