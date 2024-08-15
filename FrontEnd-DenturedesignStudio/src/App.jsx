@@ -26,6 +26,7 @@ import UserEngage from "./userengage/Usserengage";
 import Studentprogress from "./studentProgress/Studentprogress";
 import Myaccountview from "./Myaccountview/Myaccountview";
 import Teeth from "./TeethComp/Teeth";
+import Rests from "./TeethComp/Teeth";
 import Viewcontent from "./viewContent/Viewcontent";
 import UploadeAnswerandMaterial from "./UploadeAnswerandMaterial/UploadeAnswerandMaterial";
 import VerifyEmail from "./Signinpage/verify/Verify";
@@ -79,6 +80,7 @@ function App() {
           <Route exact path="/Viewprogress" element={<Studentprogress />} />
           <Route exact path="/myaccount" element={<Myaccountview />} />
           <Route exact path="/teeth" element={<Teeth />} />
+          <Route exact path="/rests" element={<Rests />} />
           <Route exact path="/viewcontent" element={<Viewcontent />} />
           <Route
             exact

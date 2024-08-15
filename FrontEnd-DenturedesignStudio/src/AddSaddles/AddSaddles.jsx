@@ -5,6 +5,7 @@ import Home from "../homebutton/home";
 import Teeth from "../TeethComp/Teeth";
 
 function AddSaddles() {
+  
   const navigate = useNavigate();
   const location = useLocation();
   const userdata = location.state?.userdata;
@@ -43,10 +44,12 @@ function AddSaddles() {
               </div>
             </button>
           </div>
-          <div >
-          <Teeth click={(index) => console.log(`Clicked tooth ${index}`)} />
-  
+
+          <div>
+            {/* Teeth component with interaction enabled */}
+            <Teeth click={(index) => console.log(`Clicked tooth ${index}`)} />
           </div>
+
           <h2 className="AddSaddles">Add Saddles</h2>
           <h2 className="yourQuestion">Your Question</h2>
           <h1 className="yourCase">Your Case :</h1>

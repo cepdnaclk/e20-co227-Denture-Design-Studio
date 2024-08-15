@@ -1,5 +1,5 @@
 .teethBackground2 {
-  position: absolute;
+  position: relative;
   width: 23.9vw;
   aspect-ratio: 459 / 700;
   left: 40.96vw;
@@ -23,6 +23,8 @@
   height: 2vw;
   opacity: 1;
   transition: opacity 0.3s ease;
+  z-index: 10;
+
   img {
     width: 2.3vw;
   }
@@ -33,7 +35,7 @@
 }
 
 .teeth-btn:hover {
-  opacity: 0.7; /* Slightly reduced opacity on hover */
+  opacity: 0.6; /*reduced opacity on hover */
 }
 
 
@@ -293,5 +295,515 @@
   top: 53.5%;
   img {
     width: 2.44vw;
+  }
+}
+
+.teethBackground2 .rest-btn {
+  position: absolute;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border: none;
+  cursor: pointer;
+  background: transparent;
+  margin: 0;
+  padding: 0;
+  width: 2vw;
+  height: 2vw;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+  z-index: 20;
+  img {  
+    width : 0.9vw;
+  }
+}
+
+.rest-btn:nth-child(1) {
+  left: 19.5%;
+  top: 80%;
+  img {
+    height: 0.9vw;
+  }
+}
+
+.rest-btn:nth-child(2) {
+  left: 10vw;
+  top: 34%;
+  img {
+    width: 3vw;
+  }
+}
+
+.rest-btn:nth-child(3) {
+  left: 25%;
+  top: 26%;
+  img {
+    width: 3vw;
+  }
+}
+
+.rest-btn:nth-child(4) {
+  left: 24%;
+  top: 21.3%;
+  img {
+    width: 2.4vw;
+  }
+}
+
+.rest-btn:nth-child(5) {
+  left: 25%;
+  top: 15.5%;
+  img {
+    width: 2.5vw;
+  }
+}
+
+.rest-btn:nth-child(6) {
+  left: 19.5%;
+  top: 100%;
+  img {
+    width: 3.2vw;
+    height: 3.2vw;
+  }
+}
+
+.rest-btn:nth-child(7) {
+  left: 0vw;
+  top: 34%;
+  img {
+    width: 3vw;
+  }
+}
+
+.rest-btn:nth-child(8) {
+  left: 22%;
+  top: 26%;
+  img {
+    width: 3vw;
+  }
+}
+
+.rest-btn:nth-child(9) {
+  left: 24%;
+  top: 21.3%;
+  img {
+    width: 2.4vw;
+  }
+}
+
+.rest-btn:nth-child(10) {
+  left: 25%;
+  top: 15.5%;
+  img {
+    width: 2.5vw;
+  }
+}
+
+.rest-btn:nth-child(11) {
+  left: 19.5%;
+  top: 100%;
+  img {
+    width: 3.2vw;
+    height: 3.2vw;
+  }
+}
+
+.rest-btn:nth-child(12) {
+  left: 0vw;
+  top: 34%;
+  img {
+    width: 3vw;
+  }
+}
+
+.rest-btn:nth-child(13) {
+  left: 22%;
+  top: 26%;
+  img {
+    width: 3vw;
+  }
+}
+
+.rest-btn:nth-child(14) {
+  left: 24%;
+  top: 21.3%;
+  img {
+    width: 2.4vw;
+  }
+}
+
+.rest-btn:nth-child(15) {
+  left: 25%;
+  top: 15.5%;
+  img {
+    width: 2.5vw;
+  }
+}
+
+.rest-btn:nth-child(16) {
+  left: 19.5%;
+  top: 100%;
+  img {
+    width: 3.2vw;
+    height: 3.2vw;
+  }
+}
+
+.rest-btn:nth-child(17) {
+  left: 0vw;
+  top: 34%;
+  img {
+    width: 3vw;
+  }
+}
+
+.rest-btn:nth-child(18) {
+  left: 22%;
+  top: 26%;
+  img {
+    width: 3vw;
+  }
+}
+
+.rest-btn:nth-child(19) {
+  left: 24%;
+  top: 21.3%;
+  img {
+    width: 2.4vw;
+  }
+}
+
+.rest-btn:nth-child(20) {
+  left: 25%;
+  top: 15.5%;
+  img {
+    width: 2.5vw;
+  }
+}
+
+.rest-btn:nth-child(21) {
+  left: 19.5%;
+  top: 100%;
+  img {
+    width: 3.2vw;
+    height: 3.2vw;
+  }
+}
+
+.rest-btn:nth-child(22) {
+  left: 0vw;
+  top: 34%;
+  img {
+    width: 3vw;
+  }
+}
+
+.rest-btn:nth-child(23) {
+  left: 22%;
+  top: 26%;
+  img {
+    width: 3vw;
+  }
+}
+
+.rest-btn:nth-child(24) {
+  left: 24%;
+  top: 21.3%;
+  img {
+    width: 2.4vw;
+  }
+}
+
+.rest-btn:nth-child(25) {
+  left: 25%;
+  top: 15.5%;
+  img {
+    width: 2.5vw;
+  }
+}
+
+.rest-btn:nth-child(26) {
+  left: 19.5%;
+  top: 100%;
+  img {
+    width: 3.2vw;
+    height: 3.2vw;
+  }
+}
+
+.rest-btn:nth-child(27) {
+  left: 0vw;
+  top: 34%;
+  img {
+    width: 3vw;
+  }
+}
+
+.rest-btn:nth-child(28) {
+  left: 22%;
+  top: 26%;
+  img {
+    width: 3vw;
+  }
+}
+
+.rest-btn:nth-child(29) {
+  left: 24%;
+  top: 21.3%;
+  img {
+    width: 2.4vw;
+  }
+}
+
+.rest-btn:nth-child(30) {
+  left: 25%;
+  top: 15.5%;
+  img {
+    width: 2.5vw;
+  }
+}
+
+.rest-btn:nth-child(31) {
+  left: 19.5%;
+  top: 100%;
+  img {
+    width: 3.2vw;
+    height: 3.2vw;
+  }
+}
+
+.rest-btn:nth-child(32) {
+  left: 0vw;
+  top: 34%;
+  img {
+    width: 3vw;
+  }
+}
+
+.rest-btn:nth-child(33) {
+  left: 22%;
+  top: 26%;
+  img {
+    width: 3vw;
+  }
+}
+
+.rest-btn:nth-child(34) {
+  left: 24%;
+  top: 21.3%;
+  img {
+    width: 2.4vw;
+  }
+}
+
+.rest-btn:nth-child(35) {
+  left: 25%;
+  top: 15.5%;
+  img {
+    width: 2.5vw;
+  }
+}
+
+.rest-btn:nth-child(36) {
+  left: 19.5%;
+  top: 100%;
+  img {
+    width: 3.2vw;
+    height: 3.2vw;
+  }
+}
+
+.rest-btn:nth-child(37) {
+  left: 0vw;
+  top: 34%;
+  img {
+    width: 3vw;
+  }
+}
+
+.rest-btn:nth-child(38) {
+  left: 22%;
+  top: 26%;
+  img {
+    width: 3vw;
+  }
+}
+
+.rest-btn:nth-child(39) {
+  left: 24%;
+  top: 21.3%;
+  img {
+    width: 2.4vw;
+  }
+}
+
+.rest-btn:nth-child(40) {
+  left: 25%;
+  top: 15.5%;
+  img {
+    width: 2.5vw;
+  }
+}
+
+.rest-btn:nth-child(41) {
+  left: 19.5%;
+  top: 100%;
+  img {
+    width: 3.2vw;
+    height: 3.2vw;
+  }
+}
+
+.rest-btn:nth-child(42) {
+  left: 0vw;
+  top: 34%;
+  img {
+    width: 3vw;
+  }
+}
+
+.rest-btn:nth-child(43) {
+  left: 22%;
+  top: 26%;
+  img {
+    width: 3vw;
+  }
+}
+
+.rest-btn:nth-child(44) {
+  left: 24%;
+  top: 21.3%;
+  img {
+    width: 2.4vw;
+  }
+}
+
+.rest-btn:nth-child(45) {
+  left: 25%;
+  top: 15.5%;
+  img {
+    width: 2.5vw;
+  }
+}
+
+.rest-btn:nth-child(46) {
+  left: 19.5%;
+  top: 100%;
+  img {
+    width: 3.2vw;
+    height: 3.2vw;
+  }
+}
+
+.rest-btn:nth-child(47) {
+  left: 0vw;
+  top: 34%;
+  img {
+    width: 3vw;
+  }
+}
+
+.rest-btn:nth-child(48) {
+  left: 22%;
+  top: 26%;
+  img {
+    width: 3vw;
+  }
+}
+
+.rest-btn:nth-child(49) {
+  left: 24%;
+  top: 21.3%;
+  img {
+    width: 2.4vw;
+  }
+}
+
+.rest-btn:nth-child(50) {
+  left: 25%;
+  top: 15.5%;
+  img {
+    width: 2.5vw;
+  }
+}
+
+.rest-btn:nth-child(51) {
+  left: 19.5%;
+  top: 100%;
+  img {
+    width: 3.2vw;
+    height: 3.2vw;
+  }
+}
+
+.rest-btn:nth-child(52) {
+  left: 0vw;
+  top: 34%;
+  img {
+    width: 3vw;
+  }
+}
+
+.rest-btn:nth-child(53) {
+  left: 22%;
+  top: 26%;
+  img {
+    width: 3vw;
+  }
+}
+
+.rest-btn:nth-child(54) {
+  left: 24%;
+  top: 21.3%;
+  img {
+    width: 2.4vw;
+  }
+}
+
+.rest-btn:nth-child(55) {
+  left: 25%;
+  top: 15.5%;
+  img {
+    width: 2.5vw;
+  }
+}
+
+.rest-btn:nth-child(56) {
+  left: 19.5%;
+  top: 100%;
+  img {
+    width: 3.2vw;
+    height: 3.2vw;
+  }
+}
+
+.rest-btn:nth-child(57) {
+  left: 0vw;
+  top: 34%;
+  img {
+    width: 3vw;
+  }
+}
+
+.rest-btn:nth-child(58) {
+  left: 22%;
+  top: 26%;
+  img {
+    width: 3vw;
+  }
+}
+
+.rest-btn:nth-child(59) {
+  left: 24%;
+  top: 21.3%;
+  img {
+    width: 2.4vw;
+  }
+}
+
+.rest-btn:nth-child(60) {
+  left: 25%;
+  top: 15.5%;
+  img {
+    width: 2.5vw;
   }
 }
