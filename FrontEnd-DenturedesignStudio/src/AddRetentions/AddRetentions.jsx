@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import './AddRetentions.css';
 import Home from '../homebutton/home';
 import BackComp from '../backComp/backComp';
+import Teeth from "../TeethComp/Teeth";
+
 
 
 function AddRetentions() {
