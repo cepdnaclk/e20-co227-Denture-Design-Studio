@@ -6,6 +6,7 @@ import Axios from "axios";
 import bcrypt from "bcryptjs";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import Swal from "sweetalert2";
+import Forgotpassword from "./forgotpasword/Forgotpassword";
 function Loginpage() {
   let navigate = useNavigate();
 
@@ -27,7 +28,7 @@ function Loginpage() {
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [usererror, setuserError] = useState(false);
-
+  const [forgotpassword, setforgotpassword] = useState(false);
   const handleSubmit = async (e) => {
     e.preventDefault();
     setuserError(false);
@@ -86,6 +87,7 @@ function Loginpage() {
         clickhandle("/adminhome", userdata);
       }
     } catch (error) {
+      console.log(error);
       setuserError(true);
     }
   };
@@ -128,9 +130,10 @@ function Loginpage() {
               )}
             </div>
             <p id="forget">
-              <a href="/">Forgot Password?</a>
+              <a onClick={() => setforgotpassword(true)}>Forgot Password?</a>
             </p>
           </div>
+
           <div>
             <button type="submit" className="login2">
               Login
@@ -138,6 +141,21 @@ function Loginpage() {
           </div>
         </div>
       </form>
+      {forgotpassword && (
+        <Forgotpassword
+          cancel={() => setforgotpassword(false)}
+          sentemail={() => {
+            setforgotpassword(false);
+            Swal.fire({
+              title: "Email sent",
+              text: "password reset email has been sent to your email",
+              icon: "success",
+              background: "#2f5770",
+              color: "white",
+            });
+          }}
+        />
+      )}
     </div>
   );
 }

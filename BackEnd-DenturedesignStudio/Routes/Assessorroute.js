@@ -4,23 +4,44 @@ const crypto = require("crypto");
 const nodemailer = require("nodemailer");
 const bcrypt = require("bcryptjs");
 
-async function sendVerificationEmail(email, token) {
+async function sendVerificationEmail(email, token, userid, username) {
   const transporter = nodemailer.createTransport({
     service: "Gmail",
     host: "smtp.gmail.com",
     auth: {
       user: "ravindulakshan.rl2002@gmail.com",
-      pass: "gfba lodx ekzw mspq",
+      pass: "rzna ccxy ykzb qjsf",
     },
   });
+  //pw reset function
 
-  const verificationLink = `http://localhost:5173/verify/${token}`;
+  const verificationLink = `http://localhost:5173/verify/${token}?id=${userid}&uname=${username}`;
   console.log("verificationLink");
   const mailOptions = {
     from: "ravindulakshan.rl2002@gmail.com",
     to: email,
     subject: "Verify your email",
     text: `Click this link to verify your email: ${verificationLink}`,
+  };
+
+  await transporter.sendMail(mailOptions);
+}
+async function sendResetEmail(email, userId, token, username) {
+  const transporter = nodemailer.createTransport({
+    service: "Gmail",
+    host: "smtp.gmail.com",
+    auth: {
+      user: "ravindulakshan.rl2002@gmail.com",
+      pass: "rzna ccxy ykzb qjsf",
+    },
+  });
+
+  const resetLink = `http://localhost:5173/reset-password/assessor?token=${token}&id=${userId}&uname=${username}`;
+  const mailOptions = {
+    from: "ravindulakshan.rl2002@gmail.com",
+    to: email,
+    subject: "Password Reset",
+    text: `Click this link to reset your password: ${resetLink}`,
   };
 
   await transporter.sendMail(mailOptions);
@@ -45,7 +66,12 @@ router.route("/add").post(async (req, res) => {
   await newAssessor
     .save()
     .then(() => {
-      sendVerificationEmail(newAssessor.email, verificationToken);
+      sendVerificationEmail(
+        newAssessor.email,
+        verificationToken,
+        newAssessor._id,
+        newAssessor.user_name
+      );
       res.json("assessor added,please verify your email");
     })
     .catch((err) => {
@@ -59,17 +85,25 @@ router.route("/add").post(async (req, res) => {
 router.get("/verify/:token", async (req, res) => {
   try {
     const { token } = req.params;
-    const assessor = await Assessor.findOne({ verificationToken: token });
+    const { id } = req.query;
+    const assessor = await Assessor.findOne({
+      verificationToken: token,
+      _id: id,
+    });
 
     if (!assessor) {
       return res.status(400).send("Invalid or expired token");
     }
-
+    if (assessor.isVerified) {
+      return res
+        .status(200)
+        .send({ status: "Email already verified", assessor });
+    }
     assessor.isVerified = true;
-
+    assessor.verificationToken = undefined;
     await assessor.save();
 
-    res.send("Email verified successfully");
+    res.send({ status: "Email verified successfully", assessor });
   } catch (err) {
     console.log(err.message);
     res
@@ -139,19 +173,25 @@ router.put("/edit", async (req, res) => {
       .send({ status: "Error updating assessor", error: err.message });
   }
 });
-router.put("/edit/password", async (req, res) => {
-  const { password, user_name } = req.body;
+router.put("/edit/password/:token", async (req, res) => {
+  const { password, userId } = req.body;
+  const { token } = req.params;
 
   try {
-    const assessor = await Assessor.findOne({ user_name });
+    const assessor = await Assessor.findOne({
+      _id: userId,
+      resetPasswordToken: token,
+      resetPasswordExpire: { $gt: Date.now() },
+    });
     if (!assessor) {
-      return res.status(404).send({ status: "User not found" });
+      return res.status(404).send({ status: "Invalid or expired token" });
     }
     if (password !== undefined) {
       const salt = await bcrypt.genSalt(10);
       assessor.password = await bcrypt.hash(password, salt);
     }
-
+    assessor.resetPasswordExpire = undefined;
+    assessor.resetPasswordToken = undefined;
     await assessor.save();
     res.status(200).send({ status: "assessor updated", assessor });
   } catch (err) {
@@ -161,7 +201,34 @@ router.put("/edit/password", async (req, res) => {
       .send({ status: "Error updating assessor", error: err.message });
   }
 });
+router.post("/reset-password", async (req, res) => {
+  const { email } = req.body;
 
+  try {
+    const assessor = await Assessor.findOne({ email });
+    if (!assessor) {
+      return res.status(404).send("Student with this email does not exist.");
+    }
+
+    const resetToken = crypto.randomBytes(32).toString("hex");
+    const resetTokenExpire = Date.now() + 3600000; // Token valid for 1 hour
+
+    assessor.resetPasswordToken = resetToken;
+    assessor.resetPasswordExpire = resetTokenExpire;
+    await assessor.save();
+
+    await sendResetEmail(
+      assessor.email,
+      assessor._id,
+      resetToken,
+      assessor.user_name
+    );
+    res.send("Reset email sent to assessor");
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Error sending reset email");
+  }
+});
 router.delete("/delete", async (req, res) => {
   try {
     const { user_name } = req.body;
