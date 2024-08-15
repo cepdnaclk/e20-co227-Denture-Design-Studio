@@ -1,0 +1,153 @@
+.HeaderRA {
+  position: absolute;
+  width: 43.22vw;
+  height: 3.741vw;
+  left: 20vw;
+  top: 0.22vw;
+
+  font-family: "Salsa";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 2.5vw;
+  line-height: 134.77%;
+  display: flex;
+  align-items: center;
+  text-align: center;
+
+  color: #8ee1e1;
+}
+
+.YouranswerRA {
+  /* Your Answer : */
+
+  position: absolute;
+  width: 47.829vw;
+  height: 4.409vw;
+  left: 8.224vw;
+  top: 8.293vw;
+
+  font-family: "Salsa";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 2.004vw;
+  line-height: 134.77%;
+  /* or 40px */
+  display: flex;
+  align-items: center;
+  text-align: center;
+
+  color: #e8e9e9;
+
+  text-shadow: 8px 7px 15px rgba(0, 0, 0, 0.54);
+}
+
+.TeethboxRA {
+  position: absolute;
+  left: -8vw;
+  top: 2.152vw;
+}
+
+.ButtonboxRA {
+  position: absolute;
+  top: 10vw;
+  left: 65vw;
+}
+#Addrests {
+  position: absolute;
+  top: 0vw;
+  left: 0vw;
+}
+#Addretention {
+  position: absolute;
+  top: 7vw;
+  left: 0;
+}
+#Addreciprocation {
+  position: absolute;
+  top: 14vw;
+  left: 0;
+}
+#Addconnectors {
+  position: absolute;
+  top: 21vw;
+  left: 0;
+}
+.FinishDesigning {
+  position: absolute;
+  width: 24vw;
+  height: 3.2vw;
+  top: 38vw;
+  left: 65vw;
+  margin: 0;
+
+  background: #66d8d8;
+  border-bottom: 0.2vw solid #000000;
+  box-shadow: 0.668vw 0.534vw 0.802vw rgba(0, 0, 0, 0.35);
+  border-radius: 1.336vw;
+  border: none;
+
+  font-family: "Salsa";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.8vw;
+
+  align-items: center;
+  text-align: center;
+
+  color: #000000;
+  text-shadow: 0vw 0.267vw 0.267vw rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+}
+.FinishDesigning:hover {
+  width: 24.4vw;
+  height: 3.6vw;
+}
+
+@media (max-width: 900px) {
+  .HeaderRA {
+    font-size: 4.138vw;
+    width: 50.22vw;
+  }
+
+  .YouranswerRA {
+    left: 8.224vw;
+    top: 5.293vw;
+    font-size: 2.8vw;
+  }
+
+  .TeethboxRA {
+    width: 35.309vw;
+    height: 60.937vh;
+    left: 15.269vw;
+    top: 15.152vw;
+  }
+
+  .ButtonboxRA {
+    top: 20vw;
+    left: 60vw;
+  }
+  #Addrests {
+    top: 0vw;
+  }
+  #Addretention {
+    top: 10vw;
+  }
+  #Addreciprocation {
+    top: 20vw;
+  }
+  #Addconnectors {
+    top: 30vw;
+  }
+
+  .FinishDesigning {
+    width: 30vw;
+    height: 4.3vw;
+    top: 60vw;
+    left: 60vw;
+    font-size: 2.5vw;
+  }
+  .FinishDesigning:hover {
+    width: 30.4vw;
+    height: 4.5vw;
+  }
+}

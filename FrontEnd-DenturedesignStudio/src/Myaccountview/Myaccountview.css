@@ -1,0 +1,158 @@
+.my-account-view {
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(
+    270deg,
+    rgba(42, 79, 99, 0.7968) 0%,
+    rgba(72, 147, 135, 0.83) 100%
+  );
+}
+
+.user-name-email {
+  position: absolute;
+  width: 25vw;
+  height: 10vw;
+  margin: 0;
+  top: 17vh;
+  left: 15vw;
+  img {
+    margin: 0;
+    width: 6vw;
+  }
+  h1 {
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    top: 0;
+    left: 8vw;
+    font-family: "Salsa";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 4.676vw;
+    color: #bff9f2;
+  }
+}
+.user-detail-container {
+  position: absolute;
+  width: 41.015vw;
+  height: 40vh;
+  left: 6vw;
+  top: 33vh;
+
+  background: #bff9f2;
+  border-radius: 1.67vw;
+  h3 {
+    position: absolute;
+    font-family: "Salsa";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 2vw;
+    align-items: center;
+    margin: 0;
+    left: 4vw;
+    color: #000000;
+  }
+  h4 {
+    position: absolute;
+    left: 4vw;
+    font-family: "Salsa";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 2vw;
+    align-items: center;
+    color: #2a7f61;
+    margin: 0;
+  }
+  h2 {
+    position: absolute;
+    font-family: "Salsa";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 2vw;
+    display: flex;
+    align-items: center;
+    color: #0b78b5;
+    left: 10vw;
+    margin: 0;
+    top: 3vh;
+  }
+  button {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+  }
+  img {
+    width: 3vw;
+    position: absolute;
+    right: 3vw;
+  }
+}
+.loging-activity-container {
+  position: absolute;
+  width: 41.015vw;
+  height: 40vh;
+  left: 53.373vw;
+  top: 33vh;
+
+  background: #bff9f2;
+  border-radius: 1.67vw;
+  h3 {
+    position: absolute;
+    font-family: "Salsa";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 2vw;
+    align-items: center;
+    margin: 0;
+    left: 4vw;
+    color: #000000;
+  }
+  h4 {
+    position: absolute;
+    left: 4vw;
+    font-family: "Salsa";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 2vw;
+    align-items: center;
+    color: #2a7f61;
+    margin: 0;
+  }
+  h2 {
+    position: absolute;
+    font-family: "Salsa";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 2vw;
+    display: flex;
+    align-items: center;
+    color: #0b78b5;
+    left: 10vw;
+    margin: 0;
+    top: 3vh;
+  }
+}
+.first-access {
+  top: 10vh;
+}
+.first-access-date {
+  top: 16vh;
+}
+.last-access {
+  top: 26vh;
+}
+.last-access-date {
+  top: 32vh;
+}
+#name-show {
+  top: 10vh;
+}
+#user-name {
+  top: 16vh;
+}
+#email-show {
+  top: 26vh;
+}
+#email {
+  top: 32vh;
+}

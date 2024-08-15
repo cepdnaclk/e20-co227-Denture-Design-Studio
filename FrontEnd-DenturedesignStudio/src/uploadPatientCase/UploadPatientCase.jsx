@@ -1,40 +1,45 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import './UploadPatientCase.css';
-import Home from 'E:/e20-co225-Denture-Design-Studio/FrontEnd-DenturedesignStudio/src/homebutton/home.jsx';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
-
-function UploadPatientCases() {
-  let navigate = useNavigate();
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import "./UploadPatientCase.css";
+import Home from "../homebutton/home";
+import CreateUploadButton from "../CreateUploadButton/CreateUploadButton";
+import BackComp from "../backComp/backComp";
+function AssessorCreatePatientStep2() {
+  const navigate = useNavigate();
 
   function handleClick(path) {
     navigate(path);
   }
 
   return (
-    <>
-      <div className="UploadPatientCase">
-        <Home onClick={() => handleClick("/studenthome")}></Home>
-        <div>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Salsa&display=swap" />
-        <div className='teethBackground'></div>
+    <div className="CreatePatientCase2">
+      <Home onClick={() => handleClick("/assessorhome")} />
+      <BackComp onClick={() => handleClick("/assessorhome")} />
+      <div>
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Salsa&display=swap"
+        />
+        <div className="teethBackground"></div>
         <div className="rectangle1"></div>
         <div className="rectangle2"></div>
-          <h2 className='CreateAPatientCase'>Create and Upload a Patient Case</h2>
-          <h1 className='steps'>
-            step 1 : Select missing teeth<br />
-            step 2 : Click Create & Upload!
+        <div className="text">
+          <h2 id="createAPatientCase2">Create a Patient Case</h2>
+          <h1 id="steps2">
+            step 1 : Select missing teeth
+            <br />
+            step 2 : Click Add undercuts
           </h1>
         </div>
-        <button className='button' onClick={() => handleClick('/CreateAndUpload')}>
-          <div className="buttonContent">
-            <span className="buttontext">Create & Upload</span>
-          </div>
-        </button>
       </div>
-    </>
+      <div id="create1">
+        <CreateUploadButton
+          Name="Add Undercuts"
+          Pagetogo="/assessorcreatepatientcase"
+        />
+      </div>
+    </div>
   );
 }
 
-export default UploadPatientCases;
+export default AssessorCreatePatientStep2;

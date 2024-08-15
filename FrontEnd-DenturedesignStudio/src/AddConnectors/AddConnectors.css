@@ -1,0 +1,178 @@
+body {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  overflow: hidden;
+}
+
+.designPage {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(
+    270deg,
+    rgb(60 123 113) 0%,
+    rgb(36 69 84) 101.07%
+  );
+  box-shadow: 0px 4px 4px rgba(9, 9, 9, 0.25);
+}
+
+.Questionbox {
+  position: absolute;
+  width: 23.9vw;
+  aspect-ratio: 459 / 700;
+  left: 5.05vw;
+  top: 14vh;
+  background: #a3d1d4;
+  border-radius: 2.6vw;
+}
+
+.teethBackground1 {
+  position: absolute;
+  width: 23.9vw;
+  aspect-ratio: 459 / 700;
+  left: 40.96vw;
+  top: 14vh;
+  background: #d3ecff;
+  border-radius: 2.6vw;
+}
+
+.Done {
+  position: absolute;
+  width: 9.14vw;
+  height: 3.37vw;
+  left: 26vw;
+  top: 33vw;
+  border-radius: 1vw;
+  background: #66d8d8;
+  box-shadow: 0.67vw 0.53vw 0.8vw rgba(0, 0, 0, 0.35);
+}
+
+.DoneText {
+  position: absolute;
+  height: 4.07vh;
+  width: 40vw;
+  left: 1.25vw;
+  right: 0.83vw;
+  top: calc(50% - 4.07vh / 2);
+
+  font-family: "Salsa";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.67vw;
+  line-height: 134.77%;
+  display: flex;
+  align-items: center;
+  text-align: center;
+
+  color: #000000;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.yourQuestion {
+  position: absolute;
+  width: 38.23vw;
+  height: 6.11vh;
+  left: 11vw;
+  top: 13vh;
+
+  font-family: "Salsa";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.95vw;
+  line-height: 134.77%;
+
+  display: flex;
+  align-items: center;
+  color: #000000;
+}
+
+.AddConnectors {
+  position: absolute;
+  height: 4.63vh;
+  left: 10vw;
+  right: 49.58vw;
+  width: 50vw;
+  top: 0.25vw;
+
+  font-family: "Salsa";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 2.5vw;
+  line-height: 134.77%;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #92dada;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.yourCase {
+  position: absolute;
+  width: 22.81vw;
+  height: 6.39vh;
+  left: 33.3vw;
+  top: 8.89vh;
+
+  font-family: "Salsa";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.56vw; /* 30px / 1920px * 100 */
+  line-height: 134.77%;
+
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #e8e9e9;
+  text-shadow: 8px 7px 15px rgba(0, 0, 0, 0.54);
+}
+
+.connectors {
+  position: relative;
+  width: 22.81vw;
+  height: 6.39vh;
+  top: 6%;
+
+  font-family: "Salsa";
+  font-style: normal;
+  font-weight: 400;
+  line-height: 134.77%;
+  display: flex;
+  align-items: center;
+
+  color: #d1ecec;
+}
+
+.connectors:hover {
+  transform: scale(1.05);
+}
+
+ul.connectors-list {
+  position: absolute;
+  list-style-type: none;
+  left: 25%;
+  font-size: 1.56vw;
+  padding: 0;
+  margin: 0;
+}
+
+ul.connectors-list li {
+  padding-left: 22.81vw;
+  white-space: nowrap;
+}
+
+ul.connectors-list li:hover {
+  transform: scale(1.05);
+  color: #ffffff;
+}
+
+#upper {
+  top: 0;
+}
+
+#lower {
+  top: 12%;
+}

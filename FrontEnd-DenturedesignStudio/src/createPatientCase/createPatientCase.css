@@ -1,0 +1,90 @@
+.CreatePatientCase1 {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+}
+
+.CreatePatientCase1::before{
+    content: "";
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(270deg, rgb(60 123 113) 0%, rgb(36 69 84) 101.07%);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    z-index: -3;
+}
+
+
+.rectangle1 {
+    position: absolute;
+    width: 40.00vw;
+    height: 38vw;
+    right: 5vw;
+    top: 6vw;
+    bottom: 6vw;
+    background: #30505B;
+    box-shadow: 0.67vw 0.67vw 0.74vw rgba(0, 0, 0, 0.42);
+    border-radius: 3.34vw;
+    z-index: -1;
+}
+
+.teethBackground {
+    position: absolute ;
+    width: 20vw ;
+    height: 35vw ;
+    left: 19vw ;
+    top: 8vw ;
+    background: #D3ECFF ;
+    border-radius: 3.34vw ;
+    z-index: -2 ;
+}
+
+
+.rectangle2 {
+    position: absolute;
+    width: 36vw;
+    height: 15.1vw;
+    right: 7vw;
+    top: 10.36vw;
+    background: #A3D1D4;
+    box-shadow: 10px 10px 14px rgba(0, 0, 0, 0.3);
+    border-radius: 3.21vw;
+}
+
+.createAPatientCase1 {
+    position: absolute;
+    width: 35.32vw;
+    height: 4.75vw;
+    left: 65vw;
+    top: 11vw;
+    font-family: 'Salsa';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 2vw;
+    line-height: 134.77%;
+    display: flex;
+    align-items: center;
+    color: #252724;
+}
+
+.steps1 {
+    position: absolute;
+    width: 30.32vw;
+    height: 10.88vw;
+    left: 65.00vw;
+    top: 13.65vw;
+    font-family: 'Salsa';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.5vw;
+    line-height: 134.77%;
+    display: flex;
+    align-items: center;
+    color: #252724;
+}
+
+#addUndercuts1{
+    position: absolute ;
+}

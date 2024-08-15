@@ -1,0 +1,256 @@
+.userdetail-engage {
+  height: 100vh;
+  width: 100vw;
+  background: linear-gradient(
+    270deg,
+    rgba(42, 79, 99, 0.7968) 0%,
+    rgba(72, 147, 135, 0.83) 100%
+  );
+}
+
+.username-engage {
+  position: absolute;
+  width: 24vw;
+  height: 14vh;
+  padding: 0;
+  top: 11vh;
+  left: 12vw;
+  img {
+    width: 6vw;
+    height: 6vw;
+    margin: 0;
+    padding: 0;
+  }
+
+  h2 {
+    position: absolute;
+    padding: 0;
+    margin: 0;
+    left: 7vw;
+    top: 0vw;
+    font-family: "Salsa";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 3.206vw;
+    line-height: 134.77%;
+    display: flex;
+    align-items: center;
+
+    color: #bff9f2;
+  }
+  h4 {
+    margin: 0;
+    padding: 0;
+    left: 7vw;
+    top: 3vw;
+    position: absolute;
+    font-family: "Salsa";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 2.138vw;
+    line-height: 134.77%;
+    /* or 43px */
+    display: flex;
+    align-items: center;
+
+    color: #bff9f2;
+  }
+}
+.userdetail {
+  position: absolute;
+  width: 37.208vw;
+  height: 31vw;
+  left: 9vw;
+  top: 28vh;
+
+  background: #bff9f2;
+  border-radius: 1.67vw;
+}
+.userdetail .header {
+  margin: 0;
+  padding: 0;
+  font-family: "Salsa";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 2.138vw;
+  line-height: 134.77%;
+  /* or 43px */
+  display: flex;
+  align-items: center;
+
+  color: #0b78b5;
+}
+.user-name {
+  margin: 0;
+  padding: 0;
+  font-family: "Salsa";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 2.4vw;
+  line-height: 134.77%;
+  /* or 43px */
+  display: flex;
+  align-items: center;
+
+  color: #000000;
+}
+.user-name-value {
+  margin: 0;
+  padding: 0;
+  font-family: "Salsa";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 2.138vw;
+  line-height: 134.77%;
+  /* or 43px */
+  display: flex;
+  align-items: center;
+
+  color: #2a7f61;
+}
+.engagementactivity {
+  position: absolute;
+  width: 37.208vw;
+  height: 31vw;
+  left: 53vw;
+  top: 28vh;
+
+  background: #bff9f2;
+  border-radius: 1.67vw;
+}
+.access-date {
+  margin: 0;
+  padding: 0;
+  font-family: "Salsa";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 2.3vw;
+  line-height: 134.77%;
+  /* or 43px */
+  display: flex;
+  align-items: center;
+
+  color: #000000;
+}
+.dates-value {
+  margin: 0;
+  padding: 0;
+  font-family: "Salsa";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 2vw;
+  line-height: 134.77%;
+  /* or 43px */
+  display: flex;
+  align-items: center;
+
+  color: #2a7f61;
+}
+#user-detail1 {
+  position: absolute;
+  top: 0.5vw;
+  left: 3vw;
+}
+#user-detail2 {
+  position: absolute;
+  top: 5vw;
+  left: 3vw;
+}
+#user-detail3 {
+  position: absolute;
+  top: 7.5vw;
+  left: 3vw;
+}
+#user-detail4 {
+  position: absolute;
+  top: 11vw;
+  left: 3vw;
+}
+#user-detail5 {
+  position: absolute;
+  top: 16vw;
+  left: 3vw;
+}
+#user-detail6 {
+  position: absolute;
+  top: 19vw;
+  left: 3vw;
+}
+#user-detail7 {
+  position: absolute;
+  top: 23vw;
+  left: 3vw;
+}
+#user-detail8 {
+  position: absolute;
+  top: 26vw;
+  left: 3vw;
+}
+.engagement-head {
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  top: 3vw;
+  left: 7vw;
+  font-family: "Salsa";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 2.138vw;
+  line-height: 134.77%;
+  /* or 43px */
+  display: flex;
+  align-items: center;
+
+  color: #0b78b5;
+}
+.solved-patient {
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  top: 10vw;
+  left: 5vw;
+  font-family: "Salsa";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 2.138vw;
+  line-height: 134.77%;
+  /* or 43px */
+  display: flex;
+  align-items: center;
+
+  color: #000000;
+}
+.timespent {
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  top: 16vw;
+  left: 5vw;
+  font-family: "Salsa";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 2.138vw;
+  line-height: 134.77%;
+  /* or 43px */
+  display: flex;
+  align-items: center;
+
+  color: #000000;
+}
+.createdpatient {
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  top: 22vw;
+  left: 5vw;
+  font-family: "Salsa";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 2.138vw;
+  line-height: 134.77%;
+  /* or 43px */
+  display: flex;
+  align-items: center;
+
+  color: #000000;
+}
