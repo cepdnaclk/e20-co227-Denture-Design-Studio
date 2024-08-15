@@ -32,6 +32,10 @@ const assessorschema = new Schema({
     type: Date,
     default: Date.now,
   },
+  isVerified: { type: Boolean, default: false },
+  verificationToken: { type: String },
+  resetPasswordToken: { type: String },
+  resetPasswordExpire: { type: Date },
 });
 assessorschema.pre("save", async function (next) {
   if (!this.isModified("password")) return next();

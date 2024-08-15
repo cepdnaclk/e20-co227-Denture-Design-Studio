@@ -57,7 +57,7 @@ const Contents = () => {
       <div className="contents-page">
         <header>
           <div className="home-icon">
-            <Home onClick={() => navigate(role)} />
+            <Home onClick={() => navigate(role, { state: { userdata } })} />
           </div>
           <h1>Contents</h1>
         </header>
