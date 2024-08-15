@@ -96,6 +96,13 @@ function UploadeAnswerandMaterial() {
           Upload Materials
         </button>
         {isAddMaterialsOpen && <AddMaterial handleClose={closeAddMaterials} />}
+        <button
+          className="UAMButtons"
+          id="Finish"
+          onClick={() => handleClick("/assessorhome")}
+        >
+          Finish
+        </button>
       </div>
     </div>
   );
