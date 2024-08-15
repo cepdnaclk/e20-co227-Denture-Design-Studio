@@ -29,6 +29,8 @@ import Teeth from "./TeethComp/Teeth";
 import Viewcontent from "./viewContent/Viewcontent";
 import UploadeAnswerandMaterial from "./UploadeAnswerandMaterial/UploadeAnswerandMaterial";
 import VerifyEmail from "./Signinpage/verify/Verify";
+import Studentpwreset from "./logingpage/passwordreset/studentpwreset";
+import Assessorpwreset from "./logingpage/passwordreset/assesssorpwrest";
 import "./App.css";
 
 function App() {
@@ -85,7 +87,16 @@ function App() {
           />
 
           <Route exact path="/verify/:token" element={<VerifyEmail />} />
-
+          <Route
+            exact
+            path="/reset-password/student"
+            element={<Studentpwreset />}
+          />
+          <Route
+            exact
+            path="/reset-password/assessor"
+            element={<Assessorpwreset />}
+          />
         </Routes>
       </Router>
     </TimeProvider>
