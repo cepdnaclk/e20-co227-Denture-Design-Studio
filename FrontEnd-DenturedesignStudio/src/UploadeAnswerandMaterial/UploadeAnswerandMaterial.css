@@ -62,17 +62,22 @@
 }
 #Adddescription {
   position: absolute;
-  top: 10vw;
+  top: 8vw;
   left: 0vw;
 }
 #Uploadmaterial {
   position: absolute;
-  top: 20vw;
+  top: 16vw;
+  left: 0vw;
+}
+#Finish {
+  position: absolute;
+  top: 24vw;
   left: 0vw;
 }
 .UAMButtonsbox {
   position: absolute;
-  top: 15vw;
+  top: 13vw;
   left: 60vw;
 }
 .ADcontent {

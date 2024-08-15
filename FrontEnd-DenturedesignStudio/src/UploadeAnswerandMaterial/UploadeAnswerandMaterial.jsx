@@ -7,18 +7,31 @@ import AddDescription from "./AddDescription.jsx";
 import AddMaterial from "./AddMaterials.jsx";
 import AddAnswer from "./AddAnswer.jsx";
 import Teeth from "../TeethComp/Teeth.jsx";
+import Swal from "sweetalert2";
 
 function UploadeAnswerandMaterial() {
   let navigate = useNavigate();
-  function handleClick(path) {
-    navigate(path);
-  }
 
+  const [isImageUpload, setisImageUpload] = useState("");
   const [isAddDescriptionOpen, setIsAddDescriptionOpen] = useState(false);
   const [isAddAnswerOpen, setIsAddAnswerOpen] = useState(false);
   const [isAddMaterialsOpen, setIsAddMaterialsOpen] = useState(false);
   const [isAddImageOpen, setIsAddImageOpen] = useState(false);
 
+  function handleClick(path) {
+    if (path == "/assessorhome" && !isImageUpload) {
+      Swal.fire({
+        icon: "error",
+        title: "Upload Required",
+        text: "Please upload an answer before finishing!",
+        background: "#30505b",
+        color: "#d3ecff",
+        confirmButtonColor: "#66d8d8",
+      });
+      return;
+    }
+    navigate(path);
+  }
   const openAddDescription = () => {
     setIsAddDescriptionOpen(true);
     document.body.classList.add("active-popup");
@@ -74,6 +87,7 @@ function UploadeAnswerandMaterial() {
             openAddImage={openAddImage}
             isAddImageOpen={isAddImageOpen}
             closeAddImage={closeAddAnswer}
+            setisImageUpload={setisImageUpload}
           />
         )}
 
