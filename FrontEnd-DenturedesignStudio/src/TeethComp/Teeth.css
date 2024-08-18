@@ -317,8 +317,9 @@
   opacity: 0.6; /*reduced opacity on hover */
 }
 
-/*mrest*/
+/* occlusal #1 */
 
+/* upper right */
 #rest-btn-1 {
   left: 22%;
   top: 39.5%;
@@ -327,7 +328,6 @@
 
   }
 }
-
 #rest-btn-2 {
   left: 22%;
   top: 33%;
@@ -360,6 +360,9 @@
   }
 }
 
+/* cingulum #1 */
+
+
 #rest-btn-6 {
   left: 33.5%;
   top: 10%;
@@ -367,6 +370,10 @@
     width: 4vw;
   }
 }
+
+/* incisal #1 */
+
+/* upper */
 
 #rest-btn-7 {
   left: 27.5%;
@@ -400,6 +407,8 @@
   }
 }
 
+/* cingulum #2 */
+
 #rest-btn-11 {
   left: 53%;
   top: 10%;
@@ -407,6 +416,8 @@
     width: 4vw;
   }
 }
+
+/* upper right */
 
 #rest-btn-12 {
   left: 67%;
@@ -448,6 +459,8 @@
   }
 }
 
+/* lower right */
+
 #rest-btn-17 {
   left: 70%;
   top: 57%;
@@ -488,6 +501,8 @@
   }
 }
 
+/* cingulum #3 */
+
 #rest-btn-22 {
   left: 52%;
   top: 82%;
@@ -495,6 +510,10 @@
     width: 4vw;
   }
 }
+
+/* incisal #2 */
+
+/* lower */
 
 #rest-btn-23 {
   left: 51%;
@@ -528,6 +547,8 @@
   }
 }
 
+/* cingulum #4 */
+
 #rest-btn-27 {
   left: 30%;
   top: 80%;
@@ -535,6 +556,8 @@
     width: 4vw;
   }
 }
+
+/* lower left */
 
 #rest-btn-28 {
   left: 29.5%;
@@ -576,7 +599,9 @@
   }
 }
 
-/* #2 */
+
+
+/* occusal #2 */
 
 /* lower right */
 #rest-btn-33 {
@@ -682,7 +707,7 @@
 /* upper right */
 
 #rest-btn-45 {
-  left: 24.5%;
+  left: 70%;
   top: 18%;
   img {
     width: 1vw;
@@ -690,61 +715,92 @@
 }
 
 #rest-btn-46 {
-  
+  left: 71%;
+  top: 23%;
+  img {
+    width: 1vw;
+  }
 }
 
 #rest-btn-47 {
-  
+  left: 71%;
+  top: 31%;
+  img {
+    width: 1vw;
+  }
 }
 
 #rest-btn-48 {
-  
+  left: 73%;
+  top: 37.5%;
+  img {
+    width: 1vw;
+  }
 }
 
+/* cingulum #2 */
+
 #rest-btn-49 {
-  
+  left:31%;
+  top: 10%;
+  img {
+    width: 4vw;
+  }
 }
 
 #rest-btn-50 {
-  
+  left:70%;
+  top: 4%;
+  img {
+    width: 4vw;
+  }
 }
 
 #rest-btn-51 {
-  
+  left:36.5%;
+  top: 85.75%;
+  img {
+    width: 4vw;
+  }
 }
 
 #rest-btn-52 {
-  
+  left:66%;
+  top: 86%;
+  img {
+    width: 3vw;
+  }
 }
 
 #rest-btn-53 {
-  
+  left:28.5%;
+  top: 10.5%;
+  img {
+    width: 0.85vw;
+  }
 }
 
 #rest-btn-54 {
-  
+  left:66.5%;
+  top: 10.5%;
+  img {
+    width: 0.85vw;
+  }
 }
 
 #rest-btn-55 {
-  
+  left:31%;
+  top: 88%;
+  img {
+    width: 0.85vw;
+  }
 }
 
 #rest-btn-56 {
-  
+  left:63%;
+  top: 88%;
+  img {
+    width: 0.85vw;
+  }
 }
 
-#rest-btn-57 {
- 
-}
-
-#rest-btn-58 {
-  
-}
-
-#rest-btn-59 {
-  
-}
-
-#rest-btn-60 {
-  
-}

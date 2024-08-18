@@ -88,10 +88,10 @@ import r16 from "./rests/r16.gif";
 import r17 from "./rests/r17.gif";
 import r18 from "./rests/r18.gif";
 import r19 from "./rests/r19.gif";
-import r20 from "./rests/r20.gif";
-import r21 from "./rests/r21.gif";
-import r22 from "./rests/r22.gif";
-import r23 from "./rests/r23.gif";
+import r20 from "./rests/r20.png";
+import r21 from "./rests/r21.png";
+import r22 from "./rests/r22.png";
+import r23 from "./rests/r23.png";
 
 const TeethImages = [
   t0,
@@ -129,59 +129,83 @@ const TeethImages = [
 ];
 
 const RestImages = [
+  /* occlusal */
   m0mrest,
   m1mrest,
   m2mrest,
   m3mrest,
   m4mrest,
+
+
+/* cingulum */
   m5mrest,
+
+/* incisal */
   m6mrest,
   m7mrest,
   m8mrest,
   m9mrest,
+
+/* cingulum */
   m10mrest,
+
+/* occlusal */
   m11mrest,
   m12mrest,
   m13mrest,
   m14mrest,
   m15mrest,
+
+/* occlusal */
   m16mrest,
   m17mrest,
   m18mrest,
   m19mrest,
   m20mrest,
+
+/* cingulum */
   m21mrest,
+
+/* incisal */
   m22mrest,
   m23mrest,
   m24mrest,
   m25mrest,
+
+/* cingulum */
   m26mrest,
   m27mrest,
   m28mrest,
   m29mrest,
   m30mrest,
   m31mrest,
-
+/* occlusal */
   r0,
   r1,
   r2,
   r3,
+/* occlusal */
   r4,
   r5,
   r6,
   r7,
+/* occlusal */
   r8,
   r9,
   r10,
   r11,
+/* occlusal */
   r12,
   r13,
   r14,
   r15,
+  
+/* cingulum */
   r16,
   r17,
   r18,
   r19,
+
   r20,
   r21,
   r22,
@@ -230,7 +254,7 @@ const Teeth = ({ disableSelection }) => {
         </button>
       ))}
 
-      {Array.from({ length: 60 }, (_, index) => (
+      {Array.from({ length: 56 }, (_, index) => (
         <button
           key={index}
           className={`rest-btn ${selectedRests[index] ? "selected" : ""}`}
