@@ -68,35 +68,30 @@ import m29mrest from "./rests/m29mrest.gif";
 import m30mrest from "./rests/m30mrest.gif";
 import m31mrest from "./rests/m31mrest.gif";
 
-import m4drest from "./rests/m4drest.gif";
-import m5drest from "./rests/m5drest.gif";
-import m6drest from "./rests/m6drest.gif";
-import m7drest from "./rests/m7drest.gif";
-import m8drest from "./rests/m8drest.gif";
-import m9drest from "./rests/m9drest.gif";
-import m10drest from "./rests/m10drest.gif";
-import m11drest from "./rests/m11drest.gif";
-import m20drest from "./rests/m20drest.gif";
-import m21drest from "./rests/m21drest.gif";
-import m22drest from "./rests/m22drest.gif";
-import m23drest from "./rests/m23drest.gif";
-import m24drest from "./rests/m24drest.gif";
-import m25drest from "./rests/m25drest.gif";
-import m26drest from "./rests/m26drest.gif";
-import m27drest from "./rests/m27drest.gif";
-
-import m5crest from "./rests/m5crest.gif";
-import m6crest from "./rests/m6crest.gif";
-import m7crest from "./rests/m7crest.gif";
-import m8crest from "./rests/m8crest.gif";
-import m9crest from "./rests/m9crest.gif";
-import m10crest from "./rests/m10crest.gif";
-import m21crest from "./rests/m21crest.gif";
-import m22crest from "./rests/m22crest.gif";
-import m23crest from "./rests/m23crest.gif";
-import m24crest from "./rests/m24crest.gif";
-import m25crest from "./rests/m25crest.gif";
-import m26crest from "./rests/m26crest.gif";
+import r0 from "./rests/r0.gif";
+import r1 from "./rests/r1.gif";
+import r2 from "./rests/r2.gif";
+import r3 from "./rests/r3.gif";
+import r4 from "./rests/r4.gif";
+import r5 from "./rests/r5.gif";
+import r6 from "./rests/r6.gif";
+import r7 from "./rests/r7.gif";
+import r8 from "./rests/r8.gif";
+import r9 from "./rests/r9.gif";
+import r10 from "./rests/r10.gif";
+import r11 from "./rests/r11.gif";
+import r12 from "./rests/r12.gif";
+import r13 from "./rests/r13.gif";
+import r14 from "./rests/r14.gif";
+import r15 from "./rests/r15.gif";
+import r16 from "./rests/r16.gif";
+import r17 from "./rests/r17.gif";
+import r18 from "./rests/r18.gif";
+import r19 from "./rests/r19.gif";
+import r20 from "./rests/r20.png";
+import r21 from "./rests/r21.png";
+import r22 from "./rests/r22.png";
+import r23 from "./rests/r23.png";
 
 const TeethImages = [
   t0,
@@ -134,68 +129,87 @@ const TeethImages = [
 ];
 
 const RestImages = [
+  /* occlusal */
   m0mrest,
   m1mrest,
   m2mrest,
   m3mrest,
   m4mrest,
+
+
+/* cingulum */
   m5mrest,
+
+/* incisal */
   m6mrest,
   m7mrest,
   m8mrest,
   m9mrest,
+
+/* cingulum */
   m10mrest,
+
+/* occlusal */
   m11mrest,
   m12mrest,
   m13mrest,
   m14mrest,
   m15mrest,
+
+/* occlusal */
   m16mrest,
   m17mrest,
   m18mrest,
   m19mrest,
   m20mrest,
+
+/* cingulum */
   m21mrest,
+
+/* incisal */
   m22mrest,
   m23mrest,
   m24mrest,
   m25mrest,
+
+/* cingulum */
   m26mrest,
   m27mrest,
   m28mrest,
   m29mrest,
   m30mrest,
   m31mrest,
+/* occlusal */
+  r0,
+  r1,
+  r2,
+  r3,
+/* occlusal */
+  r4,
+  r5,
+  r6,
+  r7,
+/* occlusal */
+  r8,
+  r9,
+  r10,
+  r11,
+/* occlusal */
+  r12,
+  r13,
+  r14,
+  r15,
+  
+/* cingulum */
+  r16,
+  r17,
+  r18,
+  r19,
 
-  m4drest,
-  m5drest,
-  m6drest,
-  m7drest,
-  m8drest,
-  m9drest,
-  m10drest,
-  m11drest,
-  m20drest,
-  m21drest,
-  m22drest,
-  m23drest,
-  m24drest,
-  m25drest,
-  m26drest,
-  m27drest,
-
-  m5crest,
-  m6crest,
-  m7crest,
-  m8crest,
-  m9crest,
-  m10crest,
-  m21crest,
-  m22crest,
-  m23crest,
-  m24crest,
-  m25crest,
-  m26crest,
+  r20,
+  r21,
+  r22,
+  r23,
 ];
 
 const Teeth = ({ disableSelection }) => {
@@ -240,7 +254,7 @@ const Teeth = ({ disableSelection }) => {
         </button>
       ))}
 
-      {Array.from({ length: 60 }, (_, index) => (
+      {Array.from({ length: 56 }, (_, index) => (
         <button
           key={index}
           className={`rest-btn ${selectedRests[index] ? "selected" : ""}`}
