@@ -240,11 +240,14 @@ body {
   line-height: 134.77%;
   border: none;
   color: #0c4b29;
-  transition: all 0.5s ease;
 }
 .sign2:hover {
   transform: scale(1.03);
   cursor: pointer;
+  transition: all 0.5s ease;
+}
+.sign2:hover::after {
+  transition: all 0.5s ease;
 }
 @media (max-width: 768px) {
   .signuppage::before {
