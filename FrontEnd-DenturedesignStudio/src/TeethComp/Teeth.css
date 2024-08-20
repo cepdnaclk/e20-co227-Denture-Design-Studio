@@ -305,12 +305,11 @@
   background: transparent;
   margin: 0;
   padding: 0;
-  width: 2vw;
-  height: 2vw;
+  width: 1vw;
+  height: 1vw;
   opacity: 1;
   transition: opacity 0.3s ease;
   z-index: 20;
-  
 }
 
 .rest-btn:hover {
@@ -321,16 +320,15 @@
 
 /* upper right */
 #rest-btn-1 {
-  left: 22%;
-  top: 39.5%;
+  left: 23.5%;
+  top: 41%;
   img {
-    width: 1vw;
-
+    width: 0.8vw;
   }
 }
 #rest-btn-2 {
-  left: 22%;
-  top: 33%;
+  left: 23%;
+  top: 38.5%;
   img {
     width: 1vw;
   }
@@ -338,15 +336,15 @@
 
 #rest-btn-3 {
   left: 23.9%;
-  top: 25.5%;
+  top: 34%;
   img {
     width: 1vw;
   }
 }
 
 #rest-btn-4 {
-  left: 25.5%;
-  top: 20%;
+  left: 24.5%;
+  top: 31.3%;
   img {
     width: 1vw;
   }
@@ -361,7 +359,6 @@
 }
 
 /* cingulum #1 */
-
 
 #rest-btn-6 {
   left: 33.5%;
@@ -599,8 +596,6 @@
   }
 }
 
-
-
 /* occusal #2 */
 
 /* lower right */
@@ -741,7 +736,7 @@
 /* cingulum #2 */
 
 #rest-btn-49 {
-  left:31%;
+  left: 31%;
   top: 10%;
   img {
     width: 4vw;
@@ -749,7 +744,7 @@
 }
 
 #rest-btn-50 {
-  left:70%;
+  left: 70%;
   top: 4%;
   img {
     width: 4vw;
@@ -757,7 +752,7 @@
 }
 
 #rest-btn-51 {
-  left:36.5%;
+  left: 36.5%;
   top: 85.75%;
   img {
     width: 4vw;
@@ -765,7 +760,7 @@
 }
 
 #rest-btn-52 {
-  left:66%;
+  left: 66%;
   top: 86%;
   img {
     width: 3vw;
@@ -773,7 +768,7 @@
 }
 
 #rest-btn-53 {
-  left:28.5%;
+  left: 28.5%;
   top: 10.5%;
   img {
     width: 0.85vw;
@@ -781,7 +776,7 @@
 }
 
 #rest-btn-54 {
-  left:66.5%;
+  left: 66.5%;
   top: 10.5%;
   img {
     width: 0.85vw;
@@ -789,7 +784,7 @@
 }
 
 #rest-btn-55 {
-  left:31%;
+  left: 31%;
   top: 88%;
   img {
     width: 0.85vw;
@@ -797,10 +792,9 @@
 }
 
 #rest-btn-56 {
-  left:63%;
+  left: 63%;
   top: 88%;
   img {
     width: 0.85vw;
   }
 }
-
