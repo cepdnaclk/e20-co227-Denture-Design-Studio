@@ -56,6 +56,9 @@ import t8rest_middle from "./rests/t8rest_middle.png";
 import t9rest_middle from "./rests/t9rest_middle.png";
 
 const RestImages = [
+
+  /*occlusal*/
+
   t1rest_up,
   t2rest_down,
   t2rest_up,
@@ -65,16 +68,6 @@ const RestImages = [
   t4rest_up,
   t5rest_down,
   t5rest_up,
-  t6rest_down,
-  t6rest_middle,
-  t6rest_up,
-  t7rest_middle,
-  t8rest_middle,
-  t9rest_middle,
-  t10rest_middle,
-  t11rest_down,
-  t11rest_middle,
-  t11rest_up,
   t12rest_down,
   t12rest_up,
   t13rest_down,
@@ -93,16 +86,6 @@ const RestImages = [
   t20rest_up,
   t21rest_down,
   t21rest_up,
-  t22rest_down,
-  t22rest_middle,
-  t22rest_up,
-  t23rest_middle,
-  t24rest_middle,
-  t25rest_middle,
-  t26rest_middle,
-  t27rest_down,
-  t27rest_middle,
-  t27rest_up,
   t28rest_down,
   t28rest_up,
   t29rest_down,
@@ -112,6 +95,31 @@ const RestImages = [
   t31rest_down,
   t31rest_up,
   t32rest_down,
+
+  /*cingulum*/
+  t6rest_down,
+  t6rest_middle,
+  t6rest_up,
+  t11rest_down,
+  t11rest_middle,
+  t11rest_up,
+  t22rest_down,
+  t22rest_middle,
+  t22rest_up,
+  t27rest_down,
+  t27rest_middle,
+  t27rest_up,
+
+  /*incisal*/
+  t7rest_middle,
+  t8rest_middle,
+  t9rest_middle,
+  t10rest_middle,
+  t23rest_middle,
+  t24rest_middle,
+  t25rest_middle,
+  t26rest_middle, 
+  
 ];
 
 export default RestImages;
