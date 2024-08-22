@@ -3,7 +3,7 @@
   width: 23.9vw;
   aspect-ratio: 459 / 700;
   left: 40.96vw;
-  top: 52vh;
+  top: 15vh;
   background: #d3ecff;
   border-radius: 2.6vw;
   background-image: url(./image.png);
@@ -316,9 +316,10 @@
   opacity: 0.6; /*reduced opacity on hover */
 }
 
-/* occlusal #1 */
+/* occlusal */
 
 /* upper right */
+
 #rest-btn-1 {
   left: 23.5%;
   top: 41%;
@@ -351,90 +352,83 @@
 }
 
 #rest-btn-5 {
-  left: 27%;
-  top: 14.5%;
+  left: 26.5%;
+  top: 26.5%;
   img {
     width: 1vw;
   }
 }
 
-/* cingulum #1 */
 
 #rest-btn-6 {
-  left: 33.5%;
-  top: 10%;
+  left: 27%;
+  top: 24.5%;
   img {
-    width: 4vw;
+    width: 0.85vw;
   }
 }
 
-/* incisal #1 */
-
-/* upper */
-
 #rest-btn-7 {
   left: 27.5%;
-  top: 2.45%;
+  top: 21.5%;
   img {
-    width: 6vw;
+    width: 0.85vw;
   }
 }
 
 #rest-btn-8 {
-  left: 32%;
-  top: 3.25%;
+  left: 28%;
+  top: 19.25%;
   img {
-    width: 4vw;
+    width: 0.85vw;
   }
 }
 
 #rest-btn-9 {
-  left: 54%;
-  top: 3.5%;
+  left: 29.5%;
+  top: 16%;
   img {
-    width: 4vw;
+    width: 0.85vw;
   }
 }
+
+/*upper right*/
 
 #rest-btn-10 {
-  left: 49.5%;
-  top: 2.45%;
+  left: 71%;
+  top: 19.5%;
   img {
-    width: 6vw;
+    width: 0.85vw;
   }
 }
-
-/* cingulum #2 */
 
 #rest-btn-11 {
-  left: 53%;
-  top: 10%;
+  left: 69%;
+  top: 15.5%;
   img {
-    width: 4vw;
+    width: 0.85vw;
   }
 }
 
-/* upper right */
-
 #rest-btn-12 {
-  left: 67%;
-  top: 14.5%;
+  left: 73%;
+  top: 24.5%;
   img {
-    width: 1vw;
+    width: 0.85vw;
   }
 }
 
 #rest-btn-13 {
-  left: 69%;
-  top: 20%;
+  left: 71.5%;
+  top: 21%;
   img {
-    width: 1vw;
+    width: 0.85vw;
   }
 }
 
 #rest-btn-14 {
-  left: 71%;
-  top: 25.25%;
+  left: 74%;
+  top: 31.5%;
   img {
     width: 1vw;
   }
@@ -442,359 +436,647 @@
 
 #rest-btn-15 {
   left: 72.5%;
-  top: 33%;
+  top: 26.5%;
   img {
     width: 1vw;
   }
 }
 
 #rest-btn-16 {
-  left: 72.5%;
-  top: 39.75%;
+  left: 75.5%;
+  top: 38.5%;
   img {
     width: 1vw;
   }
 }
 
-/* lower right */
-
 #rest-btn-17 {
-  left: 70%;
-  top: 57%;
+  left: 75%;
+  top: 34%;
   img {
     width: 1vw;
   }
 }
 
 #rest-btn-18 {
-  left: 70%;
-  top: 65%;
+  left: 75%;
+  top: 41%;
   img {
     width: 1vw;
   }
 }
 
+/*lower right*/
+
 #rest-btn-19 {
-  left: 69%;
-  top: 73%;
+  left: 72%;
+  top: 58%;
   img {
     width: 1vw;
   }
 }
 
 #rest-btn-20 {
-  left: 67%;
-  top: 78.75%;
+  left: 71.5%;
+  top: 65.5%;
   img {
     width: 1vw;
   }
 }
 
 #rest-btn-21 {
-  left: 63.75%;
-  top: 84.5%;
+  left: 73%;
+  top: 60.5%;
   img {
     width: 1vw;
   }
 }
 
-/* cingulum #3 */
-
 #rest-btn-22 {
-  left: 52%;
-  top: 82%;
+  left: 70%;
+  top: 73.5%;
   img {
-    width: 4vw;
+    width: 1vw;
   }
 }
 
-/* incisal #2 */
-
-/* lower */
-
 #rest-btn-23 {
-  left: 51%;
-  top: 81.5%;
+  left: 72%;
+  top: 67.75%;
   img {
-    width: 4vw;
+    width: 1vw;
   }
 }
 
 #rest-btn-24 {
-  left: 53%;
-  top: 84%;
+  left: 69%;
+  top: 80%;
   img {
-    width: 2vw;
+    width: 0.85vw;
   }
 }
 
 #rest-btn-25 {
-  left: 42%;
-  top: 84%;
+  left: 70%;
+  top: 76%;
   img {
-    width: 2vw;
+    width: 0.85vw;
   }
 }
 
 #rest-btn-26 {
-  left: 34.5%;
-  top: 81.5%;
+  left: 66%;
+  top: 86%;
   img {
-    width: 4vw;
+    width: 0.85vw;
   }
 }
-
-/* cingulum #4 */
 
 #rest-btn-27 {
-  left: 30%;
-  top: 80%;
+  left: 68%;
+  top: 82%;
   img {
-    width: 4vw;
+    width: 0.85vw;
   }
 }
 
-/* lower left */
+/* lower right */
 
 #rest-btn-28 {
-  left: 29.5%;
-  top: 85%;
+  left: 31.5%;
+  top: 86%;
   img {
-    width: 1vw;
+    width: 0.85vw;
   }
 }
 
 #rest-btn-29 {
-  left: 27.5%;
-  top: 78.75%;
+  left: 29%;
+  top: 82.5%;
   img {
-    width: 1vw;
+    width: 0.85vw;
   }
 }
 
 #rest-btn-30 {
-  left: 26.5%;
-  top: 72.75%;
+  left: 29.5%;
+  top: 80.5%;
   img {
-    width: 1vw;
+    width: 0.85vw;
   }
 }
 
 #rest-btn-31 {
-  left: 25.5%;
-  top: 65%;
+  left: 28%;
+  top: 76.25%;
   img {
-    width: 1vw;
+    width: 0.85vw;
   }
 }
 
 #rest-btn-32 {
-  left: 24%;
-  top: 57%;
+  left: 28%;
+  top: 74%;
   img {
     width: 1vw;
   }
 }
 
-/* occusal #2 */
-
-/* lower right */
 #rest-btn-33 {
-  left: 71%;
-  top: 59%;
+  left: 26%;
+  top: 68%;
   img {
     width: 1vw;
   }
 }
 
 #rest-btn-34 {
-  left: 71%;
-  top: 67.15%;
+  left: 26%;
+  top: 66%;
   img {
     width: 1vw;
   }
 }
 
 #rest-btn-35 {
-  left: 69%;
-  top: 75.25%;
+  left: 25%;
+  top: 60.5%;
   img {
     width: 1vw;
   }
 }
 
 #rest-btn-36 {
-  left: 67%;
-  top: 81%;
+  left: 25.5%;
+  top: 58%;
   img {
     width: 1vw;
   }
 }
 
-/* lower left */
+/* Cingulum */
 
 #rest-btn-37 {
-  left: 27%;
-  top: 81.25%;
+  left: 30%;
+  top: 14%;
   img {
-    width: 1vw;
+    width: 0.75vw;
   }
 }
 
 #rest-btn-38 {
-  left: 25.5%;
-  top: 75.25%;
+  left: 30.5%;
+  top: 12%;
   img {
-    width: 1vw;
+    width: 0.6vw;
   }
 }
 
 #rest-btn-39 {
-  left: 24%;
-  top: 67%;
+  left: 33%;
+  top: 11%;
   img {
-    width: 1vw;
+    width: 0.75vw;
   }
 }
 
 #rest-btn-40 {
-  left: 23%;
-  top: 59.25%;
+  left: 66%;
+  top: 11%;
   img {
-    width: 1vw;
+    width: 0.75vw;
   }
 }
 
-/* upper left */
-
 #rest-btn-41 {
-  left: 21%;
-  top: 37.5%;
+  left: 68.5%;
+  top: 12%;
   img {
-    width: 1vw;
+    width: 0.6vw;
   }
 }
 
 #rest-btn-42 {
-  left: 23%;
-  top: 30.5%;
+  left: 70.5%;
+  top: 13.5%;
   img {
-    width: 1vw;
+    width: 0.65vw;
   }
 }
 
 #rest-btn-43 {
-  left: 23.5%;
-  top: 23%;
+  left:62.5%;
+  top: 90%;
   img {
-    width: 1vw;
+    width: 0.7vw;
   }
 }
 
 #rest-btn-44 {
-  left: 24.5%;
-  top: 18%;
+  left: 65%;
+  top: 88.7%;
   img {
-    width: 1vw;
+    width: 0.6vw;
   }
 }
 
-/* upper right */
 
 #rest-btn-45 {
-  left: 70%;
-  top: 18%;
+  left: 66%;
+  top: 87.25%;
   img {
-    width: 1vw;
+    width: 0.65vw;
   }
 }
 
 #rest-btn-46 {
-  left: 71%;
-  top: 23%;
+  left: 36%;
+  top: 90%;
   img {
-    width: 1vw;
+    width: 0.75vw;
   }
 }
 
 #rest-btn-47 {
-  left: 71%;
-  top: 31%;
+  left: 33.5%;
+  top: 89%;
   img {
-    width: 1vw;
+    width: 0.6vw;
   }
 }
 
 #rest-btn-48 {
-  left: 73%;
-  top: 37.5%;
+  left: 32%;
+  top: 87.5%;
+  img {
+    width: 0.75vw;
+  }
+}
+
+
+/* incisal */
+
+/* upper */
+
+#rest-btn-49 {
+  left: 34%;
+  top: 6%;
   img {
     width: 1vw;
   }
 }
 
-/* cingulum #2 */
-
-#rest-btn-49 {
-  left: 31%;
-  top: 10%;
-  img {
-    width: 4vw;
-  }
-}
-
 #rest-btn-50 {
-  left: 70%;
+  left: 44%;
   top: 4%;
   img {
-    width: 4vw;
+    width: 1vw;
   }
 }
 
 #rest-btn-51 {
-  left: 36.5%;
-  top: 85.75%;
+  left: 55%;
+  top: 4%;
   img {
-    width: 4vw;
+    width: 1vw;
   }
 }
 
 #rest-btn-52 {
-  left: 66%;
-  top: 86%;
+  left: 64%;
+  top: 6%;
   img {
-    width: 3vw;
+    width: 0.85vw;
   }
 }
 
+/* lower */
+
 #rest-btn-53 {
-  left: 28.5%;
-  top: 10.5%;
+  left: 59.5%;
+  top: 92%;
   img {
-    width: 0.85vw;
+    width: 1vw;
   }
 }
 
 #rest-btn-54 {
-  left: 66.5%;
-  top: 10.5%;
+  left: 52.5%;
+  top: 93%;
   img {
-    width: 0.85vw;
+    width: 1vw;
   }
 }
 
 #rest-btn-55 {
-  left: 31%;
-  top: 88%;
+  left: 46%;
+  top: 93%;
   img {
-    width: 0.85vw;
+    width: 1vw;
   }
 }
 
 #rest-btn-56 {
-  left: 63%;
-  top: 88%;
+  left: 39%;
+  top: 92%;
   img {
-    width: 0.85vw;
+    width: 1vw;
+  }
+}
+
+.teethBackground2 .undercut-btn {
+  position: absolute;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border: none;
+  cursor: pointer;
+  background: transparent;
+  margin: 0;
+  padding: 0;
+  width: 1vw;
+  height: 1vw;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+  z-index: 20;
+}
+#undercut-btn-1 {
+  left: 25.1%;
+  top: 41.2%;
+  img {
+    width: 1.7vw;
+  }
+}
+#undercut-btn-2 {
+  left: 25.7%;
+  top: 34.3%;
+  img {
+    width: 1.78vw;
+  }
+}
+#undercut-btn-3 {
+  left: 26%;
+  top: 26.5%;
+  img {
+    width: 1.95vw;
+  }
+}
+#undercut-btn-4 {
+  left: 28.1%;
+  top: 21.7%;
+  img {
+    width: 1.41vw;
+  }
+}
+#undercut-btn-5 {
+  left: 29.5%;
+  top: 16.3%;
+  img {
+    width: 1.45vw;
+  }
+}
+#undercut-btn-6 {
+  left: 67.7%;
+  top: 15.9%;
+  img {
+    width: 1.41vw;
+  }
+}
+#undercut-btn-7 {
+  left: 69.1%;
+  top: 21.2%;
+  img {
+    width: 1.43vw;
+  }
+}
+#undercut-btn-8 {
+  left: 68.7%;
+  top: 26.39%;
+  img {
+    width: 1.85vw;
+  }
+}
+#undercut-btn-9 {
+  left: 70.2%;
+  top: 34.4%;
+  img {
+    width: 1.73vw;
+  }
+}
+#undercut-btn-10 {
+  left: 71.1%;
+  top: 40.8%;
+  img {
+    width: 1.85vw;
+  }
+}
+#undercut-btn-11 {
+  left: 70.3%;
+  top: 53.5%;
+  img {
+    width: 1.45vw;
+  }
+}
+#undercut-btn-12 {
+  left: 69.2%;
+  top: 60.5%;
+  img {
+    width: 1.55vw;
+  }
+}
+#undercut-btn-13 {
+  left: 68.2%;
+  top: 68.2%;
+  img {
+    width: 1.48vw;
+  }
+}
+#undercut-btn-14 {
+  left: 68.1%;
+  top: 76.5%;
+  img {
+    width: 1.5vw;
+  }
+}
+#undercut-btn-15 {
+  left: 65.1%;
+  top: 82.5%;
+  img {
+    width: 1.6vw;
+  }
+}
+#undercut-btn-16 {
+  left: 30.6%;
+  top: 82.8%;
+  img {
+    width: 1.5vw;
+  }
+}
+#undercut-btn-17 {
+  left: 29.8%;
+  top: 76.5%;
+  img {
+    width: 1.41vw;
+  }
+}
+#undercut-btn-18 {
+  left: 28.7%;
+  top: 68.2%;
+  img {
+    width: 1.53vw;
+  }
+}
+#undercut-btn-19 {
+  left: 27.1%;
+  top: 60.5%;
+  img {
+    width: 1.41vw;
+  }
+}
+#undercut-btn-20 {
+  left: 25.9%;
+  top: 53.4%;
+  img {
+    width: 1.45vw;
+  }
+}
+#undercut-btn-21 {
+  left: 20.2%;
+  top: 41%;
+  img {
+    width: 1.7vw;
+  }
+}
+#undercut-btn-22 {
+  left: 20.4%;
+  top: 34%;
+  img {
+    width: 1.7vw;
+  }
+}
+#undercut-btn-23 {
+  left: 22.2%;
+  top: 26%;
+  img {
+    width: 1.6vw;
+  }
+}
+#undercut-btn-24 {
+  left: 24.1%;
+  top: 21.1%;
+  img {
+    width: 1.47vw;
+  }
+}
+#undercut-btn-25 {
+  left: 24.8%;
+  top: 15.6%;
+  img {
+    width: 1.65vw;
+  }
+}
+#undercut-btn-26 {
+  left: 72%;
+  top: 15.6%;
+  img {
+    width: 1.5vw;
+  }
+}
+#undercut-btn-27 {
+  left: 73%;
+  top: 21%;
+  img {
+    width: 1.65vw;
+  }
+}
+#undercut-btn-28 {
+  left: 74%;
+  top: 26.1%;
+  img {
+    width: 1.68vw;
+  }
+}
+#undercut-btn-29 {
+  left: 75.5%;
+  top: 34%;
+  img {
+    width: 1.7vw;
+  }
+}
+#undercut-btn-30 {
+  left: 74.5%;
+  top: 40.8%;
+  img {
+    width: 1.9vw;
+  }
+}
+#undercut-btn-31 {
+  left: 74.1%;
+  top: 53.6%;
+  img {
+    width: 1.6vw;
+  }
+}
+#undercut-btn-32 {
+  left: 73.1%;
+  top: 60.5%;
+  img {
+    width: 2.14vw;
+  }
+}
+#undercut-btn-33 {
+  left: 71.7%;
+  top: 68.15%;
+  img {
+    width: 2.15vw;
+  }
+}
+#undercut-btn-34 {
+  left: 71%;
+  top: 76.6%;
+  img {
+    width: 1.82vw;
+  }
+}
+#undercut-btn-35 {
+  /* color*/
+  left: 67.2%;
+  top: 82.6%;
+  img {
+    width: 1.75vw;
+  }
+}
+#undercut-btn-36 {
+  left: 27.1%;
+  top: 82.9%;
+  img {
+    width: 1.6vw;
+  }
+}
+#undercut-btn-37 {
+  left: 25%;
+  top: 76.6%;
+  img {
+    width: 1.7vw;
+  }
+}
+#undercut-btn-38 {
+  left: 23%;
+  top: 68.3%;
+  img {
+    width: 1.97vw;
+  }
+}
+#undercut-btn-39 {
+  left: 21%;
+  top: 60.6%;
+  img {
+    width: 1.9vw;
+  }
+}
+#undercut-btn-40 {
+  left: 21.3%;
+  top: 53.5%;
+  img {
+    width: 1.58vw;
   }
 }
