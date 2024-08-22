@@ -5,11 +5,16 @@ import TeethImages from "./Teethimages";
 import RestImages from "./Restimages";
 import ClaspImages from "./Claspsimages";
 import PlateImages from "./PlatesImages";
+import UndercutsImages from "./Undercutimages";
 
 const Teeth = ({ disableSelection }) => {
   const [selectedTeeth, setSelectedTeeth] = useState(Array(32).fill(false));
   const [selectedRests, setSelectedRests] = useState(Array(56).fill(false));
   const [selectedPlate, setSelectedPlate] = useState(Array(40).fill(false));
+
+  const [selectedUnderCut, setSelectedUndercut] = useState(
+    Array(40).fill(false)
+  );
 
   const handleToothClick = (index) => {
     if (!disableSelection) {
