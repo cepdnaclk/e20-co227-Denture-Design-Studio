@@ -1,0 +1,517 @@
+.teethBackground2 {
+  position: relative;
+  width: 23.9vw;
+  aspect-ratio: 459 / 700;
+  left: 40.96vw;
+  top: 52vh;
+  background: #d3ecff;
+  border-radius: 2.6vw;
+  background-image: url(./image.png);
+  background-size: cover;
+}
+
+.teethBackground2 .plate-btn {
+  position: absolute;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border: none;
+  cursor: pointer;
+  background: transparent;
+  margin: 0;
+  padding: 0;
+  width: 1vw;
+  height: 1vw;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+  z-index: 2;
+  img {
+    height: auto;
+  }
+}
+
+.plate-btn:hover {
+  opacity: 0.6; /*reduced opacity on hover */
+}
+
+/* occlusal #1 */
+
+/* upper right */
+#plate-btn-1 {
+  left: 21.5%;
+  top: 41.2%;
+  img {
+    width: 2.8vw;
+  }
+}
+#plate-btn-2 {
+  left: 20.7%;
+  top: 34%;
+  img {
+    width: 3.3vw;
+  }
+}
+
+#plate-btn-3 {
+  left: 22.2%;
+  top: 26%;
+  img {
+    width: 3.15vw;
+  }
+}
+
+#plate-btn-4 {
+  left: 24.3%;
+  top: 21.3%;
+  img {
+    width: 2.6vw;
+  }
+}
+
+#plate-btn-5 {
+  left: 25%;
+  top: 15.6%;
+  img {
+    width: 2.7vw;
+  }
+}
+
+/* cingulum #1 */
+
+#plate-btn-6 {
+  left: 66.8%;
+  top: 15.4%;
+  img {
+    width: 2.75vw;
+  }
+}
+
+/* incisal #1 */
+
+/* upper */
+
+#plate-btn-7 {
+  left: 68%;
+  top: 21%;
+  img {
+    width: 2.9vw;
+  }
+}
+
+#plate-btn-8 {
+  left: 67.5%;
+  top: 26%;
+  img {
+    width: 3.2vw;
+  }
+}
+
+#plate-btn-9 {
+  left: 69%;
+  top: 34.1%;
+  img {
+    width: 3.2vw;
+  }
+}
+
+#plate-btn-10 {
+  left: 70%;
+  top: 40.7%;
+  img {
+    width: 3vw;
+  }
+}
+
+/* cingulum #2 */
+
+#plate-btn-11 {
+  left: 69%;
+  top: 53%;
+  img {
+    width: 2.8vw;
+  }
+}
+
+/* upper right */
+
+#plate-btn-12 {
+  left: 67.9%;
+  top: 60%;
+  img {
+    width: 3.4vw;
+  }
+}
+
+#plate-btn-13 {
+  left: 67%;
+  top: 67.7%;
+  img {
+    width: 3.3vw;
+  }
+}
+
+#plate-btn-14 {
+  left: 67%;
+  top: 76.2%;
+  img {
+    width: 2.6vw;
+  }
+}
+
+#plate-btn-15 {
+  left: 64.2%;
+  top: 81.9%;
+  img {
+    width: 2.6vw;
+  }
+}
+
+#plate-btn-16 {
+  left: 30.4%;
+  top: 81.7%;
+  img {
+    width: 1.8vw;
+  }
+}
+
+/* lower right */
+
+#plate-btn-17 {
+  left: 24.7%;
+  top: 76.2%;
+  img {
+    width: 2.8vw;
+  }
+}
+
+#plate-btn-18 {
+  left: 22.2%;
+  top: 68%;
+  img {
+    width: 3.25vw;
+  }
+}
+
+#plate-btn-19 {
+  left: 20.8%;
+  top: 60.2%;
+  img {
+    width: 3.3vw;
+  }
+}
+
+#plate-btn-20 {
+  left: 21%;
+  top: 53%;
+  img {
+    width: 2.8vw;
+  }
+}
+
+#plate-btn-21 {
+  left: 17.9%;
+  top: 40%;
+  img {
+    width: 2.4vw;
+  }
+}
+
+/* cingulum #3 */
+
+#plate-btn-22 {
+  left: 19.7%;
+  top: 33.5%;
+  img {
+    width: 3.2vw;
+  }
+}
+
+/* incisal #2 */
+
+/* lower */
+
+#plate-btn-23 {
+  left: 21.3%;
+  top: 26%;
+  img {
+    width: 3vw;
+  }
+}
+
+#plate-btn-24 {
+  left: 23.3%;
+  top: 21%;
+  img {
+    width: 2.6vw;
+  }
+}
+
+#plate-btn-25 {
+  left: 24%;
+  top: 15.2%;
+  img {
+    width: 1.9vw;
+  }
+}
+
+#plate-btn-26 {
+  left: 71.7%;
+  top: 15.2%;
+  img {
+    width: 1.7vw;
+  }
+}
+
+/* cingulum #4 */
+
+#plate-btn-27 {
+  left: 68%;
+  top: 20.7%;
+  img {
+    width: 3vw;
+  }
+}
+
+/* lower left */
+
+#plate-btn-28 {
+  left: 69.5%;
+  top: 25.7%;
+  img {
+    width: 3vw;
+  }
+}
+
+#plate-btn-29 {
+  left: 70%;
+  top: 33.5%;
+  img {
+    width: 3.2vw;
+  }
+}
+
+#plate-btn-30 {
+  left: 71.5%;
+  top: 40.6%;
+  img {
+    width: 2.8vw;
+  }
+}
+
+#plate-btn-31 {
+  left: 70.2%;
+  top: 53.2%;
+  img {
+    width: 2.7vw;
+  }
+}
+
+#plate-btn-32 {
+  left: 72%;
+  top: 60.5%;
+  img {
+    width: 2.6vw;
+  }
+}
+
+/* occusal #2 */
+
+/* lower right */
+#plate-btn-33 {
+  left: 68.3%;
+  top: 68%;
+  img {
+    width: 3.1vw;
+  }
+}
+
+#plate-btn-34 {
+  left: 72.1%;
+  top: 76.5%;
+  img {
+    width: 1.7vw;
+  }
+}
+
+#plate-btn-35 {
+  left: 65%;
+  top: 82.25%;
+  img {
+    width: 2.6vw;
+  }
+}
+
+#plate-btn-36 {
+  left: 26.5%;
+  top: 82.7%;
+  img {
+    width: 2.45vw;
+  }
+}
+
+/* lower left */
+
+#plate-btn-37 {
+  left: 23.5%;
+  top: 76.5%;
+  img {
+    width: 2.5vw;
+  }
+}
+
+#plate-btn-38 {
+  left: 21.5%;
+  top: 68.2%;
+  img {
+    width: 2.2vw;
+  }
+}
+
+#plate-btn-39 {
+  left: 20.3%;
+  top: 60.7%;
+  img {
+    width: 3vw;
+  }
+}
+
+#plate-btn-40 {
+  left: 21%;
+  top: 53.25%;
+  img {
+    width: 2vw;
+  }
+}
+
+/* upper left */
+
+#plate-btn-41 {
+  left: 21%;
+  top: 37.5%;
+  img {
+    width: 1vw;
+  }
+}
+
+#plate-btn-42 {
+  left: 23%;
+  top: 30.5%;
+  img {
+    width: 1vw;
+  }
+}
+
+#plate-btn-43 {
+  left: 23.5%;
+  top: 23%;
+  img {
+    width: 1vw;
+  }
+}
+
+#plate-btn-44 {
+  left: 24.5%;
+  top: 18%;
+  img {
+    width: 1vw;
+  }
+}
+
+/* upper right */
+
+#plate-btn-45 {
+  left: 70%;
+  top: 18%;
+  img {
+    width: 1vw;
+  }
+}
+
+#plate-btn-46 {
+  left: 71%;
+  top: 23%;
+  img {
+    width: 1vw;
+  }
+}
+
+#plate-btn-47 {
+  left: 71%;
+  top: 31%;
+  img {
+    width: 1vw;
+  }
+}
+
+#plate-btn-48 {
+  left: 73%;
+  top: 37.5%;
+  img {
+    width: 1vw;
+  }
+}
+
+/* cingulum #2 */
+
+#plate-btn-49 {
+  left: 31%;
+  top: 10%;
+  img {
+    width: 4vw;
+  }
+}
+
+#plate-btn-50 {
+  left: 70%;
+  top: 4%;
+  img {
+    width: 4vw;
+  }
+}
+
+#plate-btn-51 {
+  left: 36.5%;
+  top: 85.75%;
+  img {
+    width: 4vw;
+  }
+}
+
+#plate-btn-52 {
+  left: 66%;
+  top: 86%;
+  img {
+    width: 3vw;
+  }
+}
+
+#plate-btn-53 {
+  left: 28.5%;
+  top: 10.5%;
+  img {
+    width: 0.85vw;
+  }
+}
+
+#plate-btn-54 {
+  left: 66.5%;
+  top: 10.5%;
+  img {
+    width: 0.85vw;
+  }
+}
+
+#plate-btn-55 {
+  left: 31%;
+  top: 88%;
+  img {
+    width: 0.85vw;
+  }
+}
+
+#plate-btn-56 {
+  left: 63%;
+  top: 88%;
+  img {
+    width: 0.85vw;
+  }
+}
