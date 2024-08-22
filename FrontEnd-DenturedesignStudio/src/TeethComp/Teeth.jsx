@@ -68,7 +68,7 @@ const Teeth = ({ disableSelection }) => {
         </button>
       ))}
 
-      {/*Array.from({ length: 56 }, (_, index) => (
+      {Array.from({ length: 56 }, (_, index) => (
         <button
           key={index}
           className={`rest-btn ${selectedRests[index] ? "selected" : ""}`}
@@ -77,7 +77,7 @@ const Teeth = ({ disableSelection }) => {
         >
           <img src={RestImages[index]} alt={`Rest ${index + 1}`} />
         </button>
-      ))*/}
+      ))}
 
       {Array.from({ length: 40 }, (_, index) => (
         <button
