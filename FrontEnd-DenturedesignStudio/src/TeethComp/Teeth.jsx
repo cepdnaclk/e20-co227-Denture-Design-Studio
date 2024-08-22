@@ -4,12 +4,8 @@ import "./Plate.css";
 import TeethImages from "./Teethimages";
 import RestImages from "./Restimages";
 import ClaspImages from "./Claspsimages";
-
-import UndercutsImages from "./Undercutimages";
-// Import all the images
-
 import PlateImages from "./PlatesImages";
-
+import UndercutsImages from "./Undercutimages";
 
 const Teeth = ({ disableSelection }) => {
   const [selectedTeeth, setSelectedTeeth] = useState(Array(32).fill(false));
@@ -39,16 +35,19 @@ const Teeth = ({ disableSelection }) => {
       });
     }
   };
-
-
   const handleUndercutClick = (index) => {
     if (!disableSelection) {
       setSelectedUndercut((prevState) => {
+        const newState = [...prevState];
+        newState[index] = !newState[index];
+        return newState;
+      });
+    }
+  };
 
   const handlePlateClick = (index) => {
     if (!disableSelection) {
       setSelectedPlate((prevState) => {
-
         const newState = [...prevState];
         newState[index] = !newState[index];
         return newState;
@@ -82,15 +81,6 @@ const Teeth = ({ disableSelection }) => {
       {Array.from({ length: 40 }, (_, index) => (
         <button
           key={index}
-
-          className={`undercut-btn ${
-            selectedUnderCut[index] ? "selected" : ""
-          }`}
-          id={`undercut-btn-${index + 1}`}
-          onClick={() => handleUndercutClick(index)}
-        >
-          <img src={UndercutsImages[index]} alt={`Undercut ${index + 1}`} />
-
           className={`plate-btn ${selectedPlate[index] ? "selected" : ""}`}
           id={`plate-btn-${index + 1}`}
           onClick={() => handlePlateClick(index)}
@@ -99,7 +89,18 @@ const Teeth = ({ disableSelection }) => {
           }}
         >
           <img src={PlateImages[index]} alt={`Plate ${index + 1}`} />
-
+        </button>
+      ))}
+      {Array.from({ length: 40 }, (_, index) => (
+        <button
+          key={index}
+          className={`undercut-btn ${
+            selectedUnderCut[index] ? "selected" : ""
+          }`}
+          id={`undercut-btn-${index + 1}`}
+          onClick={() => handleUndercutClick(index)}
+        >
+          <img src={UndercutsImages[index]} alt={`Undercut ${index + 1}`} />
         </button>
       ))}
     </div>
