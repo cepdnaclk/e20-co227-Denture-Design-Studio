@@ -5,6 +5,7 @@
   border: none;
   cursor: pointer;
   background: transparent;
+
   margin: 0;
   padding: 0;
   width: 1vw;
@@ -12,12 +13,13 @@
   opacity: 1;
   transition: opacity 0.3s ease;
   z-index: 20;
+  img {
+    height: auto;
+  }
 }
-
 .rest-btn:hover {
   opacity: 0.6; /*reduced opacity on hover */
 }
-
 /* occlusal */
 
 /* upper right */
