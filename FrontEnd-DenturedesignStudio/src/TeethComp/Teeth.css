@@ -3,7 +3,7 @@
   width: 23.9vw;
   aspect-ratio: 459 / 700;
   left: 40.96vw;
-  top: 15vh;
+  top: 50vh;
   background: #d3ecff;
   border-radius: 2.6vw;
   background-image: url(./image.png);
@@ -33,7 +33,9 @@
 .teeth-btn.selected {
   opacity: 0.5;
 }
-
+.teeth-btn.missing {
+  display: none;
+}
 .teeth-btn:hover {
   opacity: 0.6; /*reduced opacity on hover */
 }
