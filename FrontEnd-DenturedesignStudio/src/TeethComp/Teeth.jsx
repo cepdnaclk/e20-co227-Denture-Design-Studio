@@ -11,11 +11,10 @@ import ClaspImages from "./Claspsimages";
 import PlateImages from "./PlatesImages";
 import UndercutsImages from "./Undercutimages";
 
-const Teeth = ({ disableSelection }) => {
+const Teeth = ({ disableSelection, value, setMissingtooth }) => {
   const [selectedTeeth, setSelectedTeeth] = useState(Array(32).fill(false));
   const [selectedRests, setSelectedRests] = useState(Array(56).fill(false));
   const [selectedPlate, setSelectedPlate] = useState(Array(20).fill(false));
-
   const [selectedUnderCut, setSelectedUndercut] = useState(
     Array(20).fill(false)
   );
@@ -25,6 +24,12 @@ const Teeth = ({ disableSelection }) => {
       setSelectedTeeth((prevState) => {
         const newState = [...prevState];
         newState[index] = !newState[index];
+        if (setMissingtooth) {
+          console.log(`Missing Teeth,selected Teeth ${index + 1}`);
+        } else {
+          console.log(`selected teeth ${index + 1}`);
+        }
+
         return newState;
       });
     }
@@ -65,7 +70,9 @@ const Teeth = ({ disableSelection }) => {
       {Array.from({ length: 32 }, (_, index) => (
         <button
           key={index}
-          className={`teeth-btn ${selectedTeeth[index] ? "selected" : ""}`}
+          className={`teeth-btn 
+            ${selectedTeeth[index] && setMissingtooth ? "missing" : ""} 
+            ${selectedTeeth[index] && !setMissingtooth ? "selected" : ""}`}
           onClick={() => handleToothClick(index)}
         >
           <img src={TeethImages[index]} alt={`Tooth ${index + 1}`} />
@@ -106,13 +113,11 @@ const Teeth = ({ disableSelection }) => {
       {Array.from({ length: 20 }, (_, index) => (
         <div key={index} className="undercut-container">
           <button
-            className={`undercut-btn ${
-              selectedUnderCut[index] ? "selected" : ""
-            }`}
+            className={`undercut-btn`}
             id={`undercut-btn-${index + 1}`}
             onClick={() => handleUndercutClick(index)}
             style={{
-              display: selectedUnderCut[index] ? "block" : "none",
+              display: selectedUnderCut[index] && value ? "block" : "none",
             }}
           >
             <img src={UndercutsImages[index]} alt={`Undercut ${index + 1}`} />
@@ -124,7 +129,7 @@ const Teeth = ({ disableSelection }) => {
             id={`undercut-btn-${index + 21}`}
             onClick={() => handleUndercutClick(index)}
             style={{
-              display: !selectedUnderCut[index] ? "block" : "none",
+              display: !selectedUnderCut[index] & value ? "block" : "none",
             }}
           >
             <img
