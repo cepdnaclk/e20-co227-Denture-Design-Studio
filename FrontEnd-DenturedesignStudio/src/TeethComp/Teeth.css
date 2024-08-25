@@ -1,6 +1,8 @@
 .teethBackground2 {
   position: relative;
   width: 23.9vw;
+  margin: 0;
+  padding: 0;
   aspect-ratio: 459 / 700;
   left: 40.96vw;
   top: 50vh;

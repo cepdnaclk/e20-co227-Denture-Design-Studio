@@ -1,8 +1,10 @@
 import React, { useState } from "react";
+
 import "./Teeth.css";
 import "./Plate.css";
 import "./Undercut.css";
 import "./Rest.css";
+
 import TeethImages from "./Teethimages";
 import RestImages from "./Restimages";
 import ClaspImages from "./Claspsimages";
@@ -42,6 +44,7 @@ const Teeth = ({ disableSelection, value, setMissingtooth }) => {
       });
     }
   };
+  
   const handleUndercutClick = (index) => {
     if (!disableSelection) {
       setSelectedUndercut((prevState) => {
@@ -76,16 +79,22 @@ const Teeth = ({ disableSelection, value, setMissingtooth }) => {
         </button>
       ))}
 
+
       {Array.from({ length: 56 }, (_, index) => (
         <button
           key={index}
           className={`rest-btn ${selectedRests[index] ? "selected" : ""}`}
           id={`rest-btn-${index + 1}`}
           onClick={() => handleRestClick(index)}
+          style={{
+            opacity: selectedRests[index] ? "1" : "0",
+          }}
         >
           <img src={RestImages[index]} alt={`Rest ${index + 1}`} />
         </button>
       ))}
+
+
 
       {Array.from({ length: 40 }, (_, index) => (
         <button
