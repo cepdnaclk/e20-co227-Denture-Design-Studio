@@ -1,15 +1,3 @@
-.teethBackground2 {
-  position: relative;
-  width: 23.9vw;
-  aspect-ratio: 459 / 700;
-  left: 40.96vw;
-  top: 52vh;
-  background: #d3ecff;
-  border-radius: 2.6vw;
-  background-image: url(./image.png);
-  background-size: cover;
-}
-
 .teethBackground2 .plate-btn {
   position: absolute;
   background-size: cover;
