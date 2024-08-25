@@ -1,15 +1,24 @@
-import React, { useState, useRef, useEffect, forwardRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import "./canvas.css";
-function DrawingCanvas() {
+
+function DrawingCanvas({ connectortype, curvesData, drewcurves }) {
   const canvasRef = useRef(null);
-  const [curves, setCurves] = useState([]);
+  const uppercurve = drewcurves?.uppercurve;
+  const lowercurve = drewcurves?.lowercurve;
+  const lowerminorcurve = drewcurves?.lowerminorcurve;
+  const [curves, setCurves] = useState(uppercurve ? uppercurve : []);
+  const [lowercurves, setLowercurves] = useState(lowercurve ? lowercurve : []);
+  const [lowerMinorcurve, setLowerminorcurve] = useState(
+    lowerminorcurve ? lowerminorcurve : []
+  );
   const [activeCurve, setActiveCurve] = useState(null);
   const [draggingPoint, setDraggingPoint] = useState(null);
   const [selectedCurve, setSelectedCurve] = useState(null);
-
+  console.log(drewcurves);
   useEffect(() => {
     drawAllCurves();
-  }, [curves, selectedCurve]);
+    curvesData(curves, lowercurves, lowerMinorcurve);
+  }, [curves, selectedCurve, lowercurves, lowerMinorcurve]);
 
   useEffect(() => {
     const handleKeyDown = (e) => {
@@ -22,78 +31,124 @@ function DrawingCanvas() {
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
     };
-  }, [selectedCurve, curves]);
+  }, [selectedCurve, curves, lowercurves]);
 
   const handleMouseDown = (e) => {
     const { x, y } = getMousePosition(e);
-    const foundPoint = findNearbyPoint(x, y);
-    const foundCurve = findNearbyCurve(x, y);
+    const foundPoint = findNearbyPoint(x, y, connectortype);
+    const foundCurve = findNearbyCurve(x, y, connectortype);
 
     if (foundPoint) {
       setDraggingPoint(foundPoint);
-      setSelectedCurve(foundPoint.curveIndex);
+      setSelectedCurve({
+        curveIndex: foundPoint.curveIndex,
+        conType: foundPoint.conType,
+      });
     } else if (foundCurve !== null) {
       setSelectedCurve(foundCurve);
     } else if (!activeCurve) {
-      const nearestEndpoint = findNearbyEndpoint(x, y);
+      const nearestEndpoint = findNearbyEndpoint(x, y, connectortype);
       const startPoint = nearestEndpoint ? nearestEndpoint : { x, y };
-
-      setCurves([
-        ...curves,
-        {
-          anchorPoints: [startPoint, { x, y }],
-          controlPoints: [
-            {
-              x: (startPoint.x + x) / 2,
-              y: startPoint.y - Math.abs(startPoint.y - y) / 4,
-            },
-          ],
-        },
-      ]);
-      setActiveCurve(curves.length);
-
-      setSelectedCurve(curves.length);
+      const newCurve = {
+        anchorPoints: [startPoint, { x, y }],
+        controlPoints: calculateControlPoints(startPoint, { x, y }),
+      };
+      if (connectortype === "upper") {
+        setCurves([...curves, newCurve]);
+        setActiveCurve(curves.length);
+        setSelectedCurve({ curveIndex: curves.length, conType: "upper" });
+      } else if (connectortype === "lower") {
+        setLowercurves([...lowercurves, newCurve]);
+        setActiveCurve(lowercurves.length);
+        setSelectedCurve({ curveIndex: lowercurves.length, conType: "lower" });
+      } else if (connectortype === "lower_minor") {
+        setLowerminorcurve([...lowerMinorcurve, newCurve]);
+        setActiveCurve(lowerMinorcurve.length);
+        setSelectedCurve({
+          curveIndex: lowerMinorcurve.length,
+          conType: "lower_minor",
+        });
+      }
     }
   };
 
   const handleMouseMove = (e) => {
-    if (draggingPoint) {
-      const { x, y } = getMousePosition(e);
-      const updatedCurves = [...curves];
-      const { curveIndex, pointIndex, type } = draggingPoint;
-
+    const updateCurvePoints = (
+      updatedCurves,
+      curveIndex,
+      pointIndex,
+      type,
+      x,
+      y
+    ) => {
       if (type === "control") {
-        updatedCurves[curveIndex].controlPoints[pointIndex] = { x, y };
+        if (updatedCurves[curveIndex]?.controlPoints) {
+          updatedCurves[curveIndex].controlPoints[pointIndex] = { x, y };
+        }
       } else if (type === "anchor") {
-        updatedCurves[curveIndex].anchorPoints[pointIndex] = { x, y };
+        if (updatedCurves[curveIndex]?.anchorPoints) {
+          updatedCurves[curveIndex].anchorPoints[pointIndex] = { x, y };
+        }
       }
-      setCurves(updatedCurves);
-    } else if (activeCurve !== null) {
-      const { x, y } = getMousePosition(e);
-      const updatedCurves = [...curves];
-      updatedCurves[activeCurve].anchorPoints[1] = { x, y };
-      updatedCurves[activeCurve].controlPoints = calculateControlPoints(
-        updatedCurves[activeCurve].anchorPoints
-      );
-      setCurves(updatedCurves);
-      drawAllCurves();
+    };
+
+    const handleCurveUpdate = (updatedCurves, activeCurve, x, y) => {
+      if (updatedCurves[activeCurve]?.anchorPoints) {
+        updatedCurves[activeCurve].anchorPoints[1] = { x, y };
+        updatedCurves[activeCurve].controlPoints = calculateControlPoints(
+          updatedCurves[activeCurve].anchorPoints[0],
+          updatedCurves[activeCurve].anchorPoints[1]
+        );
+      }
+    };
+
+    if (connectortype === "upper") {
+      if (draggingPoint) {
+        const { x, y } = getMousePosition(e);
+        const updatedCurves = [...curves];
+        const { curveIndex, pointIndex, type } = draggingPoint;
+
+        updateCurvePoints(updatedCurves, curveIndex, pointIndex, type, x, y);
+        setCurves(updatedCurves);
+      } else if (activeCurve !== null) {
+        const { x, y } = getMousePosition(e);
+        const updatedCurves = [...curves];
+        handleCurveUpdate(updatedCurves, activeCurve, x, y);
+        setCurves(updatedCurves);
+      }
+    } else if (connectortype === "lower") {
+      if (draggingPoint) {
+        const { x, y } = getMousePosition(e);
+        const updatedCurves = [...lowercurves];
+        const { curveIndex, pointIndex, type } = draggingPoint;
+
+        updateCurvePoints(updatedCurves, curveIndex, pointIndex, type, x, y);
+        setLowercurves(updatedCurves);
+      } else if (activeCurve !== null) {
+        const { x, y } = getMousePosition(e);
+        const updatedCurves = [...lowercurves];
+        handleCurveUpdate(updatedCurves, activeCurve, x, y);
+        setLowercurves(updatedCurves);
+      }
+    } else if (connectortype === "lower_minor") {
+      if (draggingPoint) {
+        const { x, y } = getMousePosition(e);
+        const updatedCurves = [...lowerMinorcurve];
+        const { curveIndex, pointIndex, type } = draggingPoint;
+
+        updateCurvePoints(updatedCurves, curveIndex, pointIndex, type, x, y);
+        setLowerminorcurve(updatedCurves);
+      } else if (activeCurve !== null) {
+        const { x, y } = getMousePosition(e);
+        const updatedCurves = [...lowerMinorcurve];
+        handleCurveUpdate(updatedCurves, activeCurve, x, y);
+        setLowerminorcurve(updatedCurves);
+      }
     }
   };
 
   const handleMouseUp = () => {
     setDraggingPoint(null);
-
-    if (activeCurve !== null) {
-      const updatedCurves = [...curves];
-      const { anchorPoints } = updatedCurves[activeCurve];
-      const endPoint = anchorPoints[1];
-
-      if (isNearPoint(endPoint.x, endPoint.y, curves[0].anchorPoints[0])) {
-        updatedCurves[activeCurve].anchorPoints[1] = curves[0].anchorPoints[0];
-        setCurves(updatedCurves);
-      }
-    }
-
     setActiveCurve(null);
   };
 
@@ -112,53 +167,84 @@ function DrawingCanvas() {
     return distance < 5;
   };
 
-  const findNearbyPoint = (x, y) => {
+  const findNearbyPoint = (x, y, connectortype) => {
     let foundPoint = null;
-    curves.forEach((curve, curveIndex) => {
+    const curvesArray =
+      connectortype === "upper"
+        ? curves
+        : connectortype === "lower"
+        ? lowercurves
+        : lowerMinorcurve;
+
+    curvesArray.forEach((curve, curveIndex) => {
       curve.controlPoints.forEach((point, pointIndex) => {
         if (isNearPoint(x, y, point)) {
-          foundPoint = { curveIndex, pointIndex, type: "control" };
+          foundPoint = {
+            curveIndex,
+            pointIndex,
+            type: "control",
+            conType: connectortype,
+          };
         }
       });
       curve.anchorPoints.forEach((point, pointIndex) => {
         if (isNearPoint(x, y, point)) {
-          foundPoint = { curveIndex, pointIndex, type: "anchor" };
+          foundPoint = {
+            curveIndex,
+            pointIndex,
+            type: "anchor",
+            conType: connectortype,
+          };
         }
       });
     });
+
     return foundPoint;
   };
 
-  const findNearbyCurve = (x, y) => {
+  const findNearbyCurve = (x, y, connectortype) => {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext("2d");
+    const curvesArray =
+      connectortype === "upper"
+        ? curves
+        : connectortype === "lower"
+        ? lowercurves
+        : lowerMinorcurve;
 
-    for (let i = 0; i < curves.length; i++) {
-      const { anchorPoints, controlPoints } = curves[i];
+    for (let i = 0; i < curvesArray.length; i++) {
+      const { anchorPoints, controlPoints } = curvesArray[i];
 
       ctx.beginPath();
       ctx.moveTo(anchorPoints[0].x, anchorPoints[0].y);
       ctx.bezierCurveTo(
         controlPoints[0].x,
         controlPoints[0].y,
-        controlPoints[0].x,
-        controlPoints[0].y,
+        controlPoints[1].x,
+        controlPoints[1].y,
         anchorPoints[1].x,
         anchorPoints[1].y
       );
 
       if (ctx.isPointInStroke(x, y)) {
-        return i;
+        return { curveIndex: i, conType: connectortype };
       }
     }
 
     return null;
   };
 
-  const findNearbyEndpoint = (x, y) => {
+  const findNearbyEndpoint = (x, y, connectortype) => {
     let nearestPoint = null;
     let minDistance = 10;
-    curves.forEach((curve) => {
+    const curvesArray =
+      connectortype === "upper"
+        ? curves
+        : connectortype === "lower"
+        ? lowercurves
+        : lowerMinorcurve;
+
+    curvesArray.forEach((curve) => {
       curve.anchorPoints.forEach((point) => {
         const distance = Math.sqrt((x - point.x) ** 2 + (y - point.y) ** 2);
         if (distance < minDistance) {
@@ -167,38 +253,46 @@ function DrawingCanvas() {
         }
       });
     });
+
     return nearestPoint;
   };
 
-  const calculateControlPoints = (anchorPoints) => {
-    const [start, end] = anchorPoints;
+  const calculateControlPoints = (start, end) => {
     const control1 = {
-      x: (start.x + end.x) / 2,
-      y: (start.y + end.y) / 2,
+      x: start.x + (end.x - start.x) / 3,
+      y: start.y + (end.y - start.y) / 3,
     };
-    return [control1];
+    const control2 = {
+      x: start.x + (2 * (end.x - start.x)) / 3,
+      y: start.y + (2 * (end.y - start.y)) / 3,
+    };
+
+    return [control1, control2];
   };
 
-  const drawAllCurves = () => {
+  const drawCurves = (curvesArray, lineWidth, conType) => {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext("2d");
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    curves.forEach(({ anchorPoints, controlPoints }, curveIndex) => {
+    curvesArray.forEach(({ anchorPoints, controlPoints }, curveIndex) => {
       ctx.beginPath();
       ctx.moveTo(anchorPoints[0].x, anchorPoints[0].y);
       ctx.bezierCurveTo(
         controlPoints[0].x,
         controlPoints[0].y,
-        controlPoints[0].x,
-        controlPoints[0].y,
+        controlPoints[1].x,
+        controlPoints[1].y,
         anchorPoints[1].x,
         anchorPoints[1].y
       );
+
+      ctx.lineWidth = lineWidth;
       ctx.stroke();
 
-      if (curveIndex === selectedCurve) {
-        // Draw control points only for the selected curve
+      if (
+        curveIndex === selectedCurve?.curveIndex &&
+        selectedCurve?.conType === conType
+      ) {
         controlPoints.forEach((point) => {
           ctx.beginPath();
           ctx.arc(point.x, point.y, 2, 0, 2 * Math.PI);
@@ -207,7 +301,6 @@ function DrawingCanvas() {
           ctx.stroke();
         });
 
-        // Draw anchor points only for the selected curve
         anchorPoints.forEach((point) => {
           ctx.beginPath();
           ctx.arc(point.x, point.y, 2, 0, 2 * Math.PI);
@@ -217,6 +310,16 @@ function DrawingCanvas() {
         });
       }
     });
+  };
+
+  const drawAllCurves = () => {
+    const canvas = canvasRef.current;
+    const ctx = canvas.getContext("2d");
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    drawCurves(curves, 2, "upper");
+    drawCurves(lowercurves, 13, "lower");
+    drawCurves(lowerMinorcurve, 5, "lower_minor");
 
     fillClosedShapes();
   };
@@ -236,53 +339,110 @@ function DrawingCanvas() {
         ctx.bezierCurveTo(
           controlPoints[0].x,
           controlPoints[0].y,
-          controlPoints[0].x,
-          controlPoints[0].y,
+          controlPoints[1].x,
+          controlPoints[1].y,
           anchorPoints[1].x,
           anchorPoints[1].y
         );
       });
       ctx.closePath();
-      ctx.fillStyle = "gray";
+      ctx.fillStyle = "#000000b5";
       ctx.fill();
     });
   };
 
   const getClosedShapes = () => {
     const closedShapes = [];
-    let currentShape = [];
+    const usedCurves = new Set();
 
     for (let i = 0; i < curves.length; i++) {
-      currentShape.push(curves[i]);
-      console.log(currentShape);
+      if (usedCurves.has(i)) continue;
 
-      for (let j = 0; j < currentShape.length; j++) {
-        if (
-          isNearPoint(
-            currentShape[j].anchorPoints[1].x,
-            currentShape[j].anchorPoints[1].y,
-            currentShape[0].anchorPoints[0]
-          )
-        ) {
-          console.log(true);
-          closedShapes.push(currentShape);
-          currentShape = [];
-        } else {
-          console.log(false);
+      const currentShape = [];
+      let startPoint = curves[i].anchorPoints[0];
+      let endPoint = curves[i].anchorPoints[1];
+
+      currentShape.push(curves[i]);
+      usedCurves.add(i);
+
+      let foundClosedShape = false;
+
+      while (!foundClosedShape) {
+        let hasExtended = false;
+
+        for (let j = 0; j < curves.length; j++) {
+          if (usedCurves.has(j)) continue;
+
+          let nextCurve = curves[j];
+          let nextStart = nextCurve.anchorPoints[0];
+          let nextEnd = nextCurve.anchorPoints[1];
+
+          if (isNearPoint(endPoint.x, endPoint.y, nextStart)) {
+            currentShape.push(nextCurve);
+            usedCurves.add(j);
+            endPoint = nextEnd;
+            hasExtended = true;
+            break;
+          } else if (isNearPoint(endPoint.x, endPoint.y, nextEnd)) {
+            currentShape.push({
+              ...nextCurve,
+              anchorPoints: [
+                nextCurve.anchorPoints[1],
+                nextCurve.anchorPoints[0],
+              ],
+              controlPoints: [
+                nextCurve.controlPoints[1],
+                nextCurve.controlPoints[0],
+              ],
+            });
+            usedCurves.add(j);
+            endPoint = nextStart;
+            hasExtended = true;
+            break;
+          }
+        }
+
+        if (!hasExtended) {
+          if (isNearPoint(startPoint.x, startPoint.y, endPoint)) {
+            foundClosedShape = true;
+            closedShapes.push(currentShape);
+          } else {
+            break;
+          }
         }
       }
     }
+
     return closedShapes;
   };
+
   const deleteSelectedCurve = () => {
     if (selectedCurve !== null) {
-      const updatedCurves = curves.filter(
-        (_, index) => index !== selectedCurve
-      );
-      setCurves(updatedCurves);
+      if (selectedCurve?.conType === "upper") {
+        const updatedCurves = curves.filter(
+          (_, index) => index !== selectedCurve.curveIndex
+        );
+        setCurves(updatedCurves);
+      }
+      if (selectedCurve?.conType === "lower") {
+        const updatedlowerCurves = lowercurves.filter(
+          (_, index) => index !== selectedCurve.curveIndex
+        );
+
+        setLowercurves(updatedlowerCurves);
+      }
+      if (selectedCurve?.conType === "lower_minor") {
+        const updatedlowerCurves = lowerMinorcurve.filter(
+          (_, index) => index !== selectedCurve.curveIndex
+        );
+
+        setLowerminorcurve(updatedlowerCurves);
+      }
+
       setSelectedCurve(null);
     }
   };
+
   useEffect(() => {
     const canvas = canvasRef.current;
     const handleresize = () => {
@@ -311,4 +471,5 @@ function DrawingCanvas() {
     />
   );
 }
+
 export default DrawingCanvas;
