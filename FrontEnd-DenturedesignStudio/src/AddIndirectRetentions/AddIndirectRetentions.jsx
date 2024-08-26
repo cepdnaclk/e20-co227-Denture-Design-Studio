@@ -46,7 +46,7 @@ function AddIndirectRetentions() {
                 </li>
               </ul>
               <div className="retention-teeth">
-                <Teeth />
+                <Teeth addIndirectretention={true} />
               </div>
             </div>
             <h2 className="AddIndirectRetentions">Add Indirect Retentions</h2>

@@ -6,21 +6,31 @@ import "./Undercut.css";
 import "./Rest.css";
 
 import TeethImages from "./Teethimages";
-import RestImages from "./Restimages";
+import { RestImages, occlusal, cingulam, incisal } from "./Restimages";
 import ClaspImages from "./Claspsimages";
 import PlateImages from "./PlatesImages";
 import UndercutsImages from "./Undercutimages";
 
-const Teeth = ({ disableSelection, value, setMissingtooth }) => {
+const Teeth = ({
+  disableSelection,
+  value,
+  setMissingtooth,
+  selectRest,
+  addIndirectretention,
+  selectedrests,
+  restData,
+}) => {
   const [selectedTeeth, setSelectedTeeth] = useState(Array(32).fill(false));
-  const [selectedRests, setSelectedRests] = useState(Array(56).fill(false));
+  const [selectedRests, setSelectedRests] = useState(
+    selectedrests ? selectedrests : Array(56).fill(false)
+  );
   const [selectedPlate, setSelectedPlate] = useState(Array(20).fill(false));
   const [selectedUnderCut, setSelectedUndercut] = useState(
     Array(20).fill(false)
   );
-
+  console.log(selectedrests);
   const handleToothClick = (index) => {
-    if (!disableSelection) {
+    if (!disableSelection && setMissingtooth) {
       setSelectedTeeth((prevState) => {
         const newState = [...prevState];
         newState[index] = !newState[index];
@@ -44,12 +54,35 @@ const Teeth = ({ disableSelection, value, setMissingtooth }) => {
     if (!disableSelection) {
       setSelectedRests((prevState) => {
         const newState = [...prevState];
-        newState[index] = !newState[index];
+
+        const restImage = RestImages[index];
+        const restTypeMatches =
+          (selectRest.restType === occlusal.type &&
+            occlusal.array.includes(restImage)) ||
+          (selectRest.restType === incisal.type &&
+            incisal.array.includes(restImage)) ||
+          (selectRest.restType === cingulam.type &&
+            cingulam.array.includes(restImage));
+
+        if (restTypeMatches) {
+          // Toggle selection if the rest type matches
+          newState[index] = !newState[index];
+        } else {
+          // Show error if the rest type doesn't match
+          if (selectRest.restType) {
+            alert(`Error: You can only select ${selectRest.restType} rests.`);
+          }
+        }
+
         return newState;
       });
     }
   };
 
+
+  useEffect(() => {
+    restData(selectedRests);
+  }, [selectedRests]);
   const handleUndercutClick = (index) => {
     if (!disableSelection) {
       setSelectedUndercut((prevState) => {
@@ -97,6 +130,8 @@ const Teeth = ({ disableSelection, value, setMissingtooth }) => {
           id={`rest-btn-${index + 1}`}
           onClick={() => handleRestClick(index)}
           style={{
+            display:
+              selectRest.selectrest || addIndirectretention ? "block" : "none",
             opacity: selectedRests[index] ? "1" : "0",
           }}
         >
