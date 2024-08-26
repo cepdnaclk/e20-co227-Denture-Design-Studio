@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import "./Teeth.css";
 import "./Plate.css";
@@ -24,11 +24,16 @@ const Teeth = ({ disableSelection, value, setMissingtooth }) => {
       setSelectedTeeth((prevState) => {
         const newState = [...prevState];
         newState[index] = !newState[index];
+
+        console.log(`Updated selectedTeeth array:`, newState); // This logs the entire array
+
         if (setMissingtooth) {
-          console.log(`Missing Teeth,selected Teeth ${index + 1}`);
+          console.log(`Missing Teeth, selected Tooth ${index + 1}`);
         } else {
-          console.log(`selected teeth ${index + 1}`);
+          console.log(`Selected Tooth ${index + 1}`);
         }
+
+        // Log each tooth's state
 
         return newState;
       });
@@ -44,7 +49,7 @@ const Teeth = ({ disableSelection, value, setMissingtooth }) => {
       });
     }
   };
-  
+
   const handleUndercutClick = (index) => {
     if (!disableSelection) {
       setSelectedUndercut((prevState) => {
@@ -64,6 +69,12 @@ const Teeth = ({ disableSelection, value, setMissingtooth }) => {
       });
     }
   };
+  const indexExchangeforUndercut = (index) => {
+    if (index > 4 && index < 10) {
+      index = index + 6;
+    }
+    return index;
+  };
 
   return (
     <div className="teethBackground2">
@@ -79,7 +90,6 @@ const Teeth = ({ disableSelection, value, setMissingtooth }) => {
         </button>
       ))}
 
-
       {Array.from({ length: 56 }, (_, index) => (
         <button
           key={index}
@@ -93,8 +103,6 @@ const Teeth = ({ disableSelection, value, setMissingtooth }) => {
           <img src={RestImages[index]} alt={`Rest ${index + 1}`} />
         </button>
       ))}
-
-
 
       {Array.from({ length: 40 }, (_, index) => (
         <button
@@ -134,7 +142,12 @@ const Teeth = ({ disableSelection, value, setMissingtooth }) => {
           >
             <img
               src={UndercutsImages[index + 20]}
-              alt={`Undercut ${index + 21}`}
+              alt={`Undercut ${index + 20}`}
+              style={{
+                display: selectedTeeth[indexExchangeforUndercut(index)]
+                  ? "none"
+                  : "block",
+              }}
             />
           </button>
         </div>
