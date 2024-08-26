@@ -37,7 +37,11 @@ body {
   background: #d3ecff;
   border-radius: 2.6vw;
 }
-
+.retention-teeth {
+  position: absolute;
+  left: -40.95vw;
+  top: -50vh;
+}
 .addReciprocations {
   position: absolute;
   width: 17.14vw;
