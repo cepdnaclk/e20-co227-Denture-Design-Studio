@@ -183,7 +183,9 @@ ul.rests-list {
 }
 
 ul.rests-list li {
-  padding-left: 22.81vw;
+  position: relative;
+  left: 22.5vw;
+  padding: 0;
   white-space: nowrap;
 }
 

@@ -54,6 +54,12 @@ import t6rest_up from "./rests/t6rest_up.png";
 import t7rest_middle from "./rests/t7rest_middle.png";
 import t8rest_middle from "./rests/t8rest_middle.png";
 import t9rest_middle from "./rests/t9rest_middle.png";
+import t8rest_center from "./rests/t8rest_center.png";
+import t9rest_center from "./rests/t9rest_center.png";
+import t9rest_left from "./rests/t9rest_left.png";
+import t9rest_right from "./rests/t9rest_right.png";
+import t8rest_left from "./rests/t8rest_left.png";
+import t8rest_right from "./rests/t8rest_right.png";
 
 const RestImages = [
   /*occlusal*/
@@ -118,6 +124,14 @@ const RestImages = [
   t24rest_middle,
   t25rest_middle,
   t26rest_middle,
+
+  //cingulam
+  t8rest_right,
+  t8rest_center,
+  t8rest_left,
+  t9rest_right,
+  t9rest_center,
+  t9rest_left,
 ];
 
 const cingulam = {
@@ -135,6 +149,12 @@ const cingulam = {
     t27rest_down,
     t27rest_middle,
     t27rest_up,
+    t8rest_right,
+    t8rest_center,
+    t8rest_left,
+    t9rest_right,
+    t9rest_center,
+    t9rest_left,
   ],
 };
 const incisal = {

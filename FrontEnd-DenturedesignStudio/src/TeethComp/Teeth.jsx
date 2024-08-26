@@ -22,7 +22,7 @@ const Teeth = ({
 }) => {
   const [selectedTeeth, setSelectedTeeth] = useState(Array(32).fill(false));
   const [selectedRests, setSelectedRests] = useState(
-    selectedrests ? selectedrests : Array(56).fill(false)
+    selectedrests ? selectedrests : Array(62).fill(false)
   );
   const [selectedPlate, setSelectedPlate] = useState(Array(20).fill(false));
   const [selectedUnderCut, setSelectedUndercut] = useState(
@@ -110,7 +110,7 @@ const Teeth = ({
         </button>
       ))}
 
-      {Array.from({ length: 56 }, (_, index) => (
+      {Array.from({ length: 62 }, (_, index) => (
         <button
           key={index}
           className={`rest-btn ${selectedRests[index] ? "selected" : ""}`}

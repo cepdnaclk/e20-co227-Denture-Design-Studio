@@ -1,5 +1,5 @@
 import "./ModelAnswer.css";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import Home from "../homebutton/home";
 import BackComp from "../backComp/backComp";
 import Teeth from "../TeethComp/Teeth";
@@ -7,11 +7,16 @@ import React, { useState, useRef } from "react";
 import { motion } from "framer-motion";
 import answer from "./answer.png";
 import html2canvas from "html2canvas";
+import ReviewCanvas from "../ReviewAnswer/ReviewCanvas";
 
 function ModelAnswer() {
   let navigate = useNavigate();
   const captureRef = useRef(null);
-
+  const location = useLocation();
+  const selectedRests = location.state?.selectedRests;
+  const typeselect = location.state?.typeselect;
+  const curves = location.state?.curves;
+  console.log(curves);
   function handleClick(path) {
     navigate(path);
   }
@@ -63,7 +68,13 @@ function ModelAnswer() {
   return (
     <div className="designPage">
       <Home onClick={() => handleClick("/studenthome")}></Home>
-      <BackComp onClick={() => handleClick("/back")}></BackComp>
+      <BackComp
+        onClick={() =>
+          navigate("/reviewAnswer", {
+            state: { curves, selectedRests, typeselect: true },
+          })
+        }
+      ></BackComp>
       <link
         rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Salsa&display=swap"
@@ -104,7 +115,13 @@ function ModelAnswer() {
         transition={{ duration: 0.5 }}
         ref={captureRef}
       >
-        <Teeth click={(index) => console.log(`Clicked tooth ${index}`)} />
+        <Teeth
+          selectRest={{ selectrest: typeselect }}
+          selectedrests={selectedRests}
+          restData={() => {}}
+          click={(index) => console.log(`Clicked tooth ${index}`)}
+        />
+        <ReviewCanvas drewcurves={curves} />
       </motion.div>
       <div className="ModelAnswerbuttons">
         <button
