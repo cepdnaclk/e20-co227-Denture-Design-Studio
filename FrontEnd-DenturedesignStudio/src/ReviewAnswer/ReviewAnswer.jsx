@@ -1,21 +1,23 @@
 import BackComp from "../backComp/backComp";
 import "./ReviewAnswer.css";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import Home from "../homebutton/home";
 import Gotobutton from "../Goto/Goto";
 import Teeth from "../TeethComp/Teeth";
+import ReviewCanvas from "./ReviewCanvas";
 
 function Reviewanswer() {
-  let navigate = useNavigate();
-
-  function handleClick(path) {
-    navigate(path);
-  }
+  const navigate = useNavigate();
+  const location = useLocation();
+  const curves = location.state?.curves;
+  console.log(curves?.uppercurve);
 
   return (
     <div className="designPage">
-      <Home onClick={() => handleClick("/studenthome")} />
-      <BackComp onClick={() => handleClick("/AddConnectors")} />
+      <Home onClick={() => navigate("/studenthome")} />
+      <BackComp
+        onClick={() => navigate("/AddConnectors", { state: { curves } })}
+      />
       <link
         rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Salsa&display=swap"
@@ -24,6 +26,7 @@ function Reviewanswer() {
       <p className="YouranswerRA">Your Answer :</p>
       <div className="TeethboxRA">
         <Teeth click={(index) => console.log(`Clicked tooth ${index}`)} />
+        <ReviewCanvas drewcurves={curves} />
       </div>
       <div className="ButtonboxRA">
         <div id="Addrests">
@@ -47,7 +50,7 @@ function Reviewanswer() {
         <div id="Addconnectors">
           <Gotobutton
             Name={"Add Connectors"}
-            Pagetogo={() => navigate("/addConnectors")}
+            Pagetogo={() => navigate("/addConnectors", { state: { curves } })}
           />
         </div>
       </div>

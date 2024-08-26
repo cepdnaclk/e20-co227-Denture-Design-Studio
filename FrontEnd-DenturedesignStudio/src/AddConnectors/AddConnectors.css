@@ -47,8 +47,12 @@ body {
   border-radius: 1vw;
   background: #66d8d8;
   box-shadow: 0.67vw 0.53vw 0.8vw rgba(0, 0, 0, 0.35);
+  cursor: pointer;
 }
-
+.Done:hover {
+  transform: scale(1.03);
+  transition: all 0.5s ease;
+}
 .DoneText {
   position: absolute;
   height: 4.07vh;
@@ -147,7 +151,7 @@ body {
 }
 
 .connectors:hover {
-  transform: scale(1.05);
+  transform: scale(1.03);
 }
 
 ul.connectors-list {
@@ -160,19 +164,37 @@ ul.connectors-list {
 }
 
 ul.connectors-list li {
-  padding-left: 22.81vw;
+  position: absolute;
+  padding-left: 0;
   white-space: nowrap;
+  left: 22vw;
 }
 
 ul.connectors-list li:hover {
   transform: scale(1.05);
   color: #ffffff;
+  transition: all 0.5s ease;
+  cursor: pointer;
 }
 
 #upper {
-  top: 0;
+  top: 0vh;
 }
 
 #lower {
-  top: 12%;
+  top: 6vh;
+}
+#major {
+  position: absolute;
+  left: 0vw;
+}
+#minor {
+  position: absolute;
+  left: 0vw;
+  top: 5vh;
+}
+.lower-connector {
+  position: absolute;
+  left: 25vw;
+  top: 10vh;
 }
