@@ -34,11 +34,16 @@ const Teeth = ({
       setSelectedTeeth((prevState) => {
         const newState = [...prevState];
         newState[index] = !newState[index];
+
+        console.log(`Updated selectedTeeth array:`, newState); // This logs the entire array
+
         if (setMissingtooth) {
-          console.log(`Missing Teeth,selected Teeth ${index + 1}`);
+          console.log(`Missing Teeth, selected Tooth ${index + 1}`);
         } else {
-          console.log(`selected teeth ${index + 1}`);
+          console.log(`Selected Tooth ${index + 1}`);
         }
+
+        // Log each tooth's state
 
         return newState;
       });
@@ -73,6 +78,8 @@ const Teeth = ({
       });
     }
   };
+
+
   useEffect(() => {
     restData(selectedRests);
   }, [selectedRests]);
@@ -94,6 +101,12 @@ const Teeth = ({
         return newState;
       });
     }
+  };
+  const indexExchangeforUndercut = (index) => {
+    if (index > 4 && index < 10) {
+      index = index + 6;
+    }
+    return index;
   };
 
   return (
@@ -164,7 +177,12 @@ const Teeth = ({
           >
             <img
               src={UndercutsImages[index + 20]}
-              alt={`Undercut ${index + 21}`}
+              alt={`Undercut ${index + 20}`}
+              style={{
+                display: selectedTeeth[indexExchangeforUndercut(index)]
+                  ? "none"
+                  : "block",
+              }}
             />
           </button>
         </div>

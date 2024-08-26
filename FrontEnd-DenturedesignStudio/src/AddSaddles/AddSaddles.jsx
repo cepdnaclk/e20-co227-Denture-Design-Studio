@@ -10,6 +10,7 @@ function AddSaddles() {
   const userdata = location.state?.userdata;
   const [visibleundercut, setVisibleundercut] = useState(false);
   const [missingtooth, setMissingtooth] = useState(false);
+
   const handleClick = (path) => {
     navigate(path, { state: { userdata } });
   };
@@ -19,7 +20,7 @@ function AddSaddles() {
   const handleMissingTeeth = (missingtooth) => {
     setMissingtooth(!missingtooth);
   };
-
+  console.log(visibleundercut);
   return (
     <div className="designPage">
       <Home
@@ -55,20 +56,16 @@ function AddSaddles() {
                 handleMissingTeeth(missingtooth);
                 console.log("Missing Teeth state updated:", missingtooth);
               }}
+              style={{ color: missingtooth ? "#d3ecff" : "black" }}
             >
-              <div className="selectMissingTeethtext">
-                <span className="selectMissingTeethtext">
-                  Set Missing Teeth
-                </span>
-              </div>
+              Set Missing Teeth
             </button>
             <button
               className="selectUnderCut"
               onClick={() => handleundercutVisibility(visibleundercut)}
+              style={{ color: visibleundercut ? "#d3ecff" : "black" }}
             >
-              <div className="selectUnderCuttext">
-                <span className="selectUnderCutText">Select Undercuts</span>
-              </div>
+              Select Undercuts
             </button>
           </div>
 
@@ -79,8 +76,10 @@ function AddSaddles() {
                 click={(index) => console.log(`Clicked tooth ${index}`)}
                 setMissingtooth={missingtooth}
                 value={visibleundercut}
+
                 selectRest={true}
                 restData={() => {}}
+
               />
             </div>
           </div>
