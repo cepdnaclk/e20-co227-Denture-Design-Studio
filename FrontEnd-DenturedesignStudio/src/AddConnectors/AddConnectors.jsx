@@ -10,6 +10,8 @@ function AddConnectors() {
   let navigate = useNavigate();
   const location = useLocation();
   const drewcurves = location.state?.curves;
+  const selectedRests = location.state?.selectedRests;
+  const typeselect = location.state?.typeselect;
   const [connectortype, setconnectortype] = useState();
   const [upperSelect, setUpperselect] = useState(false);
   const [lowerSelect, setLowerselect] = useState(false);
@@ -26,7 +28,13 @@ function AddConnectors() {
     <>
       <div className="designPage">
         <Home onClick={() => navigate("/studenthome")}></Home>
-        <BackComp onClick={() => navigate("/AddIndirectRetentions")}></BackComp>
+        <BackComp
+          onClick={() =>
+            navigate("/AddIndirectRetentions", {
+              state: { selectedRests, typeselect: true },
+            })
+          }
+        ></BackComp>
         <div className="AddConnectors">
           <div>
             <link
@@ -37,7 +45,11 @@ function AddConnectors() {
             <div className="teethBackground1">
               <button
                 className="Done"
-                onClick={() => navigate("/reviewAnswer", { state: { curves } })}
+                onClick={() =>
+                  navigate("/reviewAnswer", {
+                    state: { curves, selectedRests, typeselect: true },
+                  })
+                }
               >
                 <div className="DoneText">
                   <span className="DoneText">Done</span>
@@ -123,7 +135,11 @@ function AddConnectors() {
                 </ul>
               </ul>
               <div className="retention-teeth">
-                <Teeth />
+                <Teeth
+                  selectRest={{ selectrest: typeselect }}
+                  selectedrests={selectedRests}
+                  restData={() => {}}
+                />
               </div>
             </div>
             <h2 className="AddConnectors">Add Connectors</h2>

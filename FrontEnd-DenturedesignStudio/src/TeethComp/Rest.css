@@ -8,13 +8,17 @@
 
   margin: 0;
   padding: 0;
-  width: 1vw;
-  height: 1vw;
+  width: 0.7vw;
+  height: 0.7vw;
   opacity: 1;
   transition: opacity 0.3s ease;
   z-index: 20;
   img {
+    position: absolute;
+
     height: auto;
+    top: 0;
+    left: 0;
   }
 }
 .rest-btn:hover {
@@ -428,8 +432,8 @@
 }
 
 #rest-btn-50 {
-  left: 44%;
-  top: 4%;
+  left: 43.5%;
+  top: 3%;
   img {
     width: 1vw;
   }
@@ -437,7 +441,7 @@
 
 #rest-btn-51 {
   left: 55%;
-  top: 4%;
+  top: 3.5%;
   img {
     width: 1vw;
   }
@@ -482,5 +486,47 @@
   top: 92%;
   img {
     width: 1vw;
+  }
+}
+#rest-btn-57 {
+  left: 41%;
+  top: 6.5%;
+  img {
+    width: 0.75vw;
+  }
+}
+#rest-btn-58 {
+  left: 44%;
+  top: 5.3%;
+  img {
+    width: 0.6vw;
+  }
+}
+#rest-btn-59 {
+  left: 47%;
+  top: 6%;
+  img {
+    width: 0.7vw;
+  }
+}
+#rest-btn-60 {
+  left: 58.5%;
+  top: 6.5%;
+  img {
+    width: 0.7vw;
+  }
+}
+#rest-btn-61 {
+  left: 55.5%;
+  top: 6%;
+  img {
+    width: 0.6vw;
+  }
+}
+#rest-btn-62 {
+  left: 52.4%;
+  top: 6.5%;
+  img {
+    width: 0.6vw;
   }
 }
