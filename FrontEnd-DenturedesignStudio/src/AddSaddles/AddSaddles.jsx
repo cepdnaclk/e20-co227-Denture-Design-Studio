@@ -75,7 +75,13 @@ function AddSaddles() {
           <div className="teethBackground1">
             <div className="retention-teeth">
               {/* Teeth component with interaction enabled */}
-              <Teeth click={(index) => console.log(`Clicked tooth ${index}`)} />
+              <Teeth
+                click={(index) => console.log(`Clicked tooth ${index}`)}
+                setMissingtooth={missingtooth}
+                value={visibleundercut}
+                selectRest={true}
+                restData={() => {}}
+              />
             </div>
           </div>
 

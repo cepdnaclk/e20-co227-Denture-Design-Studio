@@ -1,5 +1,5 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import "./AddRetentions.css";
 import Home from "../homebutton/home";
 import BackComp from "../backComp/backComp";
@@ -7,17 +7,19 @@ import Teeth from "../TeethComp/Teeth";
 
 function AddRetentions() {
   let navigate = useNavigate();
+  const location = useLocation();
 
+  const selectedRests = location.state?.selectedRests;
   function handleClick(path) {
     navigate(path);
   }
-
+  console.log(selectedRests);
   return (
     <>
       <div className="designPage">
         <div className="AddRetentions">
           <Home onClick={() => handleClick("/studenthome")}></Home>
-          <BackComp onClick={() => handleClick("/addRests")}></BackComp>
+          <BackComp onClick={() => navigate("/addRests")}></BackComp>
           <div>
             <link
               rel="stylesheet"
@@ -43,7 +45,11 @@ function AddRetentions() {
                 </li>
               </ul>
               <div className="retention-teeth">
-                <Teeth />
+                <Teeth
+                  selectRest={{ selectrest: true }}
+                  selectedrests={selectedRests}
+                  restData={() => {}}
+                />
               </div>
             </div>
             <h2 className="AddSaddles">Add Retentions</h2>
