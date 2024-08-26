@@ -122,12 +122,15 @@ function AddConnectors() {
                   </li>
                 </ul>
               </ul>
+              <div className="retention-teeth">
+                <Teeth />
+              </div>
             </div>
             <h2 className="AddConnectors">Add Connectors</h2>
             <h2 className="yourQuestion">Your Question</h2>
             <h1 className="yourCase">Your Case :</h1>
           </div>
-          <Teeth />
+
           <DrawingCanvas
             connectortype={connectortype}
             curvesData={curvesData}

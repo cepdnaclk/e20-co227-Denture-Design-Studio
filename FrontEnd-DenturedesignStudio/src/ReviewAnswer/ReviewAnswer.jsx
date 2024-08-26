@@ -4,6 +4,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import Home from "../homebutton/home";
 import Gotobutton from "../Goto/Goto";
 import Teeth from "../TeethComp/Teeth";
+import ReviewCanvas from "./ReviewCanvas";
 
 function Reviewanswer() {
   const navigate = useNavigate();
@@ -25,6 +26,7 @@ function Reviewanswer() {
       <p className="YouranswerRA">Your Answer :</p>
       <div className="TeethboxRA">
         <Teeth click={(index) => console.log(`Clicked tooth ${index}`)} />
+        <ReviewCanvas drewcurves={curves} />
       </div>
       <div className="ButtonboxRA">
         <div id="Addrests">

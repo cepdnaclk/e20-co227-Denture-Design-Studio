@@ -72,13 +72,11 @@ function AddSaddles() {
             </button>
           </div>
 
-          <div>
-            {/* Teeth component with interaction enabled */}
-            <Teeth
-              click={(index) => console.log(`Clicked tooth ${index}`)}
-              setMissingtooth={missingtooth}
-              value={visibleundercut}
-            />
+          <div className="teethBackground1">
+            <div className="retention-teeth">
+              {/* Teeth component with interaction enabled */}
+              <Teeth click={(index) => console.log(`Clicked tooth ${index}`)} />
+            </div>
           </div>
 
           <h2 className="AddSaddles">Add Saddles</h2>

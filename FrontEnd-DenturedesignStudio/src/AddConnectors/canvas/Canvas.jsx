@@ -14,7 +14,7 @@ function DrawingCanvas({ connectortype, curvesData, drewcurves }) {
   const [activeCurve, setActiveCurve] = useState(null);
   const [draggingPoint, setDraggingPoint] = useState(null);
   const [selectedCurve, setSelectedCurve] = useState(null);
-  console.log(drewcurves);
+  console.log(drewcurves, connectortype);
   useEffect(() => {
     drawAllCurves();
     curvesData(curves, lowercurves, lowerMinorcurve);
@@ -446,8 +446,8 @@ function DrawingCanvas({ connectortype, curvesData, drewcurves }) {
   useEffect(() => {
     const canvas = canvasRef.current;
     const handleresize = () => {
-      canvas.width = window.innerWidth * 0.1475;
-      canvas.height = window.innerHeight * 0.74;
+      canvas.width = window.innerWidth * 0.1485;
+      canvas.height = window.innerHeight * 0.75;
       drawAllCurves();
     };
     handleresize();
@@ -455,10 +455,11 @@ function DrawingCanvas({ connectortype, curvesData, drewcurves }) {
     return () => {
       window.removeEventListener("resize", handleresize);
     };
-  }, [curves]);
+  }, [curves, lowercurves, lowerMinorcurve]);
 
   return (
     <canvas
+      className="canvas"
       ref={canvasRef}
       style={{
         display: "block",
