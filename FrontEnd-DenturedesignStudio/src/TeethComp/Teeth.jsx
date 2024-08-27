@@ -4,12 +4,14 @@ import "./Teeth.css";
 import "./Plate.css";
 import "./Undercut.css";
 import "./Rest.css";
+import "./Retention.css";
 
 import TeethImages from "./Teethimages";
 import { RestImages, occlusal, cingulam, incisal } from "./Restimages";
 import ClaspImages from "./Claspsimages";
 import PlateImages from "./PlatesImages";
 import UndercutsImages from "./Undercutimages";
+import RetentionImages from "./RetentionImages";
 
 const Teeth = ({
   disableSelection,
@@ -21,13 +23,11 @@ const Teeth = ({
   restData,
 }) => {
   const [selectedTeeth, setSelectedTeeth] = useState(Array(32).fill(false));
-  const [selectedRests, setSelectedRests] = useState(
-    selectedrests ? selectedrests : Array(62).fill(false)
-  );
+  const [selectedRests, setSelectedRests] = useState(selectedrests ? selectedrests : Array(56).fill(false));
   const [selectedPlate, setSelectedPlate] = useState(Array(20).fill(false));
-  const [selectedUnderCut, setSelectedUndercut] = useState(
-    Array(20).fill(false)
-  );
+  const [selectedUnderCut, setSelectedUndercut] = useState(Array(20).fill(false));
+  const [selectedRetention, setSelectedRetention] = useState(Array(20).fill(false));
+
   console.log(selectedrests);
   const handleToothClick = (index) => {
     if (setMissingtooth) {
@@ -56,6 +56,7 @@ const Teeth = ({
         const newState = [...prevState];
 
         const restImage = RestImages[index];
+
         const restTypeMatches =
           (selectRest.restType === occlusal.type &&
             occlusal.array.includes(restImage)) ||
@@ -82,6 +83,8 @@ const Teeth = ({
   useEffect(() => {
     restData(selectedRests);
   }, [selectedRests]);
+
+
   const handleUndercutClick = (index) => {
     if (!disableSelection) {
       setSelectedUndercut((prevState) => {
@@ -101,23 +104,21 @@ const Teeth = ({
       });
     }
   };
-  const indexExchangeforUndercut = (index, label) => {
-    if (label == "in") {
-      if (index >= 0 && index < 5) {
-        index = index;
-      } else if (4 < index && index < 15) {
-        index = index + 6;
-      } else {
-        index = index + 12;
-      }
-    } else {
-      if (index > 19 && index < 25) {
-        index = index - 20;
-      } else if (24 < index && index < 35) {
-        index = index - 14;
-      } else {
-        index = index - 8;
-      }
+
+  const handleRetentionClick = (index) => {
+    if (!disableSelection) {
+      setSelectedRetention((prevState) => {
+        const newState = [...prevState];
+        newState[index] = !newState[index];
+        return newState;
+      });
+    }
+  };
+
+
+  const indexExchangeforUndercut = (index) => {
+    if (index > 4 && index < 10) {
+      index = index + 6;
     }
     return index;
   };
@@ -136,7 +137,19 @@ const Teeth = ({
         </button>
       ))}
 
-      {Array.from({ length: 62 }, (_, index) => (
+      {Array.from({ length: 88 }, (_, index) => (
+        <button
+          key={index}
+          className={`retention-btn ${selectedRetention[index] ? "selected" : ""}`}
+          id={`retention-btn-${index + 1}`}
+          onClick={() => handleRetentionClick(index)}
+          
+        >
+          <img src={RetentionImages[index]} alt={`Retention ${index + 1}`} />
+        </button>
+      ))}
+
+      {Array.from({ length: 56 }, (_, index) => (
         <button
           key={index}
           className={`rest-btn ${selectedRests[index] ? "selected" : ""}`}
@@ -165,6 +178,7 @@ const Teeth = ({
           <img src={PlateImages[index]} alt={`Plate ${index + 1}`} />
         </button>
       ))}
+
 
       {Array.from({ length: 20 }, (_, index) => (
         <div key={index} className="undercut-container">
