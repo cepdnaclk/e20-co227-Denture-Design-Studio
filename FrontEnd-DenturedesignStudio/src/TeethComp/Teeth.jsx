@@ -30,7 +30,7 @@ const Teeth = ({
 
   console.log(selectedrests);
   const handleToothClick = (index) => {
-    if (!disableSelection && setMissingtooth) {
+    if (setMissingtooth) {
       setSelectedTeeth((prevState) => {
         const newState = [...prevState];
         newState[index] = !newState[index];
@@ -79,7 +79,6 @@ const Teeth = ({
       });
     }
   };
-
 
   useEffect(() => {
     restData(selectedRests);
@@ -191,7 +190,15 @@ const Teeth = ({
               display: selectedUnderCut[index] && value ? "block" : "none",
             }}
           >
-            <img src={UndercutsImages[index]} alt={`Undercut ${index + 1}`} />
+            <img
+              src={UndercutsImages[index]}
+              alt={`Undercut ${index + 1}`}
+              style={{
+                display: selectedTeeth[indexExchangeforUndercut(index, "in")]
+                  ? "none"
+                  : "block",
+              }}
+            />
           </button>
           <button
             className={`undercut-btn ${
@@ -207,7 +214,9 @@ const Teeth = ({
               src={UndercutsImages[index + 20]}
               alt={`Undercut ${index + 20}`}
               style={{
-                display: selectedTeeth[indexExchangeforUndercut(index)]
+                display: selectedTeeth[
+                  indexExchangeforUndercut(index + 20, "out")
+                ]
                   ? "none"
                   : "block",
               }}
