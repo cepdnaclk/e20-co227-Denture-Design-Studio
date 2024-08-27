@@ -29,10 +29,11 @@
   }
 }
 .Goto:hover {
-  width: 24.4vw;
-  height: 3.6vw;
+  transform: scale(1.05);
+  transition: all 0.5s ease;
   img {
-    width: 3.4vw;
+    transform: scale(1.05);
+    transition: all 0.5s ease;
   }
 }
 
