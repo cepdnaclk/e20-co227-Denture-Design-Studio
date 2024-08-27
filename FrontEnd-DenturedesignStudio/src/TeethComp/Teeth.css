@@ -36,7 +36,8 @@
   opacity: 0.5;
 }
 .teeth-btn.missing {
-  filter: sepia(150%) saturate(190%) hue-rotate(28deg) brightness(0.8);
+
+  filter: sepia(100%) saturate(290%) hue-rotate(26deg) brightness(0.9);
 }
 .teeth-btn:hover {
   opacity: 0.6; /*reduced opacity on hover */

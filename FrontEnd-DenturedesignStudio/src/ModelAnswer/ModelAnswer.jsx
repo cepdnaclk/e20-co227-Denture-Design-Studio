@@ -13,7 +13,7 @@ function ModelAnswer() {
   let navigate = useNavigate();
   const captureRef = useRef(null);
   const location = useLocation();
-  const selectedRests = location.state?.selectedRests;
+  const selectedData = location.state?.selectedData;
   const typeselect = location.state?.typeselect;
   const curves = location.state?.curves;
   console.log(curves);
@@ -71,7 +71,7 @@ function ModelAnswer() {
       <BackComp
         onClick={() =>
           navigate("/reviewAnswer", {
-            state: { curves, selectedRests, typeselect: true },
+            state: { curves, selectedData, typeselect: true },
           })
         }
       ></BackComp>
@@ -117,9 +117,10 @@ function ModelAnswer() {
       >
         <Teeth
           selectRest={{ selectrest: typeselect }}
-          selectedrests={selectedRests}
-          restData={() => {}}
+          DentureData={selectedData}
+          setData={() => {}}
           click={(index) => console.log(`Clicked tooth ${index}`)}
+          value={{ canEdit: false, visible: true }}
         />
         <ReviewCanvas drewcurves={curves} />
       </motion.div>

@@ -10,7 +10,7 @@ function AddConnectors() {
   let navigate = useNavigate();
   const location = useLocation();
   const drewcurves = location.state?.curves;
-  const selectedRests = location.state?.selectedRests;
+  const selectedData = location.state?.selectedData;
   const typeselect = location.state?.typeselect;
   const [connectortype, setconnectortype] = useState();
   const [upperSelect, setUpperselect] = useState(false);
@@ -31,7 +31,7 @@ function AddConnectors() {
         <BackComp
           onClick={() =>
             navigate("/AddIndirectRetentions", {
-              state: { selectedRests, typeselect: true },
+              state: { selectedData, typeselect: true },
             })
           }
         ></BackComp>
@@ -47,7 +47,7 @@ function AddConnectors() {
                 className="Done"
                 onClick={() =>
                   navigate("/reviewAnswer", {
-                    state: { curves, selectedRests, typeselect: true },
+                    state: { curves, selectedData, typeselect: true },
                   })
                 }
               >
@@ -137,8 +137,9 @@ function AddConnectors() {
               <div className="retention-teeth">
                 <Teeth
                   selectRest={{ selectrest: typeselect }}
-                  selectedrests={selectedRests}
-                  restData={() => {}}
+                  DentureData={selectedData}
+                  setData={() => {}}
+                  value={{ canEdit: false, visible: true }}
                 />
               </div>
             </div>

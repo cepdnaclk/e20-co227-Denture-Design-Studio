@@ -8,19 +8,38 @@ function AddSaddles() {
   const navigate = useNavigate();
   const location = useLocation();
   const userdata = location.state?.userdata;
-  const [visibleundercut, setVisibleundercut] = useState(false);
+  const [visibleundercut, setVisibleundercut] = useState({
+    canEdit: false,
+    visible: false,
+  });
   const [missingtooth, setMissingtooth] = useState(false);
+  const [selectedData, setSelectedData] = useState({
+    restdata: null,
+    missingteeth: null,
+    undercuts: null,
+  });
 
   const handleClick = (path) => {
     navigate(path, { state: { userdata } });
   };
   const handleundercutVisibility = (visibleundercut) => {
-    setVisibleundercut(!visibleundercut);
+    setVisibleundercut({
+      canEdit: !visibleundercut.canEdit,
+      visible: !visibleundercut.visible,
+    });
   };
   const handleMissingTeeth = (missingtooth) => {
     setMissingtooth(!missingtooth);
   };
-  console.log(visibleundercut);
+
+  const setData = (data) => {
+    setSelectedData({
+      restdata: data.rests ? data.rests : null,
+      missingteeth: data.teeths ? data.teeths : null,
+      undercuts: data.undercuts ? data.undercuts : null,
+    });
+  };
+
   return (
     <div className="designPage">
       <Home
@@ -44,7 +63,11 @@ function AddSaddles() {
             </button>
             <button
               className="addRests"
-              onClick={() => handleClick("/addRests")}
+              onClick={() =>
+                navigate("/addRests", {
+                  state: { selectedData },
+                })
+              }
             >
               <div className="addRestsText">
                 <span className="addRestText">Add Rests</span>
@@ -63,9 +86,9 @@ function AddSaddles() {
             <h1
               className="selectUnderCut"
               onClick={() => handleundercutVisibility(visibleundercut)}
-              style={{
-                color: visibleundercut ? "#d3ecff" : "rgb(102, 216, 216",
-              }}
+
+              style={{ color: visibleundercut.canEdit ? "#d3ecff" : "black" }}
+
             >
               Select Undercuts
             </h1>
@@ -79,7 +102,8 @@ function AddSaddles() {
                 setMissingtooth={missingtooth}
                 value={visibleundercut}
                 selectRest={true}
-                restData={() => {}}
+                setData={setData}
+                DentureData={selectedData}
               />
             </div>
           </div>

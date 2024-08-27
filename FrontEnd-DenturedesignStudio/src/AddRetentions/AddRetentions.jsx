@@ -9,17 +9,23 @@ function AddRetentions() {
   let navigate = useNavigate();
   const location = useLocation();
   const typeselect = location.state?.typeselect;
-  const selectedRests = location.state?.selectedRests;
+  const selectedData = location.state?.selectedData;
   function handleClick(path) {
     navigate(path);
   }
-  console.log(selectedRests);
+  console.log(selectedData);
   return (
     <>
       <div className="designPage">
         <div className="AddRetentions">
           <Home onClick={() => handleClick("/studenthome")}></Home>
-          <BackComp onClick={() => navigate("/addRests")}></BackComp>
+          <BackComp
+            onClick={() =>
+              navigate("/addRests", {
+                state: { selectedData, typeselect: true },
+              })
+            }
+          ></BackComp>
           <div>
             <link
               rel="stylesheet"
@@ -31,7 +37,7 @@ function AddRetentions() {
                 className="addReciprocations"
                 onClick={() =>
                   navigate("/addReciprocations", {
-                    state: { selectedRests, typeselect: true },
+                    state: { selectedData, typeselect: true },
                   })
                 }
               >
@@ -51,8 +57,9 @@ function AddRetentions() {
               <div className="retention-teeth">
                 <Teeth
                   selectRest={{ selectrest: typeselect }}
-                  selectedrests={selectedRests}
-                  restData={() => {}}
+                  DentureData={selectedData}
+                  setData={() => {}}
+                  value={{ canEdit: false, visible: true }}
                 />
               </div>
             </div>

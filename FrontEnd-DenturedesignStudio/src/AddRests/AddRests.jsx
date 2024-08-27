@@ -10,18 +10,33 @@ function AddRests() {
   const [restType, setResttype] = useState();
   const location = useLocation();
   const typeselect = location.state?.typeselect;
-  const [selectedRests, setSelectedRests] = useState(
-    location.state?.selectedRests ? location.state?.selectedRests : []
+  const [selectedData, setSelectedData] = useState(
+    location.state?.selectedData
+      ? {
+          restdata: null,
+          missingteeth: location.state?.selectedData.missingteeth,
+          undercuts: location.state?.selectedData.undercuts,
+        }
+      : { restdata: null, missingteeth: null, undercuts: null }
   );
   function handleClick(path) {
     navigate(path);
   }
-  console.log(typeselect);
+  console.log(location.state?.selectedData);
+  const setData = (data) => {
+    setSelectedData({
+      restdata: data.rests ? data.rests : null,
+      missingteeth: data.teeths ? data.teeths : null,
+      undercuts: data.undercuts ? data.undercuts : null,
+    });
+  };
+
+  console.log(selectedData);
   return (
     <>
       <div className="designPage">
         <Home onClick={() => handleClick("/studenthome")}></Home>
-        <BackComp onClick={() => handleClick("/AddSaddles")}></BackComp>
+        <BackComp onClick={() => navigate("/AddSaddles")}></BackComp>
         <div className="AddRests">
           <div>
             <link
@@ -41,8 +56,9 @@ function AddRests() {
                       : { selectrest: false }
                   }
                   click={(index) => console.log(`Clicked tooth ${index}`)}
-                  restData={(rests) => setSelectedRests(rests)}
-                  selectedrests={selectedRests}
+                  setData={setData}
+                  DentureData={selectedData}
+                  value={{ canEdit: false, visible: true }}
                 />
               </div>
               <ul className="rests-list">
@@ -83,7 +99,7 @@ function AddRests() {
             className="addRetentions"
             onClick={() =>
               navigate("/addRetentions", {
-                state: { selectedRests, typeselect: true },
+                state: { selectedData, typeselect: true },
               })
             }
           >
