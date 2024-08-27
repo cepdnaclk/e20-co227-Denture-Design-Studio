@@ -76,10 +76,8 @@ function AddSaddles() {
                 click={(index) => console.log(`Clicked tooth ${index}`)}
                 setMissingtooth={missingtooth}
                 value={visibleundercut}
-
                 selectRest={true}
                 restData={() => {}}
-
               />
             </div>
           </div>

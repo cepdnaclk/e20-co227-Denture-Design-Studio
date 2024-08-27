@@ -1,13 +1,19 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import "./AddIndirectRetentions.css";
 import Home from "../homebutton/home";
 import BackComp from "../backComp/backComp";
 import Teeth from "../TeethComp/Teeth";
+import { useState } from "react";
 
 function AddIndirectRetentions() {
   let navigate = useNavigate();
-
+  const location = useLocation();
+  const typeselect = location.state?.typeselect;
+  const [restType, setResttype] = useState();
+  const [selectedRests, setSelectedRests] = useState(
+    location.state?.selectedRests ? location.state?.selectedRests : []
+  );
   function handleClick(path) {
     navigate(path);
   }
@@ -16,7 +22,13 @@ function AddIndirectRetentions() {
     <>
       <div className="designPage">
         <Home onClick={() => handleClick("/studenthome")}></Home>
-        <BackComp onClick={() => handleClick("/AddReciprocations")}></BackComp>
+        <BackComp
+          onClick={() =>
+            navigate("/AddReciprocations", {
+              state: { selectedRests, typeselect: true },
+            })
+          }
+        ></BackComp>
         <div className="AddIndirectRetentions">
           <div>
             <link
@@ -27,7 +39,11 @@ function AddIndirectRetentions() {
             <div className="teethBackground1">
               <button
                 className="addConnectors"
-                onClick={() => handleClick("/AddConnectors")}
+                onClick={() =>
+                  navigate("/AddConnectors", {
+                    state: { selectedRests, typeselect: true },
+                  })
+                }
               >
                 <div className="addConnectText">
                   <span className="addConnectText">Add Connectors</span>
@@ -35,18 +51,48 @@ function AddIndirectRetentions() {
               </button>
 
               <ul className="rests-list">
-                <li id="occlusalRestsI" onClick={() => handleClick()}>
+                <li
+                  id="occlusalRestsI"
+                  onClick={() => setResttype("occlusal")}
+                  style={{
+                    color: restType === "occlusal" ? "#ffffff" : "#66d8d8",
+                  }}
+                >
                   Occlusal Rests :
                 </li>
-                <li id="cingulumRestsI" onClick={() => handleClick()}>
+                <li
+                  id="cingulumRestsI"
+                  onClick={() => setResttype("cingulam")}
+                  style={{
+                    color: restType === "cingulam" ? "#ffffff" : "#66d8d8",
+                  }}
+                >
                   Cingulum Rests :
                 </li>
-                <li id="incisalRestsI" onClick={() => handleClick()}>
+                <li
+                  id="incisalRestsI"
+                  onClick={() => setResttype("incisal")}
+                  style={{
+                    color: restType === "incisal" ? "#ffffff" : "#66d8d8",
+                  }}
+                >
                   Incisal Rests :
                 </li>
               </ul>
               <div className="retention-teeth">
-                <Teeth addIndirectretention={true} />
+                <Teeth
+                  addIndirectretention={true}
+                  selectRest={
+                    restType
+                      ? { restType: restType, selectrest: true }
+                      : typeselect
+                      ? { selectrest: typeselect }
+                      : { selectrest: false }
+                  }
+                  click={(index) => console.log(`Clicked tooth ${index}`)}
+                  restData={(rests) => setSelectedRests(rests)}
+                  selectedrests={selectedRests}
+                />
               </div>
             </div>
             <h2 className="AddIndirectRetentions">Add Indirect Retentions</h2>

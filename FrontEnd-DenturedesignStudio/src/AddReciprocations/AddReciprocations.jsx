@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import "./AddReciprocations.css";
 import Home from "../homebutton/home";
 import BackComp from "../backComp/backComp";
@@ -7,7 +7,10 @@ import Teeth from "../TeethComp/Teeth";
 
 function AddReciprocations() {
   let navigate = useNavigate();
+  const location = useLocation();
 
+  const selectedRests = location.state?.selectedRests;
+  const typeselect = location.state?.typeselect;
   function handleClick(path) {
     navigate(path);
   }
@@ -16,7 +19,13 @@ function AddReciprocations() {
     <>
       <div className="designPage">
         <Home onClick={() => handleClick("/studenthome")}></Home>
-        <BackComp onClick={() => handleClick("/AddRetentions")}></BackComp>
+        <BackComp
+          onClick={() =>
+            navigate("/AddRetentions", {
+              state: { selectedRests, typeselect: true },
+            })
+          }
+        ></BackComp>
         <div className="AddRests">
           <div>
             <link
@@ -27,7 +36,11 @@ function AddReciprocations() {
             <div className="teethBackground1">
               <button
                 className="addIndirectRetentions"
-                onClick={() => handleClick("/addIndirectRetentions")}
+                onClick={() =>
+                  navigate("/addIndirectRetentions", {
+                    state: { selectedRests, typeselect: true },
+                  })
+                }
               >
                 <div className="addIndiRetenText">
                   <span className="addIndiRetenText">
@@ -45,7 +58,11 @@ function AddReciprocations() {
                 </li>
               </ul>
               <div className="reciprocation-teeth">
-                <Teeth />
+                <Teeth
+                  selectRest={{ selectrest: typeselect }}
+                  selectedrests={selectedRests}
+                  restData={() => {}}
+                />
               </div>
             </div>
             <h2 className="AddReciprocations">Add Reciprocations</h2>

@@ -8,7 +8,7 @@ import Teeth from "../TeethComp/Teeth";
 function AddRetentions() {
   let navigate = useNavigate();
   const location = useLocation();
-
+  const typeselect = location.state?.typeselect;
   const selectedRests = location.state?.selectedRests;
   function handleClick(path) {
     navigate(path);
@@ -29,7 +29,11 @@ function AddRetentions() {
             <div className="teethBackground1">
               <button
                 className="addReciprocations"
-                onClick={() => handleClick("/addReciprocations")}
+                onClick={() =>
+                  navigate("/addReciprocations", {
+                    state: { selectedRests, typeselect: true },
+                  })
+                }
               >
                 <div className="addRecipText">
                   <span className="addRecipText">Add Reciprocations</span>
@@ -46,7 +50,7 @@ function AddRetentions() {
               </ul>
               <div className="retention-teeth">
                 <Teeth
-                  selectRest={{ selectrest: true }}
+                  selectRest={{ selectrest: typeselect }}
                   selectedrests={selectedRests}
                   restData={() => {}}
                 />

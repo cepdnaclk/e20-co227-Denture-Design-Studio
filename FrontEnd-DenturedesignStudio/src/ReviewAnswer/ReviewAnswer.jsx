@@ -9,6 +9,8 @@ import ReviewCanvas from "./ReviewCanvas";
 function Reviewanswer() {
   const navigate = useNavigate();
   const location = useLocation();
+  const selectedRests = location.state?.selectedRests;
+  const typeselect = location.state?.typeselect;
   const curves = location.state?.curves;
   console.log(curves?.uppercurve);
 
@@ -16,7 +18,11 @@ function Reviewanswer() {
     <div className="designPage">
       <Home onClick={() => navigate("/studenthome")} />
       <BackComp
-        onClick={() => navigate("/AddConnectors", { state: { curves } })}
+        onClick={() =>
+          navigate("/AddConnectors", {
+            state: { curves, typeselect: true, selectedRests },
+          })
+        }
       />
       <link
         rel="stylesheet"
@@ -25,14 +31,23 @@ function Reviewanswer() {
       <h1 className="HeaderRA">Add/Remove Components</h1>
       <p className="YouranswerRA">Your Answer :</p>
       <div className="TeethboxRA">
-        <Teeth click={(index) => console.log(`Clicked tooth ${index}`)} />
+        <Teeth
+          click={(index) => console.log(`Clicked tooth ${index}`)}
+          selectRest={{ selectrest: typeselect }}
+          selectedrests={selectedRests}
+          restData={() => {}}
+        />
         <ReviewCanvas drewcurves={curves} />
       </div>
       <div className="ButtonboxRA">
         <div id="Addrests">
           <Gotobutton
             Name={"Add Rests"}
-            Pagetogo={() => navigate("/addRests")}
+            Pagetogo={() =>
+              navigate("/addRests", {
+                state: { selectedRests, typeselect: true },
+              })
+            }
           />
         </div>
         <div id="Addretention">
@@ -56,7 +71,11 @@ function Reviewanswer() {
       </div>
       <button
         className="FinishDesigning"
-        onClick={() => navigate("/modelanswer")}
+        onClick={() =>
+          navigate("/modelanswer", {
+            state: { curves, selectedRests, typeselect: true },
+          })
+        }
       >
         Finish Designing
       </button>
