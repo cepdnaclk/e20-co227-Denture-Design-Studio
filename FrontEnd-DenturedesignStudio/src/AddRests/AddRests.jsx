@@ -9,14 +9,14 @@ function AddRests() {
   let navigate = useNavigate();
   const [restType, setResttype] = useState();
   const location = useLocation();
-
+  const typeselect = location.state?.typeselect;
   const [selectedRests, setSelectedRests] = useState(
     location.state?.selectedRests ? location.state?.selectedRests : []
   );
   function handleClick(path) {
     navigate(path);
   }
-  console.log(selectedRests);
+  console.log(typeselect);
   return (
     <>
       <div className="designPage">
@@ -36,6 +36,8 @@ function AddRests() {
                   selectRest={
                     restType
                       ? { restType: restType, selectrest: true }
+                      : typeselect
+                      ? { selectrest: typeselect }
                       : { selectrest: false }
                   }
                   click={(index) => console.log(`Clicked tooth ${index}`)}
@@ -80,7 +82,9 @@ function AddRests() {
           <button
             className="addRetentions"
             onClick={() =>
-              navigate("/addRetentions", { state: { selectedRests } })
+              navigate("/addRetentions", {
+                state: { selectedRests, typeselect: true },
+              })
             }
           >
             <div className="addRetenText">
