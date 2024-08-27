@@ -9,7 +9,7 @@ import ReviewCanvas from "./ReviewCanvas";
 function Reviewanswer() {
   const navigate = useNavigate();
   const location = useLocation();
-  const selectedRests = location.state?.selectedRests;
+  const selectedData = location.state?.selectedData;
   const typeselect = location.state?.typeselect;
   const curves = location.state?.curves;
   console.log(curves?.uppercurve);
@@ -20,7 +20,7 @@ function Reviewanswer() {
       <BackComp
         onClick={() =>
           navigate("/AddConnectors", {
-            state: { curves, typeselect: true, selectedRests },
+            state: { curves, typeselect: true, selectedData },
           })
         }
       />
@@ -34,8 +34,9 @@ function Reviewanswer() {
         <Teeth
           click={(index) => console.log(`Clicked tooth ${index}`)}
           selectRest={{ selectrest: typeselect }}
-          selectedrests={selectedRests}
-          restData={() => {}}
+          DentureData={selectedData}
+          setData={() => {}}
+          value={{ canEdit: false, visible: true }}
         />
         <ReviewCanvas drewcurves={curves} />
       </div>
@@ -45,7 +46,7 @@ function Reviewanswer() {
             Name={"Add Rests"}
             Pagetogo={() =>
               navigate("/addRests", {
-                state: { selectedRests, typeselect: true },
+                state: { selectedData, typeselect: true },
               })
             }
           />
@@ -65,7 +66,9 @@ function Reviewanswer() {
         <div id="Addconnectors">
           <Gotobutton
             Name={"Add Connectors"}
-            Pagetogo={() => navigate("/addConnectors", { state: { curves } })}
+            Pagetogo={() =>
+              navigate("/addConnectors", { state: { curves, selectedData } })
+            }
           />
         </div>
       </div>
@@ -73,7 +76,7 @@ function Reviewanswer() {
         className="FinishDesigning"
         onClick={() =>
           navigate("/modelanswer", {
-            state: { curves, selectedRests, typeselect: true },
+            state: { curves, selectedData, typeselect: true },
           })
         }
       >

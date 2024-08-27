@@ -17,18 +17,55 @@ const Teeth = ({
   setMissingtooth,
   selectRest,
   addIndirectretention,
-  selectedrests,
-  restData,
+  DentureData,
+  setData,
 }) => {
-  const [selectedTeeth, setSelectedTeeth] = useState(Array(32).fill(false));
+  const [selectedTeeth, setSelectedTeeth] = useState(
+    DentureData.missingteeth ? DentureData.missingteeth : Array(32).fill(false)
+  );
   const [selectedRests, setSelectedRests] = useState(
-    selectedrests ? selectedrests : Array(62).fill(false)
+    DentureData.restdata ? DentureData.restdata : Array(62).fill(false)
   );
   const [selectedPlate, setSelectedPlate] = useState(Array(20).fill(false));
   const [selectedUnderCut, setSelectedUndercut] = useState(
-    Array(20).fill(false)
+    DentureData.undercuts ? DentureData.undercuts : Array(20).fill(false)
   );
-  console.log(selectedrests);
+  console.log(value);
+  const RestIndex = {
+    1: [1],
+    2: [2, 3],
+    3: [4, 5],
+    4: [6, 7],
+    5: [8, 9],
+    12: [10, 11],
+    13: [12, 13],
+    14: [14, 15],
+    15: [16, 17],
+    16: [18],
+    17: [19],
+    18: [20, 21],
+    19: [22, 23],
+    20: [24, 25],
+    21: [26, 27],
+    28: [28, 29],
+    29: [30, 31],
+    30: [32, 33],
+    31: [34, 35],
+    32: [36],
+    6: [37, 38, 39],
+    11: [40, 41, 42],
+    22: [43, 44, 45],
+    27: [46, 47, 48],
+    7: [49],
+    8: [50, 57, 58, 59],
+    9: [51, 60, 61, 62],
+    10: [52],
+    23: [53],
+    24: [54],
+    25: [55],
+    26: [56],
+  };
+
   const handleToothClick = (index) => {
     if (setMissingtooth) {
       setSelectedTeeth((prevState) => {
@@ -49,6 +86,9 @@ const Teeth = ({
       });
     }
   };
+  const selectedTeethIndices = selectedTeeth
+    .map((isSelected, index) => (isSelected ? index : null))
+    .filter((index) => index !== null);
 
   const handleRestClick = (index) => {
     if (!disableSelection) {
@@ -64,13 +104,22 @@ const Teeth = ({
           (selectRest.restType === cingulam.type &&
             cingulam.array.includes(restImage));
 
-        if (restTypeMatches) {
+        const isOnMissingTeeth = selectedTeethIndices.some((teethIndex) =>
+          RestIndex[teethIndex + 1]?.includes(index + 1)
+        );
+
+        console.log("Is rest on missing teeth:", isOnMissingTeeth);
+
+        if (restTypeMatches && !isOnMissingTeeth) {
           // Toggle selection if the rest type matches
           newState[index] = !newState[index];
         } else {
           // Show error if the rest type doesn't match
-          if (selectRest.restType) {
+          if (selectRest.restType && !isOnMissingTeeth) {
             alert(`Error: You can only select ${selectRest.restType} rests.`);
+          }
+          if (isOnMissingTeeth && selectRest.restType) {
+            alert(`Error: You cannot select a rest on a missing tooth.`);
           }
         }
 
@@ -80,8 +129,12 @@ const Teeth = ({
   };
 
   useEffect(() => {
-    restData(selectedRests);
-  }, [selectedRests]);
+    setData({
+      rests: selectedRests,
+      teeths: selectedTeeth,
+      undercuts: selectedUnderCut,
+    });
+  }, [selectedRests, selectedTeeth, selectedUnderCut]);
   const handleUndercutClick = (index) => {
     if (!disableSelection) {
       setSelectedUndercut((prevState) => {
@@ -128,8 +181,19 @@ const Teeth = ({
         <button
           key={index}
           className={`teeth-btn 
-            ${selectedTeeth[index] && setMissingtooth ? "missing" : ""} 
-            ${selectedTeeth[index] && !setMissingtooth ? "selected" : ""}`}
+            ${
+              (selectedTeeth[index] && setMissingtooth) ||
+              (DentureData.missingteeth && selectedTeeth[index])
+                ? "missing"
+                : ""
+            } 
+            ${
+              selectedTeeth[index] &&
+              !setMissingtooth &&
+              !DentureData.missingteeth
+                ? "selected"
+                : ""
+            }`}
           onClick={() => handleToothClick(index)}
         >
           <img src={TeethImages[index]} alt={`Tooth ${index + 1}`} />
@@ -171,9 +235,10 @@ const Teeth = ({
           <button
             className={`undercut-btn`}
             id={`undercut-btn-${index + 1}`}
-            onClick={() => handleUndercutClick(index)}
+            onClick={() => (value.canEdit ? handleUndercutClick(index) : "")}
             style={{
-              display: selectedUnderCut[index] && value ? "block" : "none",
+              display:
+                selectedUnderCut[index] && value.visible ? "block" : "none",
             }}
           >
             <img
@@ -191,9 +256,10 @@ const Teeth = ({
               !selectedUnderCut[index] ? "selected" : ""
             }`}
             id={`undercut-btn-${index + 21}`}
-            onClick={() => handleUndercutClick(index)}
+            onClick={() => (value.canEdit ? handleUndercutClick(index) : "")}
             style={{
-              display: !selectedUnderCut[index] & value ? "block" : "none",
+              display:
+                !selectedUnderCut[index] && value.visible ? "block" : "none",
             }}
           >
             <img
