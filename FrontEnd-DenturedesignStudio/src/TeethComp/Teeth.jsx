@@ -172,9 +172,23 @@ const Teeth = ({
     }
   };
 
-  const indexExchangeforUndercut = (index) => {
-    if (index > 4 && index < 10) {
-      index = index + 6;
+  const indexExchangeforUndercut = (index, label) => {
+    if (label == "in") {
+      if (index >= 0 && index < 5) {
+        index = index;
+      } else if (4 < index && index < 15) {
+        index = index + 6;
+      } else {
+        index = index + 12;
+      }
+    } else {
+      if (index > 19 && index < 25) {
+        index = index - 20;
+      } else if (24 < index && index < 35) {
+        index = index - 14;
+      } else {
+        index = index - 8;
+      }
     }
     return index;
   };
