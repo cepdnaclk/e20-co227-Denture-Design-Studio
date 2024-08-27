@@ -86,9 +86,11 @@ function AddSaddles() {
             <h1
               className="selectUnderCut"
               onClick={() => handleundercutVisibility(visibleundercut)}
-
-              style={{ color: visibleundercut.canEdit ? "#d3ecff" : "black" }}
-
+              style={{
+                color: visibleundercut.canEdit
+                  ? "#d3ecff"
+                  : "rgb(102, 216, 216",
+              }}
             >
               Select Undercuts
             </h1>

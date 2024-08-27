@@ -22,14 +22,9 @@ const Teeth = ({
   DentureData,
   setData,
 }) => {
-
-  const [selectedTeeth, setSelectedTeeth] = useState(Array(32).fill(false));
-  const [selectedRests, setSelectedRests] = useState(selectedrests ? selectedrests : Array(56).fill(false));
-  const [selectedPlate, setSelectedPlate] = useState(Array(20).fill(false));
-  const [selectedUnderCut, setSelectedUndercut] = useState(Array(20).fill(false));
-  const [selectedRetention, setSelectedRetention] = useState(Array(20).fill(false));
-
-  console.log(selectedrests);
+  const [selectedRetention, setSelectedRetention] = useState(
+    Array(20).fill(false)
+  );
 
   const [selectedTeeth, setSelectedTeeth] = useState(
     DentureData.missingteeth ? DentureData.missingteeth : Array(32).fill(false)
@@ -76,7 +71,6 @@ const Teeth = ({
     25: [55],
     26: [56],
   };
-
 
   const handleToothClick = (index) => {
     if (setMissingtooth) {
@@ -142,9 +136,6 @@ const Teeth = ({
   };
 
   useEffect(() => {
-
-
-
     setData({
       rests: selectedRests,
       teeths: selectedTeeth,
@@ -181,10 +172,23 @@ const Teeth = ({
     }
   };
 
-
-  const indexExchangeforUndercut = (index) => {
-    if (index > 4 && index < 10) {
-      index = index + 6;
+  const indexExchangeforUndercut = (index, label) => {
+    if (label == "in") {
+      if (index >= 0 && index < 5) {
+        index = index;
+      } else if (4 < index && index < 15) {
+        index = index + 6;
+      } else {
+        index = index + 12;
+      }
+    } else {
+      if (index > 19 && index < 25) {
+        index = index - 20;
+      } else if (24 < index && index < 35) {
+        index = index - 14;
+      } else {
+        index = index - 8;
+      }
     }
     return index;
   };
@@ -217,10 +221,11 @@ const Teeth = ({
       {Array.from({ length: 88 }, (_, index) => (
         <button
           key={index}
-          className={`retention-btn ${selectedRetention[index] ? "selected" : ""}`}
+          className={`retention-btn ${
+            selectedRetention[index] ? "selected" : ""
+          }`}
           id={`retention-btn-${index + 1}`}
           onClick={() => handleRetentionClick(index)}
-          
         >
           <img src={RetentionImages[index]} alt={`Retention ${index + 1}`} />
         </button>
@@ -255,7 +260,6 @@ const Teeth = ({
           <img src={PlateImages[index]} alt={`Plate ${index + 1}`} />
         </button>
       ))}
-
 
       {Array.from({ length: 20 }, (_, index) => (
         <div key={index} className="undercut-container">
