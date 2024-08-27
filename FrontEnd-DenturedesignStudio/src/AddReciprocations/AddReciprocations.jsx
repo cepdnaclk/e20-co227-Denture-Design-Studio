@@ -8,8 +8,7 @@ import Teeth from "../TeethComp/Teeth";
 function AddReciprocations() {
   let navigate = useNavigate();
   const location = useLocation();
-
-  const selectedRests = location.state?.selectedRests;
+  const selectedData = location.state?.selectedData;
   const typeselect = location.state?.typeselect;
   function handleClick(path) {
     navigate(path);
@@ -22,7 +21,7 @@ function AddReciprocations() {
         <BackComp
           onClick={() =>
             navigate("/AddRetentions", {
-              state: { selectedRests, typeselect: true },
+              state: { selectedData, typeselect: true },
             })
           }
         ></BackComp>
@@ -38,7 +37,7 @@ function AddReciprocations() {
                 className="addIndirectRetentions"
                 onClick={() =>
                   navigate("/addIndirectRetentions", {
-                    state: { selectedRests, typeselect: true },
+                    state: { selectedData, typeselect: true },
                   })
                 }
               >
@@ -60,8 +59,9 @@ function AddReciprocations() {
               <div className="reciprocation-teeth">
                 <Teeth
                   selectRest={{ selectrest: typeselect }}
-                  selectedrests={selectedRests}
-                  restData={() => {}}
+                  setData={() => {}}
+                  DentureData={selectedData}
+                  value={{ canEdit: false, visible: true }}
                 />
               </div>
             </div>
