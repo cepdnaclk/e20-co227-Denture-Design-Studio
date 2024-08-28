@@ -13,7 +13,7 @@ function ModelAnswer() {
   let navigate = useNavigate();
   const captureRef = useRef(null);
   const location = useLocation();
-  const selectedRests = location.state?.selectedRests;
+  const selectedData = location.state?.selectedData;
   const typeselect = location.state?.typeselect;
   const curves = location.state?.curves;
   console.log(curves);
@@ -39,14 +39,9 @@ function ModelAnswer() {
   const downloadTeethAsImage = () => {
     if (captureRef.current) {
       html2canvas(captureRef.current, {
-        // Define the area to capture
-        x: 620, // X coordinate of the region (relative to the captureRef element)
-        y: 100,
-        z: 1000, // Y coordinate of the region (relative to the captureRef element)
-        width: 370, // Width of the region to capture
-        height: 550, // Height of the region to capture
-        scrollX: 0, // Horizontal scroll offset
-        scrollY: 0, // Vertical scroll offset
+        scale: window.devicePixelRatio,
+        useCORS: true,
+        willReadFrequently: true,
       })
         .then((canvas) => {
           const imgData = canvas.toDataURL("image/png");
@@ -71,7 +66,7 @@ function ModelAnswer() {
       <BackComp
         onClick={() =>
           navigate("/reviewAnswer", {
-            state: { curves, selectedRests, typeselect: true },
+            state: { curves, selectedData, typeselect: true },
           })
         }
       ></BackComp>
@@ -86,7 +81,7 @@ function ModelAnswer() {
       <motion.h4
         className="YourAnswer"
         animate={{
-          y: isYourAnswerMoved ? -140 : 0,
+          y: isYourAnswerMoved ? -120 : 0,
         }}
         transition={{ duration: 0.5 }}
       >
@@ -109,18 +104,20 @@ function ModelAnswer() {
       <motion.div
         className="TeethBackgroundMA"
         animate={{
-          x: isTeethMoved ? -350 : 0,
+          x: isTeethMoved ? -280 : 0,
           y: isTeethMoved ? 20 : 0,
         }}
         transition={{ duration: 0.5 }}
-        ref={captureRef}
       >
-        <Teeth
-          selectRest={{ selectrest: typeselect }}
-          selectedrests={selectedRests}
-          restData={() => {}}
-          click={(index) => console.log(`Clicked tooth ${index}`)}
-        />
+        <div ref={captureRef} style={{ width: "100%", maxWidth: "200vw" }}>
+          <Teeth
+            selectRest={{ selectrest: typeselect }}
+            DentureData={selectedData}
+            setData={() => {}}
+            click={(index) => console.log(`Clicked tooth ${index}`)}
+            value={{ canEdit: false, visible: true }}
+          />
+        </div>
         <ReviewCanvas drewcurves={curves} />
       </motion.div>
       <div className="ModelAnswerbuttons">
@@ -141,7 +138,7 @@ function ModelAnswer() {
         </button>
         <button
           className="ModelAnswerButton"
-          id="Finish"
+          id="finish"
           onClick={() => handleClick("/studenthome")}
         >
           Finish

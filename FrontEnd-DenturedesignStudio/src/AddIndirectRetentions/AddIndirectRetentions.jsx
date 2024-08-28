@@ -11,13 +11,20 @@ function AddIndirectRetentions() {
   const location = useLocation();
   const typeselect = location.state?.typeselect;
   const [restType, setResttype] = useState();
-  const [selectedRests, setSelectedRests] = useState(
-    location.state?.selectedRests ? location.state?.selectedRests : []
+  const [selectedData, setSelectedData] = useState(
+    location.state?.selectedData
+      ? location.state?.selectedData
+      : { restdata: null, missingteeth: null }
   );
   function handleClick(path) {
     navigate(path);
   }
-
+  const setData = (data) => {
+    setSelectedData({
+      restdata: data.rests ? data.rests : null,
+      missingteeth: data.teeths ? data.teeths : null,
+    });
+  };
   return (
     <>
       <div className="designPage">
@@ -25,7 +32,7 @@ function AddIndirectRetentions() {
         <BackComp
           onClick={() =>
             navigate("/AddReciprocations", {
-              state: { selectedRests, typeselect: true },
+              state: { selectedData, typeselect: true },
             })
           }
         ></BackComp>
@@ -41,7 +48,7 @@ function AddIndirectRetentions() {
                 className="addConnectors"
                 onClick={() =>
                   navigate("/AddConnectors", {
-                    state: { selectedRests, typeselect: true },
+                    state: { selectedData, typeselect: true },
                   })
                 }
               >
@@ -90,8 +97,9 @@ function AddIndirectRetentions() {
                       : { selectrest: false }
                   }
                   click={(index) => console.log(`Clicked tooth ${index}`)}
-                  restData={(rests) => setSelectedRests(rests)}
-                  selectedrests={selectedRests}
+                  setData={setData}
+                  DentureData={selectedData}
+                  value={{ canEdit: false, visible: true }}
                 />
               </div>
             </div>

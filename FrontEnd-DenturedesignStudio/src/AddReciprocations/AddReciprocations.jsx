@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import "./AddReciprocations.css";
 import Home from "../homebutton/home";
@@ -8,9 +8,9 @@ import Teeth from "../TeethComp/Teeth";
 function AddReciprocations() {
   let navigate = useNavigate();
   const location = useLocation();
-
-  const selectedRests = location.state?.selectedRests;
+  const selectedData = location.state?.selectedData;
   const typeselect = location.state?.typeselect;
+  const [selectPlate, setselectPlate] = useState(false);
   function handleClick(path) {
     navigate(path);
   }
@@ -22,7 +22,7 @@ function AddReciprocations() {
         <BackComp
           onClick={() =>
             navigate("/AddRetentions", {
-              state: { selectedRests, typeselect: true },
+              state: { selectedData, typeselect: true },
             })
           }
         ></BackComp>
@@ -38,7 +38,7 @@ function AddReciprocations() {
                 className="addIndirectRetentions"
                 onClick={() =>
                   navigate("/addIndirectRetentions", {
-                    state: { selectedRests, typeselect: true },
+                    state: { selectedData, typeselect: true },
                   })
                 }
               >
@@ -50,18 +50,26 @@ function AddReciprocations() {
               </button>
 
               <ul className="reciprocations-list">
-                <li id="clasp" onClick={() => handleClick()}>
+                <li id="clasp" onClick={() => {}}>
                   Clasp :
                 </li>
-                <li id="plate" onClick={() => handleClick()}>
+                <li
+                  id="plate"
+                  onClick={() => {
+                    setselectPlate(!selectPlate);
+                  }}
+                  style={{ color: selectPlate ? " #ffffff" : "" }}
+                >
                   Plate :
                 </li>
               </ul>
               <div className="reciprocation-teeth">
                 <Teeth
                   selectRest={{ selectrest: typeselect }}
-                  selectedrests={selectedRests}
-                  restData={() => {}}
+                  setData={() => {}}
+                  DentureData={selectedData}
+                  value={{ canEdit: false, visible: true }}
+                  selectPlate={selectPlate}
                 />
               </div>
             </div>

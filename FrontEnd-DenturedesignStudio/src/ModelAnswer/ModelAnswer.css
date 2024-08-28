@@ -61,8 +61,8 @@
 
 .TeethBackgroundMA {
   position: absolute;
-  left: -8vw;
-  top: -35vh;
+  left: 28vw;
+  top: 16vh;
 }
 .ModelAnswerPhoto {
   position: absolute;
@@ -74,12 +74,12 @@
 
 .ModelAnswerButton {
   position: absolute;
-  width: 23.14vw;
-  height: 7vh;
+  width: 24vw;
+  height: 3.2vw;
 
   background: #66d8d8;
   box-shadow: 0.67vw 0.53vw 0.8vw rgba(0, 0, 0, 0.35);
-  border-radius: 0.8vw;
+  border-radius: 1.336vw;
 
   display: flex;
   justify-content: center;
@@ -93,7 +93,7 @@
   font-family: "Salsa";
   font-style: normal;
   font-weight: 400;
-  font-size: 1.6vw;
+  font-size: 1.8vw;
   line-height: 134.77%;
   /* identical to box height, or 43px */
   display: flex;
@@ -105,8 +105,8 @@
   text-shadow: 0vw 0.267vw 0.267vw rgba(0, 0, 0, 0.25);
 }
 .ModelAnswerButton:hover {
-  width: 23.8vw; /* 329px / 1920px * 100 */
-  height: 7.4vh;
+  transform: scale(1.05);
+  transition: all 0.5s ease;
 }
 .ModelAnswerbuttons {
   position: absolute;
@@ -126,7 +126,7 @@
   left: 5vw;
 }
 
-#Finish {
+#finish {
   top: 16vw;
   left: 5vw;
 }

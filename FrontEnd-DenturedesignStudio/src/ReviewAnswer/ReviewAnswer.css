@@ -43,8 +43,8 @@
 
 .TeethboxRA {
   position: absolute;
-  left: -8vw;
-  top: -36vh;
+  left: 28vw;
+  top: 16vh;
 }
 
 .ButtonboxRA {
@@ -99,8 +99,8 @@
   cursor: pointer;
 }
 .FinishDesigning:hover {
-  width: 24.4vw;
-  height: 3.6vw;
+  transform: scale(1.05);
+  transition: all 0.5s ease;
 }
 
 @media (max-width: 900px) {
