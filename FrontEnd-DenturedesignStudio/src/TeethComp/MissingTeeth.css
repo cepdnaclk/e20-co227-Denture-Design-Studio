@@ -1,17 +1,4 @@
-.teethBackground2 {
-  position: relative;
-  width: 23.9vw;
-  margin: 0;
-  padding: 0;
-  aspect-ratio: 459 / 700;
-
-  background: #d3ecff;
-  border-radius: 2.6vw;
-
-  background-size: cover;
-}
-
-.teeth-btn {
+.missingteeth-btn {
   position: absolute;
   background-size: cover;
   background-repeat: no-repeat;
@@ -24,30 +11,22 @@
   height: 2vw;
   opacity: 1;
   transition: opacity 0.2s ease;
-  z-index: 10;
+  z-index: 9;
 
   img {
     width: 2.3vw;
   }
 }
 
-.teeth-btn.selected {
-  opacity: 0.5;
-}
-
-.teeth-btn:hover {
-  opacity: 0.6; /*reduced opacity on hover */
-}
-
-.teeth-btn:nth-child(1) {
-  left: 19.5%;
-  top: 40.83%;
+#missingteeth-btn-1 {
+  left: 19.4%;
+  top: 41%;
   img {
     width: 3.1vw;
   }
 }
 
-.teeth-btn:nth-child(2) {
+#missingteeth-btn-2 {
   left: 20.6%;
   top: 34%;
   img {
@@ -55,7 +34,7 @@
   }
 }
 
-.teeth-btn:nth-child(3) {
+#missingteeth-btn-3 {
   left: 22%;
   top: 26%;
   img {
@@ -63,7 +42,7 @@
   }
 }
 
-.teeth-btn:nth-child(4) {
+#missingteeth-btn-4 {
   left: 24%;
   top: 21.3%;
   img {
@@ -71,7 +50,7 @@
   }
 }
 
-.teeth-btn:nth-child(5) {
+#missingteeth-btn-5 {
   left: 25%;
   top: 15.5%;
   img {
@@ -79,7 +58,7 @@
   }
 }
 
-.teeth-btn:nth-child(6) {
+#missingteeth-btn-6 {
   left: 28%;
   top: 10%;
   img {
@@ -87,7 +66,7 @@
   }
 }
 
-.teeth-btn:nth-child(7) {
+#missingteeth-btn-7 {
   left: 32%;
   top: 5%;
   img {
@@ -95,7 +74,7 @@
   }
 }
 
-.teeth-btn:nth-child(8) {
+#missingteeth-btn-8 {
   left: 40.6%;
   top: 3%;
   img {
@@ -103,7 +82,7 @@
   }
 }
 
-.teeth-btn:nth-child(9) {
+#missingteeth-btn-9 {
   left: 51.5%;
   top: 3.3%;
   img {
@@ -111,7 +90,7 @@
   }
 }
 
-.teeth-btn:nth-child(10) {
+#missingteeth-btn-10 {
   left: 62%;
   top: 5%;
   img {
@@ -119,7 +98,7 @@
   }
 }
 
-.teeth-btn:nth-child(11) {
+#missingteeth-btn-11 {
   left: 67%;
   top: 10%;
   img {
@@ -127,7 +106,7 @@
   }
 }
 
-.teeth-btn:nth-child(12) {
+#missingteeth-btn-12 {
   left: 67.5%;
   top: 15.5%;
   img {
@@ -135,7 +114,7 @@
   }
 }
 
-.teeth-btn:nth-child(13) {
+#missingteeth-btn-13 {
   left: 69%;
   top: 21%;
   img {
@@ -143,7 +122,7 @@
   }
 }
 
-.teeth-btn:nth-child(14) {
+#missingteeth-btn-14 {
   left: 68.5%;
   top: 26%;
   img {
@@ -151,7 +130,7 @@
   }
 }
 
-.teeth-btn:nth-child(15) {
+#missingteeth-btn-15 {
   left: 70%;
   top: 34%;
   img {
@@ -159,7 +138,7 @@
   }
 }
 
-.teeth-btn:nth-child(16) {
+#missingteeth-btn-16 {
   left: 70.5%;
   top: 40.83%;
   img {
@@ -169,7 +148,7 @@
 
 /*lower half*/
 
-.teeth-btn:nth-child(17) {
+#missingteeth-btn-17 {
   left: 70%;
   top: 53.5%;
   img {
@@ -177,7 +156,7 @@
   }
 }
 
-.teeth-btn:nth-child(18) {
+#missingteeth-btn-18 {
   left: 69%;
   top: 60.5%;
   img {
@@ -185,7 +164,7 @@
   }
 }
 
-.teeth-btn:nth-child(19) {
+#missingteeth-btn-19 {
   left: 68%;
   top: 68%;
   img {
@@ -193,7 +172,7 @@
   }
 }
 
-.teeth-btn:nth-child(20) {
+#missingteeth-btn-20 {
   left: 68%;
   top: 76.5%;
   img {
@@ -201,7 +180,7 @@
   }
 }
 
-.teeth-btn:nth-child(21) {
+#missingteeth-btn-21 {
   left: 65%;
   top: 82.5%;
   img {
@@ -209,7 +188,7 @@
   }
 }
 
-.teeth-btn:nth-child(22) {
+#missingteeth-btn-22 {
   left: 63%;
   top: 87.5%;
   img {
@@ -217,7 +196,7 @@
   }
 }
 
-.teeth-btn:nth-child(23) {
+#missingteeth-btn-23 {
   left: 57%;
   top: 89%;
   img {
@@ -225,7 +204,7 @@
   }
 }
 
-.teeth-btn:nth-child(24) {
+#missingteeth-btn-24 {
   left: 50.5%;
   top: 90.3%;
   img {
@@ -233,7 +212,7 @@
   }
 }
 
-.teeth-btn:nth-child(25) {
+#missingteeth-btn-25 {
   left: 43.7%;
   top: 90.2%;
   img {
@@ -241,7 +220,7 @@
   }
 }
 
-.teeth-btn:nth-child(26) {
+#missingteeth-btn-26 {
   left: 37.5%;
   top: 89.2%;
   img {
@@ -249,7 +228,7 @@
   }
 }
 
-.teeth-btn:nth-child(27) {
+#missingteeth-btn-27 {
   left: 31%;
   top: 87.5%;
   img {
@@ -257,7 +236,7 @@
   }
 }
 
-.teeth-btn:nth-child(28) {
+#missingteeth-btn-28 {
   left: 27.5%;
   top: 82.7%;
   img {
@@ -265,7 +244,7 @@
   }
 }
 
-.teeth-btn:nth-child(29) {
+#missingteeth-btn-29 {
   left: 24.5%;
   top: 76.5%;
   img {
@@ -273,7 +252,7 @@
   }
 }
 
-.teeth-btn:nth-child(30) {
+#missingteeth-btn-30 {
   left: 22.7%;
   top: 68%;
   img {
@@ -281,7 +260,7 @@
   }
 }
 
-.teeth-btn:nth-child(31) {
+#missingteeth-btn-31 {
   left: 21%;
   top: 60.5%;
   img {
@@ -289,7 +268,7 @@
   }
 }
 
-.teeth-btn:nth-child(32) {
+#missingteeth-btn-32 {
   left: 21.9%;
   top: 53.5%;
   img {
