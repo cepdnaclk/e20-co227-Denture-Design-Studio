@@ -4,8 +4,7 @@
   margin: 0;
   padding: 0;
   aspect-ratio: 459 / 700;
-  left: 40.96vw;
-  top: 50vh;
+
   background: #d3ecff;
   border-radius: 2.6vw;
   background-image: url(./image.png);
@@ -36,7 +35,6 @@
   opacity: 0.5;
 }
 .teeth-btn.missing {
-
   filter: sepia(100%) saturate(290%) hue-rotate(26deg) brightness(0.9);
 }
 .teeth-btn:hover {
@@ -167,7 +165,7 @@
   left: 70.5%;
   top: 40.83%;
   img {
-    width: 3vw;
+    width: 2.8vw;
   }
 }
 

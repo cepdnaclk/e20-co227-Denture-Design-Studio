@@ -21,6 +21,7 @@ const Teeth = ({
   addIndirectretention,
   DentureData,
   setData,
+  selectPlate,
 }) => {
   const [selectedRetention, setSelectedRetention] = useState(
     Array(20).fill(false)
@@ -36,7 +37,6 @@ const Teeth = ({
   const [selectedUnderCut, setSelectedUndercut] = useState(
     DentureData.undercuts ? DentureData.undercuts : Array(20).fill(false)
   );
-  console.log(value);
   const RestIndex = {
     1: [1],
     2: [2, 3],
@@ -153,12 +153,39 @@ const Teeth = ({
   };
 
   const handlePlateClick = (index) => {
-    if (!disableSelection) {
-      setSelectedPlate((prevState) => {
-        const newState = [...prevState];
-        newState[index] = !newState[index];
-        return newState;
-      });
+    console.log(index);
+
+    const adjustedIndex = (() => {
+      if (index < 5 || (index > 19 && index < 25))
+        return index < 5 ? index : index - 20;
+      if ((index < 10 && index > 4) || (index > 24 && index < 30))
+        return index < 10 ? index + 6 : index - 14;
+      if ((index < 15 && index > 9) || (index > 29 && index < 35))
+        return index < 15 ? index + 6 : index - 14;
+      if ((index < 20 && index > 14) || (index > 34 && index < 40))
+        return index < 20 ? index + 12 : index - 8;
+      return null;
+    })();
+
+    if (adjustedIndex !== null) {
+      if (!selectedTeeth[adjustedIndex]) {
+        setSelectedPlate((prevState) => {
+          const newState = [...prevState];
+          const isUpperPlate = index < 20;
+          const underCutIndex = isUpperPlate ? index : index - 20;
+          const isUnderCut = selectedUnderCut[underCutIndex];
+
+          if ((isUpperPlate && !isUnderCut) || (!isUpperPlate && isUnderCut)) {
+            newState[index] = !newState[index];
+          } else {
+            alert(isUpperPlate ? "wrong plate side" : "this side is under cut");
+          }
+
+          return newState;
+        });
+      } else {
+        alert("can not add plates to a missing teeth");
+      }
     }
   };
 
@@ -254,6 +281,7 @@ const Teeth = ({
           id={`plate-btn-${index + 1}`}
           onClick={() => handlePlateClick(index)}
           style={{
+            display: selectPlate ? "block" : "none",
             opacity: selectedPlate[index] ? "1" : "0",
           }}
         >
