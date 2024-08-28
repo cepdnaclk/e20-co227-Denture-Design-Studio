@@ -39,8 +39,9 @@ function ModelAnswer() {
   const downloadTeethAsImage = () => {
     if (captureRef.current) {
       html2canvas(captureRef.current, {
-        scale: window.devicePixelRatio, // Adjust for screen resolution
-        useCORS: true, // Handle cross-origin images
+        scale: window.devicePixelRatio,
+        useCORS: true,
+        willReadFrequently: true,
       })
         .then((canvas) => {
           const imgData = canvas.toDataURL("image/png");
@@ -80,7 +81,7 @@ function ModelAnswer() {
       <motion.h4
         className="YourAnswer"
         animate={{
-          y: isYourAnswerMoved ? -140 : 0,
+          y: isYourAnswerMoved ? -120 : 0,
         }}
         transition={{ duration: 0.5 }}
       >
@@ -103,7 +104,7 @@ function ModelAnswer() {
       <motion.div
         className="TeethBackgroundMA"
         animate={{
-          x: isTeethMoved ? -350 : 0,
+          x: isTeethMoved ? -280 : 0,
           y: isTeethMoved ? 20 : 0,
         }}
         transition={{ duration: 0.5 }}
@@ -137,7 +138,7 @@ function ModelAnswer() {
         </button>
         <button
           className="ModelAnswerButton"
-          id="Finish"
+          id="finish"
           onClick={() => handleClick("/studenthome")}
         >
           Finish

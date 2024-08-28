@@ -5,6 +5,7 @@ import "./Plate.css";
 import "./Undercut.css";
 import "./Rest.css";
 import "./Retention.css";
+import "./MissingTeeth.css";
 
 import TeethImages from "./Teethimages";
 import { RestImages, occlusal, cingulam, incisal } from "./Restimages";
@@ -12,6 +13,7 @@ import ClaspImages from "./Claspsimages";
 import PlateImages from "./PlatesImages";
 import UndercutsImages from "./Undercutimages";
 import RetentionImages from "./RetentionImages";
+import MissingTeethImages from "./MissingTeethImages";
 
 const Teeth = ({
   disableSelection,
@@ -37,6 +39,7 @@ const Teeth = ({
   const [selectedUnderCut, setSelectedUndercut] = useState(
     DentureData.undercuts ? DentureData.undercuts : Array(20).fill(false)
   );
+  const MissingTeeth = Array(20).fill(false);
   const RestIndex = {
     1: [1],
     2: [2, 3],
@@ -225,7 +228,7 @@ const Teeth = ({
       {Array.from({ length: 32 }, (_, index) => (
         <button
           key={index}
-          className={`teeth-btn  
+          className={`teeth-btn 
             ${
               selectedTeeth[index] &&
               !setMissingtooth &&
@@ -239,16 +242,28 @@ const Teeth = ({
             src={TeethImages[index]}
             alt={`Tooth ${index + 1}`}
             style={{
-              filter:
+              visibility:
                 (selectedTeeth[index] && setMissingtooth) ||
                 (DentureData.missingteeth && selectedTeeth[index])
-                  ? "sepia(100%) saturate(290%) hue-rotate(26deg) brightness(0.9)"
-                  : "",
+                  ? "hidden"
+                  : "visible",
             }}
           />
         </button>
       ))}
 
+      {Array.from({ length: 32 }, (_, index) => (
+        <button
+          key={index}
+          className="missingteeth-btn"
+          id={`missingteeth-btn-${index + 1}`}
+        >
+          <img
+            src={MissingTeethImages[index]}
+            alt={`MissingTeeth ${index + 1}`}
+          />
+        </button>
+      ))}
       {Array.from({ length: 88 }, (_, index) => (
         <button
           key={index}

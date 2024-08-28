@@ -105,8 +105,8 @@
   text-shadow: 0vw 0.267vw 0.267vw rgba(0, 0, 0, 0.25);
 }
 .ModelAnswerButton:hover {
-  width: 23.8vw; /* 329px / 1920px * 100 */
-  height: 7.4vh;
+  transform: scale(1.05);
+  transition: all 0.5s ease;
 }
 .ModelAnswerbuttons {
   position: absolute;
@@ -126,7 +126,7 @@
   left: 5vw;
 }
 
-#Finish {
+#finish {
   top: 16vw;
   left: 5vw;
 }
