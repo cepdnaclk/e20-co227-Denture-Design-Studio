@@ -39,14 +39,8 @@ function ModelAnswer() {
   const downloadTeethAsImage = () => {
     if (captureRef.current) {
       html2canvas(captureRef.current, {
-        // Define the area to capture
-        x: 620, // X coordinate of the region (relative to the captureRef element)
-        y: 100,
-        z: 1000, // Y coordinate of the region (relative to the captureRef element)
-        width: 370, // Width of the region to capture
-        height: 550, // Height of the region to capture
-        scrollX: 0, // Horizontal scroll offset
-        scrollY: 0, // Vertical scroll offset
+        scale: window.devicePixelRatio, // Adjust for screen resolution
+        useCORS: true, // Handle cross-origin images
       })
         .then((canvas) => {
           const imgData = canvas.toDataURL("image/png");
@@ -113,15 +107,16 @@ function ModelAnswer() {
           y: isTeethMoved ? 20 : 0,
         }}
         transition={{ duration: 0.5 }}
-        ref={captureRef}
       >
-        <Teeth
-          selectRest={{ selectrest: typeselect }}
-          DentureData={selectedData}
-          setData={() => {}}
-          click={(index) => console.log(`Clicked tooth ${index}`)}
-          value={{ canEdit: false, visible: true }}
-        />
+        <div ref={captureRef} style={{ width: "100%", maxWidth: "200vw" }}>
+          <Teeth
+            selectRest={{ selectrest: typeselect }}
+            DentureData={selectedData}
+            setData={() => {}}
+            click={(index) => console.log(`Clicked tooth ${index}`)}
+            value={{ canEdit: false, visible: true }}
+          />
+        </div>
         <ReviewCanvas drewcurves={curves} />
       </motion.div>
       <div className="ModelAnswerbuttons">

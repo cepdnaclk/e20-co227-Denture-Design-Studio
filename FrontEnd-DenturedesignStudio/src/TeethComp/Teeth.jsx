@@ -198,13 +198,7 @@ const Teeth = ({
       {Array.from({ length: 32 }, (_, index) => (
         <button
           key={index}
-          className={`teeth-btn 
-            ${
-              (selectedTeeth[index] && setMissingtooth) ||
-              (DentureData.missingteeth && selectedTeeth[index])
-                ? "missing"
-                : ""
-            } 
+          className={`teeth-btn  
             ${
               selectedTeeth[index] &&
               !setMissingtooth &&
@@ -214,7 +208,17 @@ const Teeth = ({
             }`}
           onClick={() => handleToothClick(index)}
         >
-          <img src={TeethImages[index]} alt={`Tooth ${index + 1}`} />
+          <img
+            src={TeethImages[index]}
+            alt={`Tooth ${index + 1}`}
+            style={{
+              filter:
+                (selectedTeeth[index] && setMissingtooth) ||
+                (DentureData.missingteeth && selectedTeeth[index])
+                  ? "sepia(100%) saturate(290%) hue-rotate(26deg) brightness(0.9)"
+                  : "",
+            }}
+          />
         </button>
       ))}
 
