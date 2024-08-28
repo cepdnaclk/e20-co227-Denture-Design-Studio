@@ -8,25 +8,24 @@ import Teeth from "../TeethComp/Teeth";
 function AddRetentions() {
   let navigate = useNavigate();
   const location = useLocation();
-  const typeselect2 = location.state?.typeselect2;
-  const selectedRetentions = location.state?.selectedRetentions;
-
-  const [retentionType, setRetentionType] = useState(null);
-  const [occlusallyType, setOcclusallyType] = useState(null);
-
+  const typeselect = location.state?.typeselect;
+  const selectedData = location.state?.selectedData;
   function handleClick(path) {
     navigate(path);
   }
-
-  console.log(typeselect2);
-
+  console.log(selectedData);
   return (
     <>
       <div className="designPage">
         <div className="AddRetentions">
-          <Home onClick={() => handleClick("/studenthome")} />
-          <BackComp onClick={() => navigate("/addRests")} />
-
+          <Home onClick={() => handleClick("/studenthome")}></Home>
+          <BackComp
+            onClick={() =>
+              navigate("/addRests", {
+                state: { selectedData, typeselect: true },
+              })
+            }
+          ></BackComp>
           <div>
             <link
               rel="stylesheet"
@@ -38,7 +37,7 @@ function AddRetentions() {
                 className="addReciprocations"
                 onClick={() =>
                   navigate("/addReciprocations", {
-                    state: { selectedRetentions, typeselect2: true },
+                    state: { selectedData, typeselect: true },
                   })
                 }
               >
@@ -48,73 +47,19 @@ function AddRetentions() {
               </button>
 
               <ul className="retentions-list">
-                <li
-                  id="occlusally"
-                  onClick={() => setRetentionType("occlusally")}
-                  style={{
-                    color: retentionType === "occlusally" ? "#ffffff" : "#66d8d8",
-                  }}
-                >
-                  Occlusally Approaching
+                <li id="occlusally" onClick={() => handleClick()}>
+                  Occlusally Approaching :
                 </li>
-                {retentionType === "occlusally" && (
-                  <ul className="occlusally-subtypes">
-                    <li
-                      id="ringType"
-                      onClick={() => setOcclusallyType("ring")}
-                      style={{
-                        color: occlusallyType === "ring" ? "#ffffff" : "#66d8d8",
-                      }}
-                    >
-                      Ring Type
-                    </li>
-                    <li
-                      id="circumferentialType"
-                      onClick={() => setOcclusallyType("circumferential")}
-                      style={{
-                        color:
-                          occlusallyType === "circumferential"
-                            ? "#ffffff"
-                            : "#66d8d8",
-                      }}
-                    >
-                      Circumferential
-                    </li>
-                  </ul>
-                )}
-                <li
-                  id="gingivally"
-                  onClick={() => setRetentionType("gingivally")}
-                  style={{
-                    color: retentionType === "gingivally" ? "#ffffff" : "#66d8d8",
-                  }}
-                >
-                  Gingivally Approaching
+                <li id="gingivilly" onClick={() => handleClick()}>
+                  Gingivilly Approaching :
                 </li>
               </ul>
-
               <div className="retention-teeth">
-
                 <Teeth
-                  selectRetention={
-                    retentionType
-                      ? {
-                          retentionType: retentionType,
-                          selectretention: typeselect2,
-                          occlusallyType: occlusallyType,
-                        }
-                      : typeselect2
-                      ? {
-                          selectretention: typeselect2,
-                          occlusallyType: occlusallyType,
-                        }
-                      : {
-                          selectretention: false,
-                          occlusallyType: occlusallyType,
-                        }
-                  }
-                  selectedRetentions={selectedRetentions}
-                  retentionData={(data) => console.log(data)} // Handle retention data
+                  selectRest={{ selectrest: typeselect }}
+                  DentureData={selectedData}
+                  setData={() => {}}
+                  value={{ canEdit: false, visible: true }}
                 />
               </div>
             </div>
