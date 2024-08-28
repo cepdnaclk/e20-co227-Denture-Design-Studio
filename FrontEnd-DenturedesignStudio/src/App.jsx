@@ -79,7 +79,18 @@ function App() {
           <Route exact path="/userengagement" element={<UserEngage />} />
           <Route exact path="/Viewprogress" element={<Studentprogress />} />
           <Route exact path="/myaccount" element={<Myaccountview />} />
-          <Route exact path="/teeth" element={<Teeth />} />
+          <Route
+            exact
+            path="/teeth"
+            element={
+              <Teeth
+                DentureData={true}
+                selectRest={true}
+                value={true}
+                setData={() => {}}
+              />
+            }
+          />
           <Route exact path="/rests" element={<Rests />} />
           <Route exact path="/viewcontent" element={<Viewcontent />} />
           <Route
