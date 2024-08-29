@@ -60,6 +60,7 @@ function AddRetentions() {
                   DentureData={selectedData}
                   setData={() => {}}
                   value={{ canEdit: false, visible: true }}
+                  selectPlate={{ view: false }}
                 />
               </div>
             </div>

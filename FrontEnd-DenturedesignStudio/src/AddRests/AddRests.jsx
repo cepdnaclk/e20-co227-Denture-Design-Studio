@@ -16,8 +16,9 @@ function AddRests() {
           restdata: null,
           missingteeth: location.state?.selectedData.missingteeth,
           undercuts: location.state?.selectedData.undercuts,
+          plates: location.state?.selectedData.plates,
         }
-      : { restdata: null, missingteeth: null, undercuts: null }
+      : { restdata: null, missingteeth: null, undercuts: null, plates: null }
   );
   function handleClick(path) {
     navigate(path);
@@ -28,10 +29,10 @@ function AddRests() {
       restdata: data.rests ? data.rests : null,
       missingteeth: data.teeths ? data.teeths : null,
       undercuts: data.undercuts ? data.undercuts : null,
+      plates: data.plates ? data.plates : null,
     });
   };
 
-  console.log(selectedData);
   return (
     <>
       <div className="designPage">
@@ -59,6 +60,7 @@ function AddRests() {
                   setData={setData}
                   DentureData={selectedData}
                   value={{ canEdit: false, visible: true }}
+                  selectPlate={{ view: false }}
                 />
               </div>
               <ul className="rests-list">

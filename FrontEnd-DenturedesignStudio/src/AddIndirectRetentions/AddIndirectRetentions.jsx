@@ -14,15 +14,18 @@ function AddIndirectRetentions() {
   const [selectedData, setSelectedData] = useState(
     location.state?.selectedData
       ? location.state?.selectedData
-      : { restdata: null, missingteeth: null }
+      : { restdata: null, missingteeth: null, undercuts: null, plates: null }
   );
   function handleClick(path) {
     navigate(path);
   }
+  console.log(selectedData);
   const setData = (data) => {
     setSelectedData({
       restdata: data.rests ? data.rests : null,
       missingteeth: data.teeths ? data.teeths : null,
+      undercuts: data.undercuts ? data.undercuts : null,
+      plates: data.plates ? data.plates : null,
     });
   };
   return (
@@ -100,6 +103,7 @@ function AddIndirectRetentions() {
                   setData={setData}
                   DentureData={selectedData}
                   value={{ canEdit: false, visible: true }}
+                  selectPlate={{ view: true }}
                 />
               </div>
             </div>

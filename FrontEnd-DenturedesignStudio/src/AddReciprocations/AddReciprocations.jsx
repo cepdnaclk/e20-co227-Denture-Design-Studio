@@ -8,13 +8,29 @@ import Teeth from "../TeethComp/Teeth";
 function AddReciprocations() {
   let navigate = useNavigate();
   const location = useLocation();
-  const selectedData = location.state?.selectedData;
   const typeselect = location.state?.typeselect;
   const [selectPlate, setselectPlate] = useState(false);
+  const [selectedData, setSelectedData] = useState(
+    location.state?.selectedData
+      ? {
+          restdata: location.state?.selectedData.restdata,
+          missingteeth: location.state?.selectedData.missingteeth,
+          undercuts: location.state?.selectedData.undercuts,
+          plates: null,
+        }
+      : { restdata: null, missingteeth: null, undercuts: null, plates: null }
+  );
   function handleClick(path) {
     navigate(path);
   }
-
+  const setData = (data) => {
+    setSelectedData({
+      restdata: data.rests ? data.rests : null,
+      missingteeth: data.teeths ? data.teeths : null,
+      undercuts: data.undercuts ? data.undercuts : null,
+      plates: data.plates ? data.plates : null,
+    });
+  };
   return (
     <>
       <div className="designPage">
@@ -66,10 +82,10 @@ function AddReciprocations() {
               <div className="reciprocation-teeth">
                 <Teeth
                   selectRest={{ selectrest: typeselect }}
-                  setData={() => {}}
+                  setData={setData}
                   DentureData={selectedData}
                   value={{ canEdit: false, visible: true }}
-                  selectPlate={selectPlate}
+                  selectPlate={{ edit: selectPlate, view: true }}
                 />
               </div>
             </div>
