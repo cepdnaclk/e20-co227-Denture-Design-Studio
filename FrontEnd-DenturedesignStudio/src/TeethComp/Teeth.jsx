@@ -37,7 +37,9 @@ const Teeth = ({
   const [selectedRests, setSelectedRests] = useState(
     DentureData.restdata ? DentureData.restdata : Array(62).fill(false)
   );
-  const [selectedPlate, setSelectedPlate] = useState(Array(20).fill(false));
+  const [selectedPlates, setSelectedPlates] = useState(
+    DentureData.plates ? DentureData.plates : Array(40).fill(false)
+  );
   const [selectedUnderCut, setSelectedUndercut] = useState(
     DentureData.undercuts ? DentureData.undercuts : Array(20).fill(false)
   );
@@ -83,8 +85,6 @@ const Teeth = ({
         const newState = [...prevState];
         newState[index] = !newState[index];
 
-        console.log(`Updated selectedTeeth array:`, newState); // This logs the entire array
-
         if (setMissingtooth) {
           console.log(`Missing Teeth, selected Tooth ${index + 1}`);
         } else {
@@ -120,8 +120,6 @@ const Teeth = ({
           RestIndex[teethIndex + 1]?.includes(index + 1)
         );
 
-        console.log("Is rest on missing teeth:", isOnMissingTeeth);
-
         if (restTypeMatches && !isOnMissingTeeth) {
           // Toggle selection if the rest type matches
           newState[index] = !newState[index];
@@ -147,8 +145,10 @@ const Teeth = ({
       retentions: selectedRetention,
       teeths: selectedTeeth,
       undercuts: selectedUnderCut,
+      plates: selectedPlates,
     });
-  }, [selectedRests, selectedTeeth, selectedUnderCut, selectedRetention]);
+
+  }, [selectedRests, selectedTeeth, selectedUnderCut, selectedRetention,selectedPlates]);
   
   const handleUndercutClick = (index) => {
     if (!disableSelection) {
@@ -161,8 +161,6 @@ const Teeth = ({
   };
 
   const handlePlateClick = (index) => {
-    console.log(index);
-
     const adjustedIndex = (() => {
       if (index < 5 || (index > 19 && index < 25))
         return index < 5 ? index : index - 20;
@@ -177,7 +175,7 @@ const Teeth = ({
 
     if (adjustedIndex !== null) {
       if (!selectedTeeth[adjustedIndex]) {
-        setSelectedPlate((prevState) => {
+        setSelectedPlates((prevState) => {
           const newState = [...prevState];
           const isUpperPlate = index < 20;
           const underCutIndex = isUpperPlate ? index : index - 20;
@@ -333,12 +331,12 @@ const Teeth = ({
       {Array.from({ length: 40 }, (_, index) => (
         <button
           key={index}
-          className={`plate-btn ${selectedPlate[index] ? "selected" : ""}`}
+          className={`plate-btn ${selectedPlates[index] ? "selected" : ""}`}
           id={`plate-btn-${index + 1}`}
-          onClick={() => handlePlateClick(index)}
+          onClick={() => (selectPlate.edit ? handlePlateClick(index) : "")}
           style={{
-            display: selectPlate ? "block" : "none",
-            opacity: selectedPlate[index] ? "1" : "0",
+            display: selectPlate.view ? "block" : "none",
+            opacity: selectedPlates[index] ? "1" : "0",
           }}
         >
           <img src={PlateImages[index]} alt={`Plate ${index + 1}`} />

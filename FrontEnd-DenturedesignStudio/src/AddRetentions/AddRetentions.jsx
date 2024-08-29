@@ -80,11 +80,29 @@ function AddRetentions() {
                         occlusallyType: null,
                       }
                 }
-                click={(index) => console.log(`Clicked tooth ${index}`)}
-                DentureData={selectedData}
-                setData={setData}
-                value={{ canEdit: false, visible: true }}
-              />
+              >
+                <div className="addRecipText">
+                  <span className="addRecipText">Add Reciprocations</span>
+                </div>
+              </button>
+
+              <ul className="retentions-list">
+                <li id="occlusally" onClick={() => handleClick()}>
+                  Occlusally Approaching :
+                </li>
+                <li id="gingivilly" onClick={() => handleClick()}>
+                  Gingivilly Approaching :
+                </li>
+              </ul>
+              <div className="retention-teeth">
+                <Teeth
+                  selectRest={{ selectrest: typeselect }}
+                  DentureData={selectedData}
+                  setData={() => {}}
+                  value={{ canEdit: false, visible: true }}
+                  selectPlate={{ view: false }}
+                />
+              </div>
             </div>
             <button
               className="addReciprocations"
