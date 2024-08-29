@@ -8,10 +8,9 @@ import Teeth from "../TeethComp/Teeth";
 function AddRetentions() {
   const location = useLocation();
   const navigate = useNavigate();
-  const typeselect2 = location.state?.typeselect2;
   const [retentionType, setRetentionType] = useState();
   const [occlusallyType, setOcclusallyType] = useState();
-  
+
   const [selectedData, setSelectedData] = useState(
     location.state?.selectedData
       ? {
@@ -20,9 +19,14 @@ function AddRetentions() {
           undercuts: location.state?.selectedData.undercuts,
           restdata: location.state?.selectedData.restdata,
         }
-      : { retentiondata: null, restdata: null, missingteeth: null, undercuts: null }
+      : {
+          retentiondata: null,
+          restdata: null,
+          missingteeth: null,
+          undercuts: null,
+        }
   );
-
+  console.log(selectedData);
   function handleClick(path) {
     navigate(path);
   }
@@ -47,7 +51,7 @@ function AddRetentions() {
         <BackComp
           onClick={() =>
             navigate("/addRests", {
-              state: { selectedData, typeselect: true },
+              state: { selectedData },
             })
           }
         />
@@ -71,7 +75,7 @@ function AddRetentions() {
                         occlusallyType: null,
                       }
                 }
-                selectRest={{ selectrest: typeselect2 }}
+                selectRest={{ selectrest: true }}
                 DentureData={selectedData}
                 setData={setData}
                 value={{ canEdit: false, visible: true }}
@@ -82,7 +86,7 @@ function AddRetentions() {
               className="addReciprocations"
               onClick={() =>
                 navigate("/addReciprocations", {
-                  state: { selectedData, typeselect2: true },
+                  state: { selectedData },
                 })
               }
             >

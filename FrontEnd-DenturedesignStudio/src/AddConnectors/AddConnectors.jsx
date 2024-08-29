@@ -11,7 +11,6 @@ function AddConnectors() {
   const location = useLocation();
   const drewcurves = location.state?.curves;
   const selectedData = location.state?.selectedData;
-  const typeselect = location.state?.typeselect;
   const [connectortype, setconnectortype] = useState();
   const [upperSelect, setUpperselect] = useState(false);
   const [lowerSelect, setLowerselect] = useState(false);
@@ -47,7 +46,7 @@ function AddConnectors() {
                 className="Done"
                 onClick={() =>
                   navigate("/reviewAnswer", {
-                    state: { curves, selectedData, typeselect: true },
+                    state: { curves, selectedData },
                   })
                 }
               >
@@ -136,7 +135,7 @@ function AddConnectors() {
               </ul>
               <div className="retention-teeth">
                 <Teeth
-                  selectRest={{ selectrest: typeselect }}
+                  selectRest={{ selectrest: true }}
                   DentureData={selectedData}
                   setData={() => {}}
                   value={{ canEdit: false, visible: true }}

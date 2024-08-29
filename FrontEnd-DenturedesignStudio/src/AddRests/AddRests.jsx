@@ -9,7 +9,6 @@ function AddRests() {
   let navigate = useNavigate();
   const [restType, setResttype] = useState();
   const location = useLocation();
-  const typeselect = location.state?.typeselect;
   const [selectedData, setSelectedData] = useState(
     location.state?.selectedData
       ? {
@@ -49,13 +48,10 @@ function AddRests() {
               <div className="retention-teeth">
                 {/* Teeth component with interaction enabled */}
                 <Teeth
-                  selectRest={
-                    restType
-                      ? { restType: restType, selectrest: true }
-                      : typeselect
-                      ? { selectrest: typeselect }
-                      : { selectrest: false }
-                  }
+                  selectRest={{
+                    restType: restType ? restType : null,
+                    selectrest: true,
+                  }}
                   click={(index) => console.log(`Clicked tooth ${index}`)}
                   setData={setData}
                   DentureData={selectedData}
@@ -101,7 +97,7 @@ function AddRests() {
             className="addRetentions"
             onClick={() =>
               navigate("/addRetentions", {
-                state: { selectedData, typeselect: true },
+                state: { selectedData },
               })
             }
           >

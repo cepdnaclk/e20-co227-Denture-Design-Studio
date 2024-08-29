@@ -10,7 +10,6 @@ function Reviewanswer() {
   const navigate = useNavigate();
   const location = useLocation();
   const selectedData = location.state?.selectedData;
-  const typeselect = location.state?.typeselect;
   const curves = location.state?.curves;
   console.log(curves?.uppercurve);
 
@@ -20,7 +19,7 @@ function Reviewanswer() {
       <BackComp
         onClick={() =>
           navigate("/AddConnectors", {
-            state: { curves, typeselect: true, selectedData },
+            state: { curves, selectedData },
           })
         }
       />
@@ -33,7 +32,7 @@ function Reviewanswer() {
       <div className="TeethboxRA">
         <Teeth
           click={(index) => console.log(`Clicked tooth ${index}`)}
-          selectRest={{ selectrest: typeselect }}
+          selectRest={{ selectrest: true }}
           DentureData={selectedData}
           setData={() => {}}
           value={{ canEdit: false, visible: true }}
@@ -47,7 +46,7 @@ function Reviewanswer() {
             Name={"Add Rests"}
             Pagetogo={() =>
               navigate("/addRests", {
-                state: { selectedData, typeselect: true },
+                state: { selectedData },
               })
             }
           />
@@ -77,7 +76,7 @@ function Reviewanswer() {
         className="FinishDesigning"
         onClick={() =>
           navigate("/modelanswer", {
-            state: { curves, selectedData, typeselect: true },
+            state: { curves, selectedData },
           })
         }
       >
