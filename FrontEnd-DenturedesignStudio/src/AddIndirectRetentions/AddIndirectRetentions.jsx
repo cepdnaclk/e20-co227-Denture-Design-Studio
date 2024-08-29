@@ -9,7 +9,6 @@ import { useState } from "react";
 function AddIndirectRetentions() {
   let navigate = useNavigate();
   const location = useLocation();
-  const typeselect = location.state?.typeselect;
   const [restType, setResttype] = useState();
   const [selectedData, setSelectedData] = useState(
     location.state?.selectedData
@@ -35,7 +34,7 @@ function AddIndirectRetentions() {
         <BackComp
           onClick={() =>
             navigate("/AddReciprocations", {
-              state: { selectedData, typeselect: true },
+              state: { selectedData },
             })
           }
         ></BackComp>
@@ -51,7 +50,7 @@ function AddIndirectRetentions() {
                 className="addConnectors"
                 onClick={() =>
                   navigate("/AddConnectors", {
-                    state: { selectedData, typeselect: true },
+                    state: { selectedData },
                   })
                 }
               >
@@ -92,13 +91,10 @@ function AddIndirectRetentions() {
               <div className="retention-teeth">
                 <Teeth
                   addIndirectretention={true}
-                  selectRest={
-                    restType
-                      ? { restType: restType, selectrest: true }
-                      : typeselect
-                      ? { selectrest: typeselect }
-                      : { selectrest: false }
-                  }
+                  selectRest={{
+                    restType: restType ? restType : null,
+                    selectrest: true,
+                  }}
                   click={(index) => console.log(`Clicked tooth ${index}`)}
                   setData={setData}
                   DentureData={selectedData}
