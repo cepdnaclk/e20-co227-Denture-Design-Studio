@@ -13,7 +13,6 @@ function AddRetentions() {
   const [occlusallyType, setOcclusallyType] = useState();
   
   const [selectedData, setSelectedData] = useState(
-   
     location.state?.selectedData
       ? {
           retentiondata: null,
@@ -28,29 +27,21 @@ function AddRetentions() {
     navigate(path);
   }
 
-  // Logging initial location state
-  console.log("Initial location.state:", location.state);
-
   const setData = (data) => {
-    console.log("setData called with data:", data);
     setSelectedData({
       restdata: data.rests ? data.rests : null,
       missingteeth: data.teeths ? data.teeths : null,
       undercuts: data.undercuts ? data.undercuts : null,
-      retentiondata: data.retentions? data.undercuts : null,
+      retentiondata: data.retentions ? data.undercuts : null,
     });
   };
 
-  // Logging selected data
-  console.log("Selected data in AddRetentions:", selectedData);
-
   return (
-
     <div className="designPage">
-       <link
-              rel="stylesheet"
-              href="https://fonts.googleapis.com/css2?family=Salsa&display=swap"
-            />
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Salsa&display=swap"
+      />
       <div className="AddRetentions">
         <Home onClick={() => handleClick("/studenthome")} />
         <BackComp
@@ -63,7 +54,7 @@ function AddRetentions() {
         <div>
           <div className="Questionbox"></div>
           <div className="teethBackground1">
-          <div className="retention-teeth">
+            <div className="retention-teeth">
               <Teeth
                 selectRetention={
                   retentionType
@@ -80,29 +71,12 @@ function AddRetentions() {
                         occlusallyType: null,
                       }
                 }
-              >
-                <div className="addRecipText">
-                  <span className="addRecipText">Add Reciprocations</span>
-                </div>
-              </button>
-
-              <ul className="retentions-list">
-                <li id="occlusally" onClick={() => handleClick()}>
-                  Occlusally Approaching :
-                </li>
-                <li id="gingivilly" onClick={() => handleClick()}>
-                  Gingivilly Approaching :
-                </li>
-              </ul>
-              <div className="retention-teeth">
-                <Teeth
-                  selectRest={{ selectrest: typeselect }}
-                  DentureData={selectedData}
-                  setData={() => {}}
-                  value={{ canEdit: false, visible: true }}
-                  selectPlate={{ view: false }}
-                />
-              </div>
+                selectRest={{ selectrest: typeselect2 }}
+                DentureData={selectedData}
+                setData={setData}
+                value={{ canEdit: false, visible: true }}
+                selectPlate={{ view: false }}
+              />
             </div>
             <button
               className="addReciprocations"
@@ -120,10 +94,7 @@ function AddRetentions() {
             <ul className="retentions-list">
               <li
                 id="occlusally"
-                onClick={() => {
-                  console.log("Occlusally Approaching clicked");
-                  setRetentionType("occlusally");
-                }}
+                onClick={() => setRetentionType("occlusally")}
                 style={{
                   color: retentionType === "occlusally" ? "#ffffff" : "#66d8d8",
                 }}
@@ -134,10 +105,7 @@ function AddRetentions() {
                 <ul className="occlusally-subtypes">
                   <li
                     id="ringType"
-                    onClick={() => {
-                      console.log("Ring Type selected");
-                      setOcclusallyType("ring");
-                    }}
+                    onClick={() => setOcclusallyType("ring")}
                     style={{
                       color: occlusallyType === "ring" ? "#ffffff" : "#66d8d8",
                     }}
@@ -146,10 +114,7 @@ function AddRetentions() {
                   </li>
                   <li
                     id="circumferentialType"
-                    onClick={() => {
-                      console.log("Circumferential Type selected");
-                      setOcclusallyType("circumferential");
-                    }}
+                    onClick={() => setOcclusallyType("circumferential")}
                     style={{
                       color:
                         occlusallyType === "circumferential"
@@ -163,10 +128,7 @@ function AddRetentions() {
               )}
               <li
                 id="gingivally"
-                onClick={() => {
-                  console.log("Gingivally Approaching clicked");
-                  setRetentionType("gingivally");
-                }}
+                onClick={() => setRetentionType("gingivally")}
                 style={{
                   color: retentionType === "gingivally" ? "#ffffff" : "#66d8d8",
                 }}
