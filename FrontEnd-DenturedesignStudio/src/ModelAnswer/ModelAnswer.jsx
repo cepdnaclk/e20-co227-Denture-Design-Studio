@@ -109,9 +109,8 @@ function ModelAnswer() {
         }}
         transition={{ duration: 0.5 }}
       >
-
         <Teeth
-          selectRest={{ selectrest: typeselect }}
+          selectRest={{ selectrest: true }}
           DentureData={selectedData}
           setData={() => {}}
           click={(index) => console.log(`Clicked tooth ${index}`)}
