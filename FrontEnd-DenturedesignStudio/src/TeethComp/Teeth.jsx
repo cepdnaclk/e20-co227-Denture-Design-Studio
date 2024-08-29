@@ -4,7 +4,8 @@ import "./Teeth.css";
 import "./Plate.css";
 import "./Undercut.css";
 import "./Rest.css";
-import "./Retention.css";
+import "./RetentionUp.css";
+import "./RetentionDown.css";
 import "./MissingTeeth.css";
 
 import TeethImages from "./Teethimages";
@@ -211,32 +212,41 @@ const Teeth = ({
         const newState = [...prevState];
         const retentionImage = RetentionImages[index];
 
-        const retentionTypeMatches =
-          (selectRetention.retentionType === "occlusally" &&
-            selectRetention.occlusallyType === "ring" &&
-            Ring.array.includes(retentionImage)) ||
-          (selectRetention.retentionType === "occlusally" &&
-            selectRetention.occlusallyType === "circumferential" &&
-            Circumferential.array.includes(retentionImage)) ||
-          (selectRetention.retentionType === Gingivally.type &&
-            Gingivally.array.includes(retentionImage));
+        const isUpperRetention = index < 44; // Assuming 44 retentions for the upper side
+        const adjustedIndex = isUpperRetention ? index : index - 44; // Adjust index for lower side if needed
 
-        console.log(
-          `Retention type matches: ${selectRetention.occlusallyType}`
-        );
+        // Check if the tooth is not missing
+        if (!selectedTeeth[adjustedIndex]) {
+          // Check if the retention is being added to the correct side of the undercut
+          const isCorrectSide =
+            (isUpperRetention && selectedUnderCut[adjustedIndex]) ||
+            (!isUpperRetention && !selectedUnderCut[adjustedIndex]);
 
-        if (retentionTypeMatches) {
-          newState[index] = !newState[index];
-        } else {
-          if (selectRetention.retentionType) {
+          if (isCorrectSide) {
+            const retentionTypeMatches =
+              (selectRetention.retentionType === "occlusally" &&
+                selectRetention.occlusallyType === "ring" &&
+                Ring.array.includes(retentionImage)) ||
+              (selectRetention.retentionType === "occlusally" &&
+                selectRetention.occlusallyType === "circumferential" &&
+                Circumferential.array.includes(retentionImage)) ||
+              (selectRetention.retentionType === Gingivally.type &&
+                Gingivally.array.includes(retentionImage));
+
+            if (retentionTypeMatches) {
+              newState[index] = !newState[index];
+            } else {
+              alert(
+                `Error: You can only select ${selectRetention.retentionType} retentions.`
+              );
+            }
+          } else {
             alert(
-              `Error: You can only select ${
-                selectRetention.occlusallyType
-                  ? selectRetention.occlusallyType
-                  : selectRetention.retentionType
-              } retentions.`
+              "Error: Retention must be added to the correct side of the undercut."
             );
           }
+        } else {
+          alert("Error: You cannot add retention to a missing tooth.");
         }
 
         return newState;
