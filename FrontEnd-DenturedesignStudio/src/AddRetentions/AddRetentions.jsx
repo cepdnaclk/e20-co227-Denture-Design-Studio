@@ -8,9 +8,10 @@ import Teeth from "../TeethComp/Teeth";
 function AddRetentions() {
   const location = useLocation();
   const navigate = useNavigate();
+  const typeselect = location.state?.typeselect;
   const [retentionType, setRetentionType] = useState();
   const [occlusallyType, setOcclusallyType] = useState();
-
+  
   const [selectedData, setSelectedData] = useState(
     location.state?.selectedData
       ? {
@@ -19,14 +20,9 @@ function AddRetentions() {
           undercuts: location.state?.selectedData.undercuts,
           restdata: location.state?.selectedData.restdata,
         }
-      : {
-          retentiondata: null,
-          restdata: null,
-          missingteeth: null,
-          undercuts: null,
-        }
+      : { retentiondata: null, restdata: null, missingteeth: null, undercuts: null }
   );
-  console.log(selectedData);
+
   function handleClick(path) {
     navigate(path);
   }
@@ -36,6 +32,7 @@ function AddRetentions() {
       restdata: data.rests ? data.rests : null,
       missingteeth: data.teeths ? data.teeths : null,
       undercuts: data.undercuts ? data.undercuts : null,
+      plates: data.plates ? data.plates : null,
       retentiondata: data.retentions ? data.undercuts : null,
     });
   };
@@ -51,7 +48,7 @@ function AddRetentions() {
         <BackComp
           onClick={() =>
             navigate("/addRests", {
-              state: { selectedData },
+              state: { selectedData, typeselect: true },
             })
           }
         />
@@ -63,7 +60,7 @@ function AddRetentions() {
                 selectRetention={
                   retentionType
                     ? {
-                        retentionType: typeselect2,
+                        retentionType: retentionType,
                         selectretention: true,
                         occlusallyType:
                           retentionType === "occlusally"
@@ -75,18 +72,20 @@ function AddRetentions() {
                         occlusallyType: null,
                       }
                 }
-                selectRest={{ selectrest: true }}
+                click={(index) => console.log(`Clicked tooth ${index}`)}
+                selectRest={{ selectrest: typeselect }}
                 DentureData={selectedData}
                 setData={setData}
                 value={{ canEdit: false, visible: true }}
                 selectPlate={{ view: false }}
+              
               />
             </div>
             <button
               className="addReciprocations"
               onClick={() =>
                 navigate("/addReciprocations", {
-                  state: { selectedData },
+                  state: { selectedData, retentionType: true },
                 })
               }
             >
