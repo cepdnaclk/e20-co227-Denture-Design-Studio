@@ -12,7 +12,7 @@ import { RestImages, occlusal, cingulam, incisal } from "./Restimages";
 import ClaspImages from "./Claspsimages";
 import PlateImages from "./PlatesImages";
 import UndercutsImages from "./Undercutimages";
-import RetentionImages from "./RetentionImages";
+import {RetentionImages, Ring, Circumferential, Gingivally} from "./RetentionImages";
 import MissingTeethImages from "./MissingTeethImages";
 
 const Teeth = ({
@@ -20,13 +20,15 @@ const Teeth = ({
   value,
   setMissingtooth,
   selectRest,
+  selectRetention,
   addIndirectretention,
   DentureData,
   setData,
   selectPlate,
 }) => {
+
   const [selectedRetention, setSelectedRetention] = useState(
-    Array(20).fill(false)
+    DentureData.retentiondata ? DentureData.retentiondata : Array(88).fill(false)
   );
 
   const [selectedTeeth, setSelectedTeeth] = useState(
@@ -137,14 +139,17 @@ const Teeth = ({
   };
 
   useEffect(() => {
+    
     setData({
       rests: selectedRests,
+      retentions: selectedRetention,
       teeths: selectedTeeth,
       undercuts: selectedUnderCut,
       plates: selectedPlates,
     });
-  }, [selectedRests, selectedTeeth, selectedUnderCut, selectedPlates]);
-  console.log(DentureData);
+
+  }, [selectedRests, selectedTeeth, selectedUnderCut, selectedRetention,selectedPlates]);
+  
   const handleUndercutClick = (index) => {
     if (!disableSelection) {
       setSelectedUndercut((prevState) => {
@@ -193,12 +198,39 @@ const Teeth = ({
   const handleRetentionClick = (index) => {
     if (!disableSelection) {
       setSelectedRetention((prevState) => {
+
         const newState = [...prevState];
-        newState[index] = !newState[index];
+        const retentionImage = RetentionImages[index];
+  
+        console.log(`Retention clicked: ${index}`);
+        console.log(`Current state:`, prevState);
+
+        const retentionTypeMatches =
+          (selectRetention.retentionType === "occlusally" && selectRetention.OcclusallyType === "ring" &&
+            Ring.array.includes(retentionImage)) ||
+          (selectRetention.retentionType === "occlusally" && selectRetention.OcclusallyType === "circumferential" &&
+            Circumferential.array.includes(retentionImage)) ||
+          (selectRetention.retentionType === Gingivally.type &&
+            Gingivally.array.includes(retentionImage));
+  
+        console.log(`Retention type matches: ${retentionTypeMatches}`);
+  
+        if (retentionTypeMatches) {
+          newState[index] = !newState[index];
+
+        } else {
+          if (selectRetention.retentionType  ) {
+            alert(`Error: You can only select ${selectRetention.retentionType} retentions.`);
+          }
+        }
+  
+        console.log(`New state:`, newState);
+  
         return newState;
       });
     }
   };
+  
 
   const indexExchangeforUndercut = (index, label) => {
     if (label == "in") {
@@ -262,18 +294,23 @@ const Teeth = ({
           />
         </button>
       ))}
+
       {Array.from({ length: 88 }, (_, index) => (
         <button
           key={index}
-          className={`retention-btn ${
-            selectedRetention[index] ? "selected" : ""
-          }`}
+          className={`retention-btn ${selectedRetention[index] ? "selected" : ""}`}
           id={`retention-btn-${index + 1}`}
-          onClick={() => handleRetentionClick(index)}
+          onClick={() => handleRetentionClick(index) }
+
+          style={{
+            opacity: selectedRetention[index] ? "1" : "0",
+            display: selectRetention ? "block" : "none",
+          }}          
         >
           <img src={RetentionImages[index]} alt={`Retention ${index + 1}`} />
         </button>
       ))}
+
 
       {Array.from({ length: 56 }, (_, index) => (
         <button
@@ -311,7 +348,7 @@ const Teeth = ({
           <button
             className={`undercut-btn`}
             id={`undercut-btn-${index + 1}`}
-            onClick={() => (value.canEdit ? handleUndercutClick(index) : "")}
+            onClick={() => handleUndercutClick(index) }
             style={{
               display:
                 selectedUnderCut[index] && value.visible ? "block" : "none",
