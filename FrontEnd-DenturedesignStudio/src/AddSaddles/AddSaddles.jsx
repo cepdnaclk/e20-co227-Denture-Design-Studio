@@ -17,6 +17,7 @@ function AddSaddles() {
     restdata: null,
     missingteeth: null,
     undercuts: null,
+    plates: null,
   });
 
   const handleClick = (path) => {
@@ -37,6 +38,7 @@ function AddSaddles() {
       restdata: data.rests ? data.rests : null,
       missingteeth: data.teeths ? data.teeths : null,
       undercuts: data.undercuts ? data.undercuts : null,
+      plates: data.plates ? data.plates : null,
     });
   };
 
@@ -100,12 +102,12 @@ function AddSaddles() {
             <div className="retention-teeth">
               {/* Teeth component with interaction enabled */}
               <Teeth
-                click={(index) => console.log(`Clicked tooth ${index}`)}
                 setMissingtooth={missingtooth}
                 value={visibleundercut}
                 selectRest={true}
                 setData={setData}
                 DentureData={selectedData}
+                selectPlate={{ view: false }}
               />
             </div>
           </div>

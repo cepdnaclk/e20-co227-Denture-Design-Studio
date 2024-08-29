@@ -140,6 +140,7 @@ function AddConnectors() {
                   DentureData={selectedData}
                   setData={() => {}}
                   value={{ canEdit: false, visible: true }}
+                  selectPlate={{ view: true }}
                 />
               </div>
             </div>

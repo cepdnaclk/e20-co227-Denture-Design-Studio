@@ -37,6 +37,7 @@ function Reviewanswer() {
           DentureData={selectedData}
           setData={() => {}}
           value={{ canEdit: false, visible: true }}
+          selectPlate={{ view: true }}
         />
         <ReviewCanvas drewcurves={curves} />
       </div>

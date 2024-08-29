@@ -121,6 +121,7 @@ function ModelAnswer() {
           setData={() => {}}
           click={(index) => console.log(`Clicked tooth ${index}`)}
           value={{ canEdit: false, visible: true }}
+          selectPlate={{ view: true }}
         />
         <ReviewCanvas drewcurves={curves} />
       </motion.div>
