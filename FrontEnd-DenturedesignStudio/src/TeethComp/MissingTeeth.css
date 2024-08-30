@@ -11,7 +11,7 @@
   height: 2vw;
   opacity: 1;
   transition: opacity 0.2s ease;
-  z-index: 9;
+  z-index: 1;
 
   img {
     width: 2.3vw;

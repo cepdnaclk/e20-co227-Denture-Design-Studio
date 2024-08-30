@@ -38,10 +38,10 @@ function AddRetentions() {
       missingteeth: data.teeths ? data.teeths : null,
       undercuts: data.undercuts ? data.undercuts : null,
       plates: data.plates ? data.plates : null,
-      retentiondata: data.retentions ? data.undercuts : null,
+      retentiondata: data.retentions ? data.retentions : null,
     });
   };
-
+  console.log(selectedData);
   return (
     <div className="designPage">
       <link

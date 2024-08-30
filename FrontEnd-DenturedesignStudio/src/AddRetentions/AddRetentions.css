@@ -164,7 +164,8 @@ ul.retentions-list {
 }
 
 ul.retentions-list li {
-  padding-left: 22.81vw;
+  position: relative;
+  left: 22.81vw;
   white-space: nowrap;
 }
 

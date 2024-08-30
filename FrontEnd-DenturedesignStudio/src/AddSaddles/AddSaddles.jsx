@@ -108,6 +108,7 @@ function AddSaddles() {
                 setData={setData}
                 DentureData={selectedData}
                 selectPlate={{ view: false }}
+                selectRetention={{ selectRetention: false }}
               />
             </div>
           </div>

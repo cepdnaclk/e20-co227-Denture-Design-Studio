@@ -4,7 +4,6 @@
   background-repeat: no-repeat;
   border: none;
   cursor: pointer;
-  background: transparent;
 
   margin: 0;
   padding: 0;
@@ -12,7 +11,7 @@
   height: 1vw;
   opacity: 1;
   transition: opacity 0.3s ease;
-  z-index: 8;
+  background: transparent;
   img {
     height: auto;
   }
@@ -58,8 +57,6 @@
   }
 }
 
-
-
 #retention-upbtn-5 {
   left: 28%;
   top: 26.5%;
@@ -75,9 +72,6 @@
     width: 2vw;
   }
 }
-
-
-
 
 #retention-upbtn-7 {
   left: 29%;
@@ -95,8 +89,6 @@
   }
 }
 
-
-
 #retention-upbtn-9 {
   left: 31%;
   top: 16%;
@@ -112,9 +104,6 @@
     width: 1.8vw;
   }
 }
-
-
-
 
 /*Upper right*/
 
@@ -134,8 +123,6 @@
   }
 }
 
-
-
 #retention-upbtn-13 {
   left: 68%;
   top: 21%;
@@ -151,7 +138,6 @@
     width: 2vw;
   }
 }
-
 
 #retention-upbtn-15 {
   left: 67%;
@@ -169,8 +155,6 @@
   }
 }
 
-
-
 #retention-upbtn-17 {
   left: 69%;
   top: 33.5%;
@@ -186,7 +170,6 @@
     width: 2vw;
   }
 }
-
 
 #retention-upbtn-19 {
   left: 70%;
@@ -206,8 +189,6 @@
 
 /*Lower left*/
 
-
-
 #retention-upbtn-21 {
   left: 67%;
   top: 60%;
@@ -223,8 +204,6 @@
     width: 2vw;
   }
 }
-
-
 
 #retention-upbtn-23 {
   left: 66%;
@@ -242,8 +221,6 @@
   }
 }
 
-
-
 #retention-upbtn-25 {
   left: 67%;
   top: 76%;
@@ -253,14 +230,12 @@
 }
 
 #retention-upbtn-26 {
-  left: 72%;
+  left: 73%;
   top: 76.5%;
   img {
     width: 1.7vw;
   }
 }
-
-
 
 #retention-upbtn-27 {
   left: 64%;
@@ -277,8 +252,6 @@
     width: 1.5vw;
   }
 }
-
-
 
 /*Lower right*/
 
@@ -298,8 +271,6 @@
   }
 }
 
-
-
 #retention-upbtn-31 {
   left: 29.5%;
   top: 76%;
@@ -315,7 +286,6 @@
     width: 1.5vw;
   }
 }
-
 
 #retention-upbtn-33 {
   left: 28%;
@@ -333,8 +303,6 @@
   }
 }
 
-
-
 #retention-upbtn-35 {
   left: 27%;
   top: 60%;
@@ -350,8 +318,6 @@
     width: 2.3vw;
   }
 }
-
-
 
 /*Ring type*/
 

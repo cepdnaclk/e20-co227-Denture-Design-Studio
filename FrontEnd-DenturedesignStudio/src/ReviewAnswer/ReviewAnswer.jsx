@@ -37,6 +37,7 @@ function Reviewanswer() {
           setData={() => {}}
           value={{ canEdit: false, visible: true }}
           selectPlate={{ view: true }}
+          selectRetention={{ selectretention: true }}
         />
         <ReviewCanvas drewcurves={curves} />
       </div>
