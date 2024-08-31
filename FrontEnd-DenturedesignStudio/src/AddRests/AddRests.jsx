@@ -57,6 +57,7 @@ function AddRests() {
                   DentureData={selectedData}
                   value={{ canEdit: false, visible: true }}
                   selectPlate={{ view: false }}
+                  selectRetention={{ selectRetention: false }}
                 />
               </div>
               <ul className="rests-list">

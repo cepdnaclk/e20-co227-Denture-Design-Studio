@@ -16,8 +16,15 @@ function AddReciprocations() {
           missingteeth: location.state?.selectedData.missingteeth,
           undercuts: location.state?.selectedData.undercuts,
           plates: null,
+          retentiondata: location.state?.selectedData.retentiondata,
         }
-      : { restdata: null, missingteeth: null, undercuts: null, plates: null }
+      : {
+          restdata: null,
+          missingteeth: null,
+          undercuts: null,
+          plates: null,
+          retentiondata: null,
+        }
   );
   function handleClick(path) {
     navigate(path);
@@ -28,8 +35,10 @@ function AddReciprocations() {
       missingteeth: data.teeths ? data.teeths : null,
       undercuts: data.undercuts ? data.undercuts : null,
       plates: data.plates ? data.plates : null,
+      retentiondata: data.retentions ? data.retentions : null,
     });
   };
+  console.log(selectedData);
   return (
     <>
       <div className="designPage">
@@ -85,6 +94,7 @@ function AddReciprocations() {
                   DentureData={selectedData}
                   value={{ canEdit: false, visible: true }}
                   selectPlate={{ edit: selectPlate, view: true }}
+                  selectRetention={{ selectretention: true }}
                 />
               </div>
             </div>

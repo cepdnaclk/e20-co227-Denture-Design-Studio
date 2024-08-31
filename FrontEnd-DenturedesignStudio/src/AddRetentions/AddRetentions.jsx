@@ -11,7 +11,7 @@ function AddRetentions() {
   const typeselect = location.state?.typeselect;
   const [retentionType, setRetentionType] = useState();
   const [occlusallyType, setOcclusallyType] = useState();
-  
+
   const [selectedData, setSelectedData] = useState(
     location.state?.selectedData
       ? {
@@ -20,7 +20,12 @@ function AddRetentions() {
           undercuts: location.state?.selectedData.undercuts,
           restdata: location.state?.selectedData.restdata,
         }
-      : { retentiondata: null, restdata: null, missingteeth: null, undercuts: null }
+      : {
+          retentiondata: null,
+          restdata: null,
+          missingteeth: null,
+          undercuts: null,
+        }
   );
 
   function handleClick(path) {
@@ -33,10 +38,10 @@ function AddRetentions() {
       missingteeth: data.teeths ? data.teeths : null,
       undercuts: data.undercuts ? data.undercuts : null,
       plates: data.plates ? data.plates : null,
-      retentiondata: data.retentions ? data.undercuts : null,
+      retentiondata: data.retentions ? data.retentions : null,
     });
   };
-
+  console.log(selectedData);
   return (
     <div className="designPage">
       <link
@@ -73,12 +78,11 @@ function AddRetentions() {
                       }
                 }
                 click={(index) => console.log(`Clicked tooth ${index}`)}
-                selectRest={{ selectrest: typeselect }}
+                selectRest={{ selectrest: true }}
                 DentureData={selectedData}
                 setData={setData}
                 value={{ canEdit: false, visible: true }}
                 selectPlate={{ view: false }}
-              
               />
             </div>
             <button

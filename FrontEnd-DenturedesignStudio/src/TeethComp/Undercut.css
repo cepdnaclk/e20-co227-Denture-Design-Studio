@@ -11,7 +11,7 @@
   height: 1vw;
   opacity: 1;
   transition: opacity 0.3s ease;
-  z-index: 11;
+  z-index: 7;
 }
 #undercut-btn-1 {
   left: 25.1%;
