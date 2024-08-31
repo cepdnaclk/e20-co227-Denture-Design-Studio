@@ -109,6 +109,7 @@ function ModelAnswer() {
         }}
         transition={{ duration: 0.5 }}
       >
+       <div ref={captureRef} style={{ width: "100%", maxWidth: "200vw" }}>
         <Teeth
           selectRest={{ selectrest: true }}
           DentureData={selectedData}
