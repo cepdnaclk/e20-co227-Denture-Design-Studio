@@ -1,0 +1,303 @@
+.teethBackground2 .retention-downbtn {
+  position: absolute;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border: none;
+  cursor: pointer;
+  background: transparent;
+
+  margin: 0;
+  padding: 0;
+  width: 1vw;
+  height: 1vw;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+  img {
+    height: auto;
+  }
+}
+
+#retention-downbtn-1 {
+  left: 26%;
+  top: 35.5%;
+  img {
+    width: 2vw;
+  }
+}
+
+#retention-downbtn-2 {
+  left: 19%;
+  top: 33%;
+  img {
+    width: 2vw;
+  }
+}
+
+#retention-downbtn-3 {
+  left: 27%;
+  top: 27.5%;
+  img {
+    width: 2.1vw;
+  }
+}
+
+#retention-downbtn-4 {
+  left: 19%;
+  top: 26%;
+  img {
+    width: 2vw;
+  }
+}
+
+#retention-downbtn-5 {
+  left: 27%;
+  top: 22%;
+  img {
+    width: 2vw;
+  }
+}
+
+#retention-downbtn-6 {
+  left: 22.5%;
+  top: 20.5%;
+  img {
+    width: 1.8vw;
+  }
+}
+
+#retention-downbtn-7 {
+  left: 29.5%;
+  top: 17%;
+  img {
+    width: 1.8vw;
+  }
+}
+
+#retention-downbtn-8 {
+  left: 24%;
+  top: 15%;
+  img {
+    width: 1.5vw;
+  }
+}
+
+#retention-downbtn-9 {
+  left: 66%;
+  top: 17%;
+  img {
+    width: 2vw;
+  }
+}
+
+#retention-downbtn-10 {
+  left: 73%;
+  top: 15.5%;
+  img {
+    width: 1.7vw;
+  }
+}
+
+#retention-downbtn-11 {
+  left: 67%;
+  top: 21.5%;
+  img {
+    width: 2vw;
+  }
+}
+
+#retention-downbtn-12 {
+  left: 74%;
+  top: 20.5%;
+  img {
+    width: 1.8vw;
+  }
+}
+
+#retention-downbtn-13 {
+  left: 66%;
+  top: 27%;
+  img {
+    width: 2.5vw;
+  }
+}
+
+#retention-downbtn-14 {
+  left: 75%;
+  top: 26%;
+  img {
+    width: 2vw;
+  }
+}
+
+#retention-downbtn-15 {
+  left: 68.5%;
+  top: 35%;
+  img {
+    width: 2.4vw;
+  }
+}
+
+#retention-downbtn-16 {
+  left: 76%;
+  top: 33%;
+  img {
+    width: 2vw;
+  }
+}
+#retention-downbtn-17 {
+  left: 68%;
+  top: 53%;
+  img {
+    width: 1.5vw;
+  }
+}
+
+#retention-downbtn-18 {
+  left: 74%;
+  top: 53%;
+  img {
+    width: 2vw;
+  }
+}
+#retention-downbtn-19 {
+  left: 66%;
+  top: 60%;
+  img {
+    width: 2vw;
+  }
+}
+
+#retention-downbtn-20 {
+  left: 74%;
+  top: 62%;
+  img {
+    width: 2.1vw;
+  }
+}
+
+#retention-downbtn-21 {
+  left: 65%;
+  top: 67.5%;
+  img {
+    width: 2.1vw;
+  }
+}
+
+#retention-downbtn-22 {
+  left: 73%;
+  top: 68.5%;
+  img {
+    width: 2.4vw;
+  }
+}
+#retention-downbtn-23 {
+  left: 67%;
+  top: 76%;
+  img {
+    width: 1.3vw;
+  }
+}
+
+#retention-downbtn-24 {
+  left: 71.5%;
+  top: 77%;
+  img {
+    width: 2.1vw;
+  }
+}
+
+#retention-downbtn-25 {
+  left: 63%;
+  top: 82%;
+  img {
+    width: 1.5vw;
+  }
+}
+
+#retention-downbtn-26 {
+  left: 68%;
+  top: 84%;
+  img {
+    width: 2vw;
+  }
+}
+
+#retention-downbtn-27 {
+  left: 33%;
+  top: 82%;
+  img {
+    width: 1.3vw;
+  }
+}
+
+#retention-downbtn-28 {
+  left: 26%;
+  top: 83%;
+  img {
+    width: 2vw;
+  }
+}
+
+#retention-downbtn-29 {
+  left: 31%;
+  top: 76%;
+  img {
+    width: 1.5vw;
+  }
+}
+
+#retention-downbtn-30 {
+  left: 24%;
+  top: 77.5%;
+  img {
+    width: 2.1vw;
+  }
+}
+
+#retention-downbtn-31 {
+  left: 28.5%;
+  top: 68%;
+  img {
+    width: 2vw;
+  }
+}
+
+#retention-downbtn-32 {
+  left: 20%;
+  top: 69%;
+  img {
+    width: 2.6vw;
+  }
+}
+
+#retention-downbtn-33 {
+  left: 28%;
+  top: 59.5%;
+  img {
+    width: 1.8vw;
+  }
+}
+
+#retention-downbtn-34 {
+  left: 19%;
+  top: 61%;
+  img {
+    width: 2.6vw;
+  }
+}
+
+#retention-downbtn-35 {
+  left: 25%;
+  top: 53%;
+  img {
+    width: 2vw;
+  }
+}
+
+#retention-downbtn-36 {
+  left: 20%;
+  top: 53%;
+  img {
+    width: 2vw;
+  }
+}

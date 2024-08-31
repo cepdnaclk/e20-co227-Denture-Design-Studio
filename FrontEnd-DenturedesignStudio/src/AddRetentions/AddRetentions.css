@@ -164,12 +164,15 @@ ul.retentions-list {
 }
 
 ul.retentions-list li {
-  padding-left: 22.81vw;
+  position: relative;
+  left: 22.81vw;
   white-space: nowrap;
 }
 
 ul.retentions-list li:hover {
   transform: scale(1.05);
+  cursor: pointer;
+  transition: all 0.5s ease;
   color: #ffffff;
 }
 

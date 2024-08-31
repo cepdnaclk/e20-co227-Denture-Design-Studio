@@ -8,6 +8,7 @@ import Teeth from "../TeethComp/Teeth";
 function AddRetentions() {
   const location = useLocation();
   const navigate = useNavigate();
+  const typeselect = location.state?.typeselect;
   const [retentionType, setRetentionType] = useState();
   const [occlusallyType, setOcclusallyType] = useState();
 
@@ -26,7 +27,7 @@ function AddRetentions() {
           undercuts: null,
         }
   );
-  console.log(selectedData);
+
   function handleClick(path) {
     navigate(path);
   }
@@ -36,10 +37,11 @@ function AddRetentions() {
       restdata: data.rests ? data.rests : null,
       missingteeth: data.teeths ? data.teeths : null,
       undercuts: data.undercuts ? data.undercuts : null,
-      retentiondata: data.retentions ? data.undercuts : null,
+      plates: data.plates ? data.plates : null,
+      retentiondata: data.retentions ? data.retentions : null,
     });
   };
-
+  console.log(selectedData);
   return (
     <div className="designPage">
       <link
@@ -51,7 +53,7 @@ function AddRetentions() {
         <BackComp
           onClick={() =>
             navigate("/addRests", {
-              state: { selectedData },
+              state: { selectedData, typeselect: true },
             })
           }
         />
@@ -63,7 +65,7 @@ function AddRetentions() {
                 selectRetention={
                   retentionType
                     ? {
-                        retentionType: typeselect2,
+                        retentionType: retentionType,
                         selectretention: true,
                         occlusallyType:
                           retentionType === "occlusally"
@@ -75,6 +77,7 @@ function AddRetentions() {
                         occlusallyType: null,
                       }
                 }
+                click={(index) => console.log(`Clicked tooth ${index}`)}
                 selectRest={{ selectrest: true }}
                 DentureData={selectedData}
                 setData={setData}
@@ -86,7 +89,7 @@ function AddRetentions() {
               className="addReciprocations"
               onClick={() =>
                 navigate("/addReciprocations", {
-                  state: { selectedData },
+                  state: { selectedData, retentionType: true },
                 })
               }
             >
