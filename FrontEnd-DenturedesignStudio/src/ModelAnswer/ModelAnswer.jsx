@@ -109,14 +109,16 @@ function ModelAnswer() {
         }}
         transition={{ duration: 0.5 }}
       >
-        <Teeth
-          selectRest={{ selectrest: true }}
-          DentureData={selectedData}
-          setData={() => {}}
-          click={(index) => console.log(`Clicked tooth ${index}`)}
-          value={{ canEdit: false, visible: true }}
-          selectPlate={{ view: true }}
-        />
+        <div ref={captureRef} style={{ width: "100%", maxWidth: "200vw" }}>
+          <Teeth
+            selectRest={{ selectrest: true }}
+            DentureData={selectedData}
+            setData={() => {}}
+            click={(index) => console.log(`Clicked tooth ${index}`)}
+            value={{ canEdit: false, visible: true }}
+            selectPlate={{ view: true }}
+          />
+        </div>
         <ReviewCanvas drewcurves={curves} />
       </motion.div>
       <div className="ModelAnswerbuttons">

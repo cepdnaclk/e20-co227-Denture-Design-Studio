@@ -1,0 +1,53 @@
+.WebAppLogo {
+  position: absolute;
+  width: 15vw;
+  height: 12vw;
+  left: 25%;
+  top: -3%;
+}
+.messagebox {
+  position: absolute;
+  width: 35.605vw;
+  height: 35.414vw;
+  left: 30.417vw;
+  top: 5.006vw;
+  background: #93c2b8;
+  box-shadow: 7px 7px 7px rgba(0, 0, 0, 0.45);
+  border-radius: 3.34vw;
+}
+.verification {
+  position: absolute;
+}
+.message.sucess {
+  position: relative;
+  color: rgb(37, 125, 87);
+  top: 18vw;
+  left: 6vw;
+}
+.message.error {
+  position: absolute;
+  color: rgb(223, 33, 33);
+  top: 18vw;
+  left: 15.5vw;
+}
+.verificationimg {
+  position: absolute;
+  width: 5vw;
+  height: 5vw;
+  left: 15.5vw;
+  top: 13vw;
+}
+.verifymessage {
+  position: absolute;
+  color: rgb(33, 56, 48);
+  width: 20vw;
+  left: 8vw;
+  top: 23vw;
+  text-align: center;
+}
+.verifiying {
+  position: absolute;
+  top: 16vw;
+  left: 12vw;
+  color: #213934;
+}
