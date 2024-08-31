@@ -143,7 +143,9 @@ const RetentionUpImages = [
 
   t19_up_in,
   t19_up_out,
+];
 
+const RetentionRingImages = [
   t1_in,
   t1_out,
   t2_in,
@@ -311,4 +313,5 @@ export {
   Circumferential,
   Gingivally,
   RetentionDownImages,
+  RetentionRingImages,
 };
