@@ -74,23 +74,23 @@ const VerifyEmail = () => {
           <img src={webApplogo} className="WebAppLogo" alt={"WebApp Logo"} />
         </div>
         <img
-          src={!userverify || userdata?.isVerified ? Successlogo : Errorlogo}
+          src={userverify || userdata?.isVerified ? Successlogo : Errorlogo}
           className="verificationimg"
           alt={"verification Logo"}
         />
         <div
           className={`message ${
-            !userverify || userdata?.isVerified ? "sucess" : "error"
+            userverify || userdata?.isVerified ? "sucess" : "error"
           }`}
         >
           <h1 className="verification">
-            {!userverify || userdata?.isVerified
+            {userverify || userdata?.isVerified
               ? "Verification is successed"
               : "Error"}
           </h1>
         </div>
         <p className="verifymessage">
-          {!userverify || userdata?.isVerified
+          {userverify || userdata?.isVerified
             ? "Your email has been verified. You can now sign in with your new account"
             : "Your email address could not be verified!."}
         </p>
