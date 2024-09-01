@@ -18,6 +18,8 @@ function AddSaddles() {
     missingteeth: null,
     undercuts: null,
     plates: null,
+    clasps: null,
+    gingivally: null,
   });
 
   const handleClick = (path) => {
@@ -39,6 +41,8 @@ function AddSaddles() {
       missingteeth: data.teeths ? data.teeths : null,
       undercuts: data.undercuts ? data.undercuts : null,
       plates: data.plates ? data.plates : null,
+      clasps: data.clasps ? data.clasps : null,
+      gingivally: data.gingivally ? data.gingivally : null,
     });
   };
 
@@ -108,6 +112,7 @@ function AddSaddles() {
                 setData={setData}
                 DentureData={selectedData}
                 selectPlate={{ view: false }}
+                selectClasp={{ view: false }}
                 selectRetention={{ selectRetention: false }}
               />
             </div>

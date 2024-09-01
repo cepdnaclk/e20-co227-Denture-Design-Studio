@@ -19,12 +19,14 @@ function AddRetentions() {
           missingteeth: location.state?.selectedData.missingteeth,
           undercuts: location.state?.selectedData.undercuts,
           restdata: location.state?.selectedData.restdata,
+          claspdata: location.state?.selectedData.claspdata,
         }
       : {
           retentiondata: null,
           restdata: null,
           missingteeth: null,
           undercuts: null,
+          claspdata: null,
         }
   );
 
@@ -38,7 +40,9 @@ function AddRetentions() {
       missingteeth: data.teeths ? data.teeths : null,
       undercuts: data.undercuts ? data.undercuts : null,
       plates: data.plates ? data.plates : null,
+      claspdata: data.retentions ? data.clasps : null,
       retentiondata: data.retentions ? data.retentions : null,
+
     });
   };
   console.log(selectedData);
@@ -83,6 +87,7 @@ function AddRetentions() {
                 setData={setData}
                 value={{ canEdit: false, visible: true }}
                 selectPlate={{ view: false }}
+                selectClasp={{ view: false }}
               />
             </div>
             <button
