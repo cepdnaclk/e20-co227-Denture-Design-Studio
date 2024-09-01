@@ -140,6 +140,7 @@ function AddConnectors() {
                   setData={() => {}}
                   value={{ canEdit: false, visible: true }}
                   selectPlate={{ view: true }}
+                  selectClasp={{ view: true }}
                   selectRetention={{ selectretention: true }}
                 />
               </div>

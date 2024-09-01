@@ -1,0 +1,308 @@
+.teethBackground2 .clasp-downbtn {
+    position: absolute;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    background: transparent;
+  
+    margin: 0;
+    padding: 0;
+    width: 1vw;
+    height: 1vw;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+    z-index: 9;
+    img {
+      height: auto;
+    }
+  }
+  
+  #clasp-downbtn-1 {
+    left: 26%;
+    top: 35.5%;
+    img {
+      width: 2vw;
+    }
+  }
+  
+  #clasp-downbtn-2 {
+    left: 19%;
+    top: 33%;
+    img {
+      width: 2vw;
+    }
+  }
+  
+  #clasp-downbtn-3 {
+    left: 27%;
+    top: 27.5%;
+    img {
+      width: 2.1vw;
+    }
+  }
+  
+  #clasp-downbtn-4 {
+    left: 27%;
+    top: 50%;
+    img {
+      width: 2vw;
+    }
+  }
+  
+  #clasp-downbtn-5 {
+    left: 27%;
+    top: 22%;
+    img {
+      width: 2vw;
+    }
+  }
+  
+  #clasp-downbtn-6 {
+    left: 22.5%;
+    top: 20.5%;
+    img {
+      width: 1.8vw;
+    }
+  }
+  
+  #clasp-downbtn-7 {
+    left: 29.5%;
+    top: 17%;
+    img {
+      width: 1.8vw;
+    }
+  }
+  
+  #clasp-downbtn-8 {
+    left: 24%;
+    top: 15%;
+    img {
+      width: 1.5vw;
+    }
+  }
+  
+  #clasp-downbtn-9 {
+    left: 66%;
+    top: 17%;
+    img {
+      width: 2vw;
+    }
+  }
+  
+  #clasp-downbtn-10 {
+    left: 73%;
+    top: 15.5%;
+    img {
+      width: 1.7vw;
+    }
+  }
+  
+  #clasp-downbtn-11 {
+    left: 67%;
+    top: 21.5%;
+    img {
+      width: 2vw;
+    }
+  }
+  
+  #clasp-downbtn-12 {
+    left: 74%;
+    top: 20.5%;
+    img {
+      width: 1.8vw;
+    }
+  }
+  
+  #clasp-downbtn-13 {
+    left: 66%;
+    top: 27%;
+    img {
+      width: 2.5vw;
+    }
+  }
+  
+  #clasp-downbtn-14 {
+    left: 75%;
+    top: 26%;
+    img {
+      width: 2vw;
+    }
+  }
+  
+  #clasp-downbtn-15 {
+    left: 68.5%;
+    top: 35%;
+    img {
+      width: 2.4vw;
+    }
+  }
+  
+  #clasp-downbtn-16 {
+    left: 76%;
+    top: 33%;
+    img {
+      width: 2vw;
+    }
+  }
+  
+  #clasp-downbtn-17 {
+    left: 68%;
+    top: 53%;
+    img {
+      width: 1.5vw;
+    }
+  }
+  
+  #clasp-downbtn-18 {
+    left: 74%;
+    top: 53%;
+    img {
+      width: 2vw;
+    }
+  }
+  
+  #clasp-downbtn-19 {
+    left: 66%;
+    top: 60%;
+    img {
+      width: 2vw;
+    }
+  }
+  
+  #clasp-downbtn-20 {
+    left: 74%;
+    top: 62%;
+    img {
+      width: 2.1vw;
+    }
+  }
+  
+  #clasp-downbtn-21 {
+    left: 65%;
+    top: 67.5%;
+    img {
+      width: 2.1vw;
+    }
+  }
+  
+  #clasp-downbtn-22 {
+    left: 73%;
+    top: 68.5%;
+    img {
+      width: 2.4vw;
+    }
+  }
+  
+  #clasp-downbtn-23 {
+    left: 67%;
+    top: 76%;
+    img {
+      width: 1.3vw;
+    }
+  }
+  
+  #clasp-downbtn-24 {
+    left: 71.5%;
+    top: 77%;
+    img {
+      width: 2.1vw;
+    }
+  }
+  
+  #clasp-downbtn-25 {
+    left: 63%;
+    top: 82%;
+    img {
+      width: 1.5vw;
+    }
+  }
+  
+  #clasp-downbtn-26 {
+    left: 68%;
+    top: 84%;
+    img {
+      width: 2vw;
+    }
+  }
+  
+  #clasp-downbtn-27 {
+    left: 33%;
+    top: 82%;
+    img {
+      width: 1.3vw;
+    }
+  }
+  
+  #clasp-downbtn-28 {
+    left: 26%;
+    top: 83%;
+    img {
+      width: 2vw;
+    }
+  }
+  
+  #clasp-downbtn-29 {
+    left: 31%;
+    top: 76%;
+    img {
+      width: 1.5vw;
+    }
+  }
+  
+  #clasp-downbtn-30 {
+    left: 24%;
+    top: 77.5%;
+    img {
+      width: 2.1vw;
+    }
+  }
+  
+  #clasp-downbtn-31 {
+    left: 28.5%;
+    top: 68%;
+    img {
+      width: 2vw;
+    }
+  }
+  
+  #clasp-downbtn-32 {
+    left: 20%;
+    top: 69%;
+    img {
+      width: 2.6vw;
+    }
+  }
+  
+  #clasp-downbtn-33 {
+    left: 28%;
+    top: 59.5%;
+    img {
+      width: 1.8vw;
+    }
+  }
+  
+  #clasp-downbtn-34 {
+    left: 19%;
+    top: 61%;
+    img {
+      width: 2.6vw;
+    }
+  }
+  
+  #clasp-downbtn-35 {
+    left: 25%;
+    top: 53%;
+    img {
+      width: 2vw;
+    }
+  }
+  
+  #clasp-downbtn-36 {
+    left: 20%;
+    top: 53%;
+    img {
+      width: 2vw;
+    }
+  }
+  

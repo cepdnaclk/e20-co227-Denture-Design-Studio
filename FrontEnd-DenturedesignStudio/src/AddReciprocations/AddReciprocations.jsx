@@ -9,6 +9,7 @@ function AddReciprocations() {
   let navigate = useNavigate();
   const location = useLocation();
   const [selectPlate, setselectPlate] = useState(false);
+  const [selectClasp, setselectClasp] = useState(false);
   const [selectedData, setSelectedData] = useState(
     location.state?.selectedData
       ? {
@@ -16,6 +17,7 @@ function AddReciprocations() {
           missingteeth: location.state?.selectedData.missingteeth,
           undercuts: location.state?.selectedData.undercuts,
           plates: null,
+          clasps: null,
           retentiondata: location.state?.selectedData.retentiondata,
         }
       : {
@@ -23,6 +25,7 @@ function AddReciprocations() {
           missingteeth: null,
           undercuts: null,
           plates: null,
+          clasps: null,
           retentiondata: null,
         }
   );
@@ -35,6 +38,7 @@ function AddReciprocations() {
       missingteeth: data.teeths ? data.teeths : null,
       undercuts: data.undercuts ? data.undercuts : null,
       plates: data.plates ? data.plates : null,
+      clasps: data.clasps ? data.clasps : null,
       retentiondata: data.retentions ? data.retentions : null,
     });
   };
@@ -74,9 +78,15 @@ function AddReciprocations() {
               </button>
 
               <ul className="reciprocations-list">
-                <li id="clasp" onClick={() => {}}>
+                <li id="clasp" 
+                onClick={() => {
+                  setselectClasp(!selectClasp);
+                }}
+                  style={{ color: selectClasp ? " #ffffff" : "" }}
+                >
                   Clasp :
                 </li>
+
                 <li
                   id="plate"
                   onClick={() => {
@@ -94,6 +104,7 @@ function AddReciprocations() {
                   DentureData={selectedData}
                   value={{ canEdit: false, visible: true }}
                   selectPlate={{ edit: selectPlate, view: true }}
+                  selectClasp={{ edit: selectClasp, view: true }}
                   selectRetention={{ selectretention: true }}
                 />
               </div>

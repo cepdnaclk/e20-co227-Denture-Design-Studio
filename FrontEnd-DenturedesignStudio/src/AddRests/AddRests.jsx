@@ -16,8 +16,9 @@ function AddRests() {
           missingteeth: location.state?.selectedData.missingteeth,
           undercuts: location.state?.selectedData.undercuts,
           plates: location.state?.selectedData.plates,
+          clasps: location.state?.selectedData.clasps,
         }
-      : { restdata: null, missingteeth: null, undercuts: null, plates: null }
+      : { restdata: null, missingteeth: null, undercuts: null, plates: null,claspdata: null }
   );
   function handleClick(path) {
     navigate(path);
@@ -29,6 +30,7 @@ function AddRests() {
       missingteeth: data.teeths ? data.teeths : null,
       undercuts: data.undercuts ? data.undercuts : null,
       plates: data.plates ? data.plates : null,
+      clasps: data.clasps ? data.clasps : null,
     });
   };
 
@@ -57,6 +59,7 @@ function AddRests() {
                   DentureData={selectedData}
                   value={{ canEdit: false, visible: true }}
                   selectPlate={{ view: false }}
+                  selectClasp={{ view: false }}
                   selectRetention={{ selectRetention: false }}
                 />
               </div>
