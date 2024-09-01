@@ -1,0 +1,320 @@
+.teethBackground2 .gingivally-btn {
+    position: absolute;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    background: transparent;
+  
+    margin: 0;
+    padding: 0;
+    width: 1vw;
+    height: 1vw;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+    z-index: 8;
+    img {
+      height: auto;
+    }
+  }
+  
+  .gingivally-btn:hover {
+    opacity: 0.6; /*reduced opacity on hover */
+  }
+  
+  /*Upper left*/
+  
+  #gingivally-btn-1 {
+    left: 25%;
+    top: 41%;
+    img {
+      width: 2vw;
+    }
+  }
+  
+  #gingivally-btn-2 {
+    left: 19%;
+    top: 41%;
+    img {
+      width: 1.7vw;
+    }
+  }
+  
+  #gingivally-btn-3 {
+    left: 26%;
+    top: 34%;
+    img {
+      width: 2vw;
+    }
+  }
+  
+  #gingivally-btn-4 {
+    left: 19%;
+    top: 33%;
+    img {
+      width: 2vw;
+    }
+  }
+  
+  #gingivally-btn-5 {
+    left: 28%;
+    top: 26.5%;
+    img {
+      width: 2vw;
+    }
+  }
+  
+  #gingivally-btn-6 {
+    left: 21%;
+    top: 25.5%;
+    img {
+      width: 2vw;
+    }
+  }
+  
+  #gingivally-btn-7 {
+    left: 29%;
+    top: 21.5%;
+    img {
+      width: 1.5vw;
+    }
+  }
+  
+  #gingivally-btn-8 {
+    left: 23%;
+    top: 20.5%;
+    img {
+      width: 1.8vw;
+    }
+  }
+  
+  #gingivally-btn-9 {
+    left: 31%;
+    top: 16%;
+    img {
+      width: 1.5vw;
+    }
+  }
+  
+  #gingivally-btn-10 {
+    left: 24%;
+    top: 15%;
+    img {
+      width: 1.8vw;
+    }
+  }
+  
+  /*Upper right*/
+  
+  #gingivally-btn-11 {
+    left: 66%;
+    top: 16%;
+    img {
+      width: 1.3vw;
+    }
+  }
+  
+  #gingivally-btn-12 {
+    left: 71%;
+    top: 15%;
+    img {
+      width: 2vw;
+    }
+  }
+  
+  #gingivally-btn-13 {
+    left: 68%;
+    top: 21%;
+    img {
+      width: 1.5vw;
+    }
+  }
+  
+  #gingivally-btn-14 {
+    left: 73%;
+    top: 20%;
+    img {
+      width: 2vw;
+    }
+  }
+  
+  #gingivally-btn-15 {
+    left: 67%;
+    top: 26%;
+    img {
+      width: 2.1vw;
+    }
+  }
+  
+  #gingivally-btn-16 {
+    left: 74%;
+    top: 25.5%;
+    img {
+      width: 2vw;
+    }
+  }
+  
+  #gingivally-btn-17 {
+    left: 69%;
+    top: 33.5%;
+    img {
+      width: 2.3vw;
+    }
+  }
+  
+  #gingivally-btn-18 {
+    left: 76%;
+    top: 33%;
+    img {
+      width: 2vw;
+    }
+  }
+  
+  #gingivally-btn-19 {
+    left: 70%;
+    top: 40%;
+    img {
+      width: 1.8vw;
+    }
+  }
+  
+  #gingivally-btn-20 {
+    left: 76.5%;
+    top: 40.5%;
+    img {
+      width: 1.8vw;
+    }
+  }
+  
+  /*Lower left*/
+  
+  #gingivally-btn-21 {
+    left: 67%;
+    top: 60%;
+    img {
+      width: 2vw;
+    }
+  }
+  
+  #gingivally-btn-22 {
+    left: 74%;
+    top: 60.5%;
+    img {
+      width: 2vw;
+    }
+  }
+  
+  #gingivally-btn-23 {
+    left: 66%;
+    top: 68%;
+    img {
+      width: 2vw;
+    }
+  }
+  
+  #gingivally-btn-24 {
+    left: 74%;
+    top: 68%;
+    img {
+      width: 2vw;
+    }
+  }
+  
+  #gingivally-btn-25 {
+    left: 67%;
+    top: 76%;
+    img {
+      width: 1.5vw;
+    }
+  }
+  
+  #gingivally-btn-26 {
+    left: 72%;
+    top: 76.5%;
+    img {
+      width: 1.7vw;
+    }
+  }
+  
+  #gingivally-btn-27 {
+    left: 64%;
+    top: 81.5%;
+    img {
+      width: 1.8vw;
+    }
+  }
+  
+  #gingivally-btn-28 {
+    left: 70.5%;
+    top: 82.5%;
+    img {
+      width: 1.5vw;
+    }
+  }
+  
+  /*Lower right*/
+  
+  #gingivally-btn-29 {
+    left: 31%;
+    top: 82%;
+    img {
+      width: 2vw;
+    }
+  }
+  
+  #gingivally-btn-30 {
+    left: 27%;
+    top: 82%;
+    img {
+      width: 1.3vw;
+    }
+  }
+  
+  #gingivally-btn-31 {
+    left: 29.5%;
+    top: 76%;
+    img {
+      width: 2vw;
+    }
+  }
+  
+  #gingivally-btn-32 {
+    left: 25%;
+    top: 76.5%;
+    img {
+      width: 1.5vw;
+    }
+  }
+  
+  #gingivally-btn-33 {
+    left: 28%;
+    top: 68.5%;
+    img {
+      width: 2.1vw;
+    }
+  }
+  
+  #gingivally-btn-34 {
+    left: 21%;
+    top: 68.5%;
+    img {
+      width: 2vw;
+    }
+  }
+  
+  #gingivally-btn-35 {
+    left: 27%;
+    top: 60%;
+    img {
+      width: 2vw;
+    }
+  }
+  
+  #gingivally-btn-36 {
+    left: 19%;
+    top: 60%;
+    img {
+      width: 2.3vw;
+    }
+  }
+  

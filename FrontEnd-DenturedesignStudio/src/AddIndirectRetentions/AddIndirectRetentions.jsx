@@ -18,6 +18,7 @@ function AddIndirectRetentions() {
           missingteeth: null,
           undercuts: null,
           plates: null,
+          clasps: null,
           retentiondata: null,
         }
   );
@@ -31,6 +32,7 @@ function AddIndirectRetentions() {
       missingteeth: data.teeths ? data.teeths : null,
       undercuts: data.undercuts ? data.undercuts : null,
       plates: data.plates ? data.plates : null,
+      clasps: data.clasps ? data.clasps : null,
       retentiondata: data.retentions ? data.retentions : null,
     });
   };
@@ -107,6 +109,7 @@ function AddIndirectRetentions() {
                   DentureData={selectedData}
                   value={{ canEdit: false, visible: true }}
                   selectPlate={{ view: true }}
+                  selectClasp={{ view: true }}
                   selectRetention={{ selectretention: true }}
                 />
               </div>
