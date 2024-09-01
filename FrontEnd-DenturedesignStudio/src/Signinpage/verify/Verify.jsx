@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useSearchParams } from "react-router-dom";
 import axios from "axios";
+import webApplogo from "./logo.png";
+import "./Verify.css";
+import Successlogo from "./sucess_logo.png";
+import Errorlogo from "./error_logo.png";
 
 const VerifyEmail = () => {
   const { token } = useParams();
@@ -52,15 +56,45 @@ const VerifyEmail = () => {
   }, [token, userid, user_name]);
   console.log(userdata, userverify, token, userid, user_name, stillverify);
   if (stillverify) {
-    return <h1>verifying......</h1>;
+    return (
+      <div className="designPage">
+        <div className="messagebox">
+          <div className="webAppLogo">
+            <img src={webApplogo} className="WebAppLogo" alt={"WebApp Logo"} />
+          </div>
+          <h1 className="verifiying">Verifying......</h1>
+        </div>
+      </div>
+    );
   }
   return (
-    <div>
-      <h1>
-        {userverify || userdata?.isVerified
-          ? "verification is success"
-          : "error in verifications"}
-      </h1>
+    <div className="designPage">
+      <div className="messagebox">
+        <div className="webAppLogo">
+          <img src={webApplogo} className="WebAppLogo" alt={"WebApp Logo"} />
+        </div>
+        <img
+          src={userverify || userdata?.isVerified ? Successlogo : Errorlogo}
+          className="verificationimg"
+          alt={"verification Logo"}
+        />
+        <div
+          className={`message ${
+            userverify || userdata?.isVerified ? "sucess" : "error"
+          }`}
+        >
+          <h1 className="verification">
+            {userverify || userdata?.isVerified
+              ? "Verification is successed"
+              : "Error"}
+          </h1>
+        </div>
+        <p className="verifymessage">
+          {userverify || userdata?.isVerified
+            ? "Your email has been verified. You can now sign in with your new account"
+            : "Your email address could not be verified!."}
+        </p>
+      </div>
     </div>
   );
 };

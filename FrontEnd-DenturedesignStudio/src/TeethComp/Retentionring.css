@@ -1,0 +1,156 @@
+.teethBackground2 .retention-ringbtn {
+  position: absolute;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border: none;
+  cursor: pointer;
+
+  margin: 0;
+  padding: 0;
+  width: 1vw;
+  height: 1vw;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+  background: transparent;
+  img {
+    height: auto;
+  }
+}
+
+.retention-ringbtn:hover {
+  opacity: 0.6; /*reduced opacity on hover */
+}
+
+#retention-ringbtn-1 {
+  left: 20%;
+  top: 41%;
+  img {
+    width: 3.3vw;
+  }
+}
+
+#retention-ringbtn-2 {
+  left: 19%;
+  top: 41%;
+  img {
+    width: 3.3vw;
+  }
+}
+
+#retention-ringbtn-3 {
+  left: 19%;
+  top: 34%;
+  img {
+    width: 3.6vw;
+  }
+}
+
+#retention-ringbtn-4 {
+  left: 19%;
+  top: 33%;
+  img {
+    width: 4.1vw;
+  }
+}
+
+/*Upper right*/
+
+#retention-ringbtn-5 {
+  left: 68.5%;
+  top: 33.5%;
+  img {
+    width: 4vw;
+  }
+}
+
+#retention-ringbtn-6 {
+  left: 68%;
+  top: 33.5%;
+  img {
+    width: 4vw;
+  }
+}
+
+#retention-ringbtn-7 {
+  left: 68%;
+  top: 40%;
+  img {
+    width: 4vw;
+  }
+}
+
+#retention-ringbtn-8 {
+  left: 70%;
+  top: 39.5%;
+  img {
+    width: 4vw;
+  }
+}
+
+/*Lower right*/
+
+#retention-ringbtn-9 {
+  left: 68%;
+  top: 52%;
+  img {
+    width: 3.3vw;
+  }
+}
+
+#retention-ringbtn-10 {
+  left: 69%;
+  top: 52%;
+  img {
+    width: 3.3vw;
+  }
+}
+
+#retention-ringbtn-11 {
+  left: 67%;
+  top: 59%;
+  img {
+    width: 4vw;
+  }
+}
+
+#retention-ringbtn-12 {
+  left: 67%;
+  top: 59.5%;
+  img {
+    width: 4vw;
+  }
+}
+
+/*Lower left*/
+
+#retention-ringbtn-13 {
+  left: 19.5%;
+  top: 59.5%;
+  img {
+    width: 3.7vw;
+  }
+}
+
+#retention-ringbtn-14 {
+  left: 19%;
+  top: 59.5%;
+  img {
+    width: 3.7vw;
+  }
+}
+
+#retention-ringbtn-15 {
+  left: 21%;
+  top: 52.5%;
+  img {
+    width: 3vw;
+  }
+}
+
+#retention-ringbtn-16 {
+  left: 19%;
+  top: 52%;
+  img {
+    width: 2.4vw;
+  }
+}

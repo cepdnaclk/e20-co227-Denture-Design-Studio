@@ -6,9 +6,11 @@ import "./Undercut.css";
 import "./Rest.css";
 import "./RetentionUp.css";
 import "./RetentionDown.css";
+import "./Retentionring.css";
 import "./claspUp.css";
 import "./claspDown.css";
 import "./Gingivally.css";
+
 import "./MissingTeeth.css";
 
 import TeethImages from "./Teethimages";
@@ -21,7 +23,12 @@ import {
   RetentionUpImages,
   Ring,
   Circumferential,
+  Gingivally,
+  RetentionDownImages,
+  RetentionRingImages,
+
   RetentionDownImages
+
 } from "./RetentionImages";
 
 import {
@@ -46,7 +53,11 @@ const Teeth = ({
   const [selectedRetention, setSelectedRetention] = useState(
     DentureData.retentiondata
       ? DentureData.retentiondata
-      : { upClasp: Array(56).fill(false), downClasp: Array(36).fill(false) }
+      : {
+          upClasp: Array(36).fill(false),
+          downClasp: Array(36).fill(false),
+          ringClasp: Array(16).fill(false),
+        }
   );
 
   const[selectedClasps, setSelectedClasp] = useState(
@@ -72,7 +83,7 @@ const Teeth = ({
     DentureData.undercuts ? DentureData.undercuts : Array(20).fill(false)
   );
   const [isRestselect, setRestselect] = useState(false);
-  const [zindex, setZindex] = useState({ up: null, down: null });
+  const [zindex, setZindex] = useState({ up: 4, down: 4, ring: 4 });
   const [selectedTeethbyRest, setselectedTeethbyRest] = useState(null);
   const RestIndex = {
     1: [null, 1],
@@ -256,9 +267,34 @@ const Teeth = ({
         (key > 27 && key < 33)
       ) {
         if (index !== -1) {
+          if (
+            index === 0 &&
+            key < 17 &&
+            selectRetention.occlusallyType === "ring"
+          ) {
+            alert("you cant add ring clasp for this teeth");
+            break;
+          } else if (
+            index === 1 &&
+            key > 16 &&
+            selectRetention.occlusallyType === "ring"
+          ) {
+            alert("you cant add ring clasp for this rest");
+            break;
+          }
           index === 0
-            ? setZindex({ up: 8, down: 9 })
-            : setZindex({ up: 9, down: 8 });
+            ? setZindex({
+                up: 8,
+                down:
+                  selectRetention.occlusallyType === "circumferential" ? 10 : 9,
+                ring: selectRetention.occlusallyType === "ring" ? 10 : 9,
+              })
+            : setZindex({
+                up:
+                  selectRetention.occlusallyType === "circumferential" ? 10 : 9,
+                ring: selectRetention.occlusallyType === "ring" ? 10 : 9,
+                down: 8,
+              });
           setselectedTeethbyRest(key - 1);
         }
       }
@@ -273,10 +309,16 @@ const Teeth = ({
       const retentionImage =
         UporDown === "up"
           ? RetentionUpImages[index]
-          : RetentionDownImages[index];
+          : UporDown === "down"
+          ? RetentionDownImages[index]
+          : RetentionRingImages[index];
 
       const retentionArray =
-        UporDown === "up" ? newState.upClasp : newState.downClasp;
+        UporDown === "up"
+          ? newState.upClasp
+          : UporDown === "down"
+          ? newState.downClasp
+          : newState.ringClasp;
       // Check if the tooth is not missing
       const adjustIndex = (() => {
         if (UporDown === "up") {
@@ -290,6 +332,14 @@ const Teeth = ({
             return index % 2 === 0 ? (index + 2) / 2 : (index + 1) / 2;
           } else {
             return index % 2 === 0 ? (index + 4) / 2 : (index + 3) / 2;
+          }
+        } else if (UporDown === "ring") {
+          if (index < 4) {
+            return index % 2 === 0 ? index / 2 : (index - 1) / 2;
+          } else if (index > 3 && index < 12) {
+            return index % 2 === 0 ? (index + 12) / 2 : (index + 11) / 2;
+          } else {
+            return index % 2 === 0 ? (index + 24) / 2 : (index + 23) / 2;
           }
         }
       })();
@@ -307,9 +357,16 @@ const Teeth = ({
           return selectedTeethbyRest - 12 === adjustIndex;
         }
       })();
-      console.log("correct teeth:", correctTeeth);
+      console.log("correct :", adjustIndex);
 
-      if (isCorrectSide && isRestselect && correctTeeth) {
+      const ringteethmissing =
+        (((selectedTeethbyRest === 1 || selectedTeethbyRest === 17) &&
+          !selectedTeeth[selectedTeethbyRest - 1]) ||
+          ((selectedTeethbyRest === 14 || selectedTeethbyRest === 30) &&
+            !selectedTeeth[selectedTeethbyRest + 1])) &&
+        selectRetention.occlusallyType === "ring";
+
+      if (isCorrectSide && isRestselect && correctTeeth && !ringteethmissing) {
         const retentionTypeMatches =
           (selectRetention.retentionType === "occlusally" &&
             selectRetention.occlusallyType === "ring" &&
@@ -333,9 +390,12 @@ const Teeth = ({
             "Error: Retention must be added to the correct side of the undercut."
           );
         } else if (!isRestselect) {
-          alert("Error: You must select start point.");
-        } else {
+          alert("Error: You mus select start point.");
+        } else if (!correctTeeth) {
+
           alert("Error: Add retention to the correct teeth.");
+        } else if (ringteethmissing) {
+          alert("Error: you cant add ring clasp for this teeth");
         }
       }
 
@@ -557,6 +617,33 @@ const Teeth = ({
         >
           <img
             src={RetentionDownImages[index]}
+            alt={`Retention ${index + 1}`}
+          />
+        </button>
+      ))}
+
+      {Array.from({ length: 16 }, (_, index) => (
+        <button
+          key={index}
+          className={`retention-ringbtn ${
+            selectedRetention[index] ? "selected" : ""
+          }`}
+          id={`retention-ringbtn-${index + 1}`}
+          onClick={() =>
+            selectRetention.retentionType
+              ? handleRetentionClick(index, "ring")
+              : ""
+          }
+          style={{
+            zIndex: zindex.ring,
+
+            opacity: selectedRetention.ringClasp[index] ? "1" : "0",
+            display: selectRetention.selectretention ? "block" : "none",
+          }}
+          disabled={zindex.ring === 9}
+        >
+          <img
+            src={RetentionRingImages[index]}
             alt={`Retention ${index + 1}`}
           />
         </button>
