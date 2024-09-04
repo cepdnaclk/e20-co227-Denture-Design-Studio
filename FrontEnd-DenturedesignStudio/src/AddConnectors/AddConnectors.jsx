@@ -12,8 +12,7 @@ function AddConnectors() {
   const drewcurves = location.state?.curves;
   const selectedData = location.state?.selectedData;
   const [connectortype, setconnectortype] = useState();
-  const [upperSelect, setUpperselect] = useState(false);
-  const [lowerSelect, setLowerselect] = useState(false);
+  const [selectedtype, setSelectedtype] = useState();
   const [curves, setcurves] = useState();
 
   const [major, setMajor] = useState(false);
@@ -23,6 +22,8 @@ function AddConnectors() {
     setcurves({ uppercurve, lowercurve, lowerminorcurve });
   }
   console.log(drewcurves, curves);
+  console.log(selectedtype);
+
   return (
     <>
       <div className="designPage">
@@ -59,54 +60,82 @@ function AddConnectors() {
                 <li
                   id="upper"
                   onClick={() => {
-                    !upperSelect && !lowerSelect
-                      ? setconnectortype("upper")
-                      : lowerSelect
-                      ? setconnectortype(connectortype)
-                      : setconnectortype(null),
-                      !lowerSelect
-                        ? setUpperselect(!upperSelect)
-                        : setUpperselect(upperSelect);
+                    setSelectedtype("upper");
+                    setconnectortype(null);
                   }}
                   style={
-                    upperSelect ? { color: "white" } : { color: "#92dada" }
+                    selectedtype === "upper"
+                      ? { color: "white" }
+                      : { color: "#92dada" }
                   }
                 >
                   Upper
                 </li>
+                <ul
+                  className="upper-connector"
+                  style={{
+                    display: selectedtype === "upper" ? "block" : "none",
+                  }}
+                >
+                  <li
+                    id="upper-major"
+                    onClick={() => {
+                      selectedtype === "upper"
+                        ? setconnectortype("upper")
+                        : setconnectortype(null);
+                    }}
+                    style={
+                      connectortype === "upper"
+                        ? { color: "white" }
+                        : { color: "#92dada" }
+                    }
+                  >
+                    Major Connector
+                  </li>
+                  <li
+                    id="upper-minor"
+                    onClick={() => {
+                      selectedtype === "upper"
+                        ? setconnectortype("lower_minor")
+                        : setconnectortype(null);
+                    }}
+                    style={
+                      connectortype === "lower_minor"
+                        ? { color: "white" }
+                        : { color: "#92dada" }
+                    }
+                  >
+                    Minor Connector
+                  </li>
+                </ul>
                 <li
                   id="lower"
                   onClick={() => {
-                    !upperSelect && !major && !minor
-                      ? setLowerselect(!lowerSelect)
-                      : setLowerselect(lowerSelect);
+                    setSelectedtype("lower");
+                    setconnectortype(null);
                   }}
-                  style={
-                    lowerSelect || minor || major
-                      ? { color: "white" }
-                      : { color: "#92dada" }
-                  }
+                  style={{
+                    color: selectedtype === "lower" ? "white" : "#92dada",
+                    top: selectedtype === "upper" ? "12vh" : "6vh",
+                  }}
                 >
                   Lower
                 </li>
                 <ul
                   className="lower-connector"
                   style={{
-                    display: lowerSelect || major || minor ? "block" : "none",
+                    display: selectedtype === "lower" ? "block" : "none",
                   }}
                 >
                   <li
                     id="major"
                     onClick={() => {
-                      !major && !upperSelect && !minor
+                      selectedtype === "lower"
                         ? setconnectortype("lower")
-                        : minor
-                        ? setconnectortype(connectortype)
-                        : setconnectortype(null),
-                        !minor ? setMajor(!major) : setMajor(major);
+                        : setconnectortype(null);
                     }}
                     style={
-                      major && !minor
+                      connectortype === "lower"
                         ? { color: "white" }
                         : { color: "#92dada" }
                     }
@@ -116,15 +145,12 @@ function AddConnectors() {
                   <li
                     id="minor"
                     onClick={() => {
-                      !minor && !upperSelect && !major
+                      selectedtype === "lower"
                         ? setconnectortype("lower_minor")
-                        : major
-                        ? setconnectortype(connectortype)
-                        : setconnectortype(null),
-                        !major ? setMinor(!minor) : setMinor(minor);
+                        : setconnectortype(null);
                     }}
                     style={
-                      minor && !major
+                      connectortype === "lower_minor"
                         ? { color: "white" }
                         : { color: "#92dada" }
                     }
