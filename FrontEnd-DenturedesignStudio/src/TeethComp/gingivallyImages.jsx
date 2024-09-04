@@ -27,7 +27,6 @@ import t30_out from "./gingivally/t30_out.gif";
 import t31_out from "./gingivally/t31_out.gif";
 import t32_out from "./gingivally/t32_out.gif";
 
-
 import t7_out_back from "./gingivally/t7_out_back.gif";
 import t8_out_back from "./gingivally/t8_out_back.gif";
 import t9_out_back from "./gingivally/t9_out_back.gif";
@@ -37,44 +36,43 @@ import t24_out_back from "./gingivally/t24_out_back.gif";
 import t25_out_back from "./gingivally/t25_out_back.gif";
 import t26_out_back from "./gingivally/t26_out_back.gif";
 
-const gingivally = {
-        t1_out,
-        t2_out, 
-        t3_out, 
-        t4_out, 
-        t5_out, 
-        t6_out, 
-        t7_out, 
-        t10_out, 
-        t11_out, 
-        t12_out, 
-        t13_out, 
-        t14_out, 
-        t15_out, 
-        t16_out, 
-        t17_out, 
-        t18_out, 
-        t19_out, 
-        t20_out, 
-        t21_out, 
-        t22_out, 
-        t23_out, 
-        t26_out, 
-        t27_out, 
-        t28_out, 
-        t29_out, 
-        t30_out, 
-        t31_out, 
-        t32_out, 
-        
-        t7_out_back, 
-        t8_out_back, 
-        t9_out_back, 
-        t10_out_back, 
-        t23_out_back, 
-        t24_out_back, 
-        t25_out_back, 
-        t26_out_back
-}
+const gingivallyImages = [
+  t1_out,
+  t2_out,
+  t3_out,
+  t4_out,
+  t5_out,
+  t6_out,
+  t7_out,
+  t8_out_back,
+  t9_out_back,
+  t10_out,
+  t11_out,
+  t12_out,
+  t13_out,
+  t14_out,
+  t15_out,
+  t16_out,
+  t17_out,
+  t18_out,
+  t19_out,
+  t20_out,
+  t21_out,
+  t22_out,
+  t23_out,
+  t24_out_back,
+  t25_out_back,
+  t26_out,
+  t27_out,
+  t28_out,
+  t29_out,
+  t30_out,
+  t31_out,
+  t32_out,
+  t7_out_back,
+  t10_out_back,
+  t23_out_back,
+  t26_out_back,
+];
 
-export default gingivally ;
+export default gingivallyImages;
