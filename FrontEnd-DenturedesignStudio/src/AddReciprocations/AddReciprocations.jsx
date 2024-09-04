@@ -19,6 +19,7 @@ function AddReciprocations() {
           plates: null,
           clasps: null,
           retentiondata: location.state?.selectedData.retentiondata,
+          gingivally: location.state?.selectedData.gingivally,
         }
       : {
           restdata: null,
@@ -27,6 +28,7 @@ function AddReciprocations() {
           plates: null,
           clasps: null,
           retentiondata: null,
+          gingivally: null,
         }
   );
   function handleClick(path) {
@@ -40,6 +42,7 @@ function AddReciprocations() {
       plates: data.plates ? data.plates : null,
       clasps: data.clasps ? data.clasps : null,
       retentiondata: data.retentions ? data.retentions : null,
+      gingivally: data.gingivally ? data.gingivally : null,
     });
   };
   console.log(selectedData);
@@ -78,10 +81,11 @@ function AddReciprocations() {
               </button>
 
               <ul className="reciprocations-list">
-                <li id="clasp" 
-                onClick={() => {
-                  setselectClasp(!selectClasp);
-                }}
+                <li
+                  id="clasp"
+                  onClick={() => {
+                    setselectClasp(!selectClasp);
+                  }}
                   style={{ color: selectClasp ? " #ffffff" : "" }}
                 >
                   Clasp :
