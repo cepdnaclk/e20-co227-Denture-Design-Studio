@@ -168,6 +168,8 @@ ul.connectors-list li {
   padding-left: 0;
   white-space: nowrap;
   left: 22vw;
+  cursor: pointer;
+  transition: color 0.3s ease-in-out;
 }
 
 ul.connectors-list li:hover {
@@ -180,9 +182,9 @@ ul.connectors-list li:hover {
 #upper {
   top: 0vh;
 }
-
 #lower {
-  top: 6vh;
+  position: relative;
+  transition: top 0.3s ease-in-out, color 0.3s ease-in-out;
 }
 #major {
   position: absolute;
@@ -194,7 +196,20 @@ ul.connectors-list li:hover {
   top: 5vh;
 }
 .lower-connector {
+  transition: all 0.5s ease;
   position: absolute;
   left: 25vw;
   top: 10vh;
+}
+.upper-connector {
+  transition: all 0.5s ease;
+  position: absolute;
+  left: 3vw;
+  top: 3vh;
+}
+#upper-major {
+  top: 0vh;
+}
+#upper-minor {
+  top: 5vh;
 }

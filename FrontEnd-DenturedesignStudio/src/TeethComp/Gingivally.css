@@ -1,320 +1,601 @@
 .teethBackground2 .gingivally-btn {
-    position: absolute;
-    background-size: cover;
-    background-repeat: no-repeat;
-    border: none;
-    cursor: pointer;
-    background: transparent;
-  
-    margin: 0;
-    padding: 0;
-    width: 1vw;
-    height: 1vw;
-    opacity: 1;
-    transition: opacity 0.3s ease;
-    z-index: 8;
-    img {
-      height: auto;
-    }
+  position: absolute;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border: none;
+  background: transparent;
+
+  margin: 0;
+  padding: 0;
+  width: 1vw;
+  height: 1vw;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+  img {
+    height: auto;
+    background-color: transparent;
   }
-  
-  .gingivally-btn:hover {
-    opacity: 0.6; /*reduced opacity on hover */
+}
+.teethBackground2 .gingivally-btn2 {
+  position: absolute;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border: none;
+  cursor: pointer;
+  background: transparent;
+  border-radius: 1vw;
+
+  margin: 0;
+  padding: 0;
+  width: 1.5vw;
+  height: 1.5vw;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+  img {
+    height: auto;
   }
-  
-  /*Upper left*/
-  
-  #gingivally-btn-1 {
-    left: 25%;
-    top: 41%;
-    img {
-      width: 2vw;
-    }
+}
+.gingivally-btn2:hover {
+  opacity: 0.6; /*reduced opacity on hover */
+}
+
+/*Upper left*/
+#gingivally-btn-1 {
+  left: 12%;
+  top: 37%;
+  img {
+    width: 3.3vw;
   }
-  
-  #gingivally-btn-2 {
-    left: 19%;
-    top: 41%;
-    img {
-      width: 1.7vw;
-    }
+}
+
+#gingivally-btn-2 {
+  left: 15%;
+  top: 30%;
+  img {
+    width: 3vw;
   }
-  
-  #gingivally-btn-3 {
-    left: 26%;
-    top: 34%;
-    img {
-      width: 2vw;
-    }
+}
+
+#gingivally-btn-3 {
+  left: 16%;
+  top: 23%;
+  img {
+    width: 3vw;
   }
-  
-  #gingivally-btn-4 {
-    left: 19%;
-    top: 33%;
-    img {
-      width: 2vw;
-    }
+}
+
+#gingivally-btn-4 {
+  left: 18%;
+  top: 17.3%;
+  img {
+    width: 3vw;
   }
-  
-  #gingivally-btn-5 {
-    left: 28%;
-    top: 26.5%;
-    img {
-      width: 2vw;
-    }
+}
+
+#gingivally-btn-5 {
+  left: 21%;
+  top: 10.5%;
+  img {
+    width: 2.5vw;
   }
-  
-  #gingivally-btn-6 {
-    left: 21%;
-    top: 25.5%;
-    img {
-      width: 2vw;
-    }
+}
+
+#gingivally-btn-6 {
+  left: 27%;
+  top: 6%;
+  img {
+    width: 1.8vw;
   }
-  
-  #gingivally-btn-7 {
-    left: 29%;
-    top: 21.5%;
-    img {
-      width: 1.5vw;
-    }
+}
+
+#gingivally-btn-7 {
+  left: 34.5%;
+  top: 0.6%;
+
+  img {
+    width: 2.3vw;
   }
-  
-  #gingivally-btn-8 {
-    left: 23%;
-    top: 20.5%;
-    img {
-      width: 1.8vw;
-    }
+}
+#gingivally-btn-8 {
+  left: 31.6%;
+  top: 3.5%;
+  img {
+    width: 3.56vw;
   }
-  
-  #gingivally-btn-9 {
-    left: 31%;
-    top: 16%;
-    img {
-      width: 1.5vw;
-    }
+}
+
+#gingivally-btn-9 {
+  left: 56.5%;
+  top: 3.3%;
+  img {
+    width: 3.5vw;
   }
-  
-  #gingivally-btn-10 {
-    left: 24%;
-    top: 15%;
-    img {
-      width: 1.8vw;
-    }
+}
+#gingivally-btn-10 {
+  left: 58%;
+  top: 1%;
+  img {
+    width: 2.1vw;
   }
-  
-  /*Upper right*/
-  
-  #gingivally-btn-11 {
-    left: 66%;
-    top: 16%;
-    img {
-      width: 1.3vw;
-    }
+}
+
+#gingivally-btn-11 {
+  left: 68%;
+  top: 4%;
+  img {
+    width: 1.8vw;
   }
-  
-  #gingivally-btn-12 {
-    left: 71%;
-    top: 15%;
-    img {
-      width: 2vw;
-    }
+}
+
+#gingivally-btn-12 {
+  left: 71.5%;
+  top: 10.5%;
+  img {
+    width: 2.2vw;
   }
-  
-  #gingivally-btn-13 {
-    left: 68%;
-    top: 21%;
-    img {
-      width: 1.5vw;
-    }
+}
+
+/*Upper right*/
+
+#gingivally-btn-13 {
+  left: 73%;
+  top: 16%;
+  img {
+    width: 2.5vw;
   }
-  
-  #gingivally-btn-14 {
-    left: 73%;
-    top: 20%;
-    img {
-      width: 2vw;
-    }
+}
+
+#gingivally-btn-14 {
+  left: 74.5%;
+  top: 21%;
+  img {
+    width: 2.8vw;
   }
-  
-  #gingivally-btn-15 {
-    left: 67%;
-    top: 26%;
-    img {
-      width: 2.1vw;
-    }
+}
+
+#gingivally-btn-15 {
+  left: 77%;
+  top: 27%;
+  img {
+    width: 3vw;
   }
-  
-  #gingivally-btn-16 {
-    left: 74%;
-    top: 25.5%;
-    img {
-      width: 2vw;
-    }
+}
+
+#gingivally-btn-16 {
+  left: 76.5%;
+  top: 36.83%;
+  img {
+    width: 3.4vw;
   }
-  
-  #gingivally-btn-17 {
-    left: 69%;
-    top: 33.5%;
-    img {
-      width: 2.3vw;
-    }
+}
+
+#gingivally-btn-17 {
+  left: 75%;
+  top: 57.5%;
+  img {
+    width: 3vw;
   }
-  
-  #gingivally-btn-18 {
-    left: 76%;
-    top: 33%;
-    img {
-      width: 2vw;
-    }
+}
+
+#gingivally-btn-18 {
+  left: 75%;
+  top: 64.5%;
+  img {
+    width: 3vw;
   }
-  
-  #gingivally-btn-19 {
-    left: 70%;
-    top: 40%;
-    img {
-      width: 1.8vw;
-    }
+}
+
+#gingivally-btn-19 {
+  left: 74%;
+  top: 71%;
+  img {
+    width: 2.8vw;
   }
-  
-  #gingivally-btn-20 {
-    left: 76.5%;
-    top: 40.5%;
-    img {
-      width: 1.8vw;
-    }
+}
+
+#gingivally-btn-20 {
+  left: 72%;
+  top: 79.5%;
+  img {
+    width: 2vw;
   }
-  
-  /*Lower left*/
-  
-  #gingivally-btn-21 {
-    left: 67%;
-    top: 60%;
-    img {
-      width: 2vw;
-    }
+}
+
+#gingivally-btn-21 {
+  left: 69%;
+  top: 85.5%;
+  img {
+    width: 1.4vw;
   }
-  
-  #gingivally-btn-22 {
-    left: 74%;
-    top: 60.5%;
-    img {
-      width: 2vw;
-    }
+}
+
+#gingivally-btn-22 {
+  left: 62%;
+  top: 89.5%;
+  img {
+    width: 1.4vw;
   }
-  
-  #gingivally-btn-23 {
-    left: 66%;
-    top: 68%;
-    img {
-      width: 2vw;
-    }
+}
+
+/*Lower left*/
+
+#gingivally-btn-23 {
+  left: 55%;
+  top: 92%;
+  img {
+    width: 1.3vw;
   }
-  
-  #gingivally-btn-24 {
-    left: 74%;
-    top: 68%;
-    img {
-      width: 2vw;
-    }
+}
+#gingivally-btn-24 {
+  left: 54.5%;
+  top: 92.3%;
+  img {
+    width: 2.2vw;
   }
-  
-  #gingivally-btn-25 {
-    left: 67%;
-    top: 76%;
-    img {
-      width: 1.5vw;
-    }
+}
+
+#gingivally-btn-25 {
+  left: 38.7%;
+  top: 93.2%;
+  img {
+    width: 2.3vw;
   }
-  
-  #gingivally-btn-26 {
-    left: 72%;
-    top: 76.5%;
-    img {
-      width: 1.7vw;
-    }
+}
+#gingivally-btn-26 {
+  left: 42.5%;
+  top: 92.2%;
+  img {
+    width: 1.2vw;
   }
-  
-  #gingivally-btn-27 {
-    left: 64%;
-    top: 81.5%;
-    img {
-      width: 1.8vw;
-    }
+}
+
+#gingivally-btn-27 {
+  left: 34%;
+  top: 90%;
+  img {
+    width: 1.6vw;
   }
-  
-  #gingivally-btn-28 {
-    left: 70.5%;
-    top: 82.5%;
-    img {
-      width: 1.5vw;
-    }
+}
+
+#gingivally-btn-28 {
+  left: 25.5%;
+  top: 85.3%;
+  img {
+    width: 1.8vw;
   }
-  
-  /*Lower right*/
-  
-  #gingivally-btn-29 {
-    left: 31%;
-    top: 82%;
-    img {
-      width: 2vw;
-    }
+}
+
+#gingivally-btn-29 {
+  left: 21.5%;
+  top: 79%;
+  img {
+    width: 2.3vw;
   }
-  
-  #gingivally-btn-30 {
-    left: 27%;
-    top: 82%;
-    img {
-      width: 1.3vw;
-    }
+}
+
+#gingivally-btn-30 {
+  left: 18.7%;
+  top: 72%;
+  img {
+    width: 2.7vw;
   }
-  
-  #gingivally-btn-31 {
-    left: 29.5%;
-    top: 76%;
-    img {
-      width: 2vw;
-    }
+}
+
+#gingivally-btn-31 {
+  left: 17%;
+  top: 64.5%;
+  img {
+    width: 2.7vw;
   }
-  
-  #gingivally-btn-32 {
-    left: 25%;
-    top: 76.5%;
-    img {
-      width: 1.5vw;
-    }
+}
+
+#gingivally-btn-32 {
+  left: 15.9%;
+  top: 57.5%;
+  img {
+    width: 2.7vw;
   }
-  
-  #gingivally-btn-33 {
-    left: 28%;
-    top: 68.5%;
-    img {
-      width: 2.1vw;
-    }
+}
+
+/*Lower right*/
+
+#gingivally-btn-33 {
+  left: 24%;
+  top: 8%;
+  img {
+    width: 3.2vw;
   }
-  
-  #gingivally-btn-34 {
-    left: 21%;
-    top: 68.5%;
-    img {
-      width: 2vw;
-    }
+}
+
+#gingivally-btn-34 {
+  left: 65%;
+  top: 7%;
+  img {
+    width: 3.1vw;
   }
-  
-  #gingivally-btn-35 {
-    left: 27%;
-    top: 60%;
-    img {
-      width: 2vw;
-    }
+}
+
+#gingivally-btn-35 {
+  left: 61%;
+  top: 92%;
+  img {
+    width: 3.3vw;
   }
-  
-  #gingivally-btn-36 {
-    left: 19%;
-    top: 60%;
-    img {
-      width: 2.3vw;
-    }
+}
+
+#gingivally-btn-36 {
+  left: 31.5%;
+  top: 92.2%;
+  img {
+    width: 2.5vw;
   }
-  
+}
+
+#gingivally-btn2-1 {
+  left: 21%;
+  top: 41.83%;
+  img {
+    width: 3.1vw;
+  }
+}
+
+#gingivally-btn2-2 {
+  left: 22.6%;
+  top: 36%;
+  img {
+    width: 3vw;
+  }
+}
+
+#gingivally-btn2-3 {
+  left: 24%;
+  top: 28%;
+  img {
+    width: 3vw;
+  }
+}
+
+#gingivally-btn2-4 {
+  left: 26%;
+  top: 23.3%;
+  img {
+    width: 2.4vw;
+  }
+}
+
+#gingivally-btn2-5 {
+  left: 27%;
+  top: 17.5%;
+  img {
+    width: 2.5vw;
+  }
+}
+
+#gingivally-btn2-6 {
+  left: 30%;
+  top: 12%;
+  img {
+    width: 2vw;
+  }
+}
+
+#gingivally-btn2-7 {
+  left: 34%;
+  top: 7%;
+  img {
+    width: 2.2vw;
+  }
+}
+
+#gingivally-btn2-8 {
+  left: 42.6%;
+  top: 5%;
+  img {
+    width: 2.56vw;
+  }
+}
+
+#gingivally-btn2-9 {
+  left: 55.5%;
+  top: 5.3%;
+  img {
+    width: 2.5vw;
+  }
+}
+
+#gingivally-btn2-10 {
+  left: 64%;
+  top: 7%;
+  img {
+    width: 2.1vw;
+  }
+}
+
+/*Upper right*/
+
+#gingivally-btn2-11 {
+  left: 69%;
+  top: 12%;
+  img {
+    width: 2vw;
+  }
+}
+
+#gingivally-btn2-12 {
+  left: 70.5%;
+  top: 17.5%;
+  img {
+    width: 2.5vw;
+  }
+}
+
+#gingivally-btn2-13 {
+  left: 72%;
+  top: 22.5%;
+  img {
+    width: 2.5vw;
+  }
+}
+
+#gingivally-btn2-14 {
+  left: 73%;
+  top: 28%;
+  img {
+    width: 3vw;
+  }
+}
+
+#gingivally-btn2-15 {
+  left: 74%;
+  top: 36%;
+  img {
+    width: 3vw;
+  }
+}
+
+#gingivally-btn2-16 {
+  left: 74.5%;
+  top: 42.83%;
+  img {
+    width: 2.8vw;
+  }
+}
+
+#gingivally-btn2-17 {
+  left: 73%;
+  top: 55.5%;
+  img {
+    width: 2.5vw;
+  }
+}
+
+#gingivally-btn2-18 {
+  left: 72%;
+  top: 62.5%;
+  img {
+    width: 3vw;
+  }
+}
+
+#gingivally-btn2-19 {
+  left: 72%;
+  top: 70%;
+  img {
+    width: 3vw;
+  }
+}
+
+#gingivally-btn2-20 {
+  left: 71%;
+  top: 78.5%;
+  img {
+    width: 2.5vw;
+  }
+}
+
+/*Lower left*/
+
+#gingivally-btn2-21 {
+  left: 68%;
+  top: 84.5%;
+  img {
+    width: 2.3vw;
+  }
+}
+
+#gingivally-btn2-22 {
+  left: 65%;
+  top: 88.5%;
+  img {
+    width: 2vw;
+  }
+}
+
+#gingivally-btn2-23 {
+  left: 59%;
+  top: 91%;
+  img {
+    width: 1.7vw;
+  }
+}
+
+#gingivally-btn2-24 {
+  left: 52.5%;
+  top: 92.3%;
+  img {
+    width: 1.6vw;
+  }
+}
+
+#gingivally-btn2-25 {
+  left: 46.3%;
+  top: 92.2%;
+  img {
+    width: 1.6vw;
+  }
+}
+
+#gingivally-btn2-26 {
+  left: 39.5%;
+  top: 91.2%;
+  img {
+    width: 1.68vw;
+  }
+}
+
+#gingivally-btn2-27 {
+  left: 33%;
+  top: 88.5%;
+  img {
+    width: 2vw;
+  }
+}
+
+#gingivally-btn2-28 {
+  left: 29.5%;
+  top: 84%;
+  img {
+    width: 2.18vw;
+  }
+}
+
+/*Lower right*/
+
+#gingivally-btn2-29 {
+  left: 28.5%;
+  top: 78.5%;
+  img {
+    width: 2.6vw;
+  }
+}
+
+#gingivally-btn2-30 {
+  left: 26.7%;
+  top: 71%;
+  img {
+    width: 3vw;
+  }
+}
+
+#gingivally-btn2-31 {
+  left: 25%;
+  top: 63.5%;
+  img {
+    width: 3vw;
+  }
+}
+
+#gingivally-btn2-32 {
+  left: 24.9%;
+  top: 55.5%;
+  img {
+    width: 2.44vw;
+  }
+}
+
+#gingivally-btn2-35,
+#gingivally-btn2-33,
+#gingivally-btn2-34,
+#gingivally-btn2-36 {
+  display: none;
+}

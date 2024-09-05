@@ -8,7 +8,6 @@ import Teeth from "../TeethComp/Teeth";
 function AddRetentions() {
   const location = useLocation();
   const navigate = useNavigate();
-  const typeselect = location.state?.typeselect;
   const [retentionType, setRetentionType] = useState();
   const [occlusallyType, setOcclusallyType] = useState();
 
@@ -20,6 +19,7 @@ function AddRetentions() {
           undercuts: location.state?.selectedData.undercuts,
           restdata: location.state?.selectedData.restdata,
           claspdata: location.state?.selectedData.claspdata,
+          gingivally: null,
         }
       : {
           retentiondata: null,
@@ -27,6 +27,7 @@ function AddRetentions() {
           missingteeth: null,
           undercuts: null,
           claspdata: null,
+          gingivally: null,
         }
   );
 
@@ -42,7 +43,7 @@ function AddRetentions() {
       plates: data.plates ? data.plates : null,
       claspdata: data.retentions ? data.clasps : null,
       retentiondata: data.retentions ? data.retentions : null,
-
+      gingivally: data.gingivally ? data.gingivally : null,
     });
   };
   console.log(selectedData);

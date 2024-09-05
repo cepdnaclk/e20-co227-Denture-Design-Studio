@@ -20,6 +20,7 @@ function AddIndirectRetentions() {
           plates: null,
           clasps: null,
           retentiondata: null,
+          gingivally: null,
         }
   );
   function handleClick(path) {
@@ -34,6 +35,7 @@ function AddIndirectRetentions() {
       plates: data.plates ? data.plates : null,
       clasps: data.clasps ? data.clasps : null,
       retentiondata: data.retentions ? data.retentions : null,
+      gingivally: data.gingivally ? data.gingivally : null,
     });
   };
   return (

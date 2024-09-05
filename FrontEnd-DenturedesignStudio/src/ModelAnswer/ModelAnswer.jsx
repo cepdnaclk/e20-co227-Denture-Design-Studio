@@ -118,6 +118,7 @@ function ModelAnswer() {
             value={{ canEdit: false, visible: true }}
             selectPlate={{ view: true }}
             selectRetention={{ selectretention: true }}
+            selectClasp={{ view: true }}
           />
         </div>
         <ReviewCanvas drewcurves={curves} />
