@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-
+import { ToastContainer, toast, Bounce } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "./Teeth.css";
 import "./Plate.css";
 import "./Undercut.css";
@@ -163,10 +164,12 @@ const Teeth = ({
         } else {
           // Show error if the rest type doesn't match
           if (selectRest.restType && !isOnMissingTeeth) {
-            alert(`Error: You can only select ${selectRest.restType} rests.`);
+            toast.error(
+              "Error: You can only select " + selectRest.restType + " rests."
+            );
           }
           if (isOnMissingTeeth && selectRest.restType) {
-            alert(`Error: You cannot select a rest on a missing tooth.`);
+            toast.error("Error: You cannot select a rest on a missing tooth.");
           }
         }
 
@@ -212,13 +215,17 @@ const Teeth = ({
         if (!selectedTeeth[index + 1]) {
           newState[index] = !newState[index];
         } else {
-          alert(`Error: You cannot add a gingivally retention to this teeth .`);
+          toast.error(
+            "Error: You cannot add a gingivally retention to this teeth ."
+          );
         }
       } else {
         if (!selectedTeeth[index - 1]) {
           newState[index] = !newState[index];
         } else {
-          alert(`Error: You cannot add a gingivally retention to this teeth .`);
+          toast.error(
+            "Error: You cannot add a gingivally retention to this teeth ."
+          );
         }
       }
 
@@ -231,7 +238,10 @@ const Teeth = ({
       if (selectedTeeth[index]) {
         newState[index] = !newState[index];
       } else {
-        alert(`Error: You cannot add a gingivally retention to this teeth .`);
+        //alert(`Error: You cannot add a gingivally retention to this teeth .`);
+        toast.error(
+          "Error: You cannot add a gingivally retention to this teeth."
+        );
       }
 
       return newState;
@@ -262,13 +272,17 @@ const Teeth = ({
           if ((isUpperPlate && !isUnderCut) || (!isUpperPlate && isUnderCut)) {
             newState[index] = !newState[index];
           } else {
-            alert(isUpperPlate ? "wrong plate side" : "this side is under cut");
+            toast.error(
+              isUpperPlate
+                ? "Error: you cannot add plate this side"
+                : "Error: this side is under cut"
+            );
           }
 
           return newState;
         });
       } else {
-        alert("can not add plates to a missing teeth");
+        toast.error("Error:can not add plates to a missing teeth");
       }
     }
   };
@@ -288,14 +302,14 @@ const Teeth = ({
             key < 17 &&
             selectRetention.occlusallyType === "ring"
           ) {
-            alert("you cant add ring clasp for this teeth");
+            toast.error("Error: you cant add ring clasp for this rest");
             break;
           } else if (
             index === 1 &&
             key > 16 &&
             selectRetention.occlusallyType === "ring"
           ) {
-            alert("you cant add ring clasp for this rest");
+            toast.error("Error: you cant add ring clasp for this rest");
             break;
           }
           index === 0
@@ -396,21 +410,34 @@ const Teeth = ({
         if (retentionTypeMatches) {
           retentionArray[index] = !retentionArray[index];
         } else {
-          alert(
-            `Error: You can only select ${selectRetention.retentionType} retentions.`
+          toast.error(
+            "Error: You can only select " +
+              selectRetention.retentionType +
+              " retentions.",
+            {
+              position: "top-center",
+              autoClose: 2000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "dark",
+              transition: Bounce,
+            }
           );
         }
       } else {
         if (!isCorrectSide) {
-          alert(
+          toast.error(
             "Error: Retention must be added to the correct side of the undercut."
           );
         } else if (!isRestselect) {
-          alert("Error: You mus select start point.");
+          toast.error("Error: You mus select start point.");
         } else if (!correctTeeth) {
-          alert("Error: Add retention to the correct teeth.");
+          toast.error("Error: Add retention to the correct teeth.");
         } else if (ringteethmissing) {
-          alert("Error: you cant add ring clasp for this teeth");
+          toast.error("Error: you cant add ring clasp for this teeth");
         }
       }
 
@@ -511,19 +538,19 @@ const Teeth = ({
         ) {
           claspArray[index] = !claspArray[index];
         } else {
-          alert(
+          toast.error(
             "Error: Clasp cannot be added to the same side as an existing retention."
           );
         }
       } else {
         if (!isOppositeSideRetentionPresent) {
-          alert(
+          toast.error(
             "Error: You must add the retention to the opposite side first."
           );
         } else if (!isRestselect) {
-          alert("Error: You must select a start point.");
+          toast.error("Error: You must select a start point.");
         } else {
-          alert("Error: Add clasp to the correct teeth.");
+          toast.error("Error: Add clasp to the correct teeth.");
         }
       }
 
@@ -699,7 +726,7 @@ const Teeth = ({
         </button>
       ))}
 
-      {Array.from({ length: 56 }, (_, index) => (
+      {Array.from({ length: 62 }, (_, index) => (
         <button
           key={index}
           className={`rest-btn ${selectedRests[index] ? "selected" : ""}`}
@@ -822,6 +849,19 @@ const Teeth = ({
           </button>
         </div>
       ))}
+      <ToastContainer
+        position="top-center"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+        transition={Bounce}
+      />
     </div>
   );
 };
