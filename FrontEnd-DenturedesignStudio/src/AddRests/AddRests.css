@@ -65,20 +65,22 @@ ul.rests-list li:hover {
   position: absolute;
   width: 17.14vw;
   height: 3.37vw;
-  left: 70vw;
-  top: 85vh;
+  left: 26vw;
+  top: 33vw;
   border-radius: 1vw;
   background: #66d8d8;
   box-shadow: 0.67vw 0.53vw 0.8vw rgba(0, 0, 0, 0.35);
+  border: none;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  cursor: pointer;
 }
 
 .addRetenText {
-  position: absolute;
   height: 4.07vh;
   width: 40vw;
-  left: 1vw;
-  right: 0.83vw;
-  top: calc(50% - 4.07vh / 2);
 
   font-family: "Salsa";
   font-style: normal;
@@ -87,6 +89,7 @@ ul.rests-list li:hover {
   line-height: 134.77%;
   display: flex;
   align-items: center;
+  justify-content: center;
   text-align: center;
 
   color: #000000;
