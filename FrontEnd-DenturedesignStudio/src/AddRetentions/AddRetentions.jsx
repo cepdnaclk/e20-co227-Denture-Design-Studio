@@ -4,21 +4,27 @@ import "./AddRetentions.css";
 import Home from "../homebutton/home";
 import BackComp from "../backComp/backComp";
 import Teeth from "../TeethComp/Teeth";
+import ReviewCanvas from "../ReviewAnswer/ReviewCanvas";
 
 function AddRetentions() {
   const location = useLocation();
   const navigate = useNavigate();
+  const curves = location.state?.curves;
+  const userdata = location.state?.userdata;
   const [retentionType, setRetentionType] = useState();
   const [occlusallyType, setOcclusallyType] = useState();
-
+  const fromReview = location.state?.fromReview;
   const [selectedData, setSelectedData] = useState(
-    location.state?.selectedData
+    fromReview
+      ? location.state?.selectedData
+      : location.state?.selectedData
       ? {
           retentiondata: null,
           missingteeth: location.state?.selectedData.missingteeth,
           undercuts: location.state?.selectedData.undercuts,
           restdata: location.state?.selectedData.restdata,
-          claspdata: location.state?.selectedData.claspdata,
+          clasp: location.state?.selectedData.claspdata,
+          plates: location.state?.selectedData.plates,
           gingivally: null,
         }
       : {
@@ -26,7 +32,8 @@ function AddRetentions() {
           restdata: null,
           missingteeth: null,
           undercuts: null,
-          claspdata: null,
+          clasp: null,
+          plates: null,
           gingivally: null,
         }
   );
@@ -41,7 +48,7 @@ function AddRetentions() {
       missingteeth: data.teeths ? data.teeths : null,
       undercuts: data.undercuts ? data.undercuts : null,
       plates: data.plates ? data.plates : null,
-      claspdata: data.retentions ? data.clasps : null,
+      clasps: data.clasps ? data.clasps : null,
       retentiondata: data.retentions ? data.retentions : null,
       gingivally: data.gingivally ? data.gingivally : null,
     });
@@ -54,14 +61,18 @@ function AddRetentions() {
         href="https://fonts.googleapis.com/css2?family=Salsa&display=swap"
       />
       <div className="AddRetentions">
-        <Home onClick={() => handleClick("/studenthome")} />
-        <BackComp
-          onClick={() =>
-            navigate("/addRests", {
-              state: { selectedData, typeselect: true },
-            })
-          }
+        <Home
+          onClick={() => navigate("/studenthome", { state: { userdata } })}
         />
+        {!fromReview ? (
+          <BackComp
+            onClick={() =>
+              navigate("/addRests", {
+                state: { selectedData, userdata },
+              })
+            }
+          />
+        ) : null}
         <div>
           <div className="Questionbox"></div>
           <div className="teethBackground1">
@@ -78,7 +89,7 @@ function AddRetentions() {
                             : null,
                       }
                     : {
-                        selectretention: false,
+                        selectretention: fromReview ? true : false,
                         occlusallyType: null,
                       }
                 }
@@ -87,20 +98,27 @@ function AddRetentions() {
                 DentureData={selectedData}
                 setData={setData}
                 value={{ canEdit: false, visible: true }}
-                selectPlate={{ view: false }}
-                selectClasp={{ view: false }}
+                selectPlate={fromReview ? { view: true } : { view: false }}
+                selectClasp={fromReview ? { view: true } : { view: false }}
               />
+              <ReviewCanvas drewcurves={curves} />
             </div>
             <button
               className="addReciprocations"
               onClick={() =>
-                navigate("/addReciprocations", {
-                  state: { selectedData, retentionType: true },
-                })
+                fromReview
+                  ? navigate("/reviewanswer", {
+                      state: { selectedData, curves, userdata },
+                    })
+                  : navigate("/addReciprocations", {
+                      state: { selectedData, userdata },
+                    })
               }
             >
               <div className="addRecipText">
-                <span className="addRecipText">Add Reciprocations</span>
+                <span className="addRecipText">
+                  {fromReview ? "Review Answer" : "Add Reciprocations"}
+                </span>
               </div>
             </button>
 

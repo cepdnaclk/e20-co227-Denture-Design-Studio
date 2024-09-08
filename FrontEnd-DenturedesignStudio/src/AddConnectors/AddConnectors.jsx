@@ -11,13 +11,11 @@ function AddConnectors() {
   const location = useLocation();
   const drewcurves = location.state?.curves;
   const selectedData = location.state?.selectedData;
+  const userdata = location.state?.userdata;
+  const fromReview = location.state?.fromReview;
   const [connectortype, setconnectortype] = useState();
   const [selectedtype, setSelectedtype] = useState();
   const [curves, setcurves] = useState();
-
-  const [major, setMajor] = useState(false);
-  const [minor, setMinor] = useState(false);
-
   function curvesData(uppercurve, lowercurve, lowerminorcurve) {
     setcurves({ uppercurve, lowercurve, lowerminorcurve });
   }
@@ -27,14 +25,18 @@ function AddConnectors() {
   return (
     <>
       <div className="designPage">
-        <Home onClick={() => navigate("/studenthome")}></Home>
-        <BackComp
-          onClick={() =>
-            navigate("/AddIndirectRetentions", {
-              state: { selectedData, typeselect: true },
-            })
-          }
-        ></BackComp>
+        <Home
+          onClick={() => navigate("/studenthome", { state: { userdata } })}
+        ></Home>
+        {!fromReview ? (
+          <BackComp
+            onClick={() =>
+              navigate("/AddIndirectRetentions", {
+                state: { selectedData, userdata },
+              })
+            }
+          ></BackComp>
+        ) : null}
         <div className="AddConnectors">
           <div>
             <link
@@ -47,7 +49,7 @@ function AddConnectors() {
                 className="Done"
                 onClick={() =>
                   navigate("/reviewAnswer", {
-                    state: { curves, selectedData },
+                    state: { curves, selectedData, userdata },
                   })
                 }
               >
