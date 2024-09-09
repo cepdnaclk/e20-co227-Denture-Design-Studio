@@ -7,7 +7,6 @@ router.post("/add", async (req, res) => {
     createCase,
     solveCase,
     completedLecture,
-    createTime,
     solveTime,
     lectureTime,
   } = req.body;
@@ -20,7 +19,6 @@ router.post("/add", async (req, res) => {
     createCase,
     solveCase,
     completedLecture,
-    createTime,
     solveTime,
     lectureTime,
   });
@@ -60,7 +58,6 @@ router.put("/edit", async (req, res) => {
     createCase,
     solveCase,
     completedLecture,
-    createTime,
     solveTime,
     lectureTime,
   } = req.body;
@@ -78,16 +75,14 @@ router.put("/edit", async (req, res) => {
     if (completedLecture !== undefined) {
       progress.completedLecture = completedLecture;
     }
-    if (createTime !== undefined) {
-      progress.createTime = createTime;
-    }
+
     if (solveTime !== undefined) {
       progress.solveTime = solveTime;
     }
     if (lectureTime !== undefined) {
       progress.lectureTime = lectureTime;
     }
-    
+
     await progress.save();
     res.status(200).send({ status: "Progress updated", progress });
   } catch (err) {
@@ -104,7 +99,9 @@ router.get("/count", async (req, res) => {
     res.status(200).send({ count });
   } catch (err) {
     console.log(err.message);
-    res.status(500).send({ status: "Error getting document count", error: err.message });
+    res
+      .status(500)
+      .send({ status: "Error getting document count", error: err.message });
   }
 });
 
