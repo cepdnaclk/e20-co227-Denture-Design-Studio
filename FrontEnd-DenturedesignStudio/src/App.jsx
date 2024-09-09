@@ -7,6 +7,7 @@ import Signup from "./Signinpage/signup";
 import Studenthome from "./Homepages/StudentHome/Studenthome";
 import CreatePatientStep1 from "./createPatientCase/createPatientCase";
 import CreatePatientStep2 from "./createPatientCase2/createPatientCase2";
+import AssessorCreatePatientStep2 from "./AssessorsCreatePatientCase2/AssessorsCreatePatientCase2";
 import UploadPatientCase from "./uploadPatientCase/UploadPatientCase";
 import AddSaddles from "./AddSaddles/AddSaddles";
 import AddRests from "./AddRests/AddRests";
@@ -46,6 +47,11 @@ function App() {
           <Route exact path="/assessorhome" element={<Assessorhome />} />
           <Route exact path="/adminhome" element={<Adminhome />} />
           <Route exact path="/uploadpatient" element={<UploadPatientCase />} />
+          <Route
+            exact
+            path="/asessorcreatepatientcase"
+            element={<AssessorCreatePatientStep2 />}
+          />
           <Route exact path="/addSaddles" element={<AddSaddles />} />
           <Route exact path="/addRests" element={<AddRests />} />
           <Route exact path="/addRetentions" element={<AddRetentions />} />

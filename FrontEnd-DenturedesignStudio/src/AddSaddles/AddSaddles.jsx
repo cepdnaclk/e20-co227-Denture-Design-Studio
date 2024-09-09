@@ -22,9 +22,6 @@ function AddSaddles() {
     gingivally: null,
   });
 
-  const handleClick = (path) => {
-    navigate(path, { state: { userdata } });
-  };
   const handleundercutVisibility = (visibleundercut) => {
     setVisibleundercut({
       canEdit: !visibleundercut.canEdit,
@@ -61,7 +58,7 @@ function AddSaddles() {
           <div className="Questionbox">
             <button
               className="skipButton"
-              onClick={() => handleClick("/addSaddles")}
+              onClick={() => navigate("/addSaddles", { state: { userdata } })}
             >
               <div className="skipButtonText">
                 <span className="skipButtonText">Skip</span>
@@ -71,7 +68,7 @@ function AddSaddles() {
               className="addRests"
               onClick={() =>
                 navigate("/addRests", {
-                  state: { selectedData },
+                  state: { selectedData, userdata },
                 })
               }
             >

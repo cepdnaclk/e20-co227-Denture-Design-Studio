@@ -4,9 +4,9 @@ function ReviewCanvas({ drewcurves }) {
   const uppercurve = drewcurves?.uppercurve;
   const lowercurve = drewcurves?.lowercurve;
   const lowerminorcurve = drewcurves?.lowerminorcurve;
-  const curves = uppercurve;
-  const lowercurves = lowercurve;
-  const lowerMinorcurve = lowerminorcurve;
+  const curves = uppercurve || [];
+  const lowercurves = lowercurve || [];
+  const lowerMinorcurve = lowerminorcurve || [];
 
   useEffect(() => {
     drawAllCurves();

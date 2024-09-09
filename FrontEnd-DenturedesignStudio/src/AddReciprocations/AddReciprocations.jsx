@@ -4,14 +4,20 @@ import "./AddReciprocations.css";
 import Home from "../homebutton/home";
 import BackComp from "../backComp/backComp";
 import Teeth from "../TeethComp/Teeth";
+import ReviewCanvas from "../ReviewAnswer/ReviewCanvas";
 
 function AddReciprocations() {
   let navigate = useNavigate();
   const location = useLocation();
+  const curves = location.state?.curves;
+  const userdata = location.state?.userdata;
   const [selectPlate, setselectPlate] = useState(false);
   const [selectClasp, setselectClasp] = useState(false);
+  const fromReview = location.state?.fromReview;
   const [selectedData, setSelectedData] = useState(
-    location.state?.selectedData
+    fromReview
+      ? location.state?.selectedData
+      : location.state?.selectedData
       ? {
           restdata: location.state?.selectedData.restdata,
           missingteeth: location.state?.selectedData.missingteeth,
@@ -45,18 +51,22 @@ function AddReciprocations() {
       gingivally: data.gingivally ? data.gingivally : null,
     });
   };
-  console.log(selectedData);
+  console.log(selectPlate, selectClasp);
   return (
     <>
       <div className="designPage">
-        <Home onClick={() => handleClick("/studenthome")}></Home>
-        <BackComp
-          onClick={() =>
-            navigate("/AddRetentions", {
-              state: { selectedData },
-            })
-          }
-        ></BackComp>
+        <Home
+          onClick={() => navigate("/studenthome", { state: { userdata } })}
+        ></Home>
+        {!fromReview ? (
+          <BackComp
+            onClick={() =>
+              navigate("/AddRetentions", {
+                state: { selectedData, userdata },
+              })
+            }
+          ></BackComp>
+        ) : null}
         <div className="AddRests">
           <div>
             <link
@@ -68,14 +78,18 @@ function AddReciprocations() {
               <button
                 className="addIndirectRetentions"
                 onClick={() =>
-                  navigate("/addIndirectRetentions", {
-                    state: { selectedData },
-                  })
+                  fromReview
+                    ? navigate("/ReviewAnswer", {
+                        state: { selectedData, curves, userdata },
+                      })
+                    : navigate("/addIndirectRetentions", {
+                        state: { selectedData, userdata },
+                      })
                 }
               >
                 <div className="addIndiRetenText">
                   <span className="addIndiRetenText">
-                    Add Indirect Retentions
+                    {fromReview ? "Review Answer" : "Add Indirect Retentions"}
                   </span>
                 </div>
               </button>
@@ -84,7 +98,9 @@ function AddReciprocations() {
                 <li
                   id="clasp"
                   onClick={() => {
-                    setselectClasp(!selectClasp);
+                    !selectPlate
+                      ? setselectClasp(!selectClasp)
+                      : setselectClasp(selectClasp);
                   }}
                   style={{ color: selectClasp ? " #ffffff" : "" }}
                 >
@@ -94,7 +110,9 @@ function AddReciprocations() {
                 <li
                   id="plate"
                   onClick={() => {
-                    setselectPlate(!selectPlate);
+                    !selectClasp
+                      ? setselectPlate(!selectPlate)
+                      : setselectPlate(selectPlate);
                   }}
                   style={{ color: selectPlate ? " #ffffff" : "" }}
                 >
@@ -111,6 +129,7 @@ function AddReciprocations() {
                   selectClasp={{ edit: selectClasp, view: true }}
                   selectRetention={{ selectretention: true }}
                 />
+                <ReviewCanvas drewcurves={curves} />
               </div>
             </div>
             <h2 className="AddReciprocations">Add Reciprocations</h2>

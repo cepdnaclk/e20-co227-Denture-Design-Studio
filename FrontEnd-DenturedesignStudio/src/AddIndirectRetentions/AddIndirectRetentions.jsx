@@ -9,6 +9,7 @@ import { useState } from "react";
 function AddIndirectRetentions() {
   let navigate = useNavigate();
   const location = useLocation();
+  const userdata = location.state?.userdata;
   const [restType, setResttype] = useState();
   const [selectedData, setSelectedData] = useState(
     location.state?.selectedData
@@ -41,11 +42,13 @@ function AddIndirectRetentions() {
   return (
     <>
       <div className="designPage">
-        <Home onClick={() => handleClick("/studenthome")}></Home>
+        <Home
+          onClick={() => navigate("/studenthome", { state: { userdata } })}
+        ></Home>
         <BackComp
           onClick={() =>
             navigate("/AddReciprocations", {
-              state: { selectedData },
+              state: { selectedData, userdata },
             })
           }
         ></BackComp>
@@ -61,7 +64,7 @@ function AddIndirectRetentions() {
                 className="addConnectors"
                 onClick={() =>
                   navigate("/AddConnectors", {
-                    state: { selectedData },
+                    state: { selectedData, userdata },
                   })
                 }
               >

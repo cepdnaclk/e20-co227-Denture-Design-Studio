@@ -47,15 +47,17 @@ body {
   border-radius: 1vw;
   background: #66d8d8;
   box-shadow: 0.67vw 0.53vw 0.8vw rgba(0, 0, 0, 0.35);
+  border: none;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  cursor: pointer;
 }
 
 .addConnectText {
-  position: absolute;
   height: 4.07vh;
   width: 40vw;
-  left: 1vw;
-  right: 0.83vw;
-  top: calc(50% - 4.07vh / 2);
 
   font-family: "Salsa";
   font-style: normal;
@@ -64,6 +66,7 @@ body {
   line-height: 134.77%;
   display: flex;
   align-items: center;
+  justify-content: center;
   text-align: center;
 
   color: #000000;

@@ -599,3 +599,19 @@
 #gingivally-btn2-36 {
   display: none;
 }
+/* Customize the font size and style of the notification box */
+.Toastify__toast {
+  font-size: 1vw; /* Adjust the font size */
+  font-family: "salsa";
+  line-height: 150%; /* Adjust the font style */
+}
+
+/* Optionally, you can adjust other parts as well */
+.Toastify__toast-body {
+  font-size: 1vw; /* Ensure body text matches the toast text size */
+}
+
+/* Customize the close button if needed */
+.Toastify__close-button {
+  font-size: 20px; /* Adjust the close button size */
+}
