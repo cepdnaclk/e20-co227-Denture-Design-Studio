@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import "./UploadPatientCase.css";
 import Home from "../homebutton/home";
-import CreateUploadButton from "../CreateUploadButton/CreateUploadButton";
 import BackComp from "../backComp/backComp";
 import Teeth from "../TeethComp/Teeth";
 
