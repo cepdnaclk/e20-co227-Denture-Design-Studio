@@ -14,6 +14,7 @@ function ModelAnswer() {
   const captureRef = useRef(null);
   const location = useLocation();
   const selectedData = location.state?.selectedData;
+  const userdata = location.state?.userdata;
   const typeselect = location.state?.typeselect;
   const curves = location.state?.curves;
   console.log(curves);
@@ -62,11 +63,13 @@ function ModelAnswer() {
 
   return (
     <div className="designPage">
-      <Home onClick={() => handleClick("/studenthome")}></Home>
+      <Home
+        onClick={() => navigate("/studenthome", { state: { userdata } })}
+      ></Home>
       <BackComp
         onClick={() =>
           navigate("/reviewAnswer", {
-            state: { curves, selectedData, typeselect: true },
+            state: { curves, selectedData, typeselect: true, userdata },
           })
         }
       ></BackComp>
@@ -118,6 +121,7 @@ function ModelAnswer() {
             value={{ canEdit: false, visible: true }}
             selectPlate={{ view: true }}
             selectRetention={{ selectretention: true }}
+            selectClasp={{ view: true }}
           />
         </div>
         <ReviewCanvas drewcurves={curves} />
@@ -141,7 +145,7 @@ function ModelAnswer() {
         <button
           className="ModelAnswerButton"
           id="finish"
-          onClick={() => handleClick("/studenthome")}
+          onClick={() => navigate("/studenthome", userdata)}
         >
           Finish
         </button>

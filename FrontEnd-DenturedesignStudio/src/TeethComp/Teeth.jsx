@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-
+import { ToastContainer, toast, Bounce } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "./Teeth.css";
 import "./Plate.css";
 import "./Undercut.css";
@@ -7,20 +8,28 @@ import "./Rest.css";
 import "./RetentionUp.css";
 import "./RetentionDown.css";
 import "./Retentionring.css";
+import "./claspUp.css";
+import "./claspDown.css";
+import "./Gingivally.css";
+
 import "./MissingTeeth.css";
 
 import TeethImages from "./Teethimages";
 import { RestImages, occlusal, cingulam, incisal } from "./Restimages";
 import PlateImages from "./PlatesImages";
 import UndercutsImages from "./Undercutimages";
+import gingivallyImages from "./gingivallyImages";
+
 import {
   RetentionUpImages,
   Ring,
   Circumferential,
-  Gingivally,
   RetentionDownImages,
   RetentionRingImages,
 } from "./RetentionImages";
+
+import { ClaspUpImages, ClaspDownImages } from "./Claspsimages";
+
 import MissingTeethImages from "./MissingTeethImages";
 
 const Teeth = ({
@@ -33,6 +42,7 @@ const Teeth = ({
   DentureData,
   setData,
   selectPlate,
+  selectClasp,
 }) => {
   const [selectedRetention, setSelectedRetention] = useState(
     DentureData.retentiondata
@@ -44,8 +54,21 @@ const Teeth = ({
         }
   );
 
+  const [selectedClasps, setSelectedClasp] = useState(
+    DentureData.clasps
+      ? DentureData.clasps
+      : { upClasp1: Array(36).fill(false), downClasp1: Array(36).fill(false) }
+  );
+
   const [selectedTeeth, setSelectedTeeth] = useState(
     DentureData.missingteeth ? DentureData.missingteeth : Array(32).fill(false)
+  );
+
+  const [selectedGingivally, setSelectedGingivally] = useState(
+    DentureData.gingivally ? DentureData.gingivally : Array(36).fill(false)
+  );
+  const [firstbuttoncliked, setfirstbuttoncliked] = useState(
+    Array(32).fill(false)
   );
   const [selectedRests, setSelectedRests] = useState(
     DentureData.restdata ? DentureData.restdata : Array(62).fill(false)
@@ -142,10 +165,12 @@ const Teeth = ({
         } else {
           // Show error if the rest type doesn't match
           if (selectRest.restType && !isOnMissingTeeth) {
-            alert(`Error: You can only select ${selectRest.restType} rests.`);
+            toast.error(
+              "Error: You can only select " + selectRest.restType + " rests."
+            );
           }
           if (isOnMissingTeeth && selectRest.restType) {
-            alert(`Error: You cannot select a rest on a missing tooth.`);
+            toast.error("Error: You cannot select a rest on a missing tooth.");
           }
         }
 
@@ -161,6 +186,8 @@ const Teeth = ({
       teeths: selectedTeeth,
       undercuts: selectedUnderCut,
       plates: selectedPlates,
+      clasps: selectedClasps,
+      gingivally: selectedGingivally,
     });
   }, [
     selectedRests,
@@ -168,6 +195,8 @@ const Teeth = ({
     selectedUnderCut,
     selectedRetention,
     selectedPlates,
+    selectedClasps,
+    selectedGingivally,
   ]);
 
   const handleUndercutClick = (index) => {
@@ -178,6 +207,46 @@ const Teeth = ({
         return newState;
       });
     }
+  };
+
+  const handleGingivallyClick = (index) => {
+    setSelectedGingivally((prevState) => {
+      const newState = [...prevState];
+      if (index < 8 || (index > 15 && 24)) {
+        if (!selectedTeeth[index + 1]) {
+          newState[index] = !newState[index];
+        } else {
+          toast.error(
+            "Error: You cannot add a gingivally retention to this teeth ."
+          );
+        }
+      } else {
+        if (!selectedTeeth[index - 1]) {
+          newState[index] = !newState[index];
+        } else {
+          toast.error(
+            "Error: You cannot add a gingivally retention to this teeth ."
+          );
+        }
+      }
+
+      return newState;
+    });
+  };
+  const handlefirstButton = (index) => {
+    setfirstbuttoncliked((prevState) => {
+      const newState = [...prevState];
+      if (selectedTeeth[index]) {
+        newState[index] = !newState[index];
+      } else {
+        //alert(`Error: You cannot add a gingivally retention to this teeth .`);
+        toast.error(
+          "Error: You cannot add a gingivally retention to this teeth."
+        );
+      }
+
+      return newState;
+    });
   };
 
   const handlePlateClick = (index) => {
@@ -204,19 +273,26 @@ const Teeth = ({
           if ((isUpperPlate && !isUnderCut) || (!isUpperPlate && isUnderCut)) {
             newState[index] = !newState[index];
           } else {
-            alert(isUpperPlate ? "wrong plate side" : "this side is under cut");
+            toast.error(
+              isUpperPlate
+                ? "Error: you cannot add plate this side"
+                : "Error: this side is under cut"
+            );
           }
 
           return newState;
         });
       } else {
-        alert("can not add plates to a missing teeth");
+        toast.error("Error:can not add plates to a missing teeth");
       }
     }
   };
+
   const findIndexInArray = (Index) => {
     for (const [key, array] of Object.entries(RestIndex)) {
       const index = array.indexOf(Index + 1);
+
+      const ringteeth = [1, 2, 15, 16, 17, 18, 31, 32];
 
       if (
         (key > 0 && key < 6) ||
@@ -224,34 +300,46 @@ const Teeth = ({
         (key > 27 && key < 33)
       ) {
         if (index !== -1) {
+          // Check if the key is in ringteeth
+          const isKeyInRingteeth = ringteeth.includes(Number(key));
+
+          // Condition for showing the error
           if (
-            index === 0 &&
-            key < 17 &&
-            selectRetention.occlusallyType === "ring"
+            (index === 0 &&
+              !isKeyInRingteeth &&
+              selectRetention.occlusallyType === "ring") ||
+            (index === 1 &&
+              !isKeyInRingteeth &&
+              selectRetention.occlusallyType === "ring")
           ) {
-            alert("you cant add ring clasp for this teeth");
-            break;
-          } else if (
-            index === 1 &&
-            key > 16 &&
-            selectRetention.occlusallyType === "ring"
-          ) {
-            alert("you cant add ring clasp for this rest");
+            toast.error("Error: you can't add ring clasp for this rest");
             break;
           }
-          index === 0
-            ? setZindex({
-                up: 8,
-                down:
-                  selectRetention.occlusallyType === "circumferential" ? 10 : 9,
-                ring: selectRetention.occlusallyType === "ring" ? 10 : 9,
-              })
-            : setZindex({
-                up:
-                  selectRetention.occlusallyType === "circumferential" ? 10 : 9,
-                ring: selectRetention.occlusallyType === "ring" ? 10 : 9,
-                down: 8,
-              });
+          if (selectRetention.retentionType) {
+            index === 0
+              ? setZindex({
+                  up: 7,
+                  down:
+                    selectRetention.occlusallyType === "circumferential"
+                      ? 9
+                      : 8,
+                  ring: selectRetention.occlusallyType === "ring" ? 9 : 8,
+                })
+              : setZindex({
+                  up:
+                    selectRetention.occlusallyType === "circumferential"
+                      ? 9
+                      : 8,
+                  ring: selectRetention.occlusallyType === "ring" ? 9 : 8,
+                  down: 7,
+                });
+          }
+          if (selectClasp.edit || selectPlate.edit) {
+            console.log("clicked");
+            index === 0
+              ? setZindex({ up: 7, down: 9 })
+              : setZindex({ up: 9, down: 7 });
+          }
           setselectedTeethbyRest(key - 1);
         }
       }
@@ -314,7 +402,6 @@ const Teeth = ({
           return selectedTeethbyRest - 12 === adjustIndex;
         }
       })();
-      console.log("correct :", adjustIndex);
 
       const ringteethmissing =
         (((selectedTeethbyRest === 1 || selectedTeethbyRest === 17) &&
@@ -331,27 +418,29 @@ const Teeth = ({
           (selectRetention.retentionType === "occlusally" &&
             selectRetention.occlusallyType === "circumferential" &&
             Circumferential.array.includes(retentionImage)) ||
-          (selectRetention.retentionType === Gingivally.type &&
-            Gingivally.array.includes(retentionImage));
+          (selectRetention.retentionType === gingivally.type &&
+            gingivally.array.includes(retentionImage));
 
         if (retentionTypeMatches) {
           retentionArray[index] = !retentionArray[index];
         } else {
-          alert(
-            `Error: You can only select ${selectRetention.retentionType} retentions.`
+          toast.error(
+            "Error: You can only select " +
+              selectRetention.retentionType +
+              " retentions."
           );
         }
       } else {
         if (!isCorrectSide) {
-          alert(
+          toast.error(
             "Error: Retention must be added to the correct side of the undercut."
           );
         } else if (!isRestselect) {
-          alert("Error: You mus select start point.");
+          toast.error("Error: You mus select start point.");
         } else if (!correctTeeth) {
-          alert("Error: Add retention to the correct teeth.");
+          toast.error("Error: Add retention to the correct teeth.");
         } else if (ringteethmissing) {
-          alert("Error: you cant add ring clasp for this teeth");
+          toast.error("Error: you cant add ring clasp for this teeth");
         }
       }
 
@@ -363,8 +452,10 @@ const Teeth = ({
     setRestselect(false);
     setselectedTeethbyRest(null);
   }, [selectedRetention]);
+  useEffect(() => {
+    setZindex({ up: 4, down: 4, ring: 4 });
+  }, [selectRetention.retentionType]);
 
-  console.log("selected :", selectRetention.selectretention);
   const indexExchangeforUndercut = (index, label) => {
     if (label == "in") {
       if (index >= 0 && index < 5) {
@@ -384,6 +475,108 @@ const Teeth = ({
       }
     }
     return index;
+  };
+
+  useEffect(() => {
+    setRestselect(false);
+    setselectedTeethbyRest(null);
+    setfirstbuttoncliked(Array(32).fill(false));
+  }, [selectedClasps, selectedGingivally]);
+
+  const handleClaspClick = (index, UporDown) => {
+    setSelectedClasp((prevState) => {
+      const newState = { ...prevState };
+      const claspImage =
+        UporDown === "up" ? ClaspUpImages[index] : ClaspDownImages[index];
+
+      const claspArray =
+        UporDown === "up" ? newState.upClasp1 : newState.downClasp1;
+
+      // Calculate the adjustIndex based on the tooth position
+      const adjustIndex = (() => {
+        if (UporDown === "up") {
+          if (index < 20) {
+            return index % 2 === 0 ? index / 2 : (index - 1) / 2;
+          } else {
+            return index % 2 === 0 ? (index + 2) / 2 : (index + 1) / 2;
+          }
+        } else if (UporDown === "down") {
+          if (index < 16) {
+            return index % 2 === 0 ? (index + 2) / 2 : (index + 1) / 2;
+          } else {
+            return index % 2 === 0 ? (index + 4) / 2 : (index + 3) / 2;
+          }
+        }
+      })();
+
+      // Check if there's already a retention on the opposite side
+
+      const oppositeSideIndex = index % 2 === 0 ? index + 1 : index - 1;
+      console.log(
+        "adjusted :",
+        adjustIndex,
+        "index :",
+        index,
+        "oppositeSideIndex :",
+        oppositeSideIndex
+      );
+      const oppositeSideRetention =
+        UporDown === "up"
+          ? selectedRetention.upClasp[oppositeSideIndex]
+          : selectedRetention.downClasp[oppositeSideIndex];
+      console.log(
+        "adjusted :",
+        adjustIndex,
+        "index :",
+        index,
+        "oppositeSideIndex :",
+        oppositeSideIndex,
+        "oppositeSideRetention :",
+        oppositeSideRetention
+      );
+      const isOppositeSideRetentionPresent = oppositeSideRetention === true;
+
+      const correctTeeth = (() => {
+        if (selectedTeethbyRest < 5) {
+          return selectedTeethbyRest === adjustIndex;
+        } else if (selectedTeethbyRest > 10 && selectedTeethbyRest < 21) {
+          return selectedTeethbyRest - 6 === adjustIndex;
+        } else if (selectedTeethbyRest > 26 && selectedTeethbyRest < 32) {
+          return selectedTeethbyRest - 12 === adjustIndex;
+        }
+      })();
+
+      if (isOppositeSideRetentionPresent && isRestselect && correctTeeth) {
+        if (
+          (!claspArray[oppositeSideIndex] &&
+            ClaspUpImages.includes(claspImage)) ||
+          (!claspArray[oppositeSideIndex] &&
+            ClaspDownImages.includes(claspImage))
+        ) {
+          claspArray[index] = !claspArray[index];
+        }
+      } else {
+        if (
+          UporDown === "up"
+            ? selectedRetention.upClasp[index]
+            : selectedRetention.downClasp[index]
+        ) {
+          toast.error(
+            "Error: Clasp cannot be added to the same side as an existing retention."
+          );
+        } else if (!isOppositeSideRetentionPresent) {
+          toast.error(
+            "Error: You must add the retention to the opposite side first."
+          );
+        } else if (!isRestselect) {
+          toast.error("Error: You must select a start point.");
+        } else {
+          toast.error("Error: Add clasp to the correct teeth.");
+        }
+      }
+
+      return newState;
+    });
   };
 
   return (
@@ -429,6 +622,53 @@ const Teeth = ({
       ))}
 
       {Array.from({ length: 36 }, (_, index) => (
+        <div
+          className="gingivally-btn-container"
+          style={{ width: "0", height: "0" }}
+          id={`gingivally-btn-container-${index + 1}`}
+        >
+          <button
+            className="gingivally-btn2"
+            id={`gingivally-btn2-${index + 1}`}
+            onClick={() => handlefirstButton(index)}
+            style={{
+              zIndex:
+                selectRetention.retentionType === "gingivally" ? "12" : "4",
+              display:
+                selectRetention.retentionType === "gingivally"
+                  ? "block"
+                  : "none",
+            }}
+          ></button>
+          <button
+            key={index}
+            className={`gingivally-btn ${
+              selectedGingivally[index] ? "selected" : ""
+            }`}
+            id={`gingivally-btn-${index + 1}`}
+            onClick={() => {
+              firstbuttoncliked[index] ? handleGingivallyClick(index) : "";
+            }}
+            style={{
+              opacity: selectedGingivally[index] ? "1" : "0",
+              zIndex:
+                selectRetention.retentionType === "gingivally" ? "11" : "3",
+              cursor:
+                selectRetention.retentionType === "gingivally"
+                  ? "pointer"
+                  : "default",
+            }}
+            disabled={selectRetention.retentionType !== "gingivally"}
+          >
+            <img
+              src={gingivallyImages[index]}
+              alt={`Gingivally ${index + 1}`}
+            />
+          </button>
+        </div>
+      ))}
+
+      {Array.from({ length: 36 }, (_, index) => (
         <button
           key={index}
           className={`retention-upbtn ${
@@ -441,7 +681,7 @@ const Teeth = ({
               : ""
           }
           style={{
-            zIndex: zindex.up,
+            zIndex: selectRetention.retentionType ? zindex.up : "4",
             opacity: selectedRetention.upClasp[index] ? "1" : "0",
             display: selectRetention.selectretention ? "block" : "none",
           }}
@@ -464,7 +704,7 @@ const Teeth = ({
               : ""
           }
           style={{
-            zIndex: zindex.down,
+            zIndex: selectRetention.retentionType ? zindex.down : "4",
 
             opacity: selectedRetention.downClasp[index] ? "1" : "0",
             display: selectRetention.selectretention ? "block" : "none",
@@ -491,12 +731,12 @@ const Teeth = ({
               : ""
           }
           style={{
-            zIndex: zindex.ring,
+            zIndex: selectRetention.retentionType ? zindex.ring : "4",
 
             opacity: selectedRetention.ringClasp[index] ? "1" : "0",
             display: selectRetention.selectretention ? "block" : "none",
           }}
-          disabled={zindex.ring === 9}
+          disabled={zindex.ring === 8}
         >
           <img
             src={RetentionRingImages[index]}
@@ -505,7 +745,7 @@ const Teeth = ({
         </button>
       ))}
 
-      {Array.from({ length: 56 }, (_, index) => (
+      {Array.from({ length: 62 }, (_, index) => (
         <button
           key={index}
           className={`rest-btn ${selectedRests[index] ? "selected" : ""}`}
@@ -532,11 +772,54 @@ const Teeth = ({
           id={`plate-btn-${index + 1}`}
           onClick={() => (selectPlate.edit ? handlePlateClick(index) : "")}
           style={{
+            zIndex: selectPlate.edit ? "9" : "4",
             display: selectPlate.view ? "block" : "none",
             opacity: selectedPlates[index] ? "1" : "0",
           }}
         >
           <img src={PlateImages[index]} alt={`Plate ${index + 1}`} />
+        </button>
+      ))}
+
+      {Array.from({ length: 36 }, (_, index) => (
+        <button
+          key={index}
+          className={`clasp-upbtn ${
+            selectedClasps.upClasp1[index] ? "selected" : ""
+          }`}
+          id={`clasp-upbtn-${index + 1}`}
+          onClick={() =>
+            selectClasp.edit ? handleClaspClick(index, "up") : ""
+          }
+          style={{
+            zIndex: selectClasp.edit ? zindex.up : "4",
+            opacity: selectedClasps.upClasp1[index] ? "1" : "0",
+            display: selectClasp.view ? "block" : "none",
+          }}
+          disabled={zindex.up === 7}
+        >
+          <img src={ClaspUpImages[index]} alt={`Clasp ${index + 1}`} />
+        </button>
+      ))}
+
+      {Array.from({ length: 36 }, (_, index) => (
+        <button
+          key={index}
+          className={`clasp-downbtn ${
+            selectedClasps.downClasp1[index] ? "selected" : ""
+          }`}
+          id={`clasp-downbtn-${index + 1}`}
+          onClick={() =>
+            selectClasp.edit ? handleClaspClick(index, "down") : ""
+          }
+          style={{
+            zIndex: selectClasp.edit ? zindex.down : "4",
+            opacity: selectedClasps.downClasp1[index] ? "1" : "0",
+            display: selectClasp.view ? "block" : "none",
+          }}
+          disabled={zindex.down === 7}
+        >
+          <img src={ClaspDownImages[index]} alt={`Clasp ${index + 1}`} />
         </button>
       ))}
 
@@ -586,6 +869,19 @@ const Teeth = ({
           </button>
         </div>
       ))}
+      <ToastContainer
+        position="top-center"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+        transition={Bounce}
+      />
     </div>
   );
 };

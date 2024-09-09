@@ -18,11 +18,10 @@ function AddSaddles() {
     missingteeth: null,
     undercuts: null,
     plates: null,
+    clasps: null,
+    gingivally: null,
   });
 
-  const handleClick = (path) => {
-    navigate(path, { state: { userdata } });
-  };
   const handleundercutVisibility = (visibleundercut) => {
     setVisibleundercut({
       canEdit: !visibleundercut.canEdit,
@@ -39,6 +38,8 @@ function AddSaddles() {
       missingteeth: data.teeths ? data.teeths : null,
       undercuts: data.undercuts ? data.undercuts : null,
       plates: data.plates ? data.plates : null,
+      clasps: data.clasps ? data.clasps : null,
+      gingivally: data.gingivally ? data.gingivally : null,
     });
   };
 
@@ -57,7 +58,7 @@ function AddSaddles() {
           <div className="Questionbox">
             <button
               className="skipButton"
-              onClick={() => handleClick("/addSaddles")}
+              onClick={() => navigate("/addSaddles", { state: { userdata } })}
             >
               <div className="skipButtonText">
                 <span className="skipButtonText">Skip</span>
@@ -67,7 +68,7 @@ function AddSaddles() {
               className="addRests"
               onClick={() =>
                 navigate("/addRests", {
-                  state: { selectedData },
+                  state: { selectedData, userdata },
                 })
               }
             >
@@ -108,6 +109,7 @@ function AddSaddles() {
                 setData={setData}
                 DentureData={selectedData}
                 selectPlate={{ view: false }}
+                selectClasp={{ view: false }}
                 selectRetention={{ selectRetention: false }}
               />
             </div>

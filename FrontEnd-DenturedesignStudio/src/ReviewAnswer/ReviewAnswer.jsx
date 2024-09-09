@@ -10,16 +10,17 @@ function Reviewanswer() {
   const navigate = useNavigate();
   const location = useLocation();
   const selectedData = location.state?.selectedData;
+  const userdata = location.state?.userdata;
   const curves = location.state?.curves;
   console.log(curves?.uppercurve);
 
   return (
     <div className="designPage">
-      <Home onClick={() => navigate("/studenthome")} />
+      <Home onClick={() => navigate("/studenthome", { state: { userdata } })} />
       <BackComp
         onClick={() =>
           navigate("/AddConnectors", {
-            state: { curves, selectedData },
+            state: { curves, selectedData, userdata },
           })
         }
       />
@@ -38,6 +39,7 @@ function Reviewanswer() {
           value={{ canEdit: false, visible: true }}
           selectPlate={{ view: true }}
           selectRetention={{ selectretention: true }}
+          selectClasp={{ view: true }}
         />
         <ReviewCanvas drewcurves={curves} />
       </div>
@@ -47,7 +49,7 @@ function Reviewanswer() {
             Name={"Add Rests"}
             Pagetogo={() =>
               navigate("/addRests", {
-                state: { selectedData },
+                state: { selectedData, curves, fromReview: true, userdata },
               })
             }
           />
@@ -55,20 +57,30 @@ function Reviewanswer() {
         <div id="Addretention">
           <Gotobutton
             Name={"Add Retentions"}
-            Pagetogo={() => navigate("/addRetentions")}
+            Pagetogo={() =>
+              navigate("/addRetentions", {
+                state: { selectedData, curves, fromReview: true, userdata },
+              })
+            }
           />
         </div>
         <div id="Addreciprocation">
           <Gotobutton
             Name={"Add Reciprocation"}
-            Pagetogo={() => navigate("/addReciprocations")}
+            Pagetogo={() =>
+              navigate("/addReciprocations", {
+                state: { selectedData, curves, fromReview: true, userdata },
+              })
+            }
           />
         </div>
         <div id="Addconnectors">
           <Gotobutton
             Name={"Add Connectors"}
             Pagetogo={() =>
-              navigate("/addConnectors", { state: { curves, selectedData } })
+              navigate("/addConnectors", {
+                state: { curves, selectedData, fromReview: true, userdata },
+              })
             }
           />
         </div>
@@ -77,7 +89,7 @@ function Reviewanswer() {
         className="FinishDesigning"
         onClick={() =>
           navigate("/modelanswer", {
-            state: { curves, selectedData },
+            state: { curves, selectedData, userdata },
           })
         }
       >

@@ -1,0 +1,320 @@
+.teethBackground2 .clasp-upbtn {
+  position: absolute;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border: none;
+  cursor: pointer;
+  background: transparent;
+
+  margin: 0;
+  padding: 0;
+  width: 1vw;
+  height: 1vw;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+  img {
+    height: auto;
+  }
+}
+
+.clasp-upbtn:hover {
+  opacity: 0.6; /*reduced opacity on hover */
+}
+
+/*Circumferential*/
+
+/*Upper left*/
+
+#clasp-upbtn-1 {
+  left: 25%;
+  top: 41%;
+  img {
+    width: 2vw;
+  }
+}
+
+#clasp-upbtn-2 {
+  left: 19%;
+  top: 41%;
+  img {
+    width: 1.7vw;
+  }
+}
+
+#clasp-upbtn-3 {
+  left: 26%;
+  top: 34%;
+  img {
+    width: 2vw;
+  }
+}
+
+#clasp-upbtn-4 {
+  left: 19%;
+  top: 33%;
+  img {
+    width: 2vw;
+  }
+}
+
+#clasp-upbtn-5 {
+  left: 28%;
+  top: 26.5%;
+  img {
+    width: 2vw;
+  }
+}
+
+#clasp-upbtn-6 {
+  left: 21%;
+  top: 25.5%;
+  img {
+    width: 2vw;
+  }
+}
+
+#clasp-upbtn-7 {
+  left: 29%;
+  top: 21.5%;
+  img {
+    width: 1.5vw;
+  }
+}
+
+#clasp-upbtn-8 {
+  left: 22.5%;
+  top: 20.5%;
+  img {
+    width: 1.8vw;
+  }
+}
+
+#clasp-upbtn-9 {
+  left: 31%;
+  top: 16%;
+  img {
+    width: 1.5vw;
+  }
+}
+
+#clasp-upbtn-10 {
+  left: 23.6%;
+  top: 15%;
+  img {
+    width: 1.8vw;
+  }
+}
+
+/*Upper right*/
+
+#clasp-upbtn-11 {
+  left: 66%;
+  top: 16%;
+  img {
+    width: 1.3vw;
+  }
+}
+
+#clasp-upbtn-12 {
+  left: 71%;
+  top: 15%;
+  img {
+    width: 2vw;
+  }
+}
+
+#clasp-upbtn-13 {
+  left: 68%;
+  top: 21%;
+  img {
+    width: 1.5vw;
+  }
+}
+
+#clasp-upbtn-14 {
+  left: 73%;
+  top: 20%;
+  img {
+    width: 2vw;
+  }
+}
+
+#clasp-upbtn-15 {
+  left: 67%;
+  top: 26%;
+  img {
+    width: 2.1vw;
+  }
+}
+
+#clasp-upbtn-16 {
+  left: 74%;
+  top: 25.5%;
+  img {
+    width: 2vw;
+  }
+}
+
+#clasp-upbtn-17 {
+  left: 69%;
+  top: 33.5%;
+  img {
+    width: 2.3vw;
+  }
+}
+
+#clasp-upbtn-18 {
+  left: 76%;
+  top: 33%;
+  img {
+    width: 2vw;
+  }
+}
+
+#clasp-upbtn-19 {
+  left: 70%;
+  top: 40%;
+  img {
+    width: 1.8vw;
+  }
+}
+
+#clasp-upbtn-20 {
+  left: 76.5%;
+  top: 40.5%;
+  img {
+    width: 1.8vw;
+  }
+}
+
+/*Lower left*/
+
+#clasp-upbtn-21 {
+  left: 67%;
+  top: 60%;
+  img {
+    width: 2vw;
+  }
+}
+
+#clasp-upbtn-22 {
+  left: 75%;
+  top: 60.5%;
+  img {
+    width: 2vw;
+  }
+}
+
+#clasp-upbtn-23 {
+  left: 66%;
+  top: 68%;
+  img {
+    width: 2vw;
+  }
+}
+
+#clasp-upbtn-24 {
+  left: 74%;
+  top: 68%;
+  img {
+    width: 2vw;
+  }
+}
+
+#clasp-upbtn-25 {
+  left: 67%;
+  top: 76%;
+  img {
+    width: 1.5vw;
+  }
+}
+
+#clasp-upbtn-26 {
+  left: 72.5%;
+  top: 76.5%;
+  img {
+    width: 1.7vw;
+  }
+}
+
+#clasp-upbtn-27 {
+  left: 64%;
+  top: 81.5%;
+  img {
+    width: 1.8vw;
+  }
+}
+
+#clasp-upbtn-28 {
+  left: 70%;
+  top: 82.5%;
+  img {
+    width: 1.5vw;
+  }
+}
+
+/*Lower right*/
+
+#clasp-upbtn-29 {
+  left: 30%;
+  top: 82%;
+  img {
+    width: 2vw;
+  }
+}
+
+#clasp-upbtn-30 {
+  left: 26.2%;
+  top: 82.5%;
+  img {
+    width: 1.2vw;
+  }
+}
+
+#clasp-upbtn-31 {
+  left: 29.5%;
+  top: 76%;
+  img {
+    width: 2vw;
+  }
+}
+
+#clasp-upbtn-32 {
+  left: 23.6%;
+  top: 76.5%;
+  img {
+    width: 1.5vw;
+  }
+}
+
+#clasp-upbtn-33 {
+  left: 28%;
+  top: 68.5%;
+  img {
+    width: 2.1vw;
+  }
+}
+
+#clasp-upbtn-34 {
+  left: 21%;
+  top: 68.5%;
+  img {
+    width: 2vw;
+  }
+}
+
+#clasp-upbtn-35 {
+  left: 27%;
+  top: 60%;
+  img {
+    width: 2vw;
+  }
+}
+
+#clasp-upbtn-36 {
+  left: 19%;
+  top: 60%;
+  img {
+    width: 2.3vw;
+  }
+}
