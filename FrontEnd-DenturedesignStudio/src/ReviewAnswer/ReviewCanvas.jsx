@@ -155,7 +155,6 @@ function ReviewCanvas({ drewcurves }) {
       window.removeEventListener("resize", handleresize);
     };
   }, [curves, lowercurves, lowerMinorcurve]);
-  console.log(drewcurves);
 
   return (
     <canvas
