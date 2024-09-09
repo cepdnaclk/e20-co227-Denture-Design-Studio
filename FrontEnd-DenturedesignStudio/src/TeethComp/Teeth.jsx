@@ -93,6 +93,7 @@ const Teeth = ({
     25: [55],
     26: [56],
   };
+  console.log(`in the teeth componet ${setMissingtooth}`, setMissingtooth);
 
   const handleToothClick = (index) => {
     if (setMissingtooth) {

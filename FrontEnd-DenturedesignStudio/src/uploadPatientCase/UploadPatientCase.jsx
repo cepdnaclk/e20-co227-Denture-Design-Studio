@@ -1,15 +1,37 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import "./UploadPatientCase.css";
 import Home from "../homebutton/home";
 import CreateUploadButton from "../CreateUploadButton/CreateUploadButton";
 import BackComp from "../backComp/backComp";
-function AssessorCreatePatientStep2() {
-  const navigate = useNavigate();
+import Teeth from "../TeethComp/Teeth";
 
-  function handleClick(path) {
-    navigate(path);
-  }
+function UploadPatientCase() {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const userdata = location.state?.userdata;
+  const [missingtooth, setMissingtooth] = useState(true);
+  const [selectedData, setSelectedData] = useState({
+    restdata: null,
+    missingteeth: null,
+    undercuts: null,
+    plates: null,
+  });
+
+  const handleClick = (path) => {
+    navigate(path, { state: { userdata } });
+  };
+
+  const setData = (data) => {
+    setSelectedData({
+      restdata: data.rests ? data.rests : null,
+      missingteeth: data.teeths ? data.teeths : null,
+      undercuts: data.undercuts ? data.undercuts : null,
+      plates: data.plates ? data.plates : null,
+    });
+  };
+  console.log({ missingtooth });
+  console.log("Selected data before navigating:", selectedData);
 
   return (
     <div className="CreatePatientCase2">
@@ -20,7 +42,17 @@ function AssessorCreatePatientStep2() {
           rel="stylesheet"
           href="https://fonts.googleapis.com/css2?family=Salsa&display=swap"
         />
-        <div className="teethBackground"></div>
+        <div className="teethBackground">
+          <Teeth
+            setMissingtooth={true}
+            value={{ canEdit: false, visible: false }}
+            selectRest={false}
+            setData={setData}
+            DentureData={selectedData}
+            selectPlate={{ view: false }}
+            selectRetention={{ selectRetention: false }}
+          />
+        </div>
         <div className="rectangle1"></div>
         <div className="rectangle2"></div>
         <div className="text">
@@ -32,14 +64,16 @@ function AssessorCreatePatientStep2() {
           </h1>
         </div>
       </div>
-      <div id="create1">
-        <CreateUploadButton
-          Name="Add Undercuts"
-          Pagetogo="/assessorcreatepatientcase"
-        />
-      </div>
+      <button
+        className="Create"
+        onClick={() =>
+          navigate("/asessorcreatepatientcase", { state: { selectedData } })
+        }
+      >
+        Add Undercut
+      </button>
     </div>
   );
 }
 
-export default AssessorCreatePatientStep2;
+export default UploadPatientCase;
