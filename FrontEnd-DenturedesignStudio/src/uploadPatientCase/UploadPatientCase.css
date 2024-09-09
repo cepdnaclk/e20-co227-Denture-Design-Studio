@@ -4,6 +4,7 @@
   height: 100vh;
   margin: 0;
   overflow: hidden;
+  z-index: 0;
 }
 
 .CreatePatientCase2::before {
