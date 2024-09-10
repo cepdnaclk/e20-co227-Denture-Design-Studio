@@ -18,10 +18,7 @@ const userProgressschema = new Schema({
     type: Number,
     default: 0,
   },
-  createTime: {
-    type: Number,
-    default: 0,
-  },
+
   solveTime: {
     type: Number,
     default: 0,
