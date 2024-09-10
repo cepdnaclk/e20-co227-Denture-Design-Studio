@@ -1,5 +1,5 @@
 import "./UploadeAnswerandMaterial.css";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import Home from "../homebutton/home";
 import BackComp from "../backComp/backComp";
 import React, { useState } from "react";
@@ -11,13 +11,39 @@ import Swal from "sweetalert2";
 
 function UploadeAnswerandMaterial() {
   let navigate = useNavigate();
+  const location = useLocation();
+  const typeselect = location.state?.typeselect;
 
-  const [isImageUpload, setisImageUpload] = useState("");
+  const [isImageUpload, setisImageUpload] = useState(false);
   const [isAddDescriptionOpen, setIsAddDescriptionOpen] = useState(false);
   const [isAddAnswerOpen, setIsAddAnswerOpen] = useState(false);
   const [isAddMaterialsOpen, setIsAddMaterialsOpen] = useState(false);
   const [isAddImageOpen, setIsAddImageOpen] = useState(false);
-
+  const [selectedData, setSelectedData] = useState(
+    location.state?.selectedData
+      ? {
+          retentiondata: null,
+          missingteeth: location.state?.selectedData.missingteeth,
+          undercuts: location.state?.selectedData.undercuts,
+          restdata: location.state?.selectedData.restdata,
+        }
+      : {
+          retentiondata: null,
+          restdata: null,
+          missingteeth: null,
+          undercuts: null,
+        }
+  );
+  console.log(selectedData);
+  const setData = (data) => {
+    setSelectedData({
+      restdata: data.rests ? data.rests : null,
+      missingteeth: data.teeths ? data.teeths : null,
+      undercuts: data.undercuts ? data.undercuts : null,
+      plates: data.plates ? data.plates : null,
+      retentiondata: data.retentions ? data.retentions : null,
+    });
+  };
   function handleClick(path) {
     if (path == "/assessorhome" && !isImageUpload) {
       Swal.fire({
@@ -61,22 +87,33 @@ function UploadeAnswerandMaterial() {
     setIsAddImageOpen(true);
     document.body.classList.remove("active-popup");
   };
+  console.log(isImageUpload);
+
   return (
     <div className="designPage">
       <Home onClick={() => handleClick("/assessorhome")}></Home>
       <BackComp
-        onClick={() => handleClick("/assessorcreatepatientcase")}
+        onClick={() => handleClick("/asessorcreatepatientcase")}
       ></BackComp>
       <link
         rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Salsa&display=swap"
       />
-
       <h1 className="UAMHeader">Upload Answer/ Material/ Description</h1>
-
-      <div className="UAMTeethBackground">
-        <Teeth click={(index) => console.log(`Clicked tooth ${index}`)} />
+      <div className="teethBackground">
+        <Teeth
+          setMissingtooth={false}
+          selectRest={{ selectrest: false }}
+          DentureData={selectedData}
+          setData={setData}
+          click={(index) => console.log(`Clicked tooth ${index}`)}
+          value={{ canEdit: false, visible: true }}
+          selectPlate={{ view: false }}
+          selectRetention={{ selectretention: false }}
+          selectClasp={{ edit: false }}
+        />
       </div>
+
       <div className="UAMButtonsbox">
         <button className="UAMButtons" id="Addanswer" onClick={openAddAnswer}>
           Add Answer
@@ -87,7 +124,7 @@ function UploadeAnswerandMaterial() {
             openAddImage={openAddImage}
             isAddImageOpen={isAddImageOpen}
             closeAddImage={closeAddAnswer}
-            setisImageUpload={setisImageUpload}
+            setisImageUpload={(state) => setisImageUpload(state)}
           />
         )}
 

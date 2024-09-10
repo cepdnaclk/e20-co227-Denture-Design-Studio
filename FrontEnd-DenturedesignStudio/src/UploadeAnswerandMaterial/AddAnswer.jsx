@@ -7,12 +7,12 @@ const AddAnswer = ({
   openAddImage,
   isAddImageOpen,
   closeAddImage,
-  setisImageUploaded,
+  setisImageUpload,
 }) => {
   let navigate = useNavigate();
   const [isImageUpload, setIsImageUpload] = useState(false);
-  setisImageUploaded = isImageUpload;
-
+  setisImageUpload(isImageUpload);
+  console.log(isImageUpload);
   return (
     <div className="AAoverly">
       <div className="AAcontent">
@@ -26,7 +26,7 @@ const AddAnswer = ({
         {isAddImageOpen && (
           <AddImage
             handleClose={closeAddImage}
-            setIsImageUpload={setIsImageUpload}
+            setIsImageUpload={(state) => setIsImageUpload(state)}
           />
         )}
         <button className="AADesign" onClick={() => navigate("/addSaddles")}>

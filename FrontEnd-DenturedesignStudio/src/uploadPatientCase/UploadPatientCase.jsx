@@ -50,6 +50,7 @@ function UploadPatientCase() {
             DentureData={selectedData}
             selectPlate={{ view: false }}
             selectRetention={{ selectRetention: false }}
+            selectClasp={{ edit: false }}
           />
         </div>
         <div className="rectangle1"></div>
