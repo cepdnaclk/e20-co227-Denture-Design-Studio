@@ -50,7 +50,7 @@ function AssessorCreatePatientStep2() {
         />
         <div className="teethBackground">
           <Teeth
-            setMissingtooth={true}
+            setMissingtooth={false}
             selectRest={{ selectrest: false }}
             DentureData={selectedData}
             setData={setData}
@@ -58,6 +58,7 @@ function AssessorCreatePatientStep2() {
             value={{ canEdit: true, visible: true }}
             selectPlate={{ view: false }}
             selectRetention={{ selectretention: false }}
+            selectClasp={{ edit: false }}
           />
         </div>
         <div className="rectangle1"></div>
@@ -71,14 +72,14 @@ function AssessorCreatePatientStep2() {
           </h1>
         </div>
       </div>
-      <div id="create1">
-        {" "}
-        {/* Fixed the id to be without the # symbol */}
-        <CreateUploadButton
-          Name="Create & Upload"
-          Pagetogo="/uploadanswerandmaterial"
-        />
-      </div>
+      <button
+        className="Create"
+        onClick={() =>
+          navigate("/uploadanswerandmaterial", { state: { selectedData } })
+        }
+      >
+        Create & Upload
+      </button>
     </div>
   );
 }

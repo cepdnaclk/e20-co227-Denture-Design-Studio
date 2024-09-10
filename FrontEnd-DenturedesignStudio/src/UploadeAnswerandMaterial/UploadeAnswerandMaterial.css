@@ -23,8 +23,13 @@
 
 .UAMTeethBackground {
   position: absolute;
-  left: -15vw;
-  top: 2.152vw;
+  width: 20vw;
+  height: 35vw;
+  left: 19vw;
+  top: 6vw;
+  background: #d3ecff;
+  border-radius: 3.34vw;
+  z-index: 0;
 }
 
 .UAMButtons {

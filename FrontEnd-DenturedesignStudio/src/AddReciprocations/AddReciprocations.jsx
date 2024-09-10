@@ -1,11 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import "./AddReciprocations.css";
 import Home from "../homebutton/home";
 import BackComp from "../backComp/backComp";
 import Teeth from "../TeethComp/Teeth";
 import ReviewCanvas from "../ReviewAnswer/ReviewCanvas";
-
+import { useTime } from "../Timecontext";
+import axios from "axios";
 function AddReciprocations() {
   let navigate = useNavigate();
   const location = useLocation();
@@ -37,6 +38,78 @@ function AddReciprocations() {
           gingivally: null,
         }
   );
+  const user_name = userdata?.user_name;
+  const { setWatchVideoTime } = useTime();
+  const startTimeRef = useRef(null);
+  const [currentsolvetime, setCurrentSolveTime] = useState(0);
+  const [isActive, setIsActive] = useState(true); // Track if user is active
+  const inactivityTimeoutRef = useRef(null);
+  const [lastActiveTime, setLastActiveTime] = useState(Date.now()); // Track the last time user was active
+
+  // Handle user activity (mouse movement)
+  const handleUserActivity = () => {
+    if (!isActive) {
+      startTimeRef.current += Date.now() - lastActiveTime;
+    }
+
+    setIsActive(true);
+    setLastActiveTime(Date.now());
+
+    clearTimeout(inactivityTimeoutRef.current);
+    inactivityTimeoutRef.current = setTimeout(() => {
+      setIsActive(false);
+      setLastActiveTime(Date.now());
+    }, 30 * 1000);
+  };
+
+  useEffect(() => {
+    startTimeRef.current = Date.now();
+
+    axios
+      .post("http://localhost:5000/progress/get", { user_name })
+      .then((response) => {
+        const currentSolveTime = response.data.progress.solveTime;
+        setCurrentSolveTime(currentSolveTime);
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
+
+    console.log("Current view time:", currentsolvetime);
+
+    window.addEventListener("mousemove", handleUserActivity);
+    window.addEventListener("keypress", handleUserActivity);
+    return () => {
+      const endTime = Date.now();
+      let timeSpent = Math.floor((endTime - startTimeRef.current) / 1000);
+      if (isActive) {
+        console.log("Time spent in session:", timeSpent);
+
+        if (timeSpent > 0) {
+          const newSolveTimem = timeSpent + currentsolvetime;
+          console.log("Updating lecture time:", newSolveTimem);
+
+          // Save the updated lecture time in the backend
+          axios
+            .put("http://localhost:5000/progress/edit", {
+              user_name,
+              solveTime: newSolveTimem,
+            })
+            .then((response) => {
+              console.log("Lecture time updated:", response.data);
+            })
+            .catch((err) => {
+              console.log(err.message);
+            });
+        }
+      }
+      window.removeEventListener("mousemove", handleUserActivity);
+      window.removeEventListener("keypress", handleUserActivity);
+      if (inactivityTimeoutRef.current) {
+        clearTimeout(inactivityTimeoutRef.current);
+      }
+    };
+  }, [user_name, setWatchVideoTime, currentsolvetime, isActive]);
   function handleClick(path) {
     navigate(path);
   }
@@ -51,7 +124,7 @@ function AddReciprocations() {
       gingivally: data.gingivally ? data.gingivally : null,
     });
   };
-  console.log(selectPlate, selectClasp);
+
   return (
     <>
       <div className="designPage">
