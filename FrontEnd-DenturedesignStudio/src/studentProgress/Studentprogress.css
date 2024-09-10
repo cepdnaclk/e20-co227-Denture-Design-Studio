@@ -241,7 +241,7 @@
 }
 
 .progress {
-  background: #21ebc7;
+  background: #238fb3;
   border-radius: 15px;
   width: 33.667vw;
   height: 1.67vw;
@@ -250,5 +250,6 @@
 
 .progress-inner {
   height: 100%;
-  background: #238fb3;
+  border-radius: 15px;
+  background: #21ebc7;
 }

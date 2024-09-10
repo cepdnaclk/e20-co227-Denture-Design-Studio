@@ -123,8 +123,9 @@ function ModelAnswer() {
             selectRetention={{ selectretention: true }}
             selectClasp={{ view: true }}
           />
+
+          <ReviewCanvas drewcurves={curves} />
         </div>
-        <ReviewCanvas drewcurves={curves} />
       </motion.div>
       <div className="ModelAnswerbuttons">
         <button

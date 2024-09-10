@@ -53,8 +53,8 @@ function Studentprogress() {
   const percentage = (lecturecomplete / totalLecture) * 100;
   const time = lecture_time + solveTime;
   console.log(lecture_time);
-  const lectureProgress = (lecture_time / time) * 100;
-  const solvingProgress = (solveTime / time) * 100;
+  const lectureProgress = (lecture_time / (time === 0 ? 1 : time)) * 100;
+  const solvingProgress = (solveTime / (time === 0 ? 1 : time)) * 100;
   return (
     <div className="studentprogress">
       <link
@@ -94,7 +94,7 @@ function Studentprogress() {
         </div>
         <div className="progress-bars">
           <div className="progress-bar">
-            <label>Lecture material : {lectureProgress}%</label>
+            <label>Lecture material : {lectureProgress.toFixed(2)}%</label>
             <div className="progress">
               <div
                 className="progress-inner"
@@ -104,7 +104,7 @@ function Studentprogress() {
           </div>
 
           <div className="progress-bar">
-            <label>Solving patient cases : {solvingProgress}%</label>
+            <label>Solving patient cases : {solvingProgress.toFixed(2)}%</label>
             <div className="progress">
               <div
                 className="progress-inner"

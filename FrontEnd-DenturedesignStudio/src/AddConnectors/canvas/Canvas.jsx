@@ -14,7 +14,7 @@ function DrawingCanvas({ connectortype, curvesData, drewcurves }) {
   const [activeCurve, setActiveCurve] = useState(null);
   const [draggingPoint, setDraggingPoint] = useState(null);
   const [selectedCurve, setSelectedCurve] = useState(null);
-  console.log(drewcurves, connectortype);
+
   useEffect(() => {
     drawAllCurves();
     curvesData(curves, lowercurves, lowerMinorcurve);

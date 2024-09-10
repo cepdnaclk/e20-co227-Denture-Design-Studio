@@ -31,7 +31,7 @@ const AddImage = ({ handleClose, setIsImageUpload }) => {
       },
       async () => {
         const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
-        console.log("File available at", downloadURL);
+        console.log("File available at", setIsImageUpload);
         Swal.fire({
           icon: "success",
           title: "Done",
@@ -40,7 +40,7 @@ const AddImage = ({ handleClose, setIsImageUpload }) => {
           color: "#d3ecff",
           confirmButtonColor: "#66d8d8",
         }).then(() => {
-          setIsImageUpload(false);
+          setIsImageUpload(true);
           handleClose();
         });
       }
