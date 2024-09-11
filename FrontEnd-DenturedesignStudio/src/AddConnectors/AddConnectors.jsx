@@ -2,11 +2,14 @@ import React, { useState, useEffect, useRef } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import "./AddConnectors.css";
 import Home from "../homebutton/home";
+import Demo from "../demobutton/demo";
 import BackComp from "../backComp/backComp";
 import Teeth from "../TeethComp/Teeth";
 import DrawingCanvas from "./canvas/Canvas";
 import { useTime } from "../Timecontext";
 import axios from "axios";
+import model from "../model.png";
+
 function AddConnectors() {
   let navigate = useNavigate();
   const location = useLocation();
@@ -114,7 +117,9 @@ function AddConnectors() {
               rel="stylesheet"
               href="https://fonts.googleapis.com/css2?family=Salsa&display=swap"
             />
-            <div className="Questionbox"></div>
+            <div className="Questionbox">
+            <img src={model} alt="Image description"/>
+            </div>
             <div className="teethBackground1">
               <button
                 className="Done"
