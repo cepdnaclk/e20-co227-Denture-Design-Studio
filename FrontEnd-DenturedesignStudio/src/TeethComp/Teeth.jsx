@@ -82,6 +82,7 @@ const Teeth = ({
   const [isRestselect, setRestselect] = useState(false);
   const [zindex, setZindex] = useState({ up: 4, down: 4, ring: 4 });
   const [selectedTeethbyRest, setselectedTeethbyRest] = useState(null);
+  console.log(selectedTeeth);
   const RestIndex = {
     1: [null, 1],
     2: [2, 3],
@@ -116,7 +117,6 @@ const Teeth = ({
     25: [55],
     26: [56],
   };
-  console.log(`in the teeth componet ${setMissingtooth}`, setMissingtooth);
 
   const handleToothClick = (index) => {
     if (setMissingtooth) {
@@ -212,20 +212,33 @@ const Teeth = ({
   const handleGingivallyClick = (index) => {
     setSelectedGingivally((prevState) => {
       const newState = [...prevState];
+      console.log("gingival index", index);
       if (index < 8 || (index > 15 && 24)) {
-        if (!selectedTeeth[index + 1]) {
+        const undercutpresent = (index) =>
+          selectedUnderCut[index + (index < 5 ? 1 : index < 21 ? 5 : 11)] !==
+          true;
+
+        if (!selectedTeeth[index + 1] && undercutpresent(index)) {
           newState[index] = !newState[index];
         } else {
           toast.error(
-            "Error: You cannot add a gingivally retention to this teeth ."
+            selectedTeeth[index + 1]
+              ? "Error: You cannot add a gingivally retention to missing teeth."
+              : "Error: You cannot add a gingivally retention to this teeth. Undercut is not in this side"
           );
         }
       } else {
-        if (!selectedTeeth[index - 1]) {
+        const undercutpresent = (index) =>
+          selectedUnderCut[index - (index < 5 ? 1 : index < 21 ? 7 : 13)] !==
+          true;
+
+        if (!selectedTeeth[index - 1] && undercutpresent(index)) {
           newState[index] = !newState[index];
         } else {
           toast.error(
-            "Error: You cannot add a gingivally retention to this teeth ."
+            selectedTeeth[index - 1]
+              ? "Error: You cannot add a gingivally retention to missing teeth."
+              : "Error: You cannot add a gingivally retention to this teeth. Undercut is not in this side"
           );
         }
       }
@@ -233,13 +246,13 @@ const Teeth = ({
       return newState;
     });
   };
+
   const handlefirstButton = (index) => {
     setfirstbuttoncliked((prevState) => {
       const newState = [...prevState];
       if (selectedTeeth[index]) {
         newState[index] = !newState[index];
       } else {
-        //alert(`Error: You cannot add a gingivally retention to this teeth .`);
         toast.error(
           "Error: You cannot add a gingivally retention to this teeth."
         );
@@ -684,8 +697,10 @@ const Teeth = ({
             zIndex: selectRetention.retentionType ? zindex.up : "4",
             opacity: selectedRetention.upClasp[index] ? "1" : "0",
             display: selectRetention.selectretention ? "block" : "none",
+
+            cursor: zindex.up === 9 ? "pointer" : "default",
           }}
-          disabled={zindex.up === 8}
+          disabled={zindex.up === 7}
         >
           <img src={RetentionUpImages[index]} alt={`Retention ${index + 1}`} />
         </button>
@@ -708,8 +723,9 @@ const Teeth = ({
 
             opacity: selectedRetention.downClasp[index] ? "1" : "0",
             display: selectRetention.selectretention ? "block" : "none",
+            cursor: zindex.down === 9 ? "pointer" : "default",
           }}
-          disabled={zindex.down === 8}
+          disabled={zindex.down === 7}
         >
           <img
             src={RetentionDownImages[index]}

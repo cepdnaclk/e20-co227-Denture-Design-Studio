@@ -1,17 +1,19 @@
-import React from "react";
+import { useState } from "react";
 import Myaccount from "../../myaccount/Myaccount";
 import Homecomp from "../../homecomp/Homecomp";
 import Exitbutton from "../../Exitbutton/Exitbutton";
 import "./Studenthome.css";
 import { useNavigate, useLocation } from "react-router-dom";
-
+import ActualorAssessor from "./ActualorAssessor";
 function Studenthome() {
   const location = useLocation();
   const userdata = location.state?.userdata;
   const username = userdata?.first_name;
   const role = "/studenthome";
   console.log(userdata);
-  let navigate = useNavigate();
+  const navigate = useNavigate();
+  const [solvecase, setsolvecase] = useState(false);
+
   return (
     <div className="studenthome">
       <Exitbutton />
@@ -27,7 +29,7 @@ function Studenthome() {
         <div id="studenth2">
           <Homecomp
             name={"Solve a Patient Case"}
-            click={() => navigate("/addSaddles", { state: { userdata } })}
+            click={() => setsolvecase(true)}
           />
         </div>
         <div id="studenth3">
@@ -44,6 +46,13 @@ function Studenthome() {
             click={() => navigate("/Viewprogress", { state: { userdata } })}
           />
         </div>
+        {solvecase && (
+          <ActualorAssessor
+            cancel={() => setsolvecase(false)}
+            solve={() => setsolvecase(false)}
+            userdata={userdata}
+          />
+        )}
       </div>
     </div>
   );
