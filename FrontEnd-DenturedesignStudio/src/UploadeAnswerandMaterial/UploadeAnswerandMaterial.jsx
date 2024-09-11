@@ -2,17 +2,21 @@ import "./UploadeAnswerandMaterial.css";
 import { useNavigate, useLocation } from "react-router-dom";
 import Home from "../homebutton/home";
 import BackComp from "../backComp/backComp";
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import AddDescription from "./AddDescription.jsx";
 import AddMaterial from "./AddMaterials.jsx";
 import AddAnswer from "./AddAnswer.jsx";
 import Teeth from "../TeethComp/Teeth.jsx";
 import Swal from "sweetalert2";
+import { storage } from "../../firebase.config.js";
+import { ref, uploadString } from "firebase/storage";
+import html2canvas from "html2canvas";
 
 function UploadeAnswerandMaterial() {
   let navigate = useNavigate();
   const location = useLocation();
   const typeselect = location.state?.typeselect;
+  const captureRef = useRef(null);
 
   const [isImageUpload, setisImageUpload] = useState(false);
   const [isAddDescriptionOpen, setIsAddDescriptionOpen] = useState(false);
@@ -45,7 +49,7 @@ function UploadeAnswerandMaterial() {
     });
   };
   function handleClick(path) {
-    if (path == "/assessorhome" && !isImageUpload) {
+    if (path == "/assessorhome" && isImageUpload) {
       Swal.fire({
         icon: "error",
         title: "Upload Required",
@@ -88,7 +92,27 @@ function UploadeAnswerandMaterial() {
     document.body.classList.remove("active-popup");
   };
   console.log(isImageUpload);
-
+  const storeImage = () => {
+    if (captureRef.current) {
+      html2canvas(captureRef.current, {
+        scale: window.devicePixelRatio,
+        useCORS: true,
+        willReadFrequently: true,
+      }).then((canvas) => {
+        const imgData = canvas.toDataURL("image/png");
+        const storageRef = ref(storage, `images/teeth_${Date.now()}.png`);
+        uploadString(storageRef, imgData, "data_url")
+          .then((snapshot) => {
+            console.log("Uploaded to Firebase successfully!");
+          })
+          .catch((error) => {
+            console.error("Error uploading to Firebase:", error);
+          });
+      });
+    } else {
+      console.error("Capture element not found");
+    }
+  };
   return (
     <div className="designPage">
       <Home onClick={() => handleClick("/assessorhome")}></Home>
@@ -101,17 +125,19 @@ function UploadeAnswerandMaterial() {
       />
       <h1 className="UAMHeader">Upload Answer/ Material/ Description</h1>
       <div className="teethBackground">
-        <Teeth
-          setMissingtooth={false}
-          selectRest={{ selectrest: false }}
-          DentureData={selectedData}
-          setData={setData}
-          click={(index) => console.log(`Clicked tooth ${index}`)}
-          value={{ canEdit: false, visible: true }}
-          selectPlate={{ view: false }}
-          selectRetention={{ selectretention: false }}
-          selectClasp={{ edit: false }}
-        />
+        <div ref={captureRef} style={{ width: "100%", maxWidth: "200vw" }}>
+          <Teeth
+            setMissingtooth={false}
+            selectRest={{ selectrest: false }}
+            DentureData={selectedData}
+            setData={setData}
+            click={(index) => console.log(`Clicked tooth ${index}`)}
+            value={{ canEdit: false, visible: true }}
+            selectPlate={{ view: false }}
+            selectRetention={{ selectretention: false }}
+            selectClasp={{ edit: false }}
+          />
+        </div>
       </div>
 
       <div className="UAMButtonsbox">
@@ -150,7 +176,10 @@ function UploadeAnswerandMaterial() {
         <button
           className="UAMButtons"
           id="Finish"
-          onClick={() => handleClick("/assessorhome")}
+          onClick={() => {
+            handleClick("/assessorhome");
+            storeImage();
+          }}
         >
           Finish
         </button>
