@@ -21,7 +21,7 @@ function Reviewanswer() {
   const [isActive, setIsActive] = useState(true); // Track if user is active
   const inactivityTimeoutRef = useRef(null);
   const [lastActiveTime, setLastActiveTime] = useState(Date.now()); // Track the last time user was active
-
+  let currentSolvedCases;
   // Handle user activity (mouse movement)
   const handleUserActivity = () => {
     if (!isActive) {
@@ -91,7 +91,7 @@ function Reviewanswer() {
     axios
       .post("http://localhost:5000/progress/get", { user_name })
       .then((response) => {
-        const currentSolvedCases = response.data.progress.solveCase;
+        currentSolvedCases = response.data.progress.solveCase;
 
         const newSolvedCases = currentSolvedCases + 1;
         axios
@@ -102,7 +102,7 @@ function Reviewanswer() {
           .then((response) => {
             console.log("Lecture time updated:", response.data);
             navigate("/modelanswer", {
-              state: { curves, selectedData, userdata },
+              state: { curves, selectedData, userdata, currentSolvedCases },
             });
           })
           .catch((err) => {

@@ -14,13 +14,11 @@ function ModelAnswer() {
   const captureRef = useRef(null);
   const location = useLocation();
   const selectedData = location.state?.selectedData;
+  const currentSolvedCases = location.state?.currentSolvedCases;
   const userdata = location.state?.userdata;
-  const typeselect = location.state?.typeselect;
+
   const curves = location.state?.curves;
   console.log(curves);
-  function handleClick(path) {
-    navigate(path);
-  }
 
   const [isYourAnswerMoved, setIsYourAnswerMoved] = useState(false);
   const [isTeethMoved, setIsTeethMoved] = useState(false);
@@ -48,7 +46,7 @@ function ModelAnswer() {
           const imgData = canvas.toDataURL("image/png");
           const link = document.createElement("a");
           link.href = imgData;
-          link.download = "Download.png";
+          link.download = `answer ${currentSolvedCases + 1}.png`;
           document.body.appendChild(link); // Append link to body to make it available
           link.click();
           document.body.removeChild(link); // Clean up link element
@@ -118,7 +116,7 @@ function ModelAnswer() {
             DentureData={selectedData}
             setData={() => {}}
             click={(index) => console.log(`Clicked tooth ${index}`)}
-            value={{ canEdit: false, visible: true }}
+            value={{ canEdit: false, visible: false }}
             selectPlate={{ view: true }}
             selectRetention={{ selectretention: true }}
             selectClasp={{ view: true }}

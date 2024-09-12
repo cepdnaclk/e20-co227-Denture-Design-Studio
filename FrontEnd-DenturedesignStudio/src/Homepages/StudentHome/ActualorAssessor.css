@@ -1,0 +1,83 @@
+.ActualorAssessor {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 40vw;
+  height: 45vh;
+  padding: 0;
+  background: #30505b;
+  color: #bff9f2;
+  border-radius: 2vw;
+  box-shadow: 0.668vw 0.668vw 0.668vw rgba(0, 0, 0, 0.3);
+  z-index: 1100;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+.ActualorAssessor-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(3px);
+  z-index: 1000;
+}
+
+.cancel-btn {
+  background-color: transparent;
+  color: #000;
+  border: none;
+  border-radius: 0.8vw;
+  cursor: pointer;
+  position: absolute;
+  font-family: "salsa";
+  font-size: 1.5vw;
+  left: 35vw;
+  top: 2vh;
+  margin: 0;
+  text-shadow: #000 0 0 0.5vw;
+}
+.genarate-btn {
+  background-color: #66d8d8;
+  color: #000;
+  border: none;
+  border-radius: 0.8vw;
+  cursor: pointer;
+  position: absolute;
+  font-family: "salsa";
+  font-size: 2vw;
+  margin: 0;
+  width: 20vw;
+  height: 3.5vw;
+  top: 12vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0.67vw 0.53vw 0.8vw rgba(0, 0, 0, 0.35);
+}
+.actual-btn {
+  background-color: #66d8d8;
+  color: #000;
+  border: none;
+  border-radius: 0.8vw;
+  cursor: pointer;
+  position: absolute;
+  font-family: "salsa";
+  font-size: 2vw;
+  top: 26vh;
+  margin: 0;
+  width: 20vw;
+  height: 3.5vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0.67vw 0.53vw 0.8vw rgba(0, 0, 0, 0.35);
+}
+.TeethBackground-auto {
+  position: absolute;
+  left: 28vw;
+  color: red;
+}

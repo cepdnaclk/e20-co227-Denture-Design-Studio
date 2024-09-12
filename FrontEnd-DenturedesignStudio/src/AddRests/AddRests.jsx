@@ -23,10 +23,10 @@ function AddRests() {
           restdata: null,
           missingteeth: location.state?.selectedData.missingteeth,
           undercuts: location.state?.selectedData.undercuts,
-          plates: location.state?.selectedData.plates,
-          clasps: location.state?.selectedData.clasps,
-          retentiondata: location.state?.selectedData.retentiondata,
-          gingivally: location.state?.selectedData.gingivally,
+          plates: null,
+          clasps: null,
+          retentiondata: null,
+          gingivally: null,
         }
       : {
           restdata: null,
