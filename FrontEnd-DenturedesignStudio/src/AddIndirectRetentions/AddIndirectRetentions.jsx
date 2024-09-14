@@ -2,11 +2,14 @@ import React from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import "./AddIndirectRetentions.css";
 import Home from "../homebutton/home";
+import Demo from "../demobutton/demo";
 import BackComp from "../backComp/backComp";
 import Teeth from "../TeethComp/Teeth";
 import { useState, useEffect, useRef } from "react";
 import { useTime } from "../Timecontext";
 import axios from "axios";
+import IndirRetenDemo from "../DemoVideos/IndirRetenDemo.mp4";
+
 function AddIndirectRetentions() {
   let navigate = useNavigate();
   const location = useLocation();
@@ -118,6 +121,9 @@ function AddIndirectRetentions() {
         <Home
           onClick={() => navigate("/studenthome", { state: { userdata } })}
         ></Home>
+
+      <Demo videoSrc={IndirRetenDemo} />
+
         <BackComp
           onClick={() =>
             navigate("/AddReciprocations", {
@@ -131,7 +137,9 @@ function AddIndirectRetentions() {
               rel="stylesheet"
               href="https://fonts.googleapis.com/css2?family=Salsa&display=swap"
             />
-            <div className="Questionbox"></div>
+            <div className="Questionbox">
+            
+            </div>
             <div className="teethBackground1">
               <button
                 className="addConnectors"
