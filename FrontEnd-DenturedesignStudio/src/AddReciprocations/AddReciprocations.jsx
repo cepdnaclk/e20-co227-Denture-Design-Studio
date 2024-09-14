@@ -15,6 +15,7 @@ function AddReciprocations() {
   const location = useLocation();
   const curves = location.state?.curves;
   const userdata = location.state?.userdata;
+  const imgData = location.state?.imgData;
   const [selectPlate, setselectPlate] = useState(false);
   const [selectClasp, setselectClasp] = useState(false);
   const fromReview = location.state?.fromReview;
@@ -141,7 +142,7 @@ function AddReciprocations() {
           <BackComp
             onClick={() =>
               navigate("/AddRetentions", {
-                state: { selectedData, userdata },
+                state: { selectedData, userdata, imgData },
               })
             }
           ></BackComp>
@@ -153,7 +154,16 @@ function AddReciprocations() {
               href="https://fonts.googleapis.com/css2?family=Salsa&display=swap"
             />
             <div className="Questionbox">
-          
+              <img
+                src={imgData}
+                alt="problem-img"
+                style={{
+                  width: "15vw",
+                  top: "8vh",
+                  position: "absolute",
+                  left: "4.7vw",
+                }}
+              />
             </div>
             <div className="teethBackground1">
               <button
@@ -161,10 +171,10 @@ function AddReciprocations() {
                 onClick={() =>
                   fromReview
                     ? navigate("/ReviewAnswer", {
-                        state: { selectedData, curves, userdata },
+                        state: { selectedData, curves, userdata, imgData },
                       })
                     : navigate("/addIndirectRetentions", {
-                        state: { selectedData, userdata },
+                        state: { selectedData, userdata, imgData },
                       })
                 }
               >

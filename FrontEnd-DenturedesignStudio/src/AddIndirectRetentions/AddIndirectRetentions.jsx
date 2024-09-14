@@ -14,6 +14,7 @@ function AddIndirectRetentions() {
   let navigate = useNavigate();
   const location = useLocation();
   const userdata = location.state?.userdata;
+  const imgData = location.state?.imgData;
   const [restType, setResttype] = useState();
   const [selectedData, setSelectedData] = useState(
     location.state?.selectedData
@@ -122,12 +123,12 @@ function AddIndirectRetentions() {
           onClick={() => navigate("/studenthome", { state: { userdata } })}
         ></Home>
 
-      <Demo videoSrc={IndirRetenDemo} />
+        <Demo videoSrc={IndirRetenDemo} />
 
         <BackComp
           onClick={() =>
             navigate("/AddReciprocations", {
-              state: { selectedData, userdata },
+              state: { selectedData, userdata, imgData },
             })
           }
         ></BackComp>
@@ -138,14 +139,23 @@ function AddIndirectRetentions() {
               href="https://fonts.googleapis.com/css2?family=Salsa&display=swap"
             />
             <div className="Questionbox">
-            
+              <img
+                src={imgData}
+                alt="problem-img"
+                style={{
+                  width: "15vw",
+                  top: "8vh",
+                  position: "absolute",
+                  left: "4.7vw",
+                }}
+              />
             </div>
             <div className="teethBackground1">
               <button
                 className="addConnectors"
                 onClick={() =>
                   navigate("/AddConnectors", {
-                    state: { selectedData, userdata },
+                    state: { selectedData, userdata, imgData },
                   })
                 }
               >

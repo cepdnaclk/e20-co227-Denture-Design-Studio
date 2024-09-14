@@ -13,7 +13,7 @@ function AddSaddles() {
   const location = useLocation();
   const userdata = location.state?.userdata;
   const imgData = location.state?.imgData;
-
+  const isActualCase = location.state?.isActualCase;
   const [visibleundercut, setVisibleundercut] = useState({
     canEdit: false,
     visible: false,
@@ -126,8 +126,7 @@ function AddSaddles() {
         onClick={() => navigate("/studenthome", { state: { userdata } })}
       ></Home>
 
-       <Demo videoSrc={SaddleDemo} />
-
+      <Demo videoSrc={SaddleDemo} />
 
       <div className="AddSaddles">
         <div>
@@ -147,19 +146,21 @@ function AddSaddles() {
               }}
             />
 
-            <button
-              className="skipButton"
-              onClick={() => navigate("/addSaddles", { state: { userdata } })}
-            >
-              <div className="skipButtonText">
-                <span className="skipButtonText">Skip</span>
-              </div>
-            </button>
+            {isActualCase && (
+              <button
+                className="skipButton"
+                onClick={() => navigate("/addSaddles", { state: { userdata } })}
+              >
+                <div className="skipButtonText">
+                  <span className="skipButtonText">Skip</span>
+                </div>
+              </button>
+            )}
             <button
               className="addRests"
               onClick={() =>
                 navigate("/addRests", {
-                  state: { selectedData, userdata },
+                  state: { selectedData, userdata, imgData },
                 })
               }
             >
