@@ -8,7 +8,7 @@ import Teeth from "../TeethComp/Teeth";
 import DrawingCanvas from "./canvas/Canvas";
 import { useTime } from "../Timecontext";
 import axios from "axios";
-import model from "../model.png";
+import ConnectorDemo from "../DemoVideos/ConnectorDemo.mp4";
 
 function AddConnectors() {
   let navigate = useNavigate();
@@ -102,6 +102,9 @@ function AddConnectors() {
         <Home
           onClick={() => navigate("/studenthome", { state: { userdata } })}
         ></Home>
+
+        <Demo videoSrc={ConnectorDemo} />
+
         {!fromReview ? (
           <BackComp
             onClick={() =>
@@ -118,7 +121,7 @@ function AddConnectors() {
               href="https://fonts.googleapis.com/css2?family=Salsa&display=swap"
             />
             <div className="Questionbox">
-            <img src={model} alt="Image description"/>
+            
             </div>
             <div className="teethBackground1">
               <button

@@ -8,7 +8,7 @@ import Teeth from "../TeethComp/Teeth";
 import ReviewCanvas from "../ReviewAnswer/ReviewCanvas";
 import { useTime } from "../Timecontext";
 import axios from "axios";
-import model from "../model.png";
+import RetentionDemo from "../DemoVideos/RetentionDemo.mp4";
 
 function AddRetentions() {
   const location = useLocation();
@@ -139,6 +139,8 @@ function AddRetentions() {
         <Home
           onClick={() => navigate("/studenthome", { state: { userdata } })}
         />
+         <Demo videoSrc={RetentionDemo} />
+
         {!fromReview ? (
           <BackComp
             onClick={() =>
@@ -150,7 +152,7 @@ function AddRetentions() {
         ) : null}
         <div>
           <div className="Questionbox">
-          <img src={model} alt="Image description"/>
+        
           </div>
           <div className="teethBackground1">
             <div className="retention-teeth">

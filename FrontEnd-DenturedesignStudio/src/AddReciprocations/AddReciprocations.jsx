@@ -8,7 +8,8 @@ import Teeth from "../TeethComp/Teeth";
 import ReviewCanvas from "../ReviewAnswer/ReviewCanvas";
 import { useTime } from "../Timecontext";
 import axios from "axios";
-import model from "../model.png";
+import ReciprocationDemo from "../DemoVideos/ReciprocationDemo.mp4";
+
 function AddReciprocations() {
   let navigate = useNavigate();
   const location = useLocation();
@@ -133,6 +134,9 @@ function AddReciprocations() {
         <Home
           onClick={() => navigate("/studenthome", { state: { userdata } })}
         ></Home>
+
+        <Demo videoSrc={ReciprocationDemo} />
+
         {!fromReview ? (
           <BackComp
             onClick={() =>
@@ -149,7 +153,7 @@ function AddReciprocations() {
               href="https://fonts.googleapis.com/css2?family=Salsa&display=swap"
             />
             <div className="Questionbox">
-            <img src={model} alt="Image description"/>
+          
             </div>
             <div className="teethBackground1">
               <button

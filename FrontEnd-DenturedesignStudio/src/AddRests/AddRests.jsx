@@ -8,7 +8,8 @@ import Teeth from "../TeethComp/Teeth";
 import ReviewCanvas from "../ReviewAnswer/ReviewCanvas";
 import { useTime } from "../Timecontext";
 import axios from "axios";
-import model from "../model.png";
+import RestDemo from "../DemoVideos/RestDemo.mp4";
+
 function AddRests() {
   let navigate = useNavigate();
 
@@ -134,6 +135,9 @@ function AddRests() {
         <Home
           onClick={() => navigate("/studenthome", { state: { userdata } })}
         ></Home>
+        <Demo videoSrc={RestDemo} />
+
+
         {!fromReview ? (
           <BackComp
             onClick={() => navigate("/AddSaddles", { state: { userdata } })}
@@ -146,7 +150,7 @@ function AddRests() {
               href="https://fonts.googleapis.com/css2?family=Salsa&display=swap"
             />
             <div className="Questionbox">
-            <img src={model} alt="Image description"/>
+            
             </div>
             <div className="teethBackground1">
               <div className="retention-teeth">

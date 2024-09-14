@@ -6,8 +6,7 @@ import Demo from "../demobutton/demo";
 import Teeth from "../TeethComp/Teeth";
 import { useTime } from "../Timecontext";
 import axios from "axios";
-import model from "../model.png";
-import test1 from "../DemoVideos/test1.mp4";
+import SaddleDemo from "../DemoVideos/SaddleDemo.mp4";
 
 function AddSaddles() {
   const navigate = useNavigate();
@@ -126,7 +125,7 @@ function AddSaddles() {
         onClick={() => navigate("/studenthome", { state: { userdata } })}
       ></Home>
 
-       <Demo videoSrc={test1} />
+       <Demo videoSrc={SaddleDemo} />
 
 
       <div className="AddSaddles">
@@ -136,7 +135,7 @@ function AddSaddles() {
             href="https://fonts.googleapis.com/css2?family=Salsa&display=swap"
           />
           <div className="Questionbox">
-            <img src={model} alt="Image description"/>
+          
             <button
               className="skipButton"
               onClick={() => navigate("/addSaddles", { state: { userdata } })}
