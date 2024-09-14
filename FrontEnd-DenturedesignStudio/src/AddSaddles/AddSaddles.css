@@ -4,8 +4,9 @@ body {
   height: 100vh;
   margin: 0;
   overflow: hidden;
+  cursor: pointer;
+  
 }
-
 .designPage {
   position: absolute;
   width: 100vw;
@@ -26,7 +27,35 @@ body {
   top: 14vh;
   background: #a3d1d4;
   border-radius: 2.6vw;
+  
 }
+
+.Questionbox img {
+  width: 80%; 
+  height: auto; 
+  border-radius: inherit; 
+  margin-top: 45px;
+}
+
+.yourQuestion {
+  position: absolute;
+  width: 38.23vw;
+  height: 6.11vh;
+  left: 11vw;
+  top: 13vh;
+
+  font-family: "Salsa";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.95vw;
+  line-height: 134.77%;
+
+  display: flex;
+  align-items: center;
+  color: #000000;
+}
+
+
 
 .skipButton {
   position: absolute;
@@ -97,8 +126,27 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  cursor: pointer;
   border: none;
+}
+
+.yourCase {
+  position: absolute;
+  width: 22.81vw;
+  height: 6.39vh;
+  left: 33.3vw;
+  top: 8.89vh;
+
+  font-family: "Salsa";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.56vw;
+  line-height: 134.77%;
+
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #e8e9e9;
+  text-shadow: 8px 7px 15px rgba(0, 0, 0, 0.54);
 }
 
 .addRestText {
@@ -127,7 +175,7 @@ body {
   height: 3.37vw;
   left: 66vw;
   top: 4vw;
-  cursor: pointer;
+  
   font-family: "Salsa";
   font-style: normal;
   font-weight: 400;
@@ -148,7 +196,7 @@ body {
   height: 3.37vw;
   left: 66vw;
   top: 9vw;
-  cursor: pointer;
+
 
   font-family: "Salsa";
   font-style: normal;
@@ -158,24 +206,6 @@ body {
   display: flex;
   align-items: center;
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-}
-
-.yourQuestion {
-  position: absolute;
-  width: 38.23vw;
-  height: 6.11vh;
-  left: 11vw;
-  top: 13vh;
-
-  font-family: "Salsa";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 1.95vw;
-  line-height: 134.77%;
-
-  display: flex;
-  align-items: center;
-  color: #000000;
 }
 
 .AddSaddles {
@@ -198,24 +228,4 @@ body {
   text-align: center;
   color: #92dada;
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-}
-
-.yourCase {
-  position: absolute;
-  width: 22.81vw;
-  height: 6.39vh;
-  left: 33.3vw;
-  top: 8.89vh;
-
-  font-family: "Salsa";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 1.56vw; /* 30px / 1920px * 100 */
-  line-height: 134.77%;
-
-  display: flex;
-  align-items: center;
-  text-align: center;
-  color: #e8e9e9;
-  text-shadow: 8px 7px 15px rgba(0, 0, 0, 0.54);
 }

@@ -2,14 +2,18 @@ import React, { useEffect, useRef, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import "./AddSaddles.css";
 import Home from "../homebutton/home";
+import Demo from "../demobutton/demo";
 import Teeth from "../TeethComp/Teeth";
 import { useTime } from "../Timecontext";
 import axios from "axios";
+import SaddleDemo from "../DemoVideos/SaddleDemo.mp4";
+
 function AddSaddles() {
   const navigate = useNavigate();
   const location = useLocation();
   const userdata = location.state?.userdata;
   const imgData = location.state?.imgData;
+
   const [visibleundercut, setVisibleundercut] = useState({
     canEdit: false,
     visible: false,
@@ -122,6 +126,9 @@ function AddSaddles() {
         onClick={() => navigate("/studenthome", { state: { userdata } })}
       ></Home>
 
+       <Demo videoSrc={SaddleDemo} />
+
+
       <div className="AddSaddles">
         <div>
           <link
@@ -139,6 +146,7 @@ function AddSaddles() {
                 left: "4.7vw",
               }}
             />
+
             <button
               className="skipButton"
               onClick={() => navigate("/addSaddles", { state: { userdata } })}
