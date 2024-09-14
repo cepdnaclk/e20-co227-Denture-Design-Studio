@@ -1,0 +1,53 @@
+.demobutton {
+  position: fixed;
+  width: 3vw;
+  height: 3vw;
+  top: 1vw;
+  right: 1vw;
+  margin: 0; 
+  padding: 0; 
+  border-radius: 1.002vw;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  z-index: 21;
+}
+
+.demobutton img {
+  width: 100%;
+  height: 100%;
+  border-radius: 1.002vw;
+}
+
+.blur-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5); 
+  backdrop-filter: blur(8px); 
+  z-index: 19; 
+  pointer-events: none; 
+}
+
+.video-overlay {
+  position: fixed;
+  top: 5%;
+  right: 5%;
+  z-index: 20; 
+  width: 50vw;
+  height: auto;
+  border: 3px solid black;
+  box-sizing: border-box;
+  border-radius: 1vw; 
+  pointer-events: none;
+}
+
+
+@media (max-width: 1000px) {
+  .demobutton {
+      width: 4vw;
+      height: 4vw;
+  }
+}

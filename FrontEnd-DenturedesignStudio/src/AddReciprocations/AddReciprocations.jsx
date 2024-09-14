@@ -2,11 +2,14 @@ import React, { useState, useEffect, useRef } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import "./AddReciprocations.css";
 import Home from "../homebutton/home";
+import Demo from "../demobutton/demo";
 import BackComp from "../backComp/backComp";
 import Teeth from "../TeethComp/Teeth";
 import ReviewCanvas from "../ReviewAnswer/ReviewCanvas";
 import { useTime } from "../Timecontext";
 import axios from "axios";
+import ReciprocationDemo from "../DemoVideos/ReciprocationDemo.mp4";
+
 function AddReciprocations() {
   let navigate = useNavigate();
   const location = useLocation();
@@ -131,6 +134,9 @@ function AddReciprocations() {
         <Home
           onClick={() => navigate("/studenthome", { state: { userdata } })}
         ></Home>
+
+        <Demo videoSrc={ReciprocationDemo} />
+
         {!fromReview ? (
           <BackComp
             onClick={() =>
@@ -146,7 +152,9 @@ function AddReciprocations() {
               rel="stylesheet"
               href="https://fonts.googleapis.com/css2?family=Salsa&display=swap"
             />
-            <div className="Questionbox"></div>
+            <div className="Questionbox">
+          
+            </div>
             <div className="teethBackground1">
               <button
                 className="addIndirectRetentions"
