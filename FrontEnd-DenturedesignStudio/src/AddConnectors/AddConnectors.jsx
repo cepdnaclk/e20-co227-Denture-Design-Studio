@@ -16,6 +16,7 @@ function AddConnectors() {
   const drewcurves = location.state?.curves;
   const selectedData = location.state?.selectedData;
   const userdata = location.state?.userdata;
+  const imgData = location.state?.imgData;
   const fromReview = location.state?.fromReview;
   const [connectortype, setconnectortype] = useState();
   const [selectedtype, setSelectedtype] = useState();
@@ -109,7 +110,7 @@ function AddConnectors() {
           <BackComp
             onClick={() =>
               navigate("/AddIndirectRetentions", {
-                state: { selectedData, userdata },
+                state: { selectedData, userdata, imgData },
               })
             }
           ></BackComp>
@@ -121,14 +122,23 @@ function AddConnectors() {
               href="https://fonts.googleapis.com/css2?family=Salsa&display=swap"
             />
             <div className="Questionbox">
-            
+              <img
+                src={imgData}
+                alt="problem-img"
+                style={{
+                  width: "15vw",
+                  top: "8vh",
+                  position: "absolute",
+                  left: "4.7vw",
+                }}
+              />
             </div>
             <div className="teethBackground1">
               <button
                 className="Done"
                 onClick={() =>
                   navigate("/reviewAnswer", {
-                    state: { curves, selectedData, userdata },
+                    state: { curves, selectedData, userdata, imgData },
                   })
                 }
               >

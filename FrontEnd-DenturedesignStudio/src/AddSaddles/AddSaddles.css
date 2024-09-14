@@ -4,13 +4,12 @@ body {
   height: 100vh;
   margin: 0;
   overflow: hidden;
-  cursor: pointer;
-  
 }
 .designPage {
   position: absolute;
   width: 100vw;
   height: 100vh;
+  z-index: 0;
   background: linear-gradient(
     270deg,
     rgb(60 123 113) 0%,
@@ -27,13 +26,12 @@ body {
   top: 14vh;
   background: #a3d1d4;
   border-radius: 2.6vw;
-  
 }
 
 .Questionbox img {
-  width: 80%; 
-  height: auto; 
-  border-radius: inherit; 
+  width: 80%;
+  height: auto;
+  border-radius: inherit;
   margin-top: 45px;
 }
 
@@ -54,8 +52,6 @@ body {
   align-items: center;
   color: #000000;
 }
-
-
 
 .skipButton {
   position: absolute;
@@ -117,8 +113,7 @@ body {
   width: 17.14vw;
   height: 3.37vw;
   left: 62vw;
-  top: 32vw;
-
+  top: 33vw;
   background: #66d8d8;
   box-shadow: 0.67vw 0.53vw 0.8vw rgba(0, 0, 0, 0.35);
   border-radius: 1.34vw;
@@ -127,6 +122,7 @@ body {
   justify-content: center;
   align-items: center;
   border: none;
+  cursor: pointer;
 }
 
 .yourCase {
@@ -175,7 +171,7 @@ body {
   height: 3.37vw;
   left: 66vw;
   top: 4vw;
-  
+
   font-family: "Salsa";
   font-style: normal;
   font-weight: 400;
@@ -189,6 +185,7 @@ body {
 .selectUnderCut:hover {
   transform: scale(1.05);
   transition: all 0.5s ease;
+  cursor: pointer;
 }
 .selectUnderCut {
   position: absolute;
@@ -196,7 +193,6 @@ body {
   height: 3.37vw;
   left: 66vw;
   top: 9vw;
-
 
   font-family: "Salsa";
   font-style: normal;

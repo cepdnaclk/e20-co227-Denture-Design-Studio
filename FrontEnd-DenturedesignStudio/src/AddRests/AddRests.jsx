@@ -18,6 +18,7 @@ function AddRests() {
   const curves = location.state?.curves;
   const fromReview = location.state?.fromReview;
   const userdata = location.state?.userdata;
+  const imgData = location.state?.imgData;
   const [selectedData, setSelectedData] = useState(
     fromReview
       ? location.state?.selectedData
@@ -137,10 +138,11 @@ function AddRests() {
         ></Home>
         <Demo videoSrc={RestDemo} />
 
-
         {!fromReview ? (
           <BackComp
-            onClick={() => navigate("/AddSaddles", { state: { userdata } })}
+            onClick={() =>
+              navigate("/AddSaddles", { state: { userdata, imgData } })
+            }
           ></BackComp>
         ) : null}
         <div className="AddRests">
@@ -150,7 +152,16 @@ function AddRests() {
               href="https://fonts.googleapis.com/css2?family=Salsa&display=swap"
             />
             <div className="Questionbox">
-            
+              <img
+                src={imgData}
+                alt="problem-img"
+                style={{
+                  width: "15vw",
+                  top: "8vh",
+                  position: "absolute",
+                  left: "4.7vw",
+                }}
+              />
             </div>
             <div className="teethBackground1">
               <div className="retention-teeth">
@@ -208,10 +219,10 @@ function AddRests() {
                 onClick={() =>
                   fromReview
                     ? navigate("/reviewAnswer", {
-                        state: { selectedData, curves, userdata },
+                        state: { selectedData, curves, userdata, imgData },
                       })
                     : navigate("/addRetentions", {
-                        state: { selectedData, userdata },
+                        state: { selectedData, userdata, imgData },
                       })
                 }
               >

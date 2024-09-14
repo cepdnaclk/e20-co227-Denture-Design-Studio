@@ -13,6 +13,7 @@ function Reviewanswer() {
   const location = useLocation();
   const selectedData = location.state?.selectedData;
   const userdata = location.state?.userdata;
+  const imgData = location.state?.imgData;
   const curves = location.state?.curves;
   const user_name = userdata?.user_name;
   const { setWatchVideoTime } = useTime();
@@ -102,7 +103,13 @@ function Reviewanswer() {
           .then((response) => {
             console.log("Lecture time updated:", response.data);
             navigate("/modelanswer", {
-              state: { curves, selectedData, userdata, currentSolvedCases },
+              state: {
+                curves,
+                selectedData,
+                userdata,
+                currentSolvedCases,
+                imgData,
+              },
             });
           })
           .catch((err) => {
@@ -120,7 +127,7 @@ function Reviewanswer() {
       <BackComp
         onClick={() =>
           navigate("/AddConnectors", {
-            state: { curves, selectedData, userdata },
+            state: { curves, selectedData, userdata, imgData },
           })
         }
       />
@@ -141,7 +148,7 @@ function Reviewanswer() {
           selectRetention={{ selectretention: true }}
           selectClasp={{ view: true }}
         />
-        <ReviewCanvas drewcurves={curves} />
+        <ReviewCanvas drewcurves={curves} inReview={true} />
       </div>
       <div className="ButtonboxRA">
         <div id="Addrests">
@@ -149,7 +156,13 @@ function Reviewanswer() {
             Name={"Add Rests"}
             Pagetogo={() =>
               navigate("/addRests", {
-                state: { selectedData, curves, fromReview: true, userdata },
+                state: {
+                  selectedData,
+                  curves,
+                  fromReview: true,
+                  userdata,
+                  imgData,
+                },
               })
             }
           />
@@ -159,7 +172,13 @@ function Reviewanswer() {
             Name={"Add Retentions"}
             Pagetogo={() =>
               navigate("/addRetentions", {
-                state: { selectedData, curves, fromReview: true, userdata },
+                state: {
+                  selectedData,
+                  curves,
+                  fromReview: true,
+                  userdata,
+                  imgData,
+                },
               })
             }
           />
@@ -169,7 +188,13 @@ function Reviewanswer() {
             Name={"Add Reciprocation"}
             Pagetogo={() =>
               navigate("/addReciprocations", {
-                state: { selectedData, curves, fromReview: true, userdata },
+                state: {
+                  selectedData,
+                  curves,
+                  fromReview: true,
+                  userdata,
+                  imgData,
+                },
               })
             }
           />
@@ -179,7 +204,13 @@ function Reviewanswer() {
             Name={"Add Connectors"}
             Pagetogo={() =>
               navigate("/addConnectors", {
-                state: { curves, selectedData, fromReview: true, userdata },
+                state: {
+                  curves,
+                  selectedData,
+                  fromReview: true,
+                  userdata,
+                  imgData,
+                },
               })
             }
           />

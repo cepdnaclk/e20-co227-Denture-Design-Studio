@@ -34,14 +34,14 @@ function CreatePatientStep1() {
 
   return (
     <div className="CreatePatientCase2">
-      <Home onClick={() => handleClick("/assessorhome")} />
-      <BackComp onClick={() => handleClick("/assessorhome")} />
+      <Home onClick={() => handleClick("/studenthome")} />
+      <BackComp onClick={() => handleClick("/studenthome")} />
       <div>
         <link
           rel="stylesheet"
           href="https://fonts.googleapis.com/css2?family=Salsa&display=swap"
         />
-        <div className="teethBackground">
+        <div className="student-teethBackground">
           <Teeth
             setMissingtooth={true}
             value={{ canEdit: false, visible: false }}
@@ -66,7 +66,9 @@ function CreatePatientStep1() {
       </div>
       <button
         className="Create"
-        onClick={() => navigate("/createpatient2", { state: { selectedData } })}
+        onClick={() =>
+          navigate("/createpatient2", { state: { selectedData, userdata } })
+        }
       >
         Add Undercut
       </button>

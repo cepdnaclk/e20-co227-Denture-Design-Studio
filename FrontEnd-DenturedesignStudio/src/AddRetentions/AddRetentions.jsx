@@ -15,6 +15,7 @@ function AddRetentions() {
   const navigate = useNavigate();
   const curves = location.state?.curves;
   const userdata = location.state?.userdata;
+  const imgData = location.state?.imgData;
   const [retentionType, setRetentionType] = useState();
   const [occlusallyType, setOcclusallyType] = useState();
   const fromReview = location.state?.fromReview;
@@ -139,20 +140,29 @@ function AddRetentions() {
         <Home
           onClick={() => navigate("/studenthome", { state: { userdata } })}
         />
-         <Demo videoSrc={RetentionDemo} />
+        <Demo videoSrc={RetentionDemo} />
 
         {!fromReview ? (
           <BackComp
             onClick={() =>
               navigate("/addRests", {
-                state: { selectedData, userdata },
+                state: { selectedData, userdata, imgData },
               })
             }
           />
         ) : null}
         <div>
           <div className="Questionbox">
-        
+            <img
+              src={imgData}
+              alt="problem-img"
+              style={{
+                width: "15vw",
+                top: "8vh",
+                position: "absolute",
+                left: "4.7vw",
+              }}
+            />
           </div>
           <div className="teethBackground1">
             <div className="retention-teeth">
@@ -187,10 +197,10 @@ function AddRetentions() {
               onClick={() =>
                 fromReview
                   ? navigate("/reviewanswer", {
-                      state: { selectedData, curves, userdata },
+                      state: { selectedData, curves, userdata, imgData },
                     })
                   : navigate("/addReciprocations", {
-                      state: { selectedData, userdata },
+                      state: { selectedData, userdata, imgData },
                     })
               }
             >

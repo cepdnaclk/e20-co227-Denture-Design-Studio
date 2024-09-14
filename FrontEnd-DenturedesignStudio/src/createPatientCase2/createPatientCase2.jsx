@@ -1,18 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import "./createPatientCase2.css";
 import Home from "../homebutton/home";
-import CreateUploadButton from "../CreateUploadButton/CreateUploadButton";
 import Teeth from "../TeethComp/Teeth";
-
+import html2canvas from "html2canvas";
+import BackComp from "../backComp/backComp";
+import axios from "axios";
 function CreatePatientStep2() {
   const navigate = useNavigate();
-
-  function handleClick(path) {
-    navigate(path);
-  }
   const location = useLocation();
-  const typeselect = location.state?.typeselect;
+  const userdata = location.state?.userdata;
+  const user_name = userdata?.user_name;
+  const CreateRef = useRef(null);
   const [selectedData, setSelectedData] = useState(
     location.state?.selectedData
       ? {
@@ -38,16 +37,48 @@ function CreatePatientStep2() {
       retentiondata: data.retentions ? data.retentions : null,
     });
   };
+  const handleCreateButton = () => {
+    axios
+      .post("http://localhost:5000/progress/get", { user_name })
+      .then((response) => {
+        const currentCreatedCases = response.data.progress.createCase;
+        const newCreatedCases = currentCreatedCases + 1;
+        axios
+          .put("http://localhost:5000/progress/edit", {
+            user_name,
+            createCase: newCreatedCases,
+          })
+          .then((response) => {
+            console.log("Lecture time updated:", response.data);
+          })
+          .catch((err) => {
+            console.log(err.message);
+          });
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
+
+    setTimeout(() => {
+      html2canvas(CreateRef.current).then((canvas) => {
+        const imgData = canvas.toDataURL("image/png");
+        navigate("/addSaddles", { state: { userdata, imgData } });
+      });
+    }, 5);
+  };
 
   return (
     <div className="CreatePatientCase2">
-      <Home onClick={() => handleClick("/studenthome")} />
+      <Home onClick={() => navigate("/studenthome", { state: { userdata } })} />
+      <BackComp
+        onClick={() => navigate("/createpatient", { state: { userdata } })}
+      />
       <div>
         <link
           rel="stylesheet"
           href="https://fonts.googleapis.com/css2?family=Salsa&display=swap"
         />
-        <div className="teethBackground">
+        <div className="student-teethBackground" ref={CreateRef}>
           <Teeth
             setMissingtooth={false}
             selectRest={{ selectrest: false }}
@@ -70,7 +101,9 @@ function CreatePatientStep2() {
         </h1>
       </div>
       <div id="#create1">
-        <CreateUploadButton Name="Create" Pagetogo="/addSaddles" />
+        <button className="Create" onClick={handleCreateButton}>
+          Create
+        </button>
       </div>
     </div>
   );
