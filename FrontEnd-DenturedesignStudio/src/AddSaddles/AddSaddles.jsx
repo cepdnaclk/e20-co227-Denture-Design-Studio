@@ -12,6 +12,7 @@ function AddSaddles() {
   const navigate = useNavigate();
   const location = useLocation();
   const userdata = location.state?.userdata;
+  const imgData = location.state?.imgData;
 
   const [visibleundercut, setVisibleundercut] = useState({
     canEdit: false,
@@ -135,7 +136,17 @@ function AddSaddles() {
             href="https://fonts.googleapis.com/css2?family=Salsa&display=swap"
           />
           <div className="Questionbox">
-          
+            <img
+              src={imgData}
+              alt="problem-img"
+              style={{
+                width: "15vw",
+                top: "8vh",
+                position: "absolute",
+                left: "4.7vw",
+              }}
+            />
+
             <button
               className="skipButton"
               onClick={() => navigate("/addSaddles", { state: { userdata } })}
