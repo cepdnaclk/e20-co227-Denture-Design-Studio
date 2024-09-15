@@ -16,6 +16,7 @@ function ModelAnswer() {
   const selectedData = location.state?.selectedData;
   const currentSolvedCases = location.state?.currentSolvedCases;
   const userdata = location.state?.userdata;
+  const imgData = location.state?.imgData;
 
   const curves = location.state?.curves;
   console.log(curves);
@@ -67,7 +68,13 @@ function ModelAnswer() {
       <BackComp
         onClick={() =>
           navigate("/reviewAnswer", {
-            state: { curves, selectedData, typeselect: true, userdata },
+            state: {
+              curves,
+              selectedData,
+              typeselect: true,
+              userdata,
+              imgData,
+            },
           })
         }
       ></BackComp>
@@ -122,7 +129,7 @@ function ModelAnswer() {
             selectClasp={{ view: true }}
           />
 
-          <ReviewCanvas drewcurves={curves} />
+          <ReviewCanvas drewcurves={curves} inReview={true} />
         </div>
       </motion.div>
       <div className="ModelAnswerbuttons">

@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import "./reviewcanvas.css";
-function ReviewCanvas({ drewcurves }) {
+function ReviewCanvas({ drewcurves, inReview }) {
   const uppercurve = drewcurves?.uppercurve;
   const lowercurve = drewcurves?.lowercurve;
   const lowerminorcurve = drewcurves?.lowerminorcurve;
@@ -9,15 +9,16 @@ function ReviewCanvas({ drewcurves }) {
   const lowerMinorcurve = lowerminorcurve || [];
 
   useEffect(() => {
-    drawAllCurves();
-  }, [curves, lowercurves, lowerMinorcurve]);
+    drawCurvesFirstCanvas();
+  }, [curves, lowercurves]);
+  useEffect(() => {
+    drawCurvesSecondCanvas();
+  }, [lowerMinorcurve]);
 
-  const canvasRef = useRef(null);
+  const canvasRef1 = useRef(null);
+  const canvasRef2 = useRef(null);
 
-  const drawCurves = (curvesArray, lineWidth, conType) => {
-    const canvas = canvasRef.current;
-    const ctx = canvas.getContext("2d");
-
+  const drawCurves = (ctx, curvesArray, lineWidth, conType) => {
     curvesArray.forEach(({ anchorPoints, controlPoints }, curveIndex) => {
       ctx.beginPath();
       ctx.moveTo(anchorPoints[0].x, anchorPoints[0].y);
@@ -35,20 +36,23 @@ function ReviewCanvas({ drewcurves }) {
     });
   };
 
-  const drawAllCurves = () => {
-    const canvas = canvasRef.current;
+  const drawCurvesFirstCanvas = () => {
+    const canvas = canvasRef1.current;
     const ctx = canvas.getContext("2d");
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    drawCurves(curves, 2, "upper");
-    drawCurves(lowercurves, 13, "lower");
-    drawCurves(lowerMinorcurve, 5, "lower_minor");
-
+    drawCurves(ctx, curves, 2, "upper");
+    drawCurves(ctx, lowercurves, 13, "lower");
     fillClosedShapes();
   };
-
+  const drawCurvesSecondCanvas = () => {
+    const canvas = canvasRef2.current;
+    const ctx = canvas.getContext("2d");
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    drawCurves(ctx, lowerMinorcurve, 7, "lower_minor");
+  };
   const fillClosedShapes = () => {
-    const canvas = canvasRef.current;
+    const canvas = canvasRef1.current;
     const ctx = canvas.getContext("2d");
 
     const closedShapes = getClosedShapes();
@@ -143,11 +147,18 @@ function ReviewCanvas({ drewcurves }) {
     return distance < 5;
   };
   useEffect(() => {
-    const canvas = canvasRef.current;
+    const canvas1 = canvasRef1.current;
+    const canvas2 = canvasRef2.current;
     const handleresize = () => {
-      canvas.width = window.innerWidth * 0.1485;
-      canvas.height = window.innerHeight * 0.75;
-      drawAllCurves();
+      const canvasWidth = window.innerWidth * 0.1485;
+      const canvasHeight = window.innerHeight * 0.75;
+
+      canvas1.width = canvasWidth;
+      canvas1.height = canvasHeight;
+      canvas2.width = canvasWidth;
+      canvas2.height = canvasHeight;
+      drawCurvesFirstCanvas();
+      drawCurvesSecondCanvas();
     };
     handleresize();
     window.addEventListener("resize", handleresize);
@@ -157,15 +168,27 @@ function ReviewCanvas({ drewcurves }) {
   }, [curves, lowercurves, lowerMinorcurve]);
 
   return (
-    <canvas
-      className="reviewcanvas"
-      ref={canvasRef}
-      style={{
-        display: "block",
-        margin: "20px auto",
-        background: "transparent",
-      }}
-    />
+    <>
+      <canvas
+        className="reviewcanvas"
+        ref={canvasRef1}
+        style={{
+          display: "block",
+          margin: "20px auto",
+          background: "transparent",
+        }}
+      />
+      <canvas
+        className="reviewcanvas"
+        ref={canvasRef2}
+        style={{
+          display: "block",
+          margin: "20px auto",
+          background: "transparent",
+          zIndex: inReview ? 12 : 0,
+        }}
+      />
+    </>
   );
 }
 export default ReviewCanvas;
