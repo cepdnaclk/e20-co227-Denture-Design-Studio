@@ -25,10 +25,11 @@ function ActualorAssessor({ cancel, solve, userdata }) {
 
   const handleAutocase = () => {
     setgenarated(true);
-    const numberofteeth = Math.floor(Math.random() * 5 + 2);
+    const numberofteeth = Math.floor(Math.random() * 11 + 3);
     const missingteeths = new Set();
     for (let index = 0; index < numberofteeth; index++) {
-      missingteeths.add(Math.floor(Math.random() * 32) + 1);
+      missingteeths.add(Math.floor(Math.random() * 16) + 1);
+      missingteeths.add(Math.floor(Math.random() * 16) + 17);
     }
     const missingteetharray = Array.from(missingteeths);
     missingteetharray.forEach((element) => {
