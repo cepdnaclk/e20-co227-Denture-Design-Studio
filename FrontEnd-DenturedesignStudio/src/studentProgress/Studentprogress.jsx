@@ -15,33 +15,37 @@ function Studentprogress() {
   const [createCases, setCreateCases] = useState(0);
   const [solveCases, setSolveCases] = useState(0);
   const [lecturecomplete, setLeccomplete] = useState(0);
-  const totalLecture = 100;
+  const [totalLecture, setTotalLecture] = useState(0);
   useEffect(() => {
     const fetchProgress = async () => {
       try {
-        const response = await axios.post(
+        const { data } = await axios.post(
           "http://localhost:5000/progress/get",
-          {
-            user_name,
-          }
+          { user_name }
         );
 
-        const progress = response.data.progress;
+        const { solveTime, createCase, solveCase, lectureTime, watchedVideos } =
+          data.progress;
 
-        setSolveTime(progress.solveTime);
-        setCreateCases(progress.createCase);
-        setSolveCases(progress.solveCase);
-        setLectime(progress.lectureTime);
-        setLeccomplete(progress.completedLecture);
+        setSolveTime(solveTime);
+        setCreateCases(createCase);
+        setSolveCases(solveCase);
+        setLectime(lectureTime);
+        setLeccomplete(watchedVideos.length);
       } catch (error) {
-        console.log(error.message);
+        console.error(error.message);
       }
     };
     fetchProgress();
+    const getTotallecture = async () => {
+      setTotalLecture(
+        (await axios.get("http://localhost:5000/lecture/count")).data.count
+      );
+    };
+    getTotallecture();
   }, [user_name]);
 
   const formatTime = (time) => {
-    console.log(time);
     const hours = Math.floor(time / 3600);
     const minutes = Math.floor((time % 3600) / 60);
     const seconds = time % 60;
@@ -50,9 +54,9 @@ function Studentprogress() {
       .padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
   };
 
-  const percentage = (lecturecomplete / totalLecture) * 100;
+  const percentage = ((lecturecomplete / totalLecture) * 100).toFixed(2);
   const time = lecture_time + solveTime;
-  console.log(lecture_time);
+
   const lectureProgress = (lecture_time / (time === 0 ? 1 : time)) * 100;
   const solvingProgress = (solveTime / (time === 0 ? 1 : time)) * 100;
   return (

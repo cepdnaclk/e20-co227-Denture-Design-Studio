@@ -82,7 +82,7 @@ const Teeth = ({
   const [isRestselect, setRestselect] = useState(false);
   const [zindex, setZindex] = useState({ up: 4, down: 4, ring: 4 });
   const [selectedTeethbyRest, setselectedTeethbyRest] = useState(null);
-  console.log(selectedTeeth);
+
   const RestIndex = {
     1: [null, 1],
     2: [2, 3],

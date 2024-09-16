@@ -57,5 +57,15 @@ router.put("/edit", async (req, res) => {
   try {
   } catch (error) {}
 });
-
+router.get("/count", async (req, res) => {
+  try {
+    const count = await lecturecontent.countDocuments();
+    res.status(200).send({ count });
+  } catch (err) {
+    console.log(err.message);
+    res
+      .status(500)
+      .send({ status: "Error getting document count", error: err.message });
+  }
+});
 module.exports = router;

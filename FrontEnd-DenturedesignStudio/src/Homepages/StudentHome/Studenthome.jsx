@@ -51,6 +51,7 @@ function Studenthome() {
             cancel={() => setsolvecase(false)}
             solve={() => setsolvecase(false)}
             userdata={userdata}
+            AutoSkip={() => {}}
           />
         )}
       </div>

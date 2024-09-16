@@ -7,13 +7,15 @@ import Teeth from "../TeethComp/Teeth";
 import { useTime } from "../Timecontext";
 import axios from "axios";
 import SaddleDemo from "../DemoVideos/SaddleDemo.mp4";
+import html2canvas from "html2canvas";
 
 function AddSaddles() {
   const navigate = useNavigate();
   const location = useLocation();
   const userdata = location.state?.userdata;
-  const imgData = location.state?.imgData;
+  const [imgData, setimgData] = useState(location.state?.imgData);
   const isActualCase = location.state?.isActualCase;
+  const isAutoCase = location.state?.isAutoCase;
   const [visibleundercut, setVisibleundercut] = useState({
     canEdit: false,
     visible: false,
@@ -27,6 +29,18 @@ function AddSaddles() {
     clasps: null,
     gingivally: null,
   });
+  const [ImgselectedData, setImgSelectedData] = useState({
+    restdata: null,
+    missingteeth: null,
+    undercuts: null,
+    plates: null,
+    clasps: null,
+    retentiondata: null,
+    gingivally: null,
+  });
+  const Imgmissingteeth = useState(Array(32).fill(false));
+  const [genated, setgenarated] = useState(true);
+  const autoRef = useRef(null);
   const user_name = userdata?.user_name;
   const { setWatchVideoTime } = useTime();
   const startTimeRef = useRef(null);
@@ -120,6 +134,38 @@ function AddSaddles() {
     });
   };
 
+  const handleAutoSkipbutton = () => {
+    setgenarated(true);
+    const numberofteeth = Math.floor(Math.random() * 11 + 3);
+    const missingteeths = new Set();
+    for (let index = 0; index < numberofteeth; index++) {
+      missingteeths.add(Math.floor(Math.random() * 16) + 1);
+      missingteeths.add(Math.floor(Math.random() * 16) + 17);
+    }
+    const missingteetharray = Array.from(missingteeths);
+    missingteetharray.forEach((element) => {
+      Imgmissingteeth[element - 1] = true;
+    });
+    setImgSelectedData({
+      restdata: null,
+      missingteeth: Imgmissingteeth,
+      undercuts: null,
+      plates: null,
+      clasps: null,
+      retentiondata: null,
+      gingivally: null,
+    });
+    setTimeout(() => {
+      html2canvas(autoRef.current).then((canvas) => {
+        const imgData = canvas.toDataURL("image/png");
+        setimgData(imgData);
+      });
+    }, 5);
+  };
+  useEffect(() => {
+    setgenarated(false);
+  }, [imgData]);
+
   return (
     <div className="designPage">
       <Home
@@ -156,6 +202,14 @@ function AddSaddles() {
                 </div>
               </button>
             )}
+            {isAutoCase && (
+              <button className="skipButton" onClick={handleAutoSkipbutton}>
+                <div className="skipButtonText">
+                  <span className="skipButtonText">Skip</span>
+                </div>
+              </button>
+            )}
+
             <button
               className="addRests"
               onClick={() =>
@@ -190,7 +244,25 @@ function AddSaddles() {
               Select Undercuts
             </h1>
           </div>
-
+          {
+            <div
+              className="TeethBackground-auto"
+              ref={autoRef}
+              style={{ borderRadius: "1vw", top: "-200vh" }}
+            >
+              {genated && (
+                <Teeth
+                  selectRest={{ selectrest: true }}
+                  DentureData={ImgselectedData}
+                  setData={() => {}}
+                  value={{ canEdit: false, visible: true }}
+                  selectPlate={{ view: true }}
+                  selectRetention={{ selectretention: true }}
+                  selectClasp={{ view: true }}
+                />
+              )}
+            </div>
+          }
           <div className="teethBackground1">
             <div className="retention-teeth">
               {/* Teeth component with interaction enabled */}

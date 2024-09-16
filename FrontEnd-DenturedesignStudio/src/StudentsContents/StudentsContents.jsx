@@ -24,8 +24,22 @@ const StudentsContents = () => {
   }, []);
 
   const handleOpen = (material) => {
-    const roles = "/studentscontents";
-    navigate("/viewcontent", { state: { material, role, roles, userdata } });
+    const videoId = material._id;
+    const user_name = userdata.user_name;
+    console.log("Material ID:", videoId);
+
+    axios
+      .put("http://localhost:5000/progress/edit", { user_name, videoId })
+      .then((response) => {
+        console.log(response.data);
+        const roles = "/studentscontents";
+        navigate("/viewcontent", {
+          state: { material, role, roles, userdata },
+        });
+      })
+      .catch((error) => {
+        console.log("Error :", error);
+      });
   };
 
   const handleDownload = (material) => {

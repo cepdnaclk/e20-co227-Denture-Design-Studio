@@ -60,6 +60,7 @@ router.put("/edit", async (req, res) => {
     completedLecture,
     solveTime,
     lectureTime,
+    videoId,
   } = req.body;
   try {
     const progress = await Progress.findOne({ user_name });
@@ -72,9 +73,6 @@ router.put("/edit", async (req, res) => {
     if (solveCase !== undefined) {
       progress.solveCase = solveCase;
     }
-    if (completedLecture !== undefined) {
-      progress.completedLecture = completedLecture;
-    }
 
     if (solveTime !== undefined) {
       progress.solveTime = solveTime;
@@ -82,7 +80,9 @@ router.put("/edit", async (req, res) => {
     if (lectureTime !== undefined) {
       progress.lectureTime = lectureTime;
     }
-
+    if (!progress.watchedVideos.includes(videoId) && videoId !== undefined) {
+      progress.watchedVideos.push(videoId);
+    }
     await progress.save();
     res.status(200).send({ status: "Progress updated", progress });
   } catch (err) {
