@@ -1,14 +1,14 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import "./AddConnectors.css";
-import Home from "../homebutton/home";
-import Demo from "../demobutton/demo";
-import BackComp from "../backComp/backComp";
-import Teeth from "../TeethComp/Teeth";
+import Home from "../../homebutton/home";
+import Demo from "../../demobutton/demo";
+import BackComp from "../../backComp/backComp";
+import Teeth from "../../TeethComp/Teeth";
 import DrawingCanvas from "./canvas/Canvas";
-import { useTime } from "../Timecontext";
+import { useTime } from "../../Timecontext";
 import axios from "axios";
-import ConnectorDemo from "../DemoVideos/ConnectorDemo.mp4";
+import ConnectorDemo from "../../DemoVideos/ConnectorDemo.mp4";
 
 function AddConnectors() {
   let navigate = useNavigate();
