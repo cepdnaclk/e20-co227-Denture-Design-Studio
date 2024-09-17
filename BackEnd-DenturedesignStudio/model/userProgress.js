@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const lecturecontent = require("./Lecturecontent");
 const Schema = mongoose.Schema;
 
 const userProgressschema = new Schema({
@@ -14,10 +15,6 @@ const userProgressschema = new Schema({
     type: Number,
     default: 0,
   },
-  completedLecture: {
-    type: Number,
-    default: 0,
-  },
 
   solveTime: {
     type: Number,
@@ -26,6 +23,11 @@ const userProgressschema = new Schema({
   lectureTime: {
     type: Number,
     default: 0,
+  },
+  watchedVideos: {
+    type: [Schema.Types.ObjectId],
+    ref: "lecturecontent",
+    default: [],
   },
 });
 
