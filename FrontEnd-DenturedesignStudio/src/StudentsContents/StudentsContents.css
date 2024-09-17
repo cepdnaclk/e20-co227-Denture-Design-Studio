@@ -58,6 +58,7 @@ header h1 {
   margin-bottom: 1vw;
   box-shadow: 0 0.4vw 0.6vw rgba(0, 0, 0, 0.1);
   border-radius: 0.8vw;
+  gap: 40vw;
 }
 
 .material:last-child {
