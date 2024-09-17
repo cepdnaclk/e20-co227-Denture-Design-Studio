@@ -11,7 +11,6 @@ import "./Retentionring.css";
 import "./claspUp.css";
 import "./claspDown.css";
 import "./Gingivally.css";
-
 import "./MissingTeeth.css";
 
 import TeethImages from "./Teethimages";
