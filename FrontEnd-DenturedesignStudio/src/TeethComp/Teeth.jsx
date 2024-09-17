@@ -117,8 +117,7 @@ const Teeth = ({
 
   // Tracks the selected teeth by rest type
   const [selectedTeethbyRest, setselectedTeethbyRest] = useState(null);
-  
-  console.log(selectedTeeth);
+
   const RestIndex = {
     1: [null, 1],
     2: [2, 3],

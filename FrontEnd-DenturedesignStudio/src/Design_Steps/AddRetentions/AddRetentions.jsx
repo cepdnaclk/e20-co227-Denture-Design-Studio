@@ -1,14 +1,14 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import "./AddRetentions.css";
-import Home from "../homebutton/home";
-import Demo from "../demobutton/demo";
-import BackComp from "../backComp/backComp";
-import Teeth from "../TeethComp/Teeth";
+import Home from "../../homebutton/home";
+import Demo from "../../demobutton/demo";
+import BackComp from "../../backComp/backComp";
+import Teeth from "../../TeethComp/Teeth";
 import ReviewCanvas from "../ReviewAnswer/ReviewCanvas";
-import { useTime } from "../Timecontext";
+import { useTime } from "../../Timecontext";
 import axios from "axios";
-import RetentionDemo from "../DemoVideos/RetentionDemo.mp4";
+import RetentionDemo from "../../DemoVideos/RetentionDemo.mp4";
 
 function AddRetentions() {
   const location = useLocation();

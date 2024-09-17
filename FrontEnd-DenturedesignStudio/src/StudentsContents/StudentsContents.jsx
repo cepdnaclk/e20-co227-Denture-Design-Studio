@@ -24,13 +24,22 @@ const StudentsContents = () => {
   }, []);
 
   const handleOpen = (material) => {
-    const roles = "/studentscontents";
-    navigate("/viewcontent", { state: { material, role, roles, userdata } });
-  };
+    const videoId = material._id;
+    const user_name = userdata.user_name;
+    console.log("Material ID:", videoId);
 
-  const handleDownload = (material) => {
-    alert(`Downloading ${material}`);
-    // Implement logic to download the material
+    axios
+      .put("http://localhost:5000/progress/edit", { user_name, videoId })
+      .then((response) => {
+        console.log(response.data);
+        const roles = "/studentscontents";
+        navigate("/viewcontent", {
+          state: { material, role, roles, userdata },
+        });
+      })
+      .catch((error) => {
+        console.log("Error :", error);
+      });
   };
 
   return (
@@ -61,9 +70,6 @@ const StudentsContents = () => {
               </div>
               <div className="actions2">
                 <button onClick={() => handleOpen(material)}>Open</button>
-                <button onClick={() => handleDownload(material)}>
-                  Download
-                </button>
               </div>
             </div>
           ))}

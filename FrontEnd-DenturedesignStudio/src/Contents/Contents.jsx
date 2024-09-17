@@ -38,10 +38,6 @@ const Contents = () => {
     navigate("/viewcontent", { state: { material, role, roles, userdata } });
   };
 
-  const handleDownload = (material) => {
-    alert(`Downloading ${material}`);
-  };
-
   const handleRemove = (material) => {
     console.log("Deleting lecture with ID:", material._id);
     setMaterials(materials.filter((m) => m !== material));
@@ -76,9 +72,7 @@ const Contents = () => {
               </div>
               <div className="actions">
                 <button onClick={() => handleOpen(material)}>Open</button>
-                <button onClick={() => handleDownload(material)}>
-                  Download
-                </button>
+
                 <button
                   onClick={() => {
                     setremovecontent(true);
