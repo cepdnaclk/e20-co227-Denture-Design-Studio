@@ -1,14 +1,14 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import "./AddRests.css";
-import Home from "../homebutton/home";
-import Demo from "../demobutton/demo";
-import BackComp from "../backComp/backComp";
-import Teeth from "../TeethComp/Teeth";
+import Home from "../../homebutton/home";
+import Demo from "../../demobutton/demo";
+import BackComp from "../../backComp/backComp";
+import Teeth from "../../TeethComp/Teeth";
 import ReviewCanvas from "../ReviewAnswer/ReviewCanvas";
-import { useTime } from "../Timecontext";
+import { useTime } from "../../Timecontext";
 import axios from "axios";
-import RestDemo from "../DemoVideos/RestDemo.mp4";
+import RestDemo from "../../DemoVideos/RestDemo.mp4";
 
 function AddRests() {
   let navigate = useNavigate();

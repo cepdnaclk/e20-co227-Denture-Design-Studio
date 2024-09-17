@@ -1,12 +1,12 @@
-import BackComp from "../backComp/backComp";
+import BackComp from "../../backComp/backComp";
 import "./ReviewAnswer.css";
 import { useLocation, useNavigate } from "react-router-dom";
-import Home from "../homebutton/home";
-import Gotobutton from "../Goto/Goto";
-import Teeth from "../TeethComp/Teeth";
+import Home from "../../homebutton/home";
+import Gotobutton from "../../Goto/Goto";
+import Teeth from "../../TeethComp/Teeth";
 import ReviewCanvas from "./ReviewCanvas";
 import { useRef, useState, useEffect } from "react";
-import { useTime } from "../Timecontext";
+import { useTime } from "../../Timecontext";
 import axios from "axios";
 function Reviewanswer() {
   const navigate = useNavigate();

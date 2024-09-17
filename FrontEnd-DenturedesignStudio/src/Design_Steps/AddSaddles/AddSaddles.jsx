@@ -1,12 +1,12 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import "./AddSaddles.css";
-import Home from "../homebutton/home";
-import Demo from "../demobutton/demo";
-import Teeth from "../TeethComp/Teeth";
-import { useTime } from "../Timecontext";
+import Home from "../../homebutton/home";
+import Demo from "../../demobutton/demo";
+import Teeth from "../../TeethComp/Teeth";
+import { useTime } from "../../Timecontext";
 import axios from "axios";
-import SaddleDemo from "../DemoVideos/SaddleDemo.mp4";
+import SaddleDemo from "../../DemoVideos/SaddleDemo.mp4";
 import html2canvas from "html2canvas";
 
 function AddSaddles() {

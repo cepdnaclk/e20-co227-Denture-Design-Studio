@@ -1,8 +1,8 @@
 import "./ModelAnswer.css";
 import { useNavigate, useLocation } from "react-router-dom";
-import Home from "../homebutton/home";
-import BackComp from "../backComp/backComp";
-import Teeth from "../TeethComp/Teeth";
+import Home from "../../homebutton/home";
+import BackComp from "../../backComp/backComp";
+import Teeth from "../../TeethComp/Teeth";
 import React, { useState, useRef } from "react";
 import { motion } from "framer-motion";
 import answer from "./answer.png";

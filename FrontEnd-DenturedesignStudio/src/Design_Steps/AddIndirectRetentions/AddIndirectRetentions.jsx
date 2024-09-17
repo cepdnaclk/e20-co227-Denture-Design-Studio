@@ -1,14 +1,14 @@
 import React from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import "./AddIndirectRetentions.css";
-import Home from "../homebutton/home";
-import Demo from "../demobutton/demo";
-import BackComp from "../backComp/backComp";
-import Teeth from "../TeethComp/Teeth";
+import Home from "../../homebutton/home";
+import Demo from "../../demobutton/demo";
+import BackComp from "../../backComp/backComp";
+import Teeth from "../../TeethComp/Teeth";
 import { useState, useEffect, useRef } from "react";
-import { useTime } from "../Timecontext";
+import { useTime } from "../../Timecontext";
 import axios from "axios";
-import IndirRetenDemo from "../DemoVideos/IndirRetenDemo.mp4";
+import IndirRetenDemo from "../../DemoVideos/IndirRetenDemo.mp4";
 
 function AddIndirectRetentions() {
   let navigate = useNavigate();
