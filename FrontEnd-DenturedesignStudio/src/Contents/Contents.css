@@ -102,11 +102,11 @@ header h1 {
 
 .actions {
   position: relative;
-  left: -5vw;
+  left: -1vw;
   align-items: center;
   width: 35vw;
   display: flex;
-  gap: 5vw;
+  gap: 10vw;
 }
 
 .actions button {

@@ -42,11 +42,6 @@ const StudentsContents = () => {
       });
   };
 
-  const handleDownload = (material) => {
-    alert(`Downloading ${material}`);
-    // Implement logic to download the material
-  };
-
   return (
     <>
       <link
@@ -75,9 +70,6 @@ const StudentsContents = () => {
               </div>
               <div className="actions2">
                 <button onClick={() => handleOpen(material)}>Open</button>
-                <button onClick={() => handleDownload(material)}>
-                  Download
-                </button>
               </div>
             </div>
           ))}
