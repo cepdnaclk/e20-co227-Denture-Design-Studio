@@ -81,8 +81,8 @@ function AddRests() {
 
     console.log("Current view time:", currentsolvetime);
 
-    window.addEventListener("mousemove", handleUserActivity);
-    window.addEventListener("keypress", handleUserActivity);
+    // window.addEventListener("mousemove", handleUserActivity);
+    //window.addEventListener("keypress", handleUserActivity);
     return () => {
       const endTime = Date.now();
       let timeSpent = Math.floor((endTime - startTimeRef.current) / 1000);
@@ -107,8 +107,8 @@ function AddRests() {
             });
         }
       }
-      window.removeEventListener("mousemove", handleUserActivity);
-      window.removeEventListener("keypress", handleUserActivity);
+      //  window.removeEventListener("mousemove", handleUserActivity);
+      //  window.removeEventListener("keypress", handleUserActivity);
       if (inactivityTimeoutRef.current) {
         clearTimeout(inactivityTimeoutRef.current);
       }
@@ -182,6 +182,7 @@ function AddRests() {
                       ? { selectretention: true }
                       : { selectretention: false }
                   }
+                  isReview={fromReview}
                 />
                 <ReviewCanvas drewcurves={curves} />
               </div>
