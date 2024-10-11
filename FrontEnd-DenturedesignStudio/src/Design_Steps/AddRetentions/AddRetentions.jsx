@@ -189,6 +189,7 @@ function AddRetentions() {
                 value={{ canEdit: false, visible: true }}
                 selectPlate={fromReview ? { view: true } : { view: false }}
                 selectClasp={fromReview ? { view: true } : { view: false }}
+                isReview={fromReview}
               />
               <ReviewCanvas drewcurves={curves} />
             </div>

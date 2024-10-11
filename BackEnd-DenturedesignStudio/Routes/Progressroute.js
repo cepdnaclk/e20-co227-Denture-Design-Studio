@@ -104,5 +104,23 @@ router.get("/count", async (req, res) => {
       .send({ status: "Error getting document count", error: err.message });
   }
 });
+router.delete("/delete", async (req, res) => {
+  try {
+    const { user_name } = req.body;
+    const progress = await Progress.findOne({ user_name });
+
+    if (progress) {
+      await progress.deleteOne();
+      res.status(200).send({ status: "progress deleted", progress });
+    } else {
+      res.status(404).send({ status: "User not found" });
+    }
+  } catch (err) {
+    console.error(err.message);
+    res
+      .status(500)
+      .send({ status: "Error deleting student", error: err.message });
+  }
+});
 
 module.exports = router;

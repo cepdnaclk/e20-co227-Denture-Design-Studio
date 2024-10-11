@@ -1,0 +1,75 @@
+.changeRole {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 35vw;
+  height: 20vw;
+  max-width: 883px;
+  min-width: 300px;
+  padding: 0;
+  background: #30505b;
+  color: #bff9f2;
+  border-radius: 2vw;
+  box-shadow: 0.668vw 0.668vw 0.668vw rgba(0, 0, 0, 0.3);
+  z-index: 1100;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.changeRole-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(1.5px);
+  z-index: 1000;
+}
+.request-accept-btn {
+  background-color: #66d8d8;
+  color: #000;
+  border: none;
+  padding: 0.5vw;
+  border-radius: 1vw;
+  cursor: pointer;
+  position: absolute;
+  font-family: "salsa";
+  font-size: 1.5vw;
+  top: 15vw;
+  left: 3vw;
+}
+.request-cancel-btn {
+  background-color: #e57373;
+  color: #fff;
+  border: none;
+  padding: 0.5vw;
+  border-radius: 1vw;
+  cursor: pointer;
+  position: absolute;
+  font-family: "salsa";
+  font-size: 1.5vw;
+  top: 15vw;
+  right: 3vw;
+}
+.changeRole h2 {
+  margin: 2vw;
+  font-weight: 400;
+  font-size: 2.5vw;
+  font-family: "salsa";
+  color: #e8e9e9;
+  text-decoration-line: underline;
+}
+.changeRole h3 {
+  margin: 1vw;
+  font-weight: 400;
+  font-size: 1.5vw;
+  font-family: "salsa";
+  color: #e8e9e9;
+}
+.request-username {
+  color: #6bea9e;
+  text-decoration-line: underline;
+}

@@ -42,25 +42,31 @@ function Signup() {
     }
 
     try {
-      let url = "";
-      if (role === student) {
-        url = "http://localhost:5000/student/add";
-        await axios.post("http://localhost:5000/progress/add", { user_name });
-      } else if (role === assessor) {
-        url = "http://localhost:5000/assessor/add";
-      }
+      const url = "http://localhost:5000/student/add";
+      await axios.post("http://localhost:5000/progress/add", { user_name });
 
-      await axios.post(url, {
-        first_name,
-        last_name,
-        email,
-        user_name,
-        password,
-      });
+      await axios
+        .post(url, {
+          first_name,
+          last_name,
+          email,
+          user_name,
+          password,
+          isAssessorRequested: role === assessor ? true : undefined,
+        })
+        .then((res) => {
+          if (role === assessor) {
+            axios.post("http://localhost:5000/admin/send-email", { user_name });
+          }
+        });
 
       await Swal.fire({
         title: "Thank you for registering.  ",
-        text: "A verification email has been sent to your provided email address. Please check your inbox ",
+        text: `A verification email has been sent to your provided email address. Please check your inbox.${
+          role === assessor
+            ? "\nAn admin will review your assessor account request and send you an email with further instructions."
+            : ""
+        }`,
         icon: "success",
         background: "#2f5770",
         color: "white",
