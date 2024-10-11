@@ -709,7 +709,7 @@ const Teeth = ({
               const isPresent =
                 !!selectedIndex &&
                 (selectedClasps.upClasp1[selectedIndex[0]] ||
-                  selectedClasps.upClasp1[selectedIndex[1]]);
+                  selectedClasps.u.pClasp1[selectedIndex[1]]);
               if (isPresent) {
                 toast.error(
                   "Error: You can't remove this Retention. You have to remove clasp first"

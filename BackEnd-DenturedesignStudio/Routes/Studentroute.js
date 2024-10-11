@@ -15,12 +15,89 @@ async function sendVerificationEmail(email, token, userId, user_name) {
     },
   });
 
-  const verificationLink = `http://localhost:5173/verify/${token}?id=${userId}&uname=${user_name}`;
   const mailOptions = {
     from: "ravindulakshan.rl2002@gmail.com",
     to: email,
-    subject: "Verify your email",
-    text: `Click this link to verify your email: ${verificationLink}`,
+    subject: "Verify your Account on denture design studio",
+    html: `<!doctype html>
+<html>
+  <body>
+    <div
+      style='background-color:#F2F5F7;color:#242424;font-family:"Helvetica Neue", "Arial Nova", "Nimbus Sans", Arial, sans-serif;font-size:16px;font-weight:400;letter-spacing:0.15008px;line-height:1.5;margin:0;padding:32px 0;min-height:100%;width:100%'
+    >
+      <table
+        align="center"
+        width="100%"
+        style="margin:0 auto;max-width:600px;background-color:#aaffe4;border:1px solid #ffffff;border-radius:20px"
+        role="presentation"
+        cellspacing="0"
+        cellpadding="0"
+        border="0"
+      >
+        <tbody>
+          <tr style="width:100%">
+            <td>
+              <div style="padding:16px 24px 16px 24px;text-align:center">
+                <img
+                  alt="Sample product"
+                  src="https://firebasestorage.googleapis.com/v0/b/denture-design.appspot.com/o/email_asserts%2Flogo.png?alt=media&amp;token=73d3c0de-6fef-4c04-80cb-0a40d6a3710d"
+                  width="200"
+                  style="width:200px;outline:none;border:none;text-decoration:none;vertical-align:middle;display:inline-block;max-width:100%"
+                />
+              </div>
+              <div
+                style="font-size:14px;font-weight:bold;padding:0px 24px 16px 24px"
+              >
+                Hi ${user_name} 👋,
+              </div>
+              <div
+                style="font-size:18px;font-weight:bold;text-align:center;padding:0px 24px 24px 24px"
+              >
+                Welcome to Denture design Studio!
+              </div>
+              <div
+                style="font-weight:normal;text-align:left;padding:16px 24px 16px 24px"
+              >
+                We&#x27;re thrilled to have you on board. To get started, please
+                verify your Account address by clicking the button below.
+              </div>
+              <div style="text-align:center;padding:16px 24px 24px 24px">
+                <a
+                  href="http://localhost:5173/verify/${token}?id=${userId}&amp;uname=${user_name}"
+                  style="color:#FFFFFF;font-size:14px;font-weight:bold;background-color:#0079cc;display:inline-block;padding:12px 20px;text-decoration:none"
+                  target="_blank"
+                  ><span
+                    ><!--[if mso
+                      ]><i
+                        style="letter-spacing: 20px;mso-font-width:-100%;mso-text-raise:30"
+                        hidden
+                        >&nbsp;</i
+                      ><!
+                    [endif]--></span
+                  ><span>Verify your account</span
+                  ><span
+                    ><!--[if mso
+                      ]><i
+                        style="letter-spacing: 20px;mso-font-width:-100%"
+                        hidden
+                        >&nbsp;</i
+                      ><!
+                    [endif]--></span
+                  ></a
+                >
+              </div>
+              <div
+                style="font-size:13px;font-weight:normal;text-align:center;padding:16px 24px 16px 24px"
+              >
+                © ${new Date().getFullYear()} Denture Design Studio. All rights reserved.
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>`,
   };
 
   await transporter.sendMail(mailOptions);
@@ -37,12 +114,91 @@ async function sendResetEmail(email, userId, token, username) {
     },
   });
 
-  const resetLink = `http://localhost:5173/reset-password/student?token=${token}&id=${userId}&uname=${username}`;
   const mailOptions = {
     from: "ravindulakshan.rl2002@gmail.com",
     to: email,
-    subject: "Password Reset",
-    text: `Click this link to reset your password: ${resetLink}`,
+    subject: "Password Reset on denture design studio",
+    html: `<!doctype html>
+<html>
+  <body>
+    <div
+      style='background-color:#F2F5F7;color:#242424;font-family:"Helvetica Neue", "Arial Nova", "Nimbus Sans", Arial, sans-serif;font-size:16px;font-weight:400;letter-spacing:0.15008px;line-height:1.5;margin:0;padding:32px 0;min-height:100%;width:100%'
+    >
+      <table
+        align="center"
+        width="100%"
+        style="margin:0 auto;max-width:600px;background-color:#aaffe4;border:1px solid #ffffff;border-radius:20px"
+        role="presentation"
+        cellspacing="0"
+        cellpadding="0"
+        border="0"
+      >
+        <tbody>
+          <tr style="width:100%">
+            <td>
+              <div style="padding:16px 24px 16px 24px;text-align:center">
+                <img
+                  alt="Sample product"
+                  src="https://firebasestorage.googleapis.com/v0/b/denture-design.appspot.com/o/email_asserts%2Flogo.png?alt=media&amp;token=73d3c0de-6fef-4c04-80cb-0a40d6a3710d"
+                  width="200"
+                  style="width:200px;outline:none;border:none;text-decoration:none;vertical-align:middle;display:inline-block;max-width:100%"
+                />
+              </div>
+              <div
+                style="font-size:14px;font-weight:bold;padding:0px 24px 16px 24px"
+              >
+                Hi ${username} 👋,
+              </div>
+              <div
+                style="font-size:16px;font-weight:normal;text-align:left;padding:0px 24px 24px 24px"
+              >
+                We received a request to reset your password for your Denture
+                Design Studio account. If you made this request, click the
+                button below to reset your password:
+              </div>
+              <div style="text-align:center;padding:16px 24px 24px 24px">
+                <a
+                  href="http://localhost:5173/reset-password/student?token=${token}&amp;id=${userId}&amp;uname=${username}"
+                  style="color:#FFFFFF;font-size:14px;font-weight:bold;background-color:#0079cc;display:inline-block;padding:12px 20px;text-decoration:none"
+                  target="_blank"
+                  ><span
+                    ><!--[if mso
+                      ]><i
+                        style="letter-spacing: 20px;mso-font-width:-100%;mso-text-raise:30"
+                        hidden
+                        >&nbsp;</i
+                      ><!
+                    [endif]--></span
+                  ><span>Rest your password</span
+                  ><span
+                    ><!--[if mso
+                      ]><i
+                        style="letter-spacing: 20px;mso-font-width:-100%"
+                        hidden
+                        >&nbsp;</i
+                      ><!
+                    [endif]--></span
+                  ></a
+                >
+              </div>
+              <div
+                style="color:#ff0000;font-weight:bold;padding:16px 24px 16px 24px"
+              >
+                If you didn&#x27;t request a password reset, you can safely
+                ignore this email. Your password will remain unchanged.
+              </div>
+              <div
+                style="font-size:13px;font-weight:normal;text-align:center;padding:16px 24px 16px 24px"
+              >
+                © ${new Date().getFullYear()} Denture Design Studio. All rights reserved.
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>`,
   };
 
   await transporter.sendMail(mailOptions);
@@ -50,7 +206,14 @@ async function sendResetEmail(email, userId, token, username) {
 
 // Register new student and send verification email
 router.post("/add", async (req, res) => {
-  const { first_name, last_name, email, user_name, password } = req.body;
+  const {
+    first_name,
+    last_name,
+    email,
+    user_name,
+    password,
+    isAssessorRequested,
+  } = req.body;
   try {
     const existstudent = await Student.findOne({ user_name });
     if (existstudent) {
@@ -65,6 +228,7 @@ router.post("/add", async (req, res) => {
       user_name,
       password,
       verificationToken,
+      isAssessorRequested,
     });
 
     await newStudent.save();
@@ -169,7 +333,13 @@ router.delete("/delete", async (req, res) => {
 
 // Edit student details
 router.put("/edit", async (req, res) => {
-  const { first_name, last_name, user_name, newuser_name } = req.body;
+  const {
+    first_name,
+    last_name,
+    user_name,
+    newuser_name,
+    isAssessorRequested,
+  } = req.body;
 
   try {
     const student = await Student.findOne({ user_name });
@@ -192,7 +362,9 @@ router.put("/edit", async (req, res) => {
     if (newuser_name !== undefined) {
       student.user_name = newuser_name;
     }
-
+    if (isAssessorRequested === false) {
+      student.isAssessorRequested = undefined;
+    }
     await student.save();
     res.status(200).send({ status: "Student updated", student });
   } catch (err) {
@@ -255,6 +427,162 @@ router.post("/reset-password", async (req, res) => {
 
     await sendResetEmail(email, student._id, resetToken, student.user_name);
     res.status(200).send("Reset email sent.");
+  } catch (err) {
+    console.error(err.message);
+    res
+      .status(500)
+      .send({ status: "Error sending reset email", error: err.message });
+  }
+});
+
+router.post("/user-notverified", async (req, res) => {
+  const { user_name } = req.body;
+  try {
+    const student = await Student.findOne({ user_name });
+    if (!student) {
+      return res.status(404).send("Student with this email does not exist.");
+    }
+    const transporter = nodemailer.createTransport({
+      service: "Gmail",
+      host: "smtp.gmail.com",
+      auth: {
+        user: "ravindulakshan.rl2002@gmail.com",
+        pass: "rzna ccxy ykzb qjsf",
+      },
+    });
+    const mailOptions = {
+      from: "ravindulakshan.rl2002@gmail.com",
+      to: student.email,
+      subject: "Account Not Verified to Access Assessor",
+      html: `<!doctype html>
+<html>
+  <body>
+    <div
+      style='background-color:#F2F5F7;color:#242424;font-family:"Helvetica Neue", "Arial Nova", "Nimbus Sans", Arial, sans-serif;font-size:16px;font-weight:400;letter-spacing:0.15008px;line-height:1.5;margin:0;padding:32px 0;min-height:100%;width:100%'
+    >
+      <table
+        align="center"
+        width="100%"
+        style="margin:0 auto;max-width:600px;background-color:#aaffe4;border:1px solid #ffffff;border-radius:20px"
+        role="presentation"
+        cellspacing="0"
+        cellpadding="0"
+        border="0"
+      >
+        <tbody>
+          <tr style="width:100%">
+            <td>
+              <div style="padding:16px 24px 16px 24px;text-align:center">
+                <img
+                  alt="Sample product"
+                  src="https://firebasestorage.googleapis.com/v0/b/denture-design.appspot.com/o/email_asserts%2Flogo.png?alt=media&amp;token=73d3c0de-6fef-4c04-80cb-0a40d6a3710d"
+                  width="200"
+                  style="width:200px;outline:none;border:none;text-decoration:none;vertical-align:middle;display:inline-block;max-width:100%"
+                />
+              </div>
+              <div
+                style="font-size:14px;font-weight:bold;padding:0px 24px 16px 24px"
+              >
+                Hi ${user_name} 👋,
+              </div>
+              <div
+                style="color:#ff0000;font-size:19px;font-weight:bold;text-align:center;padding:36px 24px 80px 28px"
+              >
+                Your account is not verify yet to accept the assessor account
+                request.to accepet your request verify you account first.
+              </div>
+              <div
+                style="font-size:13px;font-weight:normal;text-align:center;padding:16px 24px 16px 24px"
+              >
+                © ${new Date().getFullYear()} Denture Design Studio. All rights reserved.
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>`,
+    };
+    await transporter.sendMail(mailOptions);
+  } catch (err) {
+    console.error(err.message);
+    res
+      .status(500)
+      .send({ status: "Error sending reset email", error: err.message });
+  }
+});
+
+router.post("/not-accepted-assessor", async (req, res) => {
+  const { user_name } = req.body;
+  try {
+    const student = await Student.findOne({ user_name });
+    if (!student) {
+      return res.status(404).send("Student with this email does not exist.");
+    }
+    const transporter = nodemailer.createTransport({
+      service: "Gmail",
+      host: "smtp.gmail.com",
+      auth: {
+        user: "ravindulakshan.rl2002@gmail.com",
+        pass: "rzna ccxy ykzb qjsf",
+      },
+    });
+    const mailOptions = {
+      from: "ravindulakshan.rl2002@gmail.com",
+      to: student.email,
+      subject: "Can't Accept Assessor Request",
+      html: `<!doctype html>
+<html>
+  <body>
+    <div
+      style='background-color:#F2F5F7;color:#242424;font-family:"Helvetica Neue", "Arial Nova", "Nimbus Sans", Arial, sans-serif;font-size:16px;font-weight:400;letter-spacing:0.15008px;line-height:1.5;margin:0;padding:32px 0;min-height:100%;width:100%'
+    >
+      <table
+        align="center"
+        width="100%"
+        style="margin:0 auto;max-width:600px;background-color:#aaffe4;border:1px solid #ffffff;border-radius:20px"
+        role="presentation"
+        cellspacing="0"
+        cellpadding="0"
+        border="0"
+      >
+        <tbody>
+          <tr style="width:100%">
+            <td>
+              <div style="padding:16px 24px 16px 24px;text-align:center">
+                <img
+                  alt="Sample product"
+                  src="https://firebasestorage.googleapis.com/v0/b/denture-design.appspot.com/o/email_asserts%2Flogo.png?alt=media&amp;token=73d3c0de-6fef-4c04-80cb-0a40d6a3710d"
+                  width="200"
+                  style="width:200px;outline:none;border:none;text-decoration:none;vertical-align:middle;display:inline-block;max-width:100%"
+                />
+              </div>
+              <div
+                style="font-size:14px;font-weight:bold;padding:0px 24px 16px 24px"
+              >
+                Hi ${user_name} 👋,
+              </div>
+              <div
+                style="color:#f80a0a;font-weight:bold;text-align:center;padding:36px 24px 52px 24px"
+              >
+                Your request to upgrade the user account has been rejected by
+                the admin. Log in to continue using your student account.
+              </div>
+              <div
+                style="font-size:13px;font-weight:normal;text-align:center;padding:16px 24px 16px 24px"
+              >
+                © ${new Date().getFullYear()} Denture Design Studio. All rights reserved.
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>`,
+    };
+    await transporter.sendMail(mailOptions);
   } catch (err) {
     console.error(err.message);
     res

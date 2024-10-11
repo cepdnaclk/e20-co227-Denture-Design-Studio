@@ -1,0 +1,60 @@
+.detail-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 45vw;
+  height: 25vw;
+  max-width: 883px;
+  min-width: 300px;
+  padding: 0;
+  background: #30505b;
+  color: #bff9f2;
+  border-radius: 2vw;
+  box-shadow: 0.668vw 0.668vw 0.668vw rgba(0, 0, 0, 0.3);
+  z-index: 1100;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.detail-container h2 {
+  margin: 2vw;
+  font-weight: 400;
+  font-size: 3vw;
+  font-family: "salsa";
+  color: #e8e9e9;
+  text-decoration-line: underline;
+}
+.detail-container h3 {
+  margin: 1vw;
+  font-weight: 400;
+  font-size: 1.7vw;
+  font-family: "salsa";
+  color: #e8e9e9;
+}
+.label {
+  color: #8cf4ef; /* Color for the labels */
+}
+
+.value {
+  color: #20ff84; /* Color for the values */
+}
+.close-btn {
+  position: absolute;
+  right: 2vw;
+  top: 2vw;
+  color: black;
+  size: 2vw;
+  cursor: pointer;
+}
+.detail-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(1.5px);
+  z-index: 1000;
+}

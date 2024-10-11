@@ -11,6 +11,7 @@ const studentSchema = new Schema({
   createdAt: { type: Date, default: Date.now },
   lastAccessed: { type: Date, default: Date.now },
   isVerified: { type: Boolean, default: false },
+  isAssessorRequested: { type: Boolean },
   verificationToken: { type: String },
   resetPasswordToken: { type: String },
   resetPasswordExpire: { type: Date },

@@ -33,16 +33,15 @@ const assessorschema = new Schema({
     default: Date.now,
   },
   isVerified: { type: Boolean, default: false },
-  verificationToken: { type: String },
   resetPasswordToken: { type: String },
   resetPasswordExpire: { type: Date },
 });
-assessorschema.pre("save", async function (next) {
-  if (!this.isModified("password")) return next();
-  const salt = await bcrypt.genSalt(10);
-  this.password = await bcrypt.hash(this.password, salt);
-  next();
-});
+// assessorschema.pre("save", async function (next) {
+//   if (!this.isModified("password")) return next();
+//   const salt = await bcrypt.genSalt(10);
+//   this.password = await bcrypt.hash(this.password, salt);
+//   next();
+// });
 assessorschema.methods.matchpassword = async function (enterdpassword) {
   return await bcrypt.compare(enterdpassword, this.password);
 };
