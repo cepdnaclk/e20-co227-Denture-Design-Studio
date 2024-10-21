@@ -58,7 +58,7 @@ async function sendResetEmail(email, userId, token, username) {
               </div>
               <div style="text-align:center;padding:16px 24px 24px 24px">
                 <a
-                  href="https://e20-co225-denture-design-studio-front.onrender.com/reset-password/assessor?token=${token}&id=${userId}&uname=${username}"
+                  href="https://denture-design-studio-front.vercel.app/reset-password/assessor?token=${token}&id=${userId}&uname=${username}"
                   style="color:#FFFFFF;font-size:14px;font-weight:bold;background-color:#0079cc;display:inline-block;padding:12px 20px;text-decoration:none"
                   target="_blank"
                   ><span
