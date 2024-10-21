@@ -49,12 +49,15 @@ function Editdetails({ userdata, cancel, save, user }) {
       if (first_name && last_name && user_name) {
         try {
           axios
-            .put(`http://localhost:5000${role}/edit`, {
-              first_name: first_name,
-              last_name: last_name,
-              user_name: userdata.user_name,
-              newuser_name: user_name,
-            })
+            .put(
+              `https://e20-co225-denture-design-studio.onrender.com${role}/edit`,
+              {
+                first_name: first_name,
+                last_name: last_name,
+                user_name: userdata.user_name,
+                newuser_name: user_name,
+              }
+            )
             .then((response) => {
               console.log(response.status);
               if (response.status === 200) {

@@ -22,9 +22,15 @@ const UserAccount = () => {
   useEffect(() => {}, [changeroleuser]);
 
   useEffect(() => {
-    const fetchAssessors = axios.get("http://localhost:5000/assessor");
-    const fetchStudents = axios.get("http://localhost:5000/student");
-    const fetchAdmin = axios.get("http://localhost:5000/admin");
+    const fetchAssessors = axios.get(
+      "https://e20-co225-denture-design-studio.onrender.com/assessor"
+    );
+    const fetchStudents = axios.get(
+      "https://e20-co225-denture-design-studio.onrender.com/student"
+    );
+    const fetchAdmin = axios.get(
+      "https://e20-co225-denture-design-studio.onrender.com/admin"
+    );
 
     Promise.all([fetchAssessors, fetchStudents, fetchAdmin])
       .then(([assessorRes, studentRes, adminRes]) => {
@@ -69,24 +75,36 @@ const UserAccount = () => {
       if (!user) {
       }
       await axios
-        .delete("http://localhost:5000/student/delete", {
-          data: { user_name: user.user_name },
-        })
-        .then(() => {
-          axios.delete("http://localhost:5000/progress/delete", {
+        .delete(
+          "https://e20-co225-denture-design-studio.onrender.com/student/delete",
+          {
             data: { user_name: user.user_name },
-          });
+          }
+        )
+        .then(() => {
+          axios.delete(
+            "https://e20-co225-denture-design-studio.onrender.com/progress/delete",
+            {
+              data: { user_name: user.user_name },
+            }
+          );
         });
     } catch (studenterror) {
       try {
-        await axios.delete("http://localhost:5000/assessor/delete", {
-          data: { user_name: user.user_name },
-        });
+        await axios.delete(
+          "https://e20-co225-denture-design-studio.onrender.com/assessor/delete",
+          {
+            data: { user_name: user.user_name },
+          }
+        );
       } catch (assessorerror) {
         try {
-          await axios.delete("http://localhost:5000/admin/delete", {
-            data: { user_name: user.user_name },
-          });
+          await axios.delete(
+            "https://e20-co225-denture-design-studio.onrender.com/admin/delete",
+            {
+              data: { user_name: user.user_name },
+            }
+          );
         } catch (adminerr) {
           console.error("Error deleting user:", error.message);
         }

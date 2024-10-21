@@ -14,7 +14,7 @@ const UserEngagement = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/student")
+      .get("https://e20-co225-denture-design-studio.onrender.com/student")
       .then((res) => {
         setUsers(res.data);
       })

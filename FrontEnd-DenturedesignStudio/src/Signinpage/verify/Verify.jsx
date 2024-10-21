@@ -18,13 +18,17 @@ const VerifyEmail = () => {
   useEffect(() => {
     const verifyEmail = async () => {
       await axios
-        .get(`http://localhost:5000/student/verify/${token}?id=${userid}`)
+        .get(
+          `https://e20-co225-denture-design-studio.onrender.com/student/verify/${token}?id=${userid}`
+        )
         .then((studentResponse) => {
           setuserverify(true);
         })
         .catch(async (studentError) => {
           await axios
-            .get(`http://localhost:5000/assessor/verify/${token}?id=${userid}`)
+            .get(
+              `https://e20-co225-denture-design-studio.onrender.com/assessor/verify/${token}?id=${userid}`
+            )
             .then((assessorResponse) => {
               setuserverify(true);
             })
@@ -33,14 +37,20 @@ const VerifyEmail = () => {
             });
         });
       axios
-        .post("http://localhost:5000/student/get", { user_name })
+        .post(
+          "https://e20-co225-denture-design-studio.onrender.com/student/get",
+          { user_name }
+        )
         .then((response) => {
           console.log(response.data);
           setuserdata(response.data.student);
         })
         .catch((studenterr) => {
           axios
-            .post("http://localhost:5000/assessor/get", { user_name })
+            .post(
+              "https://e20-co225-denture-design-studio.onrender.com/assessor/get",
+              { user_name }
+            )
             .then((response) => {
               console.log(response.data);
               setuserdata(response.data.assessor);

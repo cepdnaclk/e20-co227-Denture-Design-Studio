@@ -52,7 +52,10 @@ function Reviewanswer() {
     startTimeRef.current = Date.now();
 
     axios
-      .post("http://localhost:5000/progress/get", { user_name })
+      .post(
+        "https://e20-co225-denture-design-studio.onrender.com/progress/get",
+        { user_name }
+      )
       .then((response) => {
         const currentSolveTime = response.data.progress.solveTime;
         setCurrentSolveTime(currentSolveTime);
@@ -77,10 +80,13 @@ function Reviewanswer() {
 
           // Save the updated lecture time in the backend
           axios
-            .put("http://localhost:5000/progress/edit", {
-              user_name,
-              solveTime: newSolveTimem,
-            })
+            .put(
+              "https://e20-co225-denture-design-studio.onrender.com/progress/edit",
+              {
+                user_name,
+                solveTime: newSolveTimem,
+              }
+            )
             .then((response) => {
               console.log("Lecture time updated:", response.data);
             })
@@ -99,16 +105,22 @@ function Reviewanswer() {
 
   const FinishSolvecase = () => {
     axios
-      .post("http://localhost:5000/progress/get", { user_name })
+      .post(
+        "https://e20-co225-denture-design-studio.onrender.com/progress/get",
+        { user_name }
+      )
       .then((response) => {
         currentSolvedCases = response.data.progress.solveCase;
 
         const newSolvedCases = currentSolvedCases + 1;
         axios
-          .put("http://localhost:5000/progress/edit", {
-            user_name,
-            solveCase: newSolvedCases,
-          })
+          .put(
+            "https://e20-co225-denture-design-studio.onrender.com/progress/edit",
+            {
+              user_name,
+              solveCase: newSolvedCases,
+            }
+          )
           .then((response) => {
             console.log("Lecture time updated:", response.data);
             navigate("/modelanswer", {

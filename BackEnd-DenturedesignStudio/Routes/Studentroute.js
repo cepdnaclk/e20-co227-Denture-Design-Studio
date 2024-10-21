@@ -63,7 +63,7 @@ async function sendVerificationEmail(email, token, userId, user_name) {
               </div>
               <div style="text-align:center;padding:16px 24px 24px 24px">
                 <a
-                  href="http://localhost:5173/verify/${token}?id=${userId}&amp;uname=${user_name}"
+                  href="https://e20-co225-denture-design-studio-front.onrender.com/verify/${token}?id=${userId}&amp;uname=${user_name}"
                   style="color:#FFFFFF;font-size:14px;font-weight:bold;background-color:#0079cc;display:inline-block;padding:12px 20px;text-decoration:none"
                   target="_blank"
                   ><span
@@ -158,7 +158,7 @@ async function sendResetEmail(email, userId, token, username) {
               </div>
               <div style="text-align:center;padding:16px 24px 24px 24px">
                 <a
-                  href="http://localhost:5173/reset-password/student?token=${token}&amp;id=${userId}&amp;uname=${username}"
+                  href="https://e20-co225-denture-design-studio-front.onrender.com/reset-password/student?token=${token}&amp;id=${userId}&amp;uname=${username}"
                   style="color:#FFFFFF;font-size:14px;font-weight:bold;background-color:#0079cc;display:inline-block;padding:12px 20px;text-decoration:none"
                   target="_blank"
                   ><span
