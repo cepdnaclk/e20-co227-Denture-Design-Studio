@@ -16,7 +16,10 @@ function AddConnectors() {
   const drewcurves = location.state?.curves;
   const selectedData = location.state?.selectedData;
   const userdata = location.state?.userdata;
+  const isAssessor = userdata?.assessor;
   const imgData = location.state?.imgData;
+  const answerImage = location.state?.answerImage;
+  const problemDescription = location.state?.problemDescription;
   const fromReview = location.state?.fromReview;
   const [connectortype, setconnectortype] = useState();
   const [selectedtype, setSelectedtype] = useState();
@@ -101,7 +104,11 @@ function AddConnectors() {
     <>
       <div className="designPage">
         <Home
-          onClick={() => navigate("/studenthome", { state: { userdata } })}
+          onClick={() =>
+            navigate(isAssessor ? "/assessorhome" : "/studenthome", {
+              state: { userdata },
+            })
+          }
         ></Home>
 
         <Demo videoSrc={ConnectorDemo} />
@@ -110,7 +117,13 @@ function AddConnectors() {
           <BackComp
             onClick={() =>
               navigate("/AddIndirectRetentions", {
-                state: { selectedData, userdata, imgData },
+                state: {
+                  selectedData,
+                  userdata,
+                  imgData,
+                  problemDescription,
+                  answerImage,
+                },
               })
             }
           ></BackComp>
@@ -126,19 +139,30 @@ function AddConnectors() {
                 src={imgData}
                 alt="problem-img"
                 style={{
-                  width: "15vw",
-                  top: "8vh",
-                  position: "absolute",
-                  left: "4.7vw",
+                  width: problemDescription ? "12vw" : "17vw",
+                  position: "relative",
+                  top: "3vh",
                 }}
               />
+              {problemDescription && (
+                <div className="problem-description-container">
+                  <p className="problem-Description">{problemDescription}</p>
+                </div>
+              )}
             </div>
             <div className="teethBackground1">
               <button
                 className="Done"
                 onClick={() =>
                   navigate("/reviewAnswer", {
-                    state: { curves, selectedData, userdata, imgData },
+                    state: {
+                      curves,
+                      selectedData,
+                      userdata,
+                      imgData,
+                      problemDescription,
+                      answerImage,
+                    },
                   })
                 }
               >

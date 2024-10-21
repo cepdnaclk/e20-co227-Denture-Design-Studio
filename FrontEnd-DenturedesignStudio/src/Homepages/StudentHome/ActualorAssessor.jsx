@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 import { useState, useRef } from "react";
 import Teeth from "../../TeethComp/Teeth";
 import html2canvas from "html2canvas";
+import axios from "axios";
+
 function ActualorAssessor({ cancel, solve, userdata }) {
   const navigate = useNavigate();
   const [selectedData, setSelectedData] = useState({
@@ -19,7 +21,26 @@ function ActualorAssessor({ cancel, solve, userdata }) {
   const [genated, setgenarated] = useState(false);
   const autoRef = useRef(null);
   const handleActualcase = () => {
-    navigate("/addSaddles", { state: { userdata } });
+    axios.get("http://localhost:5000/actualcase/random").then((response) => {
+      const data = response.data;
+      const imgData = data.ProblemUrl;
+      const problemDescription = data.description;
+      const supportMaterial = data.supportMaterialUrl;
+      const answerImage = data.AnswerUrl;
+      console.log(answerImage);
+      navigate("/addSaddles", {
+        state: {
+          userdata,
+          imgData,
+          isActualCase: true,
+          problemDescription,
+          supportMaterial,
+          answerImage,
+        },
+      });
+    });
+
+    //navigate("/addSaddles", { state: { userdata } });
     solve();
   };
 
