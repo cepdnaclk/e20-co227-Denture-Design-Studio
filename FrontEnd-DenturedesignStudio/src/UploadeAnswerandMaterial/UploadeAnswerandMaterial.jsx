@@ -9,16 +9,20 @@ import AddAnswer from "./AddAnswer.jsx";
 import Teeth from "../TeethComp/Teeth.jsx";
 import Swal from "sweetalert2";
 import { storage } from "../../firebase.config.js";
-import { ref, uploadString } from "firebase/storage";
+import { getDownloadURL, ref, uploadString } from "firebase/storage";
 import html2canvas from "html2canvas";
+import axios from "axios";
+import { ToastContainer, toast } from "react-toastify"; // Import Toast
+import "react-toastify/dist/ReactToastify.css";
 
 function UploadeAnswerandMaterial() {
   let navigate = useNavigate();
   const location = useLocation();
-  const typeselect = location.state?.typeselect;
   const captureRef = useRef(null);
-
-  const [isImageUpload, setisImageUpload] = useState(false);
+  const userdata = location.state?.userdata;
+  const [isImageUpload, setisImageUpload] = useState(
+    false || location.state?.isImageUpload
+  );
   const [isAddDescriptionOpen, setIsAddDescriptionOpen] = useState(false);
   const [isAddAnswerOpen, setIsAddAnswerOpen] = useState(false);
   const [isAddMaterialsOpen, setIsAddMaterialsOpen] = useState(false);
@@ -38,6 +42,14 @@ function UploadeAnswerandMaterial() {
           undercuts: null,
         }
   );
+  const [answerImageUrl, setanswerImageUrl] = useState(
+    location.state?.answerImageUrl
+  );
+  console.log(answerImageUrl);
+  const [answerDescription, setAnswerDescription] = useState("");
+  const [answerMaterialUrl, setanswerMaterialUrl] = useState("");
+  const [ProblemImageUrl, setProblemImageUrl] = useState("");
+  const [imgData, setImgForSolved] = useState("");
   console.log(selectedData);
   const setData = (data) => {
     setSelectedData({
@@ -49,7 +61,8 @@ function UploadeAnswerandMaterial() {
     });
   };
   function handleClick(path) {
-    if (path == "/assessorhome" && isImageUpload) {
+    console.log(isImageUpload);
+    if (path === "/assessorhome" && !isImageUpload) {
       Swal.fire({
         icon: "error",
         title: "Upload Required",
@@ -60,7 +73,7 @@ function UploadeAnswerandMaterial() {
       });
       return;
     }
-    navigate(path);
+    storeImage();
   }
   const openAddDescription = () => {
     setIsAddDescriptionOpen(true);
@@ -71,6 +84,14 @@ function UploadeAnswerandMaterial() {
     document.body.classList.remove("active-popup");
   };
   const openAddAnswer = () => {
+    html2canvas(captureRef.current, {
+      scale: window.devicePixelRatio,
+      useCORS: true,
+      willReadFrequently: true,
+    }).then((canvas) => {
+      const imgData = canvas.toDataURL("image/png");
+      setImgForSolved(imgData);
+    });
     setIsAddAnswerOpen(true);
     document.body.classList.add("active-popup");
   };
@@ -92,52 +113,117 @@ function UploadeAnswerandMaterial() {
     document.body.classList.remove("active-popup");
   };
   console.log(isImageUpload);
+  console.log(answerImageUrl);
+  console.log(ProblemImageUrl);
+  console.log(answerMaterialUrl);
+  console.log(answerDescription);
   const storeImage = () => {
     if (captureRef.current) {
+      const toastId = toast.loading("Uploading patient case..."); // Show loading notification
+
       html2canvas(captureRef.current, {
         scale: window.devicePixelRatio,
         useCORS: true,
         willReadFrequently: true,
-      }).then((canvas) => {
-        const imgData = canvas.toDataURL("image/png");
-        const storageRef = ref(storage, `images/teeth_${Date.now()}.png`);
-        uploadString(storageRef, imgData, "data_url")
-          .then((snapshot) => {
-            console.log("Uploaded to Firebase successfully!");
-          })
-          .catch((error) => {
-            console.error("Error uploading to Firebase:", error);
+      })
+        .then((canvas) => {
+          const imgData = canvas.toDataURL("image/png");
+
+          const storageRef = ref(
+            storage,
+            `ActualQuestions/${new Date().toDateString()}/problem_${new Date().toTimeString()}.png`
+          );
+          uploadString(storageRef, imgData, "data_url")
+            .then(async (snapshot) => {
+              const downloadURL = await getDownloadURL(storageRef);
+              setProblemImageUrl(downloadURL);
+              return downloadURL;
+            })
+            .then((downloadURL) => {
+              axios
+                .post("http://localhost:5000/actualcase/add", {
+                  AnswerUrl: answerImageUrl,
+                  ProblemUrl: downloadURL,
+                  description: answerDescription,
+                  supportMaterialUrl: answerMaterialUrl,
+                })
+                .then((response) => {
+                  toast.update(toastId, {
+                    render: "create Patient case successful!",
+                    type: "success",
+                    isLoading: false,
+                    autoClose: 2000, // Close after 2 seconds
+                  });
+                  console.log(response);
+
+                  setTimeout(() => {
+                    navigate("/assessorhome", { state: { userdata } });
+                  }, 2000); // Navigate after the success notification
+                })
+                .catch((error) => {
+                  toast.update(toastId, {
+                    render: "Error uploading data to server!",
+                    type: "error",
+                    isLoading: false,
+                    autoClose: 3000,
+                  });
+                  console.error("Error with axios post:", error);
+                });
+            })
+            .catch((error) => {
+              toast.update(toastId, {
+                render: "Error uploading to Firebase!",
+                type: "error",
+                isLoading: false,
+                autoClose: 3000,
+              });
+              console.error("Error uploading to Firebase:", error);
+            });
+        })
+        .catch((error) => {
+          toast.update(toastId, {
+            render: "Error capturing image!",
+            type: "error",
+            isLoading: false,
+            autoClose: 3000,
           });
-      });
+          console.error("Error capturing image:", error);
+        });
     } else {
+      toast.error("Capture element not found!");
       console.error("Capture element not found");
     }
   };
   return (
     <div className="designPage">
-      <Home onClick={() => handleClick("/assessorhome")}></Home>
+      <ToastContainer />
+      <Home
+        onClick={() => navigate("/assessorhome", { state: { userdata } })}
+      ></Home>
       <BackComp
-        onClick={() => handleClick("/asessorcreatepatientcase")}
+        onClick={() =>
+          navigate("/asessorcreatepatientcase", {
+            state: { userdata, selectedData },
+          })
+        }
       ></BackComp>
       <link
         rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Salsa&display=swap"
       />
       <h1 className="UAMHeader">Upload Answer/ Material/ Description</h1>
-      <div className="teethBackground">
-        <div ref={captureRef} style={{ width: "100%", maxWidth: "200vw" }}>
-          <Teeth
-            setMissingtooth={false}
-            selectRest={{ selectrest: false }}
-            DentureData={selectedData}
-            setData={setData}
-            click={(index) => console.log(`Clicked tooth ${index}`)}
-            value={{ canEdit: false, visible: true }}
-            selectPlate={{ view: false }}
-            selectRetention={{ selectretention: false }}
-            selectClasp={{ edit: false }}
-          />
-        </div>
+      <div className="assessor-case-teeth" ref={captureRef}>
+        <Teeth
+          setMissingtooth={false}
+          selectRest={{ selectrest: false }}
+          DentureData={selectedData}
+          setData={setData}
+          click={(index) => console.log(`Clicked tooth ${index}`)}
+          value={{ canEdit: false, visible: true }}
+          selectPlate={{ view: false }}
+          selectRetention={{ selectretention: false }}
+          selectClasp={{ edit: false }}
+        />
       </div>
 
       <div className="UAMButtonsbox">
@@ -151,6 +237,10 @@ function UploadeAnswerandMaterial() {
             isAddImageOpen={isAddImageOpen}
             closeAddImage={closeAddAnswer}
             setisImageUpload={(state) => setisImageUpload(state)}
+            answerImageUrl={(url) => setanswerImageUrl(url)}
+            imgData={imgData}
+            userdata={userdata}
+            selectedData={selectedData}
           />
         )}
 
@@ -162,7 +252,12 @@ function UploadeAnswerandMaterial() {
           Add Description
         </button>
         {isAddDescriptionOpen && (
-          <AddDescription handleClose={closeAddDescription} />
+          <AddDescription
+            handleClose={closeAddDescription}
+            answerDescription={(description) =>
+              setAnswerDescription(description)
+            }
+          />
         )}
 
         <button
@@ -172,17 +267,23 @@ function UploadeAnswerandMaterial() {
         >
           Upload Materials
         </button>
-        {isAddMaterialsOpen && <AddMaterial handleClose={closeAddMaterials} />}
-        <button
-          className="UAMButtons"
-          id="Finish"
-          onClick={() => {
-            handleClick("/assessorhome");
-            storeImage();
-          }}
-        >
-          Finish
-        </button>
+        {isAddMaterialsOpen && (
+          <AddMaterial
+            handleClose={closeAddMaterials}
+            answerMaterialUrl={(url) => setanswerMaterialUrl(url)}
+          />
+        )}
+        {
+          <button
+            className="UAMButtons"
+            id="Finish"
+            onClick={() => {
+              handleClick("/assessorhome");
+            }}
+          >
+            Finish
+          </button>
+        }
       </div>
     </div>
   );

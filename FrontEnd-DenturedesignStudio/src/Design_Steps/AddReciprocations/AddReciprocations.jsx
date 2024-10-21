@@ -15,7 +15,10 @@ function AddReciprocations() {
   const location = useLocation();
   const curves = location.state?.curves;
   const userdata = location.state?.userdata;
+  const isAssessor = userdata?.assessor;
   const imgData = location.state?.imgData;
+  const answerImage = location.state?.answerImage;
+  const problemDescription = location.state?.problemDescription;
   const [selectPlate, setselectPlate] = useState(false);
   const [selectClasp, setselectClasp] = useState(false);
   const fromReview = location.state?.fromReview;
@@ -133,7 +136,11 @@ function AddReciprocations() {
     <>
       <div className="designPage">
         <Home
-          onClick={() => navigate("/studenthome", { state: { userdata } })}
+          onClick={() =>
+            navigate(isAssessor ? "/assessorhome" : "/studenthome", {
+              state: { userdata },
+            })
+          }
         ></Home>
 
         <Demo videoSrc={ReciprocationDemo} />
@@ -142,7 +149,13 @@ function AddReciprocations() {
           <BackComp
             onClick={() =>
               navigate("/AddRetentions", {
-                state: { selectedData, userdata, imgData },
+                state: {
+                  selectedData,
+                  userdata,
+                  imgData,
+                  problemDescription,
+                  answerImage,
+                },
               })
             }
           ></BackComp>
@@ -158,12 +171,16 @@ function AddReciprocations() {
                 src={imgData}
                 alt="problem-img"
                 style={{
-                  width: "15vw",
-                  top: "8vh",
-                  position: "absolute",
-                  left: "4.7vw",
+                  width: problemDescription ? "12vw" : "17vw",
+                  position: "relative",
+                  top: "3vh",
                 }}
               />
+              {problemDescription && (
+                <div className="problem-description-container">
+                  <p className="problem-Description">{problemDescription}</p>
+                </div>
+              )}
             </div>
             <div className="teethBackground1">
               <button
@@ -171,10 +188,23 @@ function AddReciprocations() {
                 onClick={() =>
                   fromReview
                     ? navigate("/ReviewAnswer", {
-                        state: { selectedData, curves, userdata, imgData },
+                        state: {
+                          selectedData,
+                          curves,
+                          userdata,
+                          imgData,
+                          problemDescription,
+                          answerImage,
+                        },
                       })
                     : navigate("/addIndirectRetentions", {
-                        state: { selectedData, userdata, imgData },
+                        state: {
+                          selectedData,
+                          userdata,
+                          imgData,
+                          problemDescription,
+                          answerImage,
+                        },
                       })
                 }
               >

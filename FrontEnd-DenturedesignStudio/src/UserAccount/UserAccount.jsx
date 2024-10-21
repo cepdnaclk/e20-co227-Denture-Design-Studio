@@ -19,6 +19,7 @@ const UserAccount = () => {
     id: null,
     isAssessorRequested: null,
   });
+  useEffect(() => {}, [changeroleuser]);
 
   useEffect(() => {
     const fetchAssessors = axios.get("http://localhost:5000/assessor");

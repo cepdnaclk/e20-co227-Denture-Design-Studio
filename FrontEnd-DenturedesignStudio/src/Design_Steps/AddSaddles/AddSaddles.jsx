@@ -13,7 +13,15 @@ function AddSaddles() {
   const navigate = useNavigate();
   const location = useLocation();
   const userdata = location.state?.userdata;
+  const isAssessor = userdata?.assessor;
   const [imgData, setimgData] = useState(location.state?.imgData);
+  const [problemDescription, setproblemDescription] = useState(
+    location.state?.problemDescription
+  );
+  const [supportMaterial, setsupportMaterial] = useState(
+    location.state?.supportMaterial
+  );
+  const [answerImage, setanswerImage] = useState(location.state?.answerImage);
   const isActualCase = location.state?.isActualCase;
   const isAutoCase = location.state?.isAutoCase;
   const [visibleundercut, setVisibleundercut] = useState({
@@ -166,10 +174,28 @@ function AddSaddles() {
     setgenarated(false);
   }, [imgData]);
 
+  const handleActualskipbutton = () => {
+    axios.get("http://localhost:5000/actualcase/random").then((response) => {
+      const data = response.data;
+      const imgData = data.ProblemUrl;
+      const problemDescription = data.description;
+      const supportMaterial = data.supportMaterialUrl;
+      const answerImage = data.answerImageUrl;
+      setimgData(imgData);
+      setproblemDescription(problemDescription);
+      setsupportMaterial(supportMaterial);
+      setanswerImage(answerImage);
+    });
+  };
+
   return (
     <div className="designPage">
       <Home
-        onClick={() => navigate("/studenthome", { state: { userdata } })}
+        onClick={() =>
+          navigate(isAssessor ? "/assessorhome" : "/studenthome", {
+            state: { userdata },
+          })
+        }
       ></Home>
 
       <Demo videoSrc={SaddleDemo} />
@@ -185,18 +211,35 @@ function AddSaddles() {
               src={imgData}
               alt="problem-img"
               style={{
-                width: "15vw",
-                top: "8vh",
-                position: "absolute",
-                left: "4.7vw",
+                width: problemDescription ? "12vw" : "17vw",
+                position: "relative",
+                top: "3vh",
               }}
             />
+            {problemDescription && (
+              <div className="problem-description-container">
+                <p className="problem-Description">{problemDescription}</p>
+              </div>
+            )}
+            {supportMaterial && (
+              <a
+                style={{
+                  fontSize: "0.9vw",
+                  padding: "0",
+                  margin: 0,
+                  position: "relative",
+                  top: "-1vh",
+                }}
+                href={supportMaterial}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                click here to view support material
+              </a>
+            )}
 
             {isActualCase && (
-              <button
-                className="skipButton"
-                onClick={() => navigate("/addSaddles", { state: { userdata } })}
-              >
+              <button className="skipButton" onClick={handleActualskipbutton}>
                 <div className="skipButtonText">
                   <span className="skipButtonText">Skip</span>
                 </div>
@@ -214,7 +257,13 @@ function AddSaddles() {
               className="addRests"
               onClick={() =>
                 navigate("/addRests", {
-                  state: { selectedData, userdata, imgData },
+                  state: {
+                    selectedData,
+                    userdata,
+                    imgData,
+                    answerImage,
+                    problemDescription,
+                  },
                 })
               }
             >

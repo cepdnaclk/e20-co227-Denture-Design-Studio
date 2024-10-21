@@ -8,11 +8,17 @@ const AddAnswer = ({
   isAddImageOpen,
   closeAddImage,
   setisImageUpload,
+  answerImageUrl,
+  imgData,
+  userdata,
+  selectedData,
 }) => {
   let navigate = useNavigate();
   const [isImageUpload, setIsImageUpload] = useState(false);
   setisImageUpload(isImageUpload);
   console.log(isImageUpload);
+  console.log(imgData);
+
   return (
     <div className="AAoverly">
       <div className="AAcontent">
@@ -27,9 +33,23 @@ const AddAnswer = ({
           <AddImage
             handleClose={closeAddImage}
             setIsImageUpload={(state) => setIsImageUpload(state)}
+            answerImageurl={(url) => answerImageUrl(url)}
           />
         )}
-        <button className="AADesign" onClick={() => navigate("/addSaddles")}>
+        <button
+          className="AADesign"
+          onClick={() => {
+            const updateduserdata = {
+              ...userdata,
+              assessor: true,
+              teethdata: selectedData,
+            };
+            setisImageUpload(true);
+            navigate("/addSaddles", {
+              state: { userdata: updateduserdata, imgData },
+            });
+          }}
+        >
           Design & Upload
         </button>
       </div>
