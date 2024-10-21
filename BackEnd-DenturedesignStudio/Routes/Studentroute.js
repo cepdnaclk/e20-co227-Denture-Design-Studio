@@ -10,13 +10,13 @@ async function sendVerificationEmail(email, token, userId, user_name) {
     service: "Gmail",
     host: "smtp.gmail.com",
     auth: {
-      user: "ravindulakshan.rl2002@gmail.com",
-      pass: "rzna ccxy ykzb qjsf",
+      user: "denturedesignstudio1@gmail.com",
+      pass: "yahy cihs gajv pdnb",
     },
   });
 
   const mailOptions = {
-    from: "ravindulakshan.rl2002@gmail.com",
+    from: "denturedesignstudio1@gmail.com",
     to: email,
     subject: "Verify your Account on denture design studio",
     html: `<!doctype html>
@@ -109,13 +109,13 @@ async function sendResetEmail(email, userId, token, username) {
     service: "Gmail",
     host: "smtp.gmail.com",
     auth: {
-      user: "ravindulakshan.rl2002@gmail.com",
-      pass: "rzna ccxy ykzb qjsf",
+      user: "denturedesignstudio1@gmail.com",
+      pass: "yahy cihs gajv pdnb",
     },
   });
 
   const mailOptions = {
-    from: "ravindulakshan.rl2002@gmail.com",
+    from: "denturedesignstudio1@gmail.com",
     to: email,
     subject: "Password Reset on denture design studio",
     html: `<!doctype html>
@@ -446,12 +446,12 @@ router.post("/user-notverified", async (req, res) => {
       service: "Gmail",
       host: "smtp.gmail.com",
       auth: {
-        user: "ravindulakshan.rl2002@gmail.com",
-        pass: "rzna ccxy ykzb qjsf",
+        user: "denturedesignstudio1@gmail.com",
+        pass: "yahy cihs gajv pdnb",
       },
     });
     const mailOptions = {
-      from: "ravindulakshan.rl2002@gmail.com",
+      from: "denturedesignstudio1@gmail.com",
       to: student.email,
       subject: "Account Not Verified to Access Assessor",
       html: `<!doctype html>
@@ -524,12 +524,12 @@ router.post("/not-accepted-assessor", async (req, res) => {
       service: "Gmail",
       host: "smtp.gmail.com",
       auth: {
-        user: "ravindulakshan.rl2002@gmail.com",
-        pass: "rzna ccxy ykzb qjsf",
+        user: "denturedesignstudio1@gmail.com",
+        pass: "yahy cihs gajv pdnb",
       },
     });
     const mailOptions = {
-      from: "ravindulakshan.rl2002@gmail.com",
+      from: "denturedesignstudio1@gmail.com",
       to: student.email,
       subject: "Can't Accept Assessor Request",
       html: `<!doctype html>
