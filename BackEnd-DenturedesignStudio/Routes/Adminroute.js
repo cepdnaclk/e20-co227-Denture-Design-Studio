@@ -8,8 +8,8 @@ const transporter = nodemailer.createTransport({
   service: "Gmail",
   host: "smtp.gmail.com",
   auth: {
-    user: "ravindulakshan.rl2002@gmail.com",
-    pass: "rzna ccxy ykzb qjsf",
+    user: "denturedesignstudio1@gmail.com",
+    pass: "yahy cihs gajv pdnb",
   },
 });
 
@@ -81,7 +81,7 @@ router.post("/send-email", async (req, res) => {
     // Create an array of promises for sending emails
     const emailPromises = admins.map((admin) => {
       const mailOptions = {
-        from: "ravindulakshan.rl2002@gmail.com",
+        from: "denturedesignstudio1@gmail.com",
         to: admin.email,
         subject: "Assessor Account Request",
 
