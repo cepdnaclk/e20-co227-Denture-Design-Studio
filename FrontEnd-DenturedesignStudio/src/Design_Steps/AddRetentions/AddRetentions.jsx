@@ -15,7 +15,10 @@ function AddRetentions() {
   const navigate = useNavigate();
   const curves = location.state?.curves;
   const userdata = location.state?.userdata;
+  const isAssessor = userdata?.assessor;
   const imgData = location.state?.imgData;
+  const answerImage = location.state?.answerImage;
+  const problemDescription = location.state?.problemDescription;
   const [retentionType, setRetentionType] = useState();
   const [occlusallyType, setOcclusallyType] = useState();
   const fromReview = location.state?.fromReview;
@@ -138,7 +141,11 @@ function AddRetentions() {
       />
       <div className="AddRetentions">
         <Home
-          onClick={() => navigate("/studenthome", { state: { userdata } })}
+          onClick={() =>
+            navigate(isAssessor ? "/assessorhome" : "/studenthome", {
+              state: { userdata },
+            })
+          }
         />
         <Demo videoSrc={RetentionDemo} />
 
@@ -146,7 +153,13 @@ function AddRetentions() {
           <BackComp
             onClick={() =>
               navigate("/addRests", {
-                state: { selectedData, userdata, imgData },
+                state: {
+                  selectedData,
+                  userdata,
+                  imgData,
+                  problemDescription,
+                  answerImage,
+                },
               })
             }
           />
@@ -157,12 +170,16 @@ function AddRetentions() {
               src={imgData}
               alt="problem-img"
               style={{
-                width: "15vw",
-                top: "8vh",
-                position: "absolute",
-                left: "4.7vw",
+                width: problemDescription ? "12vw" : "17vw",
+                position: "relative",
+                top: "3vh",
               }}
             />
+            {problemDescription && (
+              <div className="problem-description-container">
+                <p className="problem-Description">{problemDescription}</p>
+              </div>
+            )}
           </div>
           <div className="teethBackground1">
             <div className="retention-teeth">
@@ -198,10 +215,23 @@ function AddRetentions() {
               onClick={() =>
                 fromReview
                   ? navigate("/reviewanswer", {
-                      state: { selectedData, curves, userdata, imgData },
+                      state: {
+                        selectedData,
+                        curves,
+                        userdata,
+                        imgData,
+                        problemDescription,
+                        answerImage,
+                      },
                     })
                   : navigate("/addReciprocations", {
-                      state: { selectedData, userdata, imgData },
+                      state: {
+                        selectedData,
+                        userdata,
+                        imgData,
+                        problemDescription,
+                        answerImage,
+                      },
                     })
               }
             >

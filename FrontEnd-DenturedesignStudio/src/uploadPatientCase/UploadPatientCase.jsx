@@ -67,7 +67,9 @@ function UploadPatientCase() {
       <button
         className="Create"
         onClick={() =>
-          navigate("/asessorcreatepatientcase", { state: { selectedData } })
+          navigate("/asessorcreatepatientcase", {
+            state: { selectedData, userdata },
+          })
         }
       >
         Add Undercut
