@@ -77,7 +77,10 @@ function AddSaddles() {
     startTimeRef.current = Date.now();
 
     axios
-      .post("http://localhost:5000/progress/get", { user_name })
+      .post(
+        "https://e20-co225-denture-design-studio.onrender.com/progress/get",
+        { user_name }
+      )
       .then((response) => {
         const currentSolveTime = response.data.progress.solveTime;
         setCurrentSolveTime(currentSolveTime);
@@ -102,10 +105,13 @@ function AddSaddles() {
 
           // Save the updated lecture time in the backend
           axios
-            .put("http://localhost:5000/progress/edit", {
-              user_name,
-              solveTime: newSolveTimem,
-            })
+            .put(
+              "https://e20-co225-denture-design-studio.onrender.com/progress/edit",
+              {
+                user_name,
+                solveTime: newSolveTimem,
+              }
+            )
             .then((response) => {
               console.log("Lecture time updated:", response.data);
             })
@@ -175,17 +181,21 @@ function AddSaddles() {
   }, [imgData]);
 
   const handleActualskipbutton = () => {
-    axios.get("http://localhost:5000/actualcase/random").then((response) => {
-      const data = response.data;
-      const imgData = data.ProblemUrl;
-      const problemDescription = data.description;
-      const supportMaterial = data.supportMaterialUrl;
-      const answerImage = data.answerImageUrl;
-      setimgData(imgData);
-      setproblemDescription(problemDescription);
-      setsupportMaterial(supportMaterial);
-      setanswerImage(answerImage);
-    });
+    axios
+      .get(
+        "https://e20-co225-denture-design-studio.onrender.com/actualcase/random"
+      )
+      .then((response) => {
+        const data = response.data;
+        const imgData = data.ProblemUrl;
+        const problemDescription = data.description;
+        const supportMaterial = data.supportMaterialUrl;
+        const answerImage = data.answerImageUrl;
+        setimgData(imgData);
+        setproblemDescription(problemDescription);
+        setsupportMaterial(supportMaterial);
+        setanswerImage(answerImage);
+      });
   };
 
   return (

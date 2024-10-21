@@ -8,10 +8,13 @@ function ChangeRole({ userData, cancel }) {
   const user_name = userData.user_name;
   const handleCancelrequest = async () => {
     console.log(user_name);
-    await axios.put("http://localhost:5000/student/edit", {
-      user_name: user_name,
-      isAssessorRequested: false,
-    });
+    await axios.put(
+      "https://e20-co225-denture-design-studio.onrender.com/student/edit",
+      {
+        user_name: user_name,
+        isAssessorRequested: false,
+      }
+    );
     cancel();
   };
   const handleAcceptrequest = () => {
@@ -33,9 +36,12 @@ function ChangeRole({ userData, cancel }) {
     }, 10000); // 10-second timeout
 
     axios
-      .post("http://localhost:5000/student/get", {
-        user_name: user_name,
-      })
+      .post(
+        "https://e20-co225-denture-design-studio.onrender.com/student/get",
+        {
+          user_name: user_name,
+        }
+      )
       .then((res) => {
         console.log(user_name);
         console.log(res.data);
@@ -51,33 +57,42 @@ function ChangeRole({ userData, cancel }) {
           });
 
           axios
-            .post("http://localhost:5000/assessor/add", {
-              user_name: user_name,
-              isAssessorRequested: undefined,
-              isVerified: true,
-              first_name: student.first_name,
-              last_name: student.last_name,
-              email: student.email,
-              password: student.password,
-              createdAt: student.createdAt,
-              lastAccessed: student.lastAccessed,
+            .post(
+              "https://e20-co225-denture-design-studio.onrender.com/assessor/add",
+              {
+                user_name: user_name,
+                isAssessorRequested: undefined,
+                isVerified: true,
+                first_name: student.first_name,
+                last_name: student.last_name,
+                email: student.email,
+                password: student.password,
+                createdAt: student.createdAt,
+                lastAccessed: student.lastAccessed,
+              }
+            )
+            .then((res) => {
+              console.log(res.data);
+              return axios.delete(
+                "https://e20-co225-denture-design-studio.onrender.com/student/delete",
+                {
+                  data: { user_name: user_name },
+                }
+              );
             })
             .then((res) => {
               console.log(res.data);
-              return axios.delete("http://localhost:5000/student/delete", {
-                data: { user_name: user_name },
-              });
-            })
-            .then((res) => {
-              console.log(res.data);
-              return axios.delete("http://localhost:5000/progress/delete", {
-                data: { user_name: user_name }, // Corrected variable
-              });
+              return axios.delete(
+                "https://e20-co225-denture-design-studio.onrender.com/progress/delete",
+                {
+                  data: { user_name: user_name }, // Corrected variable
+                }
+              );
             })
             .then((res) => {
               console.log(res.data);
               return axios.post(
-                "http://localhost:5000/assessor/accepted-assessor",
+                "https://e20-co225-denture-design-studio.onrender.com/assessor/accepted-assessor",
                 {
                   user_name: user_name,
                 }
@@ -106,9 +121,12 @@ function ChangeRole({ userData, cancel }) {
           });
           console.log("User not verified", student);
           axios
-            .post("http://localhost:5000/student/user-notverified", {
-              user_name: user_name,
-            })
+            .post(
+              "https://e20-co225-denture-design-studio.onrender.com/student/user-notverified",
+              {
+                user_name: user_name,
+              }
+            )
             .catch((error) => {
               console.error("Error posting user-notverified:", error);
               toast.update(processingToast, {

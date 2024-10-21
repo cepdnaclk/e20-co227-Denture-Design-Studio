@@ -18,10 +18,13 @@ function Studentpwreset() {
   const handleSave = () => {
     if (pwMatched) {
       axios
-        .put(`http://localhost:5000/student/edit/password/${token}`, {
-          password: newPassword,
-          userId: userId,
-        })
+        .put(
+          `https://e20-co225-denture-design-studio.onrender.com/student/edit/password/${token}`,
+          {
+            password: newPassword,
+            userId: userId,
+          }
+        )
         .then((response) => {
           console.log("success");
           setPasswordChanged(true);

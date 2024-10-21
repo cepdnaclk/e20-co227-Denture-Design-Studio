@@ -39,15 +39,21 @@ function CreatePatientStep2() {
   };
   const handleCreateButton = () => {
     axios
-      .post("http://localhost:5000/progress/get", { user_name })
+      .post(
+        "https://e20-co225-denture-design-studio.onrender.com/progress/get",
+        { user_name }
+      )
       .then((response) => {
         const currentCreatedCases = response.data.progress.createCase;
         const newCreatedCases = currentCreatedCases + 1;
         axios
-          .put("http://localhost:5000/progress/edit", {
-            user_name,
-            createCase: newCreatedCases,
-          })
+          .put(
+            "https://e20-co225-denture-design-studio.onrender.com/progress/edit",
+            {
+              user_name,
+              createCase: newCreatedCases,
+            }
+          )
           .then((response) => {
             console.log("Lecture time updated:", response.data);
           })

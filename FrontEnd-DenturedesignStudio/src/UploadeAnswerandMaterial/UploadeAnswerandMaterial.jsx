@@ -141,12 +141,15 @@ function UploadeAnswerandMaterial() {
             })
             .then((downloadURL) => {
               axios
-                .post("http://localhost:5000/actualcase/add", {
-                  AnswerUrl: answerImageUrl,
-                  ProblemUrl: downloadURL,
-                  description: answerDescription,
-                  supportMaterialUrl: answerMaterialUrl,
-                })
+                .post(
+                  "https://e20-co225-denture-design-studio.onrender.com/actualcase/add",
+                  {
+                    AnswerUrl: answerImageUrl,
+                    ProblemUrl: downloadURL,
+                    description: answerDescription,
+                    supportMaterialUrl: answerMaterialUrl,
+                  }
+                )
                 .then((response) => {
                   toast.update(toastId, {
                     render: "create Patient case successful!",

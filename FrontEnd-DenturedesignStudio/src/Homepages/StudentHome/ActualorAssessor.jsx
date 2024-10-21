@@ -21,24 +21,28 @@ function ActualorAssessor({ cancel, solve, userdata }) {
   const [genated, setgenarated] = useState(false);
   const autoRef = useRef(null);
   const handleActualcase = () => {
-    axios.get("http://localhost:5000/actualcase/random").then((response) => {
-      const data = response.data;
-      const imgData = data.ProblemUrl;
-      const problemDescription = data.description;
-      const supportMaterial = data.supportMaterialUrl;
-      const answerImage = data.AnswerUrl;
-      console.log(answerImage);
-      navigate("/addSaddles", {
-        state: {
-          userdata,
-          imgData,
-          isActualCase: true,
-          problemDescription,
-          supportMaterial,
-          answerImage,
-        },
+    axios
+      .get(
+        "https://e20-co225-denture-design-studio.onrender.com/actualcase/random"
+      )
+      .then((response) => {
+        const data = response.data;
+        const imgData = data.ProblemUrl;
+        const problemDescription = data.description;
+        const supportMaterial = data.supportMaterialUrl;
+        const answerImage = data.AnswerUrl;
+        console.log(answerImage);
+        navigate("/addSaddles", {
+          state: {
+            userdata,
+            imgData,
+            isActualCase: true,
+            problemDescription,
+            supportMaterial,
+            answerImage,
+          },
+        });
       });
-    });
 
     //navigate("/addSaddles", { state: { userdata } });
     solve();

@@ -42,8 +42,12 @@ function Signup() {
     }
 
     try {
-      const url = "http://localhost:5000/student/add";
-      await axios.post("http://localhost:5000/progress/add", { user_name });
+      const url =
+        "https://e20-co225-denture-design-studio.onrender.com/student/add";
+      await axios.post(
+        "https://e20-co225-denture-design-studio.onrender.com/progress/add",
+        { user_name }
+      );
 
       await axios
         .post(url, {
@@ -56,7 +60,10 @@ function Signup() {
         })
         .then((res) => {
           if (role === assessor) {
-            axios.post("http://localhost:5000/admin/send-email", { user_name });
+            axios.post(
+              "https://e20-co225-denture-design-studio.onrender.com/admin/send-email",
+              { user_name }
+            );
           }
         });
 

@@ -39,9 +39,12 @@ function Loginpage() {
       let userdata;
 
       try {
-        response = await Axios.post("http://localhost:5000/student/get", {
-          user_name,
-        });
+        response = await Axios.post(
+          "https://e20-co225-denture-design-studio.onrender.com/student/get",
+          {
+            user_name,
+          }
+        );
         role = "student";
         userdata = response.data.student;
         if (!userdata || !(await matchPassword(password, userdata.password))) {
@@ -49,9 +52,12 @@ function Loginpage() {
         }
       } catch (studentError) {
         try {
-          response = await Axios.post("http://localhost:5000/assessor/get", {
-            user_name,
-          });
+          response = await Axios.post(
+            "https://e20-co225-denture-design-studio.onrender.com/assessor/get",
+            {
+              user_name,
+            }
+          );
           role = "assessor";
           userdata = response.data.assessor;
           if (
@@ -62,9 +68,12 @@ function Loginpage() {
           }
         } catch (assessorError) {
           try {
-            response = await Axios.post("http://localhost:5000/admin/get", {
-              user_name,
-            });
+            response = await Axios.post(
+              "https://e20-co225-denture-design-studio.onrender.com/admin/get",
+              {
+                user_name,
+              }
+            );
             role = "admin";
             userdata = response.data.admin;
             if (
