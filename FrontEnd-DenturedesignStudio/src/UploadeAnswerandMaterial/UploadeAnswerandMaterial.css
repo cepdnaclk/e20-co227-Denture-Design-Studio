@@ -20,7 +20,11 @@
 
   color: #8ee1e1;
 }
-
+.assessor-case-teeth {
+  position: absolute;
+  left: 20vw;
+  top: 16vh;
+}
 .UAMTeethBackground {
   position: absolute;
   width: 20vw;

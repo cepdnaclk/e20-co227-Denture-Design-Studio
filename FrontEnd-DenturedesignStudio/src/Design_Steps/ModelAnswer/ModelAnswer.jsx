@@ -8,18 +8,20 @@ import { motion } from "framer-motion";
 import answer from "./answer.png";
 import html2canvas from "html2canvas";
 import ReviewCanvas from "../ReviewAnswer/ReviewCanvas";
-
+import { saveAs } from "file-saver";
 function ModelAnswer() {
   let navigate = useNavigate();
   const captureRef = useRef(null);
   const location = useLocation();
-  const selectedData = location.state?.selectedData;
+  const selectedData = location.state?.selectedData || {};
   const currentSolvedCases = location.state?.currentSolvedCases;
   const userdata = location.state?.userdata;
   const imgData = location.state?.imgData;
+  const answerImage = location.state?.answerImage;
+  const problemDescription = location.state?.problemDescription;
 
   const curves = location.state?.curves;
-  console.log(curves);
+  console.log(answerImage);
 
   const [isYourAnswerMoved, setIsYourAnswerMoved] = useState(false);
   const [isTeethMoved, setIsTeethMoved] = useState(false);
@@ -59,7 +61,11 @@ function ModelAnswer() {
       console.error("Capture element not found");
     }
   };
+  const handleDownload = () => {
+    const imageUrl = answerImage;
 
+    saveAs(imageUrl, "ModelAnswer.png"); // Use file-saver to download
+  };
   return (
     <div className="designPage">
       <Home
@@ -74,6 +80,8 @@ function ModelAnswer() {
               typeselect: true,
               userdata,
               imgData,
+              problemDescription,
+              answerImage,
             },
           })
         }
@@ -89,7 +97,7 @@ function ModelAnswer() {
       <motion.h4
         className="YourAnswer"
         animate={{
-          y: isYourAnswerMoved ? -120 : 0,
+          y: isYourAnswerMoved ? -140 : 0,
         }}
         transition={{ duration: 0.5 }}
       >
@@ -100,7 +108,7 @@ function ModelAnswer() {
       )}
       {isAnswerVisible && (
         <motion.img
-          src={answer}
+          src={answerImage}
           alt="Model Answer"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -151,17 +159,21 @@ function ModelAnswer() {
         <button
           className="ModelAnswerButton"
           id="finish"
-          onClick={() => navigate("/studenthome", userdata)}
+          onClick={() => navigate("/studenthome", { state: { userdata } })}
         >
           Finish
         </button>
-        <a href={answer} download="ModelAnswer.png">
+        <div>
           {isDownloadModelAnswerVisible && (
-            <button className="ModelAnswerButton" id="DownloadModelAnswer">
+            <button
+              className="ModelAnswerButton"
+              id="DownloadModelAnswer"
+              onClick={handleDownload}
+            >
               Download Model Answer
             </button>
           )}
-        </a>
+        </div>
       </div>
     </div>
   );

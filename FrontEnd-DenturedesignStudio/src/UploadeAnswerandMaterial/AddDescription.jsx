@@ -1,4 +1,11 @@
-const AddDescription = ({ handleClose }) => {
+import { useState } from "react";
+
+const AddDescription = ({ handleClose, answerDescription }) => {
+  const [Description, setAnswerDescription] = useState("");
+  const handleUploaddescription = () => {
+    answerDescription(Description);
+    handleClose();
+  };
   return (
     <div className="ADoverly">
       <div className="ADcontent">
@@ -9,8 +16,12 @@ const AddDescription = ({ handleClose }) => {
         <textarea
           className="descriptionTextarea"
           placeholder="Enter your description here..."
+          value={Description}
+          onChange={(e) => setAnswerDescription(e.target.value)}
         ></textarea>
-        <button className="ADUpload">Upload Description</button>
+        <button className="ADUpload" onClick={handleUploaddescription}>
+          Upload Description
+        </button>
       </div>
     </div>
   );

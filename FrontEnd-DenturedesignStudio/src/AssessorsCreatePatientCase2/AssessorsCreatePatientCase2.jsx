@@ -1,18 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import "./AssessorsCreatePatientCase2.css";
 import Home from "../homebutton/home";
 import CreateUploadButton from "../CreateUploadButton/CreateUploadButton";
 import BackComp from "../backComp/backComp";
 import Teeth from "../TeethComp/Teeth";
+import html2canvas from "html2canvas";
 
 function AssessorCreatePatientStep2() {
   const navigate = useNavigate();
   const location = useLocation();
+  const userdata = location.state?.userdata;
   const typeselect = location.state?.typeselect;
-  function handleClick(path) {
-    navigate(path);
-  }
+  const CreateRef = useRef(null);
+
   const [selectedData, setSelectedData] = useState(
     location.state?.selectedData
       ? {
@@ -41,14 +42,20 @@ function AssessorCreatePatientStep2() {
 
   return (
     <div className="CreatePatientCase2">
-      <Home onClick={() => handleClick("/assessorhome")} />
-      <BackComp onClick={() => handleClick("/uploadpatient")} />
+      <Home
+        onClick={() => navigate("/assessorhome", { state: { userdata } })}
+      />
+      <BackComp
+        onClick={() =>
+          navigate("/uploadpatient", { state: { userdata, selectedData } })
+        }
+      />
       <div>
         <link
           rel="stylesheet"
           href="https://fonts.googleapis.com/css2?family=Salsa&display=swap"
         />
-        <div className="teethBackground">
+        <div className="teethBackground" ref={CreateRef}>
           <Teeth
             setMissingtooth={false}
             selectRest={{ selectrest: false }}
@@ -74,9 +81,11 @@ function AssessorCreatePatientStep2() {
       </div>
       <button
         className="Create"
-        onClick={() =>
-          navigate("/uploadanswerandmaterial", { state: { selectedData } })
-        }
+        onClick={() => {
+          navigate("/uploadanswerandmaterial", {
+            state: { selectedData, userdata },
+          });
+        }}
       >
         Create & Upload
       </button>
