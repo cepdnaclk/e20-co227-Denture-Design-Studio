@@ -9,13 +9,13 @@ async function sendResetEmail(email, userId, token, username) {
     service: "Gmail",
     host: "smtp.gmail.com",
     auth: {
-      user: "ravindulakshan.rl2002@gmail.com",
-      pass: "rzna ccxy ykzb qjsf",
+      user: "denturedesignstudio1@gmail.com",
+      pass: "yahy cihs gajv pdnb",
     },
   });
 
   const mailOptions = {
-    from: "ravindulakshan.rl2002@gmail.com",
+    from: "denturedesignstudio1@gmail.com",
     to: email,
     subject: "Password Reset on denture design studio",
     html: `<!doctype html>
@@ -288,12 +288,12 @@ router.post("/accepted-assessor", async (req, res) => {
       service: "Gmail",
       host: "smtp.gmail.com",
       auth: {
-        user: "ravindulakshan.rl2002@gmail.com",
-        pass: "rzna ccxy ykzb qjsf",
+        user: "denturedesignstudio1@gmail.com",
+        pass: "yahy cihs gajv pdnb",
       },
     });
     const mailOptions = {
-      from: "ravindulakshan.rl2002@gmail.com",
+      from: "denturedesignstudio1@gmail.com",
       to: assessor.email,
       subject: "Your request for assessor access is accepted",
       html: `<!doctype html>
