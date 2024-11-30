@@ -22,14 +22,14 @@ const assessorrouter = require("../BackEnd-DenturedesignStudio/Routes/Assessorro
 const adminrouter = require("../BackEnd-DenturedesignStudio/Routes/Adminroute.js");
 const progressrouter = require("../BackEnd-DenturedesignStudio/Routes/Progressroute.js");
 const lecturerouter = require("../BackEnd-DenturedesignStudio/Routes/Lectureroute.js");
-const Actualcaserouter = require("../BackEnd-DenturedesignStudio/Routes/Actualcaseroute.js");
+const actualcaserouter = require("../BackEnd-DenturedesignStudio/Routes/Actualcaseroute.js");
 
 app.use("/student", studentrouter);
 app.use("/assessor", assessorrouter);
 app.use("/admin", adminrouter);
 app.use("/progress", progressrouter);
 app.use("/lecture", lecturerouter);
-app.use("/actualcase", Actualcaserouter);
+app.use("/actualcase", actualcaserouter);
 
 const connection = mongoose.connection;
 connection.once("open", () => {

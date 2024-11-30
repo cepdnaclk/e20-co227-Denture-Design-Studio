@@ -46,11 +46,14 @@ function Uploadcontent({ onUpload, onback }) {
 
           onUpload({ title, file: videoUrl, description });
           try {
-            axios.post("http://localhost:5000/lecture/add", {
-              title,
-              videoUrl,
-              description,
-            });
+            axios.post(
+              "https://denture-design-studio.onrender.com/lecture/add",
+              {
+                title,
+                videoUrl,
+                description,
+              }
+            );
           } catch (err) {
             console.log(err.message);
           }

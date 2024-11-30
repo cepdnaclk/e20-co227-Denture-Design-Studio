@@ -1,0 +1,8 @@
+{
+    "rewrites": [
+      { "source": "/verify/:token", "destination": "/" },
+      { "source": "/reset-password/student/:token", "destination": "/" },
+      { "source": "/reset-password/assessor/:token", "destination": "/" },
+      { "source": "/(.*)", "destination": "/" }
+    ]
+  }

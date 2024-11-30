@@ -11,86 +11,91 @@ const VerifyEmail = () => {
   const [searchParams] = useSearchParams();
   const userid = searchParams.get("id");
   const user_name = searchParams.get("uname");
-  const [userverify, setuserverify] = useState(false);
-  const [userdata, setuserdata] = useState(null);
-  const [stillverify, setstillverify] = useState(true);
+
+  const [loading, setLoading] = useState(true); // Tracks whether verification is in progress
+  const [isVerified, setIsVerified] = useState(false); // Tracks final verification status
+  const [error, setError] = useState(false); // Tracks if any error occurs
 
   useEffect(() => {
     const verifyEmail = async () => {
-      await axios
-        .get(`http://localhost:5000/student/verify/${token}?id=${userid}`)
-        .then((studentResponse) => {
-          setuserverify(true);
-        })
-        .catch(async (studentError) => {
-          await axios
-            .get(`http://localhost:5000/assessor/verify/${token}?id=${userid}`)
-            .then((assessorResponse) => {
-              setuserverify(true);
-            })
-            .catch((assessorError) => {
-              setstillverify(false);
-            });
-        });
-      axios
-        .post("http://localhost:5000/student/get", { user_name })
-        .then((response) => {
-          console.log(response.data);
-          setuserdata(response.data.student);
-        })
-        .catch((studenterr) => {
-          axios
-            .post("http://localhost:5000/assessor/get", { user_name })
-            .then((response) => {
-              console.log(response.data);
-              setuserdata(response.data.assessor);
-            })
-            .catch((assessorError) => {
-              console.log("fail");
-              setstillverify(false);
-            });
-        });
+      try {
+        // Try to verify as a student
+        await axios.get(
+          `https://denture-design-studio.onrender.com/student/verify/${token}?id=${userid}`
+        );
+        setIsVerified(true);
+      } catch {
+        // If student verification fails, try as an assessor
+        try {
+          await axios.get(
+            `https://denture-design-studio.onrender.com/assessor/verify/${token}?id=${userid}`
+          );
+          setIsVerified(true);
+        } catch {
+          setError(true); // Verification failed for both
+        }
+      }
+
+      try {
+        // Fetch user data
+        const response = await axios.post(
+          `https://denture-design-studio.onrender.com/student/get`,
+          { user_name }
+        );
+        if (response.data?.student?.isVerified) {
+          setIsVerified(true);
+        }
+      } catch {
+        try {
+          const response = await axios.post(
+            `https://denture-design-studio.onrender.com/assessor/get`,
+            { user_name }
+          );
+          if (response.data?.assessor?.isVerified) {
+            setIsVerified(true);
+          }
+        } catch {
+          setError(true); // Data fetch failed for both
+        }
+      }
+
+      setLoading(false); // Done loading
     };
 
     verifyEmail();
   }, [token, userid, user_name]);
-  console.log(userdata, userverify, token, userid, user_name, stillverify);
-  if (stillverify) {
+
+  if (loading) {
     return (
       <div className="designPage">
         <div className="messagebox">
           <div className="webAppLogo">
-            <img src={webApplogo} className="WebAppLogo" alt={"WebApp Logo"} />
+            <img src={webApplogo} className="WebAppLogo" alt="WebApp Logo" />
           </div>
           <h1 className="verifiying">Verifying......</h1>
         </div>
       </div>
     );
   }
+
   return (
     <div className="designPage">
       <div className="messagebox">
         <div className="webAppLogo">
-          <img src={webApplogo} className="WebAppLogo" alt={"WebApp Logo"} />
+          <img src={webApplogo} className="WebAppLogo" alt="WebApp Logo" />
         </div>
         <img
-          src={userverify || userdata?.isVerified ? Successlogo : Errorlogo}
+          src={isVerified ? Successlogo : Errorlogo}
           className="verificationimg"
-          alt={"verification Logo"}
+          alt="Verification Logo"
         />
-        <div
-          className={`message ${
-            userverify || userdata?.isVerified ? "sucess" : "error"
-          }`}
-        >
+        <div className={`message ${isVerified ? "success" : "error"}`}>
           <h1 className="verification">
-            {userverify || userdata?.isVerified
-              ? "Verification is successed"
-              : "Error"}
+            {isVerified ? "Verification is successful" : "Error"}
           </h1>
         </div>
         <p className="verifymessage">
-          {userverify || userdata?.isVerified
+          {isVerified
             ? "Your email has been verified. You can now sign in with your new account"
             : "Your email address could not be verified!."}
         </p>

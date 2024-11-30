@@ -19,15 +19,28 @@ const UserAccount = () => {
     id: null,
     isAssessorRequested: null,
   });
-  useEffect(() => {}, [changeroleuser]);
+  const [fetchData, setFetchData] = useState(false); // State to trigger fetch
 
   useEffect(() => {
-    const fetchAssessors = axios.get("http://localhost:5000/assessor");
-    const fetchStudents = axios.get("http://localhost:5000/student");
-    const fetchAdmin = axios.get("http://localhost:5000/admin");
+    // Fetch users when the component mounts or when fetchData changes
+    const fetchUsers = async () => {
+      try {
+        const fetchAssessors = axios.get(
+          "https://denture-design-studio.onrender.com/assessor"
+        );
+        const fetchStudents = axios.get(
+          "https://denture-design-studio.onrender.com/student"
+        );
+        const fetchAdmin = axios.get(
+          "https://denture-design-studio.onrender.com/admin"
+        );
 
-    Promise.all([fetchAssessors, fetchStudents, fetchAdmin])
-      .then(([assessorRes, studentRes, adminRes]) => {
+        const [assessorRes, studentRes, adminRes] = await Promise.all([
+          fetchAssessors,
+          fetchStudents,
+          fetchAdmin,
+        ]);
+
         const assessorsWithRole = assessorRes.data.map((user) => ({
           ...user,
           role: "assessor",
@@ -45,11 +58,13 @@ const UserAccount = () => {
           ...studentsWithRole,
           ...adminsWithRole,
         ]);
-      })
-      .catch((err) => {
+      } catch (err) {
         console.log(err.message);
-      });
-  }, []);
+      }
+    };
+
+    fetchUsers();
+  }, [fetchData]); // Fetch data when fetchData changes
 
   const handleDelete = (id) => {
     setSelectedUser(id);
@@ -60,6 +75,7 @@ const UserAccount = () => {
   const cancelDetailview = () => {
     setviewUser(null);
     setchangerole({ id: null, isAssessorRequested: null });
+    setFetchData((prev) => !prev); // Trigger fetch data
   };
 
   const confirmDelete = async (_id) => {
@@ -67,35 +83,45 @@ const UserAccount = () => {
     const user = users.find((user) => user._id === _id);
     try {
       if (!user) {
+        return; // Exit if user is not found
       }
-      await axios
-        .delete("http://localhost:5000/student/delete", {
+      await axios.delete(
+        "https://denture-design-studio.onrender.com/student/delete",
+        {
           data: { user_name: user.user_name },
-        })
-        .then(() => {
-          axios.delete("http://localhost:5000/progress/delete", {
-            data: { user_name: user.user_name },
-          });
-        });
+        }
+      );
+      await axios.delete(
+        "https://denture-design-studio.onrender.com/progress/delete",
+        {
+          data: { user_name: user.user_name },
+        }
+      );
     } catch (studenterror) {
       try {
-        await axios.delete("http://localhost:5000/assessor/delete", {
-          data: { user_name: user.user_name },
-        });
+        await axios.delete(
+          "https://denture-design-studio.onrender.com/assessor/delete",
+          {
+            data: { user_name: user.user_name },
+          }
+        );
       } catch (assessorerror) {
         try {
-          await axios.delete("http://localhost:5000/admin/delete", {
-            data: { user_name: user.user_name },
-          });
+          await axios.delete(
+            "https://denture-design-studio.onrender.com/admin/delete",
+            {
+              data: { user_name: user.user_name },
+            }
+          );
         } catch (adminerr) {
-          console.error("Error deleting user:", error.message);
+          console.error("Error deleting user:", adminerr.message);
         }
       }
     }
     const updatedUsers = users.filter((user) => user._id !== _id);
-
     setUsers(updatedUsers);
     setSelectedUser(null);
+    setFetchData((prev) => !prev); // Trigger fetch data again
   };
 
   const cancelDelete = () => {

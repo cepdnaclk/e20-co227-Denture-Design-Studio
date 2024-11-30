@@ -9,18 +9,24 @@ function Forgotpassword({ cancel, sentemail }) {
 
   const handlesentreset = () => {
     axios
-      .post("http://localhost:5000/student/reset-password", {
-        email: enteredemail,
-      })
+      .post(
+        "https://denture-design-studio.onrender.com/student/reset-password",
+        {
+          email: enteredemail,
+        }
+      )
       .then((res) => {
         sentemail();
         console.log(res);
       })
       .catch((err) => {
         axios
-          .post("http://localhost:5000/assessor/reset-password", {
-            email: enteredemail,
-          })
+          .post(
+            "https://denture-design-studio.onrender.com/assessor/reset-password",
+            {
+              email: enteredemail,
+            }
+          )
           .then((res) => {
             sentemail();
             console.log(res);

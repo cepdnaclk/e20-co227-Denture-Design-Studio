@@ -35,7 +35,7 @@ function UserEngage() {
     const fetchProgress = async () => {
       try {
         const response = await axios.post(
-          "http://localhost:5000/progress/get",
+          "https://denture-design-studio.onrender.com/progress/get",
           {
             user_name,
           }

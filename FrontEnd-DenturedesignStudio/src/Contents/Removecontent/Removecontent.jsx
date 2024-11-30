@@ -10,7 +10,9 @@ function Removecontent({ back, remove, material }) {
       const fileRef = ref(storage, material.videoUrl);
       await deleteObject(fileRef);
       axios
-        .delete(`http://localhost:5000/lecture/delete/${material._id}`)
+        .delete(
+          `https://denture-design-studio.onrender.com/lecture/delete/${material._id}`
+        )
         .then((response) => {
           console.log("Response:", response.data);
           remove(material);

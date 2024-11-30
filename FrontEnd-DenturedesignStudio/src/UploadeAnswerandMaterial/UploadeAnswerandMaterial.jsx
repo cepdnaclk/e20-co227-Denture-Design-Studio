@@ -141,12 +141,15 @@ function UploadeAnswerandMaterial() {
             })
             .then((downloadURL) => {
               axios
-                .post("http://localhost:5000/actualcase/add", {
-                  AnswerUrl: answerImageUrl,
-                  ProblemUrl: downloadURL,
-                  description: answerDescription,
-                  supportMaterialUrl: answerMaterialUrl,
-                })
+                .post(
+                  "https://denture-design-studio.onrender.com/actualcase/add",
+                  {
+                    AnswerUrl: answerImageUrl,
+                    ProblemUrl: downloadURL,
+                    description: answerDescription,
+                    supportMaterialUrl: answerMaterialUrl,
+                  }
+                )
                 .then((response) => {
                   toast.update(toastId, {
                     render: "create Patient case successful!",
@@ -196,7 +199,6 @@ function UploadeAnswerandMaterial() {
   };
   return (
     <div className="designPage">
-      <ToastContainer />
       <Home
         onClick={() => navigate("/assessorhome", { state: { userdata } })}
       ></Home>
@@ -213,6 +215,7 @@ function UploadeAnswerandMaterial() {
       />
       <h1 className="UAMHeader">Upload Answer/ Material/ Description</h1>
       <div className="assessor-case-teeth" ref={captureRef}>
+        <ToastContainer style={{ zIndex: 999 }} />
         <Teeth
           setMissingtooth={false}
           selectRest={{ selectrest: false }}

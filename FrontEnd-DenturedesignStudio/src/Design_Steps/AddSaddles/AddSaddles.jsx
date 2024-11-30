@@ -8,6 +8,8 @@ import { useTime } from "../../Timecontext";
 import axios from "axios";
 import SaddleDemo from "../../DemoVideos/SaddleDemo.mp4";
 import html2canvas from "html2canvas";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function AddSaddles() {
   const navigate = useNavigate();
@@ -77,7 +79,9 @@ function AddSaddles() {
     startTimeRef.current = Date.now();
 
     axios
-      .post("http://localhost:5000/progress/get", { user_name })
+      .post("https://denture-design-studio.onrender.com/progress/get", {
+        user_name,
+      })
       .then((response) => {
         const currentSolveTime = response.data.progress.solveTime;
         setCurrentSolveTime(currentSolveTime);
@@ -102,7 +106,7 @@ function AddSaddles() {
 
           // Save the updated lecture time in the backend
           axios
-            .put("http://localhost:5000/progress/edit", {
+            .put("https://denture-design-studio.onrender.com/progress/edit", {
               user_name,
               solveTime: newSolveTimem,
             })
@@ -163,11 +167,22 @@ function AddSaddles() {
       retentiondata: null,
       gingivally: null,
     });
+
     setTimeout(() => {
-      html2canvas(autoRef.current).then((canvas) => {
-        const imgData = canvas.toDataURL("image/png");
-        setimgData(imgData);
-      });
+      const toastId = toast.loading("Skipping Case...");
+      html2canvas(autoRef.current)
+        .then((canvas) => {
+          const imgData = canvas.toDataURL("image/png");
+          setimgData(imgData);
+        })
+        .then(() => {
+          toast.update(toastId, {
+            render: "Case Skipped",
+            type: "success",
+            isLoading: false,
+            autoClose: 300,
+          });
+        });
     }, 5);
   };
   useEffect(() => {
@@ -175,17 +190,39 @@ function AddSaddles() {
   }, [imgData]);
 
   const handleActualskipbutton = () => {
-    axios.get("http://localhost:5000/actualcase/random").then((response) => {
-      const data = response.data;
-      const imgData = data.ProblemUrl;
-      const problemDescription = data.description;
-      const supportMaterial = data.supportMaterialUrl;
-      const answerImage = data.answerImageUrl;
-      setimgData(imgData);
-      setproblemDescription(problemDescription);
-      setsupportMaterial(supportMaterial);
-      setanswerImage(answerImage);
-    });
+    const toastId = toast.loading("Skipping Case...");
+
+    axios
+      .get("https://denture-design-studio.onrender.com/actualcase/random")
+      .then((response) => {
+        const data = response.data;
+        const imgData = data.ProblemUrl;
+        const problemDescription = data.description;
+        const supportMaterial = data.supportMaterialUrl;
+        const answerImage = data.answerImageUrl;
+
+        // Update the state with the new data
+        setimgData(imgData);
+        setproblemDescription(problemDescription);
+        setsupportMaterial(supportMaterial);
+        setanswerImage(answerImage);
+
+        // Show success notification after updating data
+        toast.update(toastId, {
+          render: "Case Skipped Successfully",
+          type: "success",
+          isLoading: false,
+          autoClose: 3000,
+        });
+      })
+      .catch((error) => {
+        toast.update(toastId, {
+          render: `Error: ${error.message}`,
+          type: "error",
+          isLoading: false,
+          autoClose: 3000,
+        });
+      });
   };
 
   return (
@@ -201,6 +238,7 @@ function AddSaddles() {
       <Demo videoSrc={SaddleDemo} />
 
       <div className="AddSaddles">
+        <ToastContainer />
         <div>
           <link
             rel="stylesheet"

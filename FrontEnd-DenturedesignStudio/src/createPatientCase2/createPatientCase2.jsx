@@ -6,6 +6,8 @@ import Teeth from "../TeethComp/Teeth";
 import html2canvas from "html2canvas";
 import BackComp from "../backComp/backComp";
 import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 function CreatePatientStep2() {
   const navigate = useNavigate();
   const location = useLocation();
@@ -38,13 +40,16 @@ function CreatePatientStep2() {
     });
   };
   const handleCreateButton = () => {
+    const toastId = toast.loading("creating Case...");
     axios
-      .post("http://localhost:5000/progress/get", { user_name })
+      .post("https://denture-design-studio.onrender.com/progress/get", {
+        user_name,
+      })
       .then((response) => {
         const currentCreatedCases = response.data.progress.createCase;
         const newCreatedCases = currentCreatedCases + 1;
         axios
-          .put("http://localhost:5000/progress/edit", {
+          .put("https://denture-design-studio.onrender.com/progress/edit", {
             user_name,
             createCase: newCreatedCases,
           })

@@ -20,7 +20,7 @@ function Studentprogress() {
     const fetchProgress = async () => {
       try {
         const { data } = await axios.post(
-          "http://localhost:5000/progress/get",
+          "https://denture-design-studio.onrender.com/progress/get",
           { user_name }
         );
 
@@ -39,7 +39,11 @@ function Studentprogress() {
     fetchProgress();
     const getTotallecture = async () => {
       setTotalLecture(
-        (await axios.get("http://localhost:5000/lecture/count")).data.count
+        (
+          await axios.get(
+            "https://denture-design-studio.onrender.com/lecture/count"
+          )
+        ).data.count
       );
     };
     getTotallecture();

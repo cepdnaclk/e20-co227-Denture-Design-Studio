@@ -42,7 +42,9 @@ function Viewcontent() {
 
     if (role === "/studenthome") {
       axios
-        .post("http://localhost:5000/progress/get", { user_name })
+        .post("https://denture-design-studio.onrender.com/progress/get", {
+          user_name,
+        })
         .then((response) => {
           const currentViewTime = response.data.progress.lectureTime;
           setCurrentViewTime(currentViewTime);
@@ -68,7 +70,7 @@ function Viewcontent() {
 
           // Save the updated lecture time in the backend
           axios
-            .put("http://localhost:5000/progress/edit", {
+            .put("https://denture-design-studio.onrender.com/progress/edit", {
               user_name,
               lectureTime: newLectureTime,
             })

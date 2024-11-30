@@ -14,7 +14,7 @@ const StudentsContents = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/lecture")
+      .get("https://denture-design-studio.onrender.com/lecture")
       .then((response) => {
         setMaterials(response.data);
       })
@@ -29,7 +29,10 @@ const StudentsContents = () => {
     console.log("Material ID:", videoId);
 
     axios
-      .put("http://localhost:5000/progress/edit", { user_name, videoId })
+      .put("https://denture-design-studio.onrender.com/progress/edit", {
+        user_name,
+        videoId,
+      })
       .then((response) => {
         console.log(response.data);
         const roles = "/studentscontents";

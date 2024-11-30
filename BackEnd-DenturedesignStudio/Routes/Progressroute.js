@@ -57,7 +57,7 @@ router.put("/edit", async (req, res) => {
     user_name,
     createCase,
     solveCase,
-    completedLecture,
+    newuser_name,
     solveTime,
     lectureTime,
     videoId,
@@ -66,6 +66,9 @@ router.put("/edit", async (req, res) => {
     const progress = await Progress.findOne({ user_name });
     if (!progress) {
       return res.status(404).send({ status: "User not found" });
+    }
+    if (newuser_name !== undefined) {
+      progress.user_name = newuser_name;
     }
     if (createCase !== undefined) {
       progress.createCase = createCase;
@@ -84,7 +87,9 @@ router.put("/edit", async (req, res) => {
       progress.watchedVideos.push(videoId);
     }
     await progress.save();
-    res.status(200).send({ status: "Progress updated", progress });
+    res
+      .status(200)
+      .send({ status: "Progress updated", newuser_name, progress });
   } catch (err) {
     console.log(err.message);
     res

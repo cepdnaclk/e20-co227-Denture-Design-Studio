@@ -24,7 +24,7 @@ const Contents = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/lecture")
+      .get("https://denture-design-studio.onrender.com/lecture")
       .then((response) => {
         setMaterials(response.data);
       })

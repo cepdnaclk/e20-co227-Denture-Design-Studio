@@ -7,6 +7,8 @@ import bcrypt from "bcryptjs";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import Swal from "sweetalert2";
 import Forgotpassword from "./forgotpasword/Forgotpassword";
+import { toast } from "react-toastify"; // Import Toast
+import "react-toastify/dist/ReactToastify.css";
 function Loginpage() {
   let navigate = useNavigate();
 
@@ -37,11 +39,14 @@ function Loginpage() {
       let response;
       let role = "";
       let userdata;
-
+      const toastId = toast.loading("Searching account...");
       try {
-        response = await Axios.post("http://localhost:5000/student/get", {
-          user_name,
-        });
+        response = await Axios.post(
+          "https://denture-design-studio.onrender.com/student/get",
+          {
+            user_name,
+          }
+        );
         role = "student";
         userdata = response.data.student;
         if (!userdata || !(await matchPassword(password, userdata.password))) {
@@ -49,9 +54,12 @@ function Loginpage() {
         }
       } catch (studentError) {
         try {
-          response = await Axios.post("http://localhost:5000/assessor/get", {
-            user_name,
-          });
+          response = await Axios.post(
+            "https://denture-design-studio.onrender.com/assessor/get",
+            {
+              user_name,
+            }
+          );
           role = "assessor";
           userdata = response.data.assessor;
           if (
@@ -62,9 +70,12 @@ function Loginpage() {
           }
         } catch (assessorError) {
           try {
-            response = await Axios.post("http://localhost:5000/admin/get", {
-              user_name,
-            });
+            response = await Axios.post(
+              "https://denture-design-studio.onrender.com/admin/get",
+              {
+                user_name,
+              }
+            );
             role = "admin";
             userdata = response.data.admin;
             if (
@@ -78,7 +89,20 @@ function Loginpage() {
           }
         }
       }
-
+      setTimeout(() => {
+        toast.update(toastId, {
+          render: "can't find account or can't connect to server",
+          type: "error",
+          isLoading: false,
+          autoClose: 1000,
+        });
+      }, 5000);
+      toast.update(toastId, {
+        render: "Logged in!",
+        type: "success",
+        isLoading: false,
+        autoClose: 1000, // Close after 2 seconds
+      });
       if (role === "student") {
         clickhandle("/studenthome", userdata);
       } else if (role === "assessor") {

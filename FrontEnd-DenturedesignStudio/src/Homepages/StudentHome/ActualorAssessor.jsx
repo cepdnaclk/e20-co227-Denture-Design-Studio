@@ -5,6 +5,8 @@ import { useState, useRef } from "react";
 import Teeth from "../../TeethComp/Teeth";
 import html2canvas from "html2canvas";
 import axios from "axios";
+import { ToastContainer, toast } from "react-toastify"; // Import Toast
+import "react-toastify/dist/ReactToastify.css";
 
 function ActualorAssessor({ cancel, solve, userdata }) {
   const navigate = useNavigate();
@@ -21,24 +23,27 @@ function ActualorAssessor({ cancel, solve, userdata }) {
   const [genated, setgenarated] = useState(false);
   const autoRef = useRef(null);
   const handleActualcase = () => {
-    axios.get("http://localhost:5000/actualcase/random").then((response) => {
-      const data = response.data;
-      const imgData = data.ProblemUrl;
-      const problemDescription = data.description;
-      const supportMaterial = data.supportMaterialUrl;
-      const answerImage = data.AnswerUrl;
-      console.log(answerImage);
-      navigate("/addSaddles", {
-        state: {
-          userdata,
-          imgData,
-          isActualCase: true,
-          problemDescription,
-          supportMaterial,
-          answerImage,
-        },
+    const toastId = toast.loading("Finding actual Case...");
+    axios
+      .get("https://denture-design-studio.onrender.com/actualcase/random")
+      .then((response) => {
+        const data = response.data;
+        const imgData = data.ProblemUrl;
+        const problemDescription = data.description;
+        const supportMaterial = data.supportMaterialUrl;
+        const answerImage = data.AnswerUrl;
+        console.log(answerImage);
+        navigate("/addSaddles", {
+          state: {
+            userdata,
+            imgData,
+            isActualCase: true,
+            problemDescription,
+            supportMaterial,
+            answerImage,
+          },
+        });
       });
-    });
 
     //navigate("/addSaddles", { state: { userdata } });
     solve();
@@ -48,14 +53,17 @@ function ActualorAssessor({ cancel, solve, userdata }) {
     setgenarated(true);
     const numberofteeth = Math.floor(Math.random() * 11 + 3);
     const missingteeths = new Set();
+
     for (let index = 0; index < numberofteeth; index++) {
       missingteeths.add(Math.floor(Math.random() * 16) + 1);
       missingteeths.add(Math.floor(Math.random() * 16) + 17);
     }
+
     const missingteetharray = Array.from(missingteeths);
     missingteetharray.forEach((element) => {
       missingteeth[element - 1] = true;
     });
+
     setSelectedData({
       restdata: null,
       missingteeth: missingteeth,
@@ -65,21 +73,30 @@ function ActualorAssessor({ cancel, solve, userdata }) {
       retentiondata: null,
       gingivally: null,
     });
+
     console.log(missingteeth);
     setTimeout(() => {
-      html2canvas(autoRef.current).then((canvas) => {
-        const imgData = canvas.toDataURL("image/png");
-        navigate("/addSaddles", {
-          state: { userdata, imgData, isAutoCase: true },
+      html2canvas(autoRef.current)
+        .then((canvas) => {
+          const imgData = canvas.toDataURL("image/png");
+
+          toast.success("Case Generated Successfully!"); // Simplified toast
+
+          navigate("/addSaddles", {
+            state: { userdata, imgData, isAutoCase: true },
+          });
+        })
+        .catch((error) => {
+          console.error("Canvas error:", error);
+          toast.error("Failed to generate case");
         });
-        solve();
-      });
     }, 5);
   };
 
   return (
     <div>
       <div className="ActualorAssessor-overlay"></div>
+      <ToastContainer />
       <div className="ActualorAssessor">
         <button className="genarate-btn" onClick={handleAutocase}>
           Genarate a Case

@@ -74,35 +74,3 @@ body {
     z-index: 3;
   }
 }
-
-@media (max-width: 768px) {
-  .assessorhomecontent {
-    width: 80vw;
-    height: 80vw;
-    left: 15vw;
-    top: 20vw;
-    h1 {
-      position: absolute;
-      width: 80vw;
-      height: 10vw;
-      margin: 0;
-      padding: 0;
-      font-size: 8vw;
-    }
-  }
-  #assessorh1 {
-    position: absolute;
-    top: 17vh;
-    left: 12%;
-  }
-  #assessorh2 {
-    position: absolute;
-    top: 30vh;
-    left: 12%;
-  }
-  #assessorh3 {
-    position: absolute;
-    top: 43vh;
-    left: 12%;
-  }
-}

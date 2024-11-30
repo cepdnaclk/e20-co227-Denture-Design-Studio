@@ -35,23 +35,3 @@
   transition: all 0.5s ease;
   cursor: pointer;
 }
-@media (max-width: 768px) {
-  .homecompbtn {
-    width: 50vw;
-    height: 7vw;
-
-    font-size: 4vw;
-    img {
-      position: absolute;
-      width: 5vw;
-      left: 43vw;
-      padding: 0;
-      margin: 0;
-    }
-  }
-  .homecompbtn:hover {
-    transform: scale(1.03);
-    transition: all 0.5s ease;
-    cursor: pointer;
-  }
-}

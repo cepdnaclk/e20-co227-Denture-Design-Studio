@@ -219,6 +219,10 @@ body {
 }
 #signinput5 {
   top: 27vw;
+  input::placeholder {
+    font-size: 0.8vw;
+    text-align: center;
+  }
 }
 #signinput6 {
   top: 32vw;

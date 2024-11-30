@@ -18,10 +18,13 @@ function Assessorpwreset() {
   const handlesave = () => {
     if (pwmatched) {
       axios
-        .put(`http://localhost:5000/assessor/edit/password/${token}`, {
-          password: newpassword,
-          userId: userId,
-        })
+        .put(
+          `https://denture-design-studio.onrender.com/assessor/edit/password/${token}`,
+          {
+            password: newpassword,
+            userId: userId,
+          }
+        )
         .then((response) => {
           console.log("success");
           setpasswordchanged(true);
