@@ -1,6 +1,9 @@
-___
+
+___![image-removebg-preview (1)](https://github.com/user-attachments/assets/765feae2-d2cf-4157-b3fb-3e6afdd19558)
+
 # Denture Design Studio
-Denture Design studio is a graphical platform that provides an opportunity for real-time denture designing with features for self evaluation for dental students with guidance from assesors
+Denture Design studio is a graphical platform that provides a safe learning environment for real-time denture designing with features for self evaluation for dental students with guidance from assesors.
+Students can practice the designing procedures by solving self created patient cases or cases provided by assessors and reviewing with the model answers while referring to study materials uploaded in the platform.
 ___
 
 
