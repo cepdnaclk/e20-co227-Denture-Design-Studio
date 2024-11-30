@@ -7,7 +7,7 @@ import bcrypt from "bcryptjs";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import Swal from "sweetalert2";
 import Forgotpassword from "./forgotpasword/Forgotpassword";
-import { ToastContainer, toast } from "react-toastify"; // Import Toast
+import { toast } from "react-toastify"; // Import Toast
 import "react-toastify/dist/ReactToastify.css";
 function Loginpage() {
   let navigate = useNavigate();
@@ -42,7 +42,7 @@ function Loginpage() {
       const toastId = toast.loading("Searching account...");
       try {
         response = await Axios.post(
-          "https://e20-co225-denture-design-studio.onrender.com/student/get",
+          "https://denture-design-studio.onrender.com/student/get",
           {
             user_name,
           }
@@ -55,7 +55,7 @@ function Loginpage() {
       } catch (studentError) {
         try {
           response = await Axios.post(
-            "https://e20-co225-denture-design-studio.onrender.com/assessor/get",
+            "https://denture-design-studio.onrender.com/assessor/get",
             {
               user_name,
             }
@@ -71,7 +71,7 @@ function Loginpage() {
         } catch (assessorError) {
           try {
             response = await Axios.post(
-              "https://e20-co225-denture-design-studio.onrender.com/admin/get",
+              "https://denture-design-studio.onrender.com/admin/get",
               {
                 user_name,
               }
@@ -89,11 +89,19 @@ function Loginpage() {
           }
         }
       }
+      setTimeout(() => {
+        toast.update(toastId, {
+          render: "can't find account or can't connect to server",
+          type: "error",
+          isLoading: false,
+          autoClose: 1000,
+        });
+      }, 5000);
       toast.update(toastId, {
         render: "Logged in!",
         type: "success",
         isLoading: false,
-        autoClose: 2000, // Close after 2 seconds
+        autoClose: 1000, // Close after 2 seconds
       });
       if (role === "student") {
         clickhandle("/studenthome", userdata);
@@ -114,7 +122,6 @@ function Loginpage() {
 
   return (
     <div className="logingpage">
-      <ToastContainer />
       <div className="back">
         <Back onclick={() => navigate("/")} />
       </div>
