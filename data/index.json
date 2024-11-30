@@ -1,0 +1,22 @@
+{
+    "title": "Your Project Title",
+    "name": "Your Name or Team Name",
+    "email": "your-email@eng.pdn.ac.lk",
+    "eNumber": "E/XX/XXX",
+    "tags": ["Tag1", "Tag2"],
+    "publications": [
+        {
+            "title": "Paper Title",
+            "journal": "Conference or Journal Name",
+            "description": "Brief description of the publication",
+            "url": "https://example.com/publication"
+        }
+    ],
+    "media": [
+        {
+            "type": "youtube",
+            "title": "Demo Video Title",
+            "url": "https://www.youtube.com/embed/your-video-id"
+        }
+    ]
+}
