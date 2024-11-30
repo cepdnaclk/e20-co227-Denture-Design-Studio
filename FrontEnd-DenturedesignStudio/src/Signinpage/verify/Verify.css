@@ -18,7 +18,7 @@
 .verification {
   position: absolute;
 }
-.message.sucess {
+.message.success {
   position: relative;
   color: rgb(37, 125, 87);
   top: 18vw;
