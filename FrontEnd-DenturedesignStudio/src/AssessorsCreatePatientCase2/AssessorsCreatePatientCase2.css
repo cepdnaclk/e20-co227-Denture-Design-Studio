@@ -101,33 +101,3 @@
 #create1 {
   position: absolute;
 }
-
-@media (max-width: 900px) {
-  .rectangle1 {
-    width: 50vw;
-    height: 48vw;
-    top: 15vw;
-  }
-  .rectangle2 {
-    width: 45vw;
-    height: 17vw;
-    top: 25vw;
-  }
-  .text {
-    top: 15vw;
-    left: -10vw;
-  }
-  #createAPatientCase2 {
-    font-size: 3vw;
-  }
-  #steps2 {
-    top: 13.5vw;
-    font-size: 2vw;
-  }
-  .teethBackground {
-    width: 28vw;
-    height: 45vw;
-    left: 10vw;
-    top: 17vw;
-  }
-}
