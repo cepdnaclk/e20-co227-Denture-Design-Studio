@@ -29,17 +29,3 @@
   width: 21.91vw;
   height: 3.7vw;
 }
-
-@media (max-width: 900px) {
-  .Create {
-    top: 48vw;
-    left: 55vw;
-    width: 30.51vw;
-    height: 4.5vw;
-    font-size: 2.5vw;
-  }
-  .Create:hover {
-    width: 30.9vw;
-    height: 4.9vw;
-  }
-}
