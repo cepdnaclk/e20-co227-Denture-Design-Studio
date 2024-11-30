@@ -1,35 +1,22 @@
 {
-    "team": [
+    "title": "Your Project Title",
+    "name": "Your Name or Team Name",
+    "email": "your-email@eng.pdn.ac.lk",
+    "eNumber": "E/XX/XXX",
+    "tags": ["Tag1", "Tag2"],
+    "publications": [
         {
-            "name": "Samarakoon S.M.P.H.",
-            "email": "e20346@eng.pdn.ac.lk",
-            "eNumber": "E/20/346"
-        },
-        {
-            "name": "Senavirathna D.B.C.M.",
-            "email": "e20367@eng.pdn.ac.lk",
-            "eNumber": "E/20/367"
-        },
-        {
-            "name": "Wikkramasinghe J.M.W.G.R.L.",
-            "email": "e20439@eng.pdn.ac.lk",
-            "eNumber": "E/20/439"
-        },
-        {
-            "name": "Wakkumbura M.M.S.S.",
-            "email": "e20419@eng.pdn.ac.lk",
-            "eNumber": "E/20/419"
+            "title": "Paper Title",
+            "journal": "Conference or Journal Name",
+            "description": "Brief description of the publication",
+            "url": "https://example.com/publication"
         }
     ],
-    "supervisors": [
+    "media": [
         {
-            "name": "Dr. Isuru Nawinne",
-            "email": "isurunawinne@eng.pdn.ac.lk"
-        },
-        {
-            "name": "Dr. Sumudu Rasanayaka",
-            "email": "srasnayaka@dental.pdn.ac.lk"
+            "type": "youtube",
+            "title": "Demo Video Title",
+            "url": "https://www.youtube.com/embed/your-video-id"
         }
-    ],
-    "tags": []
+    ]
 }
