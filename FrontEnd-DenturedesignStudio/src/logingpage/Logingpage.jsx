@@ -7,6 +7,8 @@ import bcrypt from "bcryptjs";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import Swal from "sweetalert2";
 import Forgotpassword from "./forgotpasword/Forgotpassword";
+import { ToastContainer, toast } from "react-toastify"; // Import Toast
+import "react-toastify/dist/ReactToastify.css";
 function Loginpage() {
   let navigate = useNavigate();
 
@@ -37,7 +39,7 @@ function Loginpage() {
       let response;
       let role = "";
       let userdata;
-
+      const toastId = toast.loading("Searching account...");
       try {
         response = await Axios.post(
           "https://e20-co225-denture-design-studio.onrender.com/student/get",
@@ -87,7 +89,12 @@ function Loginpage() {
           }
         }
       }
-
+      toast.update(toastId, {
+        render: "Logged in!",
+        type: "success",
+        isLoading: false,
+        autoClose: 2000, // Close after 2 seconds
+      });
       if (role === "student") {
         clickhandle("/studenthome", userdata);
       } else if (role === "assessor") {
@@ -107,6 +114,7 @@ function Loginpage() {
 
   return (
     <div className="logingpage">
+      <ToastContainer />
       <div className="back">
         <Back onclick={() => navigate("/")} />
       </div>
