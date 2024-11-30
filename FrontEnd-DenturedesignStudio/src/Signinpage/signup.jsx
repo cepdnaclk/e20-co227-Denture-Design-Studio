@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import axios from "axios";
 import Swal from "sweetalert2";
-import { ToastContainer, toast } from "react-toastify"; // Import Toast
+import { toast } from "react-toastify"; // Import Toast
 import "react-toastify/dist/ReactToastify.css";
 
 function Signup() {
@@ -28,29 +28,36 @@ function Signup() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (password.length < 4) {
+      toast.error("Error: Password should be at least 4 characters long", {
+        position: "top-center",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+      return;
+    }
     if (password !== compassword) {
-      Swal.fire({
-        html: '<span class="swt-text1">The password does not match, please recheck!</span>',
-        confirmButtonColor: "#3085d6",
-        showConfirmButton: true,
-        color: "white",
-        background: "#2f5770",
-        customClass: {
-          popup: "swt-popup",
-        },
-        confirmButtonText: "OK",
+      toast.error("Error: Passwords are not matched", {
+        position: "top-center",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
       });
       return;
     }
 
     try {
+      toast.dismiss();
       const toastId = toast.loading("Creating account...");
-      const url =
-        "https://e20-co225-denture-design-studio.onrender.com/student/add";
-      await axios.post(
-        "https://e20-co225-denture-design-studio.onrender.com/progress/add",
-        { user_name }
-      );
+      const url = "https://denture-design-studio.onrender.com/student/add";
 
       await axios
         .post(url, {
@@ -61,14 +68,23 @@ function Signup() {
           password,
           isAssessorRequested: role === assessor ? true : undefined,
         })
-        .then((res) => {
+        .then(async (res) => {
+          await axios.post(
+            "https://denture-design-studio.onrender.com/progress/add",
+            { user_name }
+          );
           if (role === assessor) {
             axios.post(
-              "https://e20-co225-denture-design-studio.onrender.com/admin/send-email",
+              "https://denture-design-studio.onrender.com/admin/send-email",
               { user_name }
             );
           }
         });
+      setTimeout(() => {
+        toast.error("Error: Timeout occurred. Please try again.");
+        toast.dismiss();
+      }, 15000);
+
       toast.update(toastId, {
         render: "create account successful!",
         type: "success",
@@ -107,7 +123,6 @@ function Signup() {
 
   return (
     <div className="signuppage">
-      <ToastContainer />
       <div className="back">
         <Back onclick={() => clickhandle("/")} />
       </div>
@@ -157,6 +172,7 @@ function Signup() {
         <div className="signinput" id="signinput5">
           <h3 className="signhead">Password:</h3>
           <input
+            placeholder="password must be at least 4 characters long"
             type={showPassword ? "text" : "password"}
             onChange={(e) => setPassword(e.target.value)}
           />
