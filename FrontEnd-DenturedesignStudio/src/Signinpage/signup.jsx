@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import axios from "axios";
 import Swal from "sweetalert2";
+import { ToastContainer, toast } from "react-toastify"; // Import Toast
+import "react-toastify/dist/ReactToastify.css";
 
 function Signup() {
   const [first_name, setFirstname] = useState("");
@@ -42,6 +44,7 @@ function Signup() {
     }
 
     try {
+      const toastId = toast.loading("Creating account...");
       const url =
         "https://e20-co225-denture-design-studio.onrender.com/student/add";
       await axios.post(
@@ -66,7 +69,12 @@ function Signup() {
             );
           }
         });
-
+      toast.update(toastId, {
+        render: "create account successful!",
+        type: "success",
+        isLoading: false,
+        autoClose: 2000, // Close after 2 seconds
+      });
       await Swal.fire({
         title: "Thank you for registering.  ",
         text: `A verification email has been sent to your provided email address. Please check your inbox.${
@@ -99,6 +107,7 @@ function Signup() {
 
   return (
     <div className="signuppage">
+      <ToastContainer />
       <div className="back">
         <Back onclick={() => clickhandle("/")} />
       </div>

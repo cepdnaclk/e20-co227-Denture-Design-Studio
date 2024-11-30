@@ -6,6 +6,8 @@ import Teeth from "../TeethComp/Teeth";
 import html2canvas from "html2canvas";
 import BackComp from "../backComp/backComp";
 import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 function CreatePatientStep2() {
   const navigate = useNavigate();
   const location = useLocation();
@@ -38,6 +40,7 @@ function CreatePatientStep2() {
     });
   };
   const handleCreateButton = () => {
+    const toastId = toast.loading("creating Case...");
     axios
       .post(
         "https://e20-co225-denture-design-studio.onrender.com/progress/get",
