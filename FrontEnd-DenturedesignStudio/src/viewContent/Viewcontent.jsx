@@ -42,10 +42,9 @@ function Viewcontent() {
 
     if (role === "/studenthome") {
       axios
-        .post(
-          "https://e20-co225-denture-design-studio.onrender.com/progress/get",
-          { user_name }
-        )
+        .post("https://denture-design-studio.onrender.com/progress/get", {
+          user_name,
+        })
         .then((response) => {
           const currentViewTime = response.data.progress.lectureTime;
           setCurrentViewTime(currentViewTime);
@@ -71,13 +70,10 @@ function Viewcontent() {
 
           // Save the updated lecture time in the backend
           axios
-            .put(
-              "https://e20-co225-denture-design-studio.onrender.com/progress/edit",
-              {
-                user_name,
-                lectureTime: newLectureTime,
-              }
-            )
+            .put("https://denture-design-studio.onrender.com/progress/edit", {
+              user_name,
+              lectureTime: newLectureTime,
+            })
             .then((response) => {
               console.log("Lecture time updated:", response.data);
             })

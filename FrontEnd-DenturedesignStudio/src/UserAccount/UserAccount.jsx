@@ -26,13 +26,13 @@ const UserAccount = () => {
     const fetchUsers = async () => {
       try {
         const fetchAssessors = axios.get(
-          "https://e20-co225-denture-design-studio.onrender.com/assessor"
+          "https://denture-design-studio.onrender.com/assessor"
         );
         const fetchStudents = axios.get(
-          "https://e20-co225-denture-design-studio.onrender.com/student"
+          "https://denture-design-studio.onrender.com/student"
         );
         const fetchAdmin = axios.get(
-          "https://e20-co225-denture-design-studio.onrender.com/admin"
+          "https://denture-design-studio.onrender.com/admin"
         );
 
         const [assessorRes, studentRes, adminRes] = await Promise.all([
@@ -86,13 +86,13 @@ const UserAccount = () => {
         return; // Exit if user is not found
       }
       await axios.delete(
-        "https://e20-co225-denture-design-studio.onrender.com/student/delete",
+        "https://denture-design-studio.onrender.com/student/delete",
         {
           data: { user_name: user.user_name },
         }
       );
       await axios.delete(
-        "https://e20-co225-denture-design-studio.onrender.com/progress/delete",
+        "https://denture-design-studio.onrender.com/progress/delete",
         {
           data: { user_name: user.user_name },
         }
@@ -100,7 +100,7 @@ const UserAccount = () => {
     } catch (studenterror) {
       try {
         await axios.delete(
-          "https://e20-co225-denture-design-studio.onrender.com/assessor/delete",
+          "https://denture-design-studio.onrender.com/assessor/delete",
           {
             data: { user_name: user.user_name },
           }
@@ -108,7 +108,7 @@ const UserAccount = () => {
       } catch (assessorerror) {
         try {
           await axios.delete(
-            "https://e20-co225-denture-design-studio.onrender.com/admin/delete",
+            "https://denture-design-studio.onrender.com/admin/delete",
             {
               data: { user_name: user.user_name },
             }

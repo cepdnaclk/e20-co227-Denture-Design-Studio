@@ -19,7 +19,7 @@ function Studentpwreset() {
     if (pwMatched) {
       axios
         .put(
-          `https://e20-co225-denture-design-studio.onrender.com/student/edit/password/${token}`,
+          `https://denture-design-studio.onrender.com/student/edit/password/${token}`,
           {
             password: newPassword,
             userId: userId,

@@ -11,7 +11,7 @@ function Removecontent({ back, remove, material }) {
       await deleteObject(fileRef);
       axios
         .delete(
-          `https://e20-co225-denture-design-studio.onrender.com/lecture/delete/${material._id}`
+          `https://denture-design-studio.onrender.com/lecture/delete/${material._id}`
         )
         .then((response) => {
           console.log("Response:", response.data);

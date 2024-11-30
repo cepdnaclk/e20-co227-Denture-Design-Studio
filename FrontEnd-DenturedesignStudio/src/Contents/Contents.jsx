@@ -24,7 +24,7 @@ const Contents = () => {
 
   useEffect(() => {
     axios
-      .get("https://e20-co225-denture-design-studio.onrender.com/lecture")
+      .get("https://denture-design-studio.onrender.com/lecture")
       .then((response) => {
         setMaterials(response.data);
       })

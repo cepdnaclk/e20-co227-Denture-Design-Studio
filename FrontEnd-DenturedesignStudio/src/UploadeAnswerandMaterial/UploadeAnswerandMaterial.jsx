@@ -142,7 +142,7 @@ function UploadeAnswerandMaterial() {
             .then((downloadURL) => {
               axios
                 .post(
-                  "https://e20-co225-denture-design-studio.onrender.com/actualcase/add",
+                  "https://denture-design-studio.onrender.com/actualcase/add",
                   {
                     AnswerUrl: answerImageUrl,
                     ProblemUrl: downloadURL,

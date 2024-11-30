@@ -25,9 +25,7 @@ function ActualorAssessor({ cancel, solve, userdata }) {
   const handleActualcase = () => {
     const toastId = toast.loading("Finding actual Case...");
     axios
-      .get(
-        "https://e20-co225-denture-design-studio.onrender.com/actualcase/random"
-      )
+      .get("https://denture-design-studio.onrender.com/actualcase/random")
       .then((response) => {
         const data = response.data;
         const imgData = data.ProblemUrl;

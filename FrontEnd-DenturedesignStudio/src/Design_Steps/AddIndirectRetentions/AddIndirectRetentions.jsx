@@ -60,10 +60,9 @@ function AddIndirectRetentions() {
     startTimeRef.current = Date.now();
 
     axios
-      .post(
-        "https://e20-co225-denture-design-studio.onrender.com/progress/get",
-        { user_name }
-      )
+      .post("https://denture-design-studio.onrender.com/progress/get", {
+        user_name,
+      })
       .then((response) => {
         const currentSolveTime = response.data.progress.solveTime;
         setCurrentSolveTime(currentSolveTime);
@@ -88,13 +87,10 @@ function AddIndirectRetentions() {
 
           // Save the updated lecture time in the backend
           axios
-            .put(
-              "https://e20-co225-denture-design-studio.onrender.com/progress/edit",
-              {
-                user_name,
-                solveTime: newSolveTimem,
-              }
-            )
+            .put("https://denture-design-studio.onrender.com/progress/edit", {
+              user_name,
+              solveTime: newSolveTimem,
+            })
             .then((response) => {
               console.log("Lecture time updated:", response.data);
             })

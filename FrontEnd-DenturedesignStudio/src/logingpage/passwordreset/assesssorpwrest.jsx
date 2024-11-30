@@ -19,7 +19,7 @@ function Assessorpwreset() {
     if (pwmatched) {
       axios
         .put(
-          `https://e20-co225-denture-design-studio.onrender.com/assessor/edit/password/${token}`,
+          `https://denture-design-studio.onrender.com/assessor/edit/password/${token}`,
           {
             password: newpassword,
             userId: userId,
