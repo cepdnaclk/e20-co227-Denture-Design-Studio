@@ -2,8 +2,8 @@
 # Please refer above link to know the available configurations
 
 title: "Denture Design Studion"
-remote_theme: cepdnaclk/e20-co227-
-description: ""
+remote_theme: cepdnaclk/e20-co227-Denture-Design-Studio
+description: "A graphical platform that enables denture design practice"
 markdown: kramdown
 
 kramdown:
