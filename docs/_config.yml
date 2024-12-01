@@ -1,7 +1,7 @@
 # This theme is based on https://github.com/jekyll/minima
 # Please refer above link to know the available configurations
 
-title: "Denture Design Studion"
+title: "Denture Design Studio"
 remote_theme: cepdnaclk/e20-co227-Denture-Design-Studio
 description: "A graphical platform that enables denture design practice"
 markdown: kramdown
