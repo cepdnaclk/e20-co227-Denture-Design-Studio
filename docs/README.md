@@ -19,17 +19,26 @@ title: Denture Design Studio
 - **E/20/439** - Wickramasinghe J.M.W.G.R.L. ([e20439@eng.pdn.ac.lk](mailto:e20439@eng.pdn.ac.lk))
 
 ---
+
 ## Supervisors
 
-- Dr. Isuru Nawinne ([isurunawinne@eng.pdn.ac.lk](mailto:[isurunawinne@eng.pdn.ac.lk))
+- Dr. Isuru Nawinne ([isurunawinne@eng.pdn.ac.lk](mailto:isurunawinne@eng.pdn.ac.lk))
 - Dr. Sumudu Rasanayake ([srasanayaka@dental.pdn.ac.lk](mailto:srasanayaka@dental.pdn.ac.lk))
-  
+
 ---
 
 ## Table of Contents
 
 1. [Introduction](#introduction)
 2. [Features](#features)
+3. [Technologies Used](#technologies-used)
+4. [User Interface](#user-interface)
+   - [Signup Form](#signup-form)
+   - [Denture Design Tool](#denture-design-tool)
+   - [Engagement Metrics](#engagement-metrics)
+5. [User Manual](#user-manual)
+6. [Links](#links)
+7. [Contact](#contact)
 
 ---
 
@@ -52,38 +61,41 @@ title: Denture Design Studio
 
 - **Frontend**: React.js for building the user interface.
 - **Backend**: Node.js for handling server-side operations.
-- **Graphics Rendering**: Three.js for 3D modeling of denture designs.
 - **Database**: MongoDB for storing user data and designs.
+- **Deployment**: Vercel for deployment of web application.
 
 ---
 
 ## User Interface
-![Home Page Interface](./docs/images/Screenshot 2024-11-25 224242.png)
 
-### Signup Interface
-
-The users can sign up to the system by duly filling the signup form and .
-
-![Home Page Interface](./images/Screenshot 2024-11-25 224334.png)  
+![Home Screen Interface](./images/HomeScreen.png)  
 *Figure 1: Home Page Interface*
+
+### Signup Form
+
+Users can sign up to the system by duly filling the signup form and assigning the role. Assessor account features are enabled only after verification by the admin.
+
+![Signup Form Interface](./images/SignupForm.png)  
+*Figure 2: Signup Form*
 
 ---
 
 ### Denture Design Tool
 
-The **Design Tool** allows students to create and refine their denture designs interactively. It includes drag-and-drop functionality, precision controls, and real-time feedback.
+The **Design Tool** allows students to create and refine their denture designs interactively. It includes drag-and-drop functionality, precision controls, and real-time feedback.  
+A finalized denture would look as follows:
 
-![Design Tool](./images/design-tool.png)  
-*Figure 2: Denture Design Tool*
+![Denture Design Tool](./images/DesignFinal.png)  
+*Figure 3: Denture Design Tool*
 
 ---
 
-### Feedback System
+### Engagement Metrics
 
-The **Feedback System** enables students to self-evaluate their designs and receive real-time guidance from assessors. Feedback is visually highlighted to pinpoint areas for improvement.
+Admin and Assessor roles can view each student's login and case interaction activity on the platform and track their engagement.
 
-![Feedback System](./images/feedback-system.png)  
-*Figure 3: Self-Evaluation Feedback System*
+![Engagement Metrics](./images/Engagement.png)  
+*Figure 4: Engagement Metrics of Student Account*
 
 ---
 
@@ -97,13 +109,9 @@ Refer to the detailed [User Manual](./UserManual_Denture_Design_Studio.pdf) for 
 
 - [Project Repository](https://github.com/cepdnaclk/e20-co227-Denture-Design-Studio)
 - [Project Page](https://cepdnaclk.github.io/e20-co227-Denture-Design-Studio)
-- [Department of Computer Engineering](http://www.ce.pdn.ac.lk/)
-- [University of Peradeniya](https://eng.pdn.ac.lk/)
 
 ---
-
 
 ## Contact
 
 For further inquiries, feel free to contact any team member or email us at [e20346@eng.pdn.ac.lk](mailto:e20346@eng.pdn.ac.lk).
-
