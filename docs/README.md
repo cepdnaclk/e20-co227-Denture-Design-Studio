@@ -23,6 +23,7 @@ title: Denture Design Studio
 
 - Dr. Isuru Nawinne ([isurunawinne@eng.pdn.ac.lk](mailto:[isurunawinne@eng.pdn.ac.lk))
 - Dr. Sumudu Rasanayake ([srasanayaka@dental.pdn.ac.lk](mailto:srasanayaka@dental.pdn.ac.lk))
+  
 ---
 
 ## Table of Contents
