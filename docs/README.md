@@ -57,6 +57,42 @@ title: Denture Design Studio
 
 ---
 
+## User Interface
+![Home Page Interface](./docs/images/Screenshot 2024-11-25 224242.png)
+
+### Signup Interface
+
+The users can sign up to the system by duly filling the signup form and .
+
+![Home Page Interface](./images/Screenshot 2024-11-25 224334.png)  
+*Figure 1: Home Page Interface*
+
+---
+
+### Denture Design Tool
+
+The **Design Tool** allows students to create and refine their denture designs interactively. It includes drag-and-drop functionality, precision controls, and real-time feedback.
+
+![Design Tool](./images/design-tool.png)  
+*Figure 2: Denture Design Tool*
+
+---
+
+### Feedback System
+
+The **Feedback System** enables students to self-evaluate their designs and receive real-time guidance from assessors. Feedback is visually highlighted to pinpoint areas for improvement.
+
+![Feedback System](./images/feedback-system.png)  
+*Figure 3: Self-Evaluation Feedback System*
+
+---
+
+## User Manual
+
+Refer to the detailed [User Manual](./docs/UserManual_Denture_Design_Studio.pdf) for complete guidance on using the *Denture Design Studio*.
+
+---
+
 ## Links
 
 - [Project Repository](https://github.com/cepdnaclk/e20-co227-Denture-Design-Studio)
@@ -66,12 +102,6 @@ title: Denture Design Studio
 
 ---
 
-<!-- ## Screenshots
-
-screenshots or images
-![Denture Design Studio Interface](./images/interface-sample.png) -->
-
----
 
 ## Contact
 
