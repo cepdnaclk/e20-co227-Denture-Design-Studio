@@ -89,7 +89,7 @@ The **Feedback System** enables students to self-evaluate their designs and rece
 
 ## User Manual
 
-Refer to the detailed [User Manual](./docs/UserManual_Denture_Design_Studio.pdf) for complete guidance on using the *Denture Design Studio*.
+Refer to the detailed [User Manual](./UserManual_Denture_Design_Studio.pdf) for complete guidance on using the *Denture Design Studio*.
 
 ---
 
