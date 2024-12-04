@@ -29,14 +29,12 @@ title: Denture Design Studio
 
 1. [Introduction](#introduction)
 2. [Features](#features)
-3. [Technologies Used](#technologies-used)
-4. [Links](#links)
 
 ---
 
 ## Introduction
 
-*Denture Design Studio* is an innovative graphical platform designed for dental students. It provides tools for **real-time denture design**, enabling students to create and refine denture models while receiving guidance from assessors. The platform also includes features for **self-evaluation**, empowering students to independently enhance their skills.
+*Denture Design Studio* is an innovative graphical platform designed specifically for dental students. It provides tools for **real-time denture design**, enabling students to create and refine denture models while receiving guidance from assessors. The platform also includes features for **self-evaluation**, empowering students to independently enhance their skills.
 
 ---
 
