@@ -101,7 +101,7 @@ Admin and Assessor roles can view each student's login and case interaction acti
 
 ## User Manual
 
-[Download User Manual](./UserManual_Denture_Design_Studio.pdf)
+[Download user manual here](./UserManual_Denture_Design_Studio.pdf)
 
 ---
 
