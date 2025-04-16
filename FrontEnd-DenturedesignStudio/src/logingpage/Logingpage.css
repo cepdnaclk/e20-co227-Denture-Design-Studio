@@ -110,13 +110,13 @@
 
 .login2 {
   position: absolute;
+  top: 34vw;
+  left: 50%;
+  transform: translateX(-50%);
   width: 17.038vw;
   height: 4vw;
-  left: 9vw;
-  top: 34vw;
   background: #519b97;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-
   border-radius: 1.336vw;
   font-family: "Salsa";
   font-style: normal;
@@ -125,11 +125,12 @@
   line-height: 134.77%;
   border: none;
   color: #0c4b29;
+  cursor: pointer;
+  
 }
 .login2:hover {
-  transform: scale(1.03);
   cursor: pointer;
-  transition: all 0.5s ease;
+  background-color: #1ec4b9;
 }
 
 .back {
@@ -138,103 +139,28 @@
   left: 2vw;
 }
 
-@media (max-width: 768px) {
-  .eyeicon1 {
-    position: absolute;
-    left: 35vw;
-    top: 6vw;
-    width: 2vw;
-    height: 1vw;
-  }
-  .contentbox {
-    width: 60vw;
-    height: 75vw;
-    left: 4vw;
-    top: 14vh;
-    border-radius: 3vw;
-  }
 
-  .header {
-    width: 50vw;
-    font-size: 4vw;
-    left: 8vw;
-    top: 2vw;
-  }
-
-  .userinput input {
-    position: absolute;
-    width: 40vw;
-    height: 5vw;
-    left: 0vw;
-    top: 4.5vw;
-    border-radius: 5px;
-  }
-
-  .inputs {
-    font-size: 3vw;
-  }
-
-  #input1 {
-    top: 14vw;
-    left: 8vw;
-  }
-
-  #input2 {
-    top: 30vw;
-    left: 8vw;
-  }
-
-  #forget {
-    top: 15vw;
-    font-size: 2.5vw;
-    width: 25vw;
-    left: 9vw;
-  }
-
-  .login2 {
-    width: 25vw;
-    height: 7vw;
-    left: 17vw;
-    top: 60vw;
-    border-radius: 2vw;
-    font-size: 4vw;
-  }
-  .login2:hover {
-    width: 25.5vw;
-    height: 7.5vw;
-    cursor: pointer;
-    border-radius: 2.3vw;
-  }
-  .logingpage::before {
-    top: 40vh;
-    left: 25vw;
-    width: 80vw;
-    height: 60vw;
-  }
-  .back {
-    top: 3vw;
-    left: 3vw;
-  }
-}
 
 .custom-google-btn {
+  position: absolute;
+  top: 30vw;
+  left: 50%;
+  transform: translateX(-50%);
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #388581; /* your theme color */
+  background-color: #388581;
   color: white;
   border: none;
   border-radius: 0.8vw;
   padding: 12px 20px;
   font-size: 1.3vw;
   font-family: "Salsa";
-  cursor:pointer;
+  cursor: pointer;
   transition: 0.2s;
   gap: 0.7vw;
-  position: absolute;
-  top: 30vw;
-  left: 9vw;
 }
+
 
 .custom-google-btn:hover {
   background-color: #224259;

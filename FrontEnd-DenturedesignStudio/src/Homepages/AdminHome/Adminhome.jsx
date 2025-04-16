@@ -23,13 +23,13 @@ function Adminhome() {
           <h1>Welcome {username}</h1>
           <div id="adminh1">
             <Homecomp
-              name={"User Account"}
+              name={"User Accounts"}
               click={() => navigate("/useraccount", { state: { userdata } })}
             />
           </div>
           <div id="adminh2">
             <Homecomp
-              name={"Content"}
+              name={"Contents"}
               click={() =>
                 navigate("/assessorcontent", { state: { userdata, role } })
               }

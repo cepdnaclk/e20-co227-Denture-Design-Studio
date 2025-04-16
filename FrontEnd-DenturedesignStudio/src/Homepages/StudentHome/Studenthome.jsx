@@ -46,7 +46,9 @@ function Studenthome() {
             click={() => navigate("/Viewprogress", { state: { userdata } })}
           />
         </div>
-        {solvecase && (
+        
+      </div>
+      {solvecase && (
           <ActualorAssessor
             cancel={() => setsolvecase(false)}
             solve={() => setsolvecase(false)}
@@ -54,7 +56,6 @@ function Studenthome() {
             AutoSkip={() => {}}
           />
         )}
-      </div>
     </div>
   );
 }

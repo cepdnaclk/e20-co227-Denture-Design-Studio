@@ -228,26 +228,30 @@ body {
 }
 .sign2 {
   position: absolute;
+  top: 36.5vw;
+  left: 50%;
+  transform: translateX(-50%);
   width: 13vw;
   height: 3vw;
-  left: 15vw;
-  top: 36.5vw;
   background: #519b97;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  -webkit-backdrop-filter: blur(2px);
   backdrop-filter: blur(2px);
-  border-radius: 1.336vw;
+  border-radius: 1vw;
   font-family: "Salsa";
   font-style: normal;
   font-weight: 400;
-  font-size: 2vw;
+  font-size: 1.7vw;
   line-height: 134.77%;
   border: none;
   color: #0c4b29;
-}
-.sign2:hover {
-  transform: scale(1.03);
   cursor: pointer;
-  transition: all 0.5s ease;
+}
+
+.sign2:hover {
+  background-color: #1ec4b9;
+  cursor: pointer;
+
 }
 .sign2:hover::after {
   transition: all 0.5s ease;
@@ -264,15 +268,17 @@ body {
   padding: 12px 20px;
   font-size: 1.3vw;
   font-family: "Salsa";
-  cursor:pointer;
+  cursor: pointer;
   transition: 0.2s;
   gap: 0.7vw;
   position: absolute;
   top: 33vw;
-  left: 13vw;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
-.custom-google-btn:hover {
+
+.custom-google-btn2:hover {
   background-color: #224259;
   cursor: pointer;
 }

@@ -172,6 +172,17 @@ router.post("/get", async (req, res) => {
     res.status(500).send({ status: "Error fetching user", error: err.message });
   }
 });
+router.post("/getByEmail", async (req, res) => {
+  const { email } = req.body;
+  const assessor = await Assessor.findOne({ email });
+
+  if (!assessor) {
+    return res.status(200).json({ assessor: null }); // Don't send 404
+  }
+
+  res.json({ assessor });
+});
+
 
 router.put("/edit", async (req, res) => {
   const { first_name, last_name, user_name, newuser_name } = req.body;

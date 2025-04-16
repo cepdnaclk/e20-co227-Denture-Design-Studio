@@ -48,28 +48,36 @@ body {
 
 .stdhomecontent {
   position: absolute;
-  left: 25vw;
-  align-items: flex-start;
-  text-align: center;
-  height: 52vw;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  
+  height: 43vw;
   width: 50vw;
-  top: 3vw;
+
   display: flex;
-  justify-content: center;
+  flex-direction: column;   /* Stack items vertically */
+  justify-content: flex-start; /* Align items to the top */
+  align-items: center;      /* Center items horizontally */
+
+  text-align: center;
 }
+
 
 .stdhomecontent h1 {
   margin: 0;
   padding: 0;
-  top: 1vw;
-  left: 4vw;
   font-family: "Salsa";
+  height: 11vw;
+  width: 120%; /* Match container width */
   font-style: normal;
   font-weight: 400;
   font-size: 5.344vw;
   display: flex;
   align-items: center;
+  justify-content: center; /* Center text horizontally */
   text-align: center;
+
   background: linear-gradient(90deg, #1d5641 0%, #243984 100%);
   -webkit-text-fill-color: transparent;
   background-clip: text;

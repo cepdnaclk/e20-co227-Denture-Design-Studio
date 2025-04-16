@@ -69,6 +69,17 @@ router.post("/get", async (req, res) => {
     res.status(501).send({ status: "Error fetching user", error: err.message });
   }
 });
+router.post("/getByEmail", async (req, res) => {
+  const { email } = req.body;
+  const admin = await Admin.findOne({ email });
+
+  if (!admin) {
+    return res.status(200).json({ admin: null }); // Don't send 404
+  }
+
+  res.json({ admin });
+});
+
 
 router.post("/send-email", async (req, res) => {
   try {

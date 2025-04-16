@@ -96,7 +96,6 @@ function ActualorAssessor({ cancel, solve, userdata }) {
   return (
     <div>
       <div className="ActualorAssessor-overlay"></div>
-      <ToastContainer />
       <div className="ActualorAssessor">
         <button className="genarate-btn" onClick={handleAutocase}>
           Genarate a Case
