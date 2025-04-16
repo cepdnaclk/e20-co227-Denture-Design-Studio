@@ -78,16 +78,16 @@ function Signup() {
           headers: { Authorization: `Bearer ${tokenResponse.access_token}` },
         });
         const { email, given_name, family_name } = res.data;
+        console.log("Google user data:", res.data);
   
         if (!role) return toast.error("Please select a role before continuing with Google login.");
   
         // Check if user already exists
         const baseURL = "https://e20-co227-denture-design-studio.onrender.com";
-        const checkRes = await axios.post(`${baseURL}/student/getByEmail`, { params: { email } });
+        const checkRes = await axios.post(`${baseURL}/student/getByEmail`, { email });
         
         if (checkRes.data.exists) {
           toast.info("User already exists. Please login instead.");
-          navigate("/login");
           return;
         }
   
@@ -99,9 +99,8 @@ function Signup() {
           last_name: family_name,
           email,
           user_name,
-          password: "", // Optional, or generate random
+          password: "", 
           isAssessorRequested: role === assessor ? true : undefined,
-          verified: true,
           isGoogle: true
         });
   
@@ -120,8 +119,7 @@ function Signup() {
           background: "#2f5770",
           color: "white",
         });
-  
-        navigate("/login");
+
       } catch (err) {
         console.error("Google login error:", err);
         toast.error("Google login failed. Try again later.");

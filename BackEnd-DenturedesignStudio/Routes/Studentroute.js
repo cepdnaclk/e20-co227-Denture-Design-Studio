@@ -215,6 +215,7 @@ router.post("/add", async (req, res) => {
     isAssessorRequested,
     isGoogle,
   } = req.body;
+  console.log("isGoogle", isGoogle);
   try {
     const existstudent = await Student.findOne({ user_name });
     if (existstudent) {
