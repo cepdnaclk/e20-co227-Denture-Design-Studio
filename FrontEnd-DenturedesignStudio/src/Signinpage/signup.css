@@ -29,14 +29,13 @@ body {
 }
 .contentbox2 {
   position: absolute;
-  width: 47.361vw;
-  height: 43vw;
-  left: 13.093vw;
-  top: 1.306vw;
-  max-width: 700px;
+  width: 41.5vw;
+  height: 40.414vw;
+  left: 55vw;
+  top: 3.006vw;
   background: #d9d9d9;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 3vw;
+  box-shadow: 7px 7px 7px rgba(0, 0, 0, 0.45);
+  border-radius: 3.34vw;
 }
 .signinput {
   position: absolute;
@@ -98,7 +97,7 @@ body {
 
   position: absolute;
   width: 21.109vw;
-  height: 2.5vw;
+  height: 2vw;
   left: 0;
   top: 1.9vw;
 
@@ -122,8 +121,8 @@ body {
 
   font-family: "Salsa";
   font-style: normal;
-  font-weight: 40;
-  font-size: 1.603vw;
+  font-weight: 400;
+  font-size: 1.3vw;
   line-height: 0px;
   display: flex;
   align-items: center;
@@ -135,13 +134,13 @@ body {
   position: absolute;
   width: 18.838vw;
   height: 6.004vw;
-  left: 30.617vw;
+  left: 30vw;
   top: 7.018vw;
 
   font-family: "Salsa";
   font-style: normal;
   font-weight: 400;
-  font-size: 1.603vw;
+  font-size: 1.2vw;
   line-height: 1.937vw;
   display: flex;
   align-items: center;
@@ -151,8 +150,8 @@ body {
 }
 .eyeicon {
   position: absolute;
+  top: 2.3vw;
   left: 19.5vw;
-  top: 2.8vw;
   cursor: pointer;
 }
 #Student1 {
@@ -206,33 +205,33 @@ body {
   color: #0c4b29;
 }
 #signinput1 {
-  top: 7vw;
+  top:5.5vw;
 }
 #signinput2 {
-  top: 12vw;
+  top: 10vw;
 }
 #signinput3 {
-  top: 17vw;
+  top: 14.5vw;
 }
 #signinput4 {
-  top: 22vw;
+  top: 19vw;
 }
 #signinput5 {
-  top: 27vw;
+  top: 23.5vw;
   input::placeholder {
     font-size: 0.8vw;
     text-align: center;
   }
 }
 #signinput6 {
-  top: 32vw;
+  top: 28vw;
 }
 .sign2 {
   position: absolute;
-  width: 17.038vw;
-  height: 4vw;
+  width: 13vw;
+  height: 3vw;
   left: 15vw;
-  top: 37vw;
+  top: 36.5vw;
   background: #519b97;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   backdrop-filter: blur(2px);
@@ -240,7 +239,7 @@ body {
   font-family: "Salsa";
   font-style: normal;
   font-weight: 400;
-  font-size: 2.138vw;
+  font-size: 2vw;
   line-height: 134.77%;
   border: none;
   color: #0c4b29;
@@ -253,169 +252,32 @@ body {
 .sign2:hover::after {
   transition: all 0.5s ease;
 }
-@media (max-width: 768px) {
-  .signuppage::before {
-    top: 30vh;
-    left: 25vw;
-    width: 80vw;
-    height: 60vw;
-  }
-  .contentbox2 {
-    position: absolute;
-    width: 55vw;
-    height: 60vw;
-    left: 13.093vw;
-    top: 1.306vw;
-    max-width: 450px;
-  }
 
-  .signinput input {
-    box-sizing: border-box;
-
-    position: absolute;
-    width: 31vw;
-    height: 3vw;
-    left: 0;
-    top: 1.9vw;
-    font-size: 1.6vw;
-  }
-  .signinput input:focus {
-    font-size: 1.6vw;
-  }
-  #signinput1 {
-    top: 7vw;
-  }
-  #signinput2 {
-    top: 14vw;
-  }
-  #signinput3 {
-    top: 21vw;
-  }
-  #signinput4 {
-    top: 28vw;
-  }
-  #signinput5 {
-    top: 35vw;
-  }
-  #signinput6 {
-    top: 42vw;
-  }
-  .sign2 {
-    position: absolute;
-    width: 17.038vw;
-    height: 4vw;
-    left: 18vw;
-    top: 52vw;
-  }
-  .role {
-    position: absolute;
-    width: 18.838vw;
-    height: 6.004vw;
-    left: 40.617vw;
-    top: 8vw;
-  }
-
-  #Student2 {
-    top: 5vw;
-    left: 5.5vw;
-  }
-
-  #Assessor2 {
-    top: 7.5vw;
-    left: 5.5vw;
-  }
-  .eyeicon {
-    left: 28vw;
-  }
+.custom-google-btn2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #388581; /* your theme color */
+  color: white;
+  border: none;
+  border-radius: 0.8vw;
+  padding: 12px 20px;
+  font-size: 1.3vw;
+  font-family: "Salsa";
+  cursor:pointer;
+  transition: 0.2s;
+  gap: 0.7vw;
+  position: absolute;
+  top: 33vw;
+  left: 13vw;
 }
-@media (max-width: 391px) {
-  .signuppage::before {
-    top: 30vh;
-    left: 25vw;
-    width: 80vw;
-    height: 65vw;
-  }
-  .contentbox2 {
-    position: absolute;
-    width: 68vw;
-    height: 85vw;
-    left: 13.093vw;
-    top: 20vw;
-    max-width: 450px;
-  }
 
-  .signinput input {
-    box-sizing: border-box;
+.custom-google-btn:hover {
+  background-color: #224259;
+  cursor: pointer;
+}
 
-    position: absolute;
-    width: 38vw;
-    height: 5vw;
-    left: 0;
-    top: 3vw;
-    font-size: 1.6vw;
-  }
-  .signinput input:focus {
-    font-size: 1.6vw;
-  }
-  #signinput1 {
-    top: 10vw;
-  }
-  #signinput2 {
-    top: 20vw;
-  }
-  #signinput3 {
-    top: 30vw;
-  }
-  #signinput4 {
-    top: 40vw;
-  }
-  #signinput5 {
-    top: 50vw;
-  }
-  #signinput6 {
-    top: 60vw;
-  }
-  .sign2 {
-    position: absolute;
-    width: 20vw;
-    height: 5vw;
-    left: 25vw;
-    top: 75vw;
-  }
-  .role {
-    position: absolute;
-    width: 18.838vw;
-    height: 6.004vw;
-    left: 48.617vw;
-    top: 8vw;
-    font-size: 3vw;
-  }
-  .header2 {
-    left: 15vw;
-    width: 40vw;
-    font-size: 4vw;
-    top: 3vw;
-  }
-  .signhead {
-    font-size: 3vw;
-    width: 35vw;
-  }
-  #Student2 {
-    top: 6.8vw;
-    left: 6.5vw;
-  }
-  #Student1 {
-    top: 6vw;
-  }
-  #Assessor1 {
-    top: 10vw;
-  }
-  #Assessor2 {
-    top: 10.8vw;
-    left: 6.5vw;
-  }
-  .eyeicon {
-    left: 33vw;
-    top: 3.5vw;
-  }
+.google-icon {
+  width: 20px;
+  height: 20px;
 }

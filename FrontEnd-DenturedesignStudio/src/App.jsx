@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { TimeProvider } from "./Timecontext";
+import { ToastContainer } from 'react-toastify';
 import Homepage from "./first-page/Homepage";
 import Loginpage from "./logingpage/Logingpage";
 import Signup from "./Signinpage/signup";
@@ -117,6 +118,7 @@ function App() {
             element={<Assessorpwreset />}
           />
         </Routes>
+        <ToastContainer position="top-center" autoClose={2000} />
       </Router>
     </TimeProvider>
   );
