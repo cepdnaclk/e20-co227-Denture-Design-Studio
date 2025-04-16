@@ -311,6 +311,19 @@ router.post("/get", async (req, res) => {
   }
 });
 
+// get By Email
+app.post("/getByEmail", async (req, res) => {
+  const { email } = req.body;
+  const student = await Student.findOne({ email });
+
+  if (!student) {
+    return res.status(200).json({ student: null }); // Don't send 404
+  }
+
+  res.json({ student });
+});
+
+
 // Delete student by username
 router.delete("/delete", async (req, res) => {
   try {
