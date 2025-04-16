@@ -1,34 +1,10 @@
-body {
-  position: relative;
-  width: 100vw;
-  height: 100vh;
-  margin: 0;
-  overflow: hidden;
-}
-.logingpage {
-  position: relative;
-  width: 100vw;
-  height: 100vh;
-  background: linear-gradient(-90deg, #2f5770 -1.26%, #609c94 100%);
-}
-.logingpage::before {
-  content: "";
-  position: absolute;
-  top: 12.625vh;
-  left: 49.967vw;
-  width: 45.291vw;
-  height: 34.335vw;
-  background-image: url(./logingbackground.png);
-  background-size: cover;
-  background-position: center;
-  opacity: 1;
-}
+
 
 .contentbox {
   position: absolute;
   width: 35.605vw;
   height: 40.414vw;
-  left: 8.417vw;
+  left: 55vw;
   top: 3.006vw;
   background: #d9d9d9;
   box-shadow: 7px 7px 7px rgba(0, 0, 0, 0.45);

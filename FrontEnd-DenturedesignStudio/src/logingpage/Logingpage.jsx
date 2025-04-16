@@ -121,10 +121,7 @@ function Loginpage() {
   });
   
   return (
-    <div className="logingpage">
-      <div className="back">
-        <Back onclick={() => navigate("/")} />
-      </div>
+    <div className="">
       <link
         rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Salsa&display=swap"

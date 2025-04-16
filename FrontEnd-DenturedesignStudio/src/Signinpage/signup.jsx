@@ -1,12 +1,11 @@
 import "./signup.css";
 import React, { useState } from "react";
-import Back from "../backbutton/Back";
 import { useNavigate } from "react-router-dom";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import axios from "axios";
 import Swal from "sweetalert2";
-import { toast } from "react-toastify"; // Import Toast
-import "react-toastify/dist/ReactToastify.css";
+import { toast } from "react-toastify";
+import { useGoogleLogin } from "@react-oauth/google";
 
 function Signup() {
   const [first_name, setFirstname] = useState("");
@@ -19,138 +18,128 @@ function Signup() {
   const [showPassword, setShowPassword] = useState(false);
   const [showComPassword, setShowComPassword] = useState(false);
   const navigate = useNavigate();
-  const student = "student";
-  const assessor = "assessor";
+  const student = "student", assessor = "assessor";
 
-  function clickhandle(path) {
-    navigate(path);
-  }
-
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e, isGoogleLogin = false) => {
     e.preventDefault();
-
-    if (password.length < 4) {
-      toast.error("Error: Password should be at least 4 characters long", {
-        position: "top-center",
-        autoClose: 2000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-      });
-      return;
+    if (!isGoogleLogin) {
+      if (password.length < 4) return toast.error("Error: Password should be at least 4 characters long");
+      if (password !== compassword) return toast.error("Error: Passwords are not matched");
     }
-    if (password !== compassword) {
-      toast.error("Error: Passwords are not matched", {
-        position: "top-center",
-        autoClose: 2000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-      });
-      return;
-    }
-
     try {
       toast.dismiss();
       const toastId = toast.loading("Creating account...");
-      const url = "https://e20-co227-denture-design-studio.onrender.com/student/add";
-      await axios.post(
-        "https://e20-co227-denture-design-studio.onrender.com/progress/add",
-        { user_name }
-      );
-
-      await axios
-        .post(url, {
-          first_name,
-          last_name,
-          email,
-          user_name,
-          password,
-          isAssessorRequested: role === assessor ? true : undefined,
-        })
-        .then((res) => {
-          if (role === assessor) {
-            axios.post(
-              "https://e20-co227-denture-design-studio.onrender.com/admin/send-email",
-              { user_name }
-            );
-          }
-        });
-      setTimeout(() => {
-        toast.error("Error: Timeout occurred. Please try again.");
-        toast.dismiss();
-      }, 15000);
-
+      const baseURL = "https://e20-co227-denture-design-studio.onrender.com";
+      await axios.post(`${baseURL}/progress/add`, { user_name });
+      await axios.post(`${baseURL}/student/add`, {
+        first_name,
+        last_name,
+        email,
+        user_name,
+        password,
+        isAssessorRequested: role === assessor ? true : undefined,
+      });
+      if (role === assessor) {
+        await axios.post(`${baseURL}/admin/send-email`, { user_name });
+      }
       toast.update(toastId, {
-        render: "create account successful!",
+        render: "Create account successful!",
         type: "success",
         isLoading: false,
-        autoClose: 2000, // Close after 2 seconds
+        autoClose: 2000,
       });
       await Swal.fire({
-        title: "Thank you for registering.  ",
-        text: `A verification email has been sent to your provided email address. Please check your inbox.${
-          role === assessor
-            ? "\nAn admin will review your assessor account request and send you an email with further instructions."
-            : ""
+        title: "Thank you for registering.",
+        text: `A verification email has been sent to your email.${
+          role === assessor ? "\nAdmin will review your request." : ""
         }`,
         icon: "success",
         background: "#2f5770",
         color: "white",
       });
-
       navigate("/login");
     } catch (err) {
-      if (err.response && err.response.status === 400) {
+      if (err.response?.status === 400) {
         Swal.fire({
           html: '<span class="swt-text">User already exists!</span>',
           confirmButtonColor: "#3085d6",
-          showConfirmButton: true,
-          color: "white",
           background: "#2f5770",
-          customClass: {
-            popup: "swt-popup",
-          },
+          color: "white",
           confirmButtonText: "OK",
         });
       }
     }
   };
 
+  const login = useGoogleLogin({
+    onSuccess: async (tokenResponse) => {
+      try {
+        const res = await axios.get("https://www.googleapis.com/oauth2/v3/userinfo", {
+          headers: { Authorization: `Bearer ${tokenResponse.access_token}` },
+        });
+        const { email, given_name, family_name } = res.data;
+  
+        if (!role) return toast.error("Please select a role before continuing with Google login.");
+  
+        // Check if user already exists
+        const baseURL = "https://e20-co227-denture-design-studio.onrender.com";
+        const checkRes = await axios.get(`${baseURL}/student/exists?email=${email}`);
+        
+        if (checkRes.data.exists) {
+          toast.info("User already exists. Please login instead.");
+          navigate("/login");
+          return;
+        }
+  
+        // Create new user with Google info
+        const user_name = email.split("@")[0]; // Example username
+        await axios.post(`${baseURL}/progress/add`, { user_name });
+        await axios.post(`${baseURL}/student/add`, {
+          first_name: given_name,
+          last_name: family_name,
+          email,
+          user_name,
+          password: "", // Optional, or generate random
+          isAssessorRequested: role === assessor ? true : undefined,
+          verified: true,
+        });
+  
+        if (role === assessor) {
+          await axios.post(`${baseURL}/admin/send-email`, { user_name });
+        }
+  
+        toast.success("Google account registered successfully!");
+  
+        await Swal.fire({
+          title: "Registered via Google!",
+          text: role === assessor
+            ? "Admin will review your assessor request."
+            : "You can now login with Google.",
+          icon: "success",
+          background: "#2f5770",
+          color: "white",
+        });
+  
+        navigate("/login");
+      } catch (err) {
+        console.error("Google login error:", err);
+        toast.error("Google login failed. Try again later.");
+      }
+    },
+    onError: () => toast.error("Google login failed"),
+  });
+  
+
   return (
-    <div className="signuppage">
-      <div className="back">
-        <Back onclick={() => clickhandle("/")} />
-      </div>
-      <link
-        rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Salsa&display=swap"
-      />
-      <form className="contentbox2" onSubmit={handleSubmit}>
-        <div>
-          <h1 className="header2">Create a new account</h1>
-        </div>
+    <div>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Salsa&display=swap" />
+      <form className="contentbox2" onSubmit={(e) => handleSubmit(e, false)}>
+        <h1 className="header2">Create a new account</h1>
         <div className="role">
           <h3>Role:</h3>
-          <input
-            type="radio"
-            name="role"
-            value={student}
-            id="Student1"
-            onChange={(e) => setRole(e.target.value)}
-          />
+          <input type="radio" name="role" value={student} id="Student1" onChange={(e) => setRole(e.target.value)} />
           <p id="Student2">Student</p>
-          <input
-            type="radio"
-            name="role"
-            value={assessor}
-            id="Assessor1"
-            onChange={(e) => setRole(e.target.value)}
-          />
+          <input type="radio" name="role" value={assessor} id="Assessor1" onChange={(e) => setRole(e.target.value)} />
           <p id="Assessor2">Assessor</p>
         </div>
         <div className="signinput" id="signinput1">
@@ -176,15 +165,8 @@ function Signup() {
             type={showPassword ? "text" : "password"}
             onChange={(e) => setPassword(e.target.value)}
           />
-          <div
-            onClick={() => setShowPassword(!showPassword)}
-            className="eyeicon"
-          >
-            {showPassword ? (
-              <AiFillEyeInvisible size={"1.4vw"} />
-            ) : (
-              <AiFillEye size={"1.4vw"} />
-            )}
+          <div onClick={() => setShowPassword(!showPassword)} className="eyeicon">
+            {showPassword ? <AiFillEyeInvisible size={"1.2vw"} /> : <AiFillEye size={"1.2vw"} />}
           </div>
         </div>
         <div className="signinput" id="signinput6">
@@ -193,23 +175,23 @@ function Signup() {
             type={showComPassword ? "text" : "password"}
             onChange={(e) => setCompassword(e.target.value)}
           />
-
-          <div
-            onClick={() => setShowComPassword(!showComPassword)}
-            className="eyeicon"
-          >
-            {showComPassword ? (
-              <AiFillEyeInvisible size={"1.4vw"} />
-            ) : (
-              <AiFillEye size={"1.4vw"} />
-            )}
+          <div onClick={() => setShowComPassword(!showComPassword)} className="eyeicon">
+            {showComPassword ? <AiFillEyeInvisible size={"1.2vw"} /> : <AiFillEye size={"1.2vw"} />}
           </div>
         </div>
-        <div>
-          <button className="sign2" type="submit">
-            Signup
-          </button>
-        </div>
+        <button className="sign2" type="submit">Signup</button>
+        <button
+          type="button"
+          className="custom-google-btn2"
+          onClick={() => (role === "" ? toast.error("Please select a role") : login())}
+        >
+          <img
+            src="https://img.icons8.com/?size=100&id=DJgXlKerU6K0&format=png&color=000000"
+            alt="Google logo"
+            className="google-icon"
+          />
+          Continue with Google
+        </button>
       </form>
     </div>
   );
