@@ -83,7 +83,7 @@ function Signup() {
   
         // Check if user already exists
         const baseURL = "https://e20-co227-denture-design-studio.onrender.com";
-        const checkRes = await axios.get(`${baseURL}/student/exists?email=${email}`);
+        const checkRes = await axios.post(`${baseURL}/student/getByEmail`, { params: { email } });
         
         if (checkRes.data.exists) {
           toast.info("User already exists. Please login instead.");
@@ -102,6 +102,7 @@ function Signup() {
           password: "", // Optional, or generate random
           isAssessorRequested: role === assessor ? true : undefined,
           verified: true,
+          isGoogle: true
         });
   
         if (role === assessor) {

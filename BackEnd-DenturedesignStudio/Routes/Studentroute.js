@@ -213,13 +213,14 @@ router.post("/add", async (req, res) => {
     user_name,
     password,
     isAssessorRequested,
+    isGoogle,
   } = req.body;
   try {
     const existstudent = await Student.findOne({ user_name });
     if (existstudent) {
       return res.status(400).send("Username already exists, use another one");
     }
-
+      if(!isGoogle){
     const verificationToken = crypto.randomBytes(32).toString("hex");
     const newStudent = new Student({
       first_name,
@@ -238,7 +239,22 @@ router.post("/add", async (req, res) => {
       newStudent._id,
       newStudent.user_name
     );
+  
     res.json("Student added, please verify your email.");
+  }else{
+    const newStudent = new Student({
+      first_name,
+      last_name,
+      email,
+      user_name,
+      password,
+      isAssessorRequested,
+      isVerified: true,
+    });
+    await newStudent.save();
+    res.json("Student added successfully.");
+  }
+
   } catch (err) {
     console.error(err);
     res
