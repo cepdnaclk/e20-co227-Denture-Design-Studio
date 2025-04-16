@@ -312,7 +312,7 @@ router.post("/get", async (req, res) => {
 });
 
 // get By Email
-app.post("/getByEmail", async (req, res) => {
+router.post("/getByEmail", async (req, res) => {
   const { email } = req.body;
   const student = await Student.findOne({ email });
 
