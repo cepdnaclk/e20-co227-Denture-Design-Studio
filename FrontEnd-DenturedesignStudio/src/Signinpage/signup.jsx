@@ -57,9 +57,9 @@ function Signup() {
     try {
       toast.dismiss();
       const toastId = toast.loading("Creating account...");
-      const url = "https://denture-design-studio.onrender.com/student/add";
+      const url = "https://e20-co227-denture-design-studio.onrender.com/student/add";
       await axios.post(
-        "https://denture-design-studio.onrender.com/progress/add",
+        "https://e20-co227-denture-design-studio.onrender.com/progress/add",
         { user_name }
       );
 
@@ -75,7 +75,7 @@ function Signup() {
         .then((res) => {
           if (role === assessor) {
             axios.post(
-              "https://denture-design-studio.onrender.com/admin/send-email",
+              "https://e20-co227-denture-design-studio.onrender.com/admin/send-email",
               { user_name }
             );
           }

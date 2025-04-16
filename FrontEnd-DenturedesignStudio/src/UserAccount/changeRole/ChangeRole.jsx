@@ -8,7 +8,7 @@ function ChangeRole({ userData, cancel }) {
   const user_name = userData.user_name;
   const handleCancelrequest = async () => {
     console.log(user_name);
-    await axios.put("https://denture-design-studio.onrender.com/student/edit", {
+    await axios.put("https://e20-co227-denture-design-studio.onrender.com/student/edit", {
       user_name: user_name,
       isAssessorRequested: false,
     });
@@ -33,7 +33,7 @@ function ChangeRole({ userData, cancel }) {
     }, 10000); // 10-second timeout
 
     axios
-      .post("https://denture-design-studio.onrender.com/student/get", {
+      .post("https://e20-co227-denture-design-studio.onrender.com/student/get", {
         user_name: user_name,
       })
       .then((res) => {
@@ -51,7 +51,7 @@ function ChangeRole({ userData, cancel }) {
           });
 
           axios
-            .post("https://denture-design-studio.onrender.com/assessor/add", {
+            .post("https://e20-co227-denture-design-studio.onrender.com/assessor/add", {
               user_name: user_name,
               isAssessorRequested: undefined,
               isVerified: true,
@@ -65,7 +65,7 @@ function ChangeRole({ userData, cancel }) {
             .then((res) => {
               console.log(res.data);
               return axios.delete(
-                "https://denture-design-studio.onrender.com/student/delete",
+                "https://e20-co227-denture-design-studio.onrender.com/student/delete",
                 {
                   data: { user_name: user_name },
                 }
@@ -74,7 +74,7 @@ function ChangeRole({ userData, cancel }) {
             .then((res) => {
               console.log(res.data);
               return axios.delete(
-                "https://denture-design-studio.onrender.com/progress/delete",
+                "https://e20-co227-denture-design-studio.onrender.com/progress/delete",
                 {
                   data: { user_name: user_name }, // Corrected variable
                 }
@@ -83,7 +83,7 @@ function ChangeRole({ userData, cancel }) {
             .then((res) => {
               console.log(res.data);
               return axios.post(
-                "https://denture-design-studio.onrender.com/assessor/accepted-assessor",
+                "https://e20-co227-denture-design-studio.onrender.com/assessor/accepted-assessor",
                 {
                   user_name: user_name,
                 }
@@ -113,7 +113,7 @@ function ChangeRole({ userData, cancel }) {
           console.log("User not verified", student);
           axios
             .post(
-              "https://denture-design-studio.onrender.com/student/user-notverified",
+              "https://e20-co227-denture-design-studio.onrender.com/student/user-notverified",
               {
                 user_name: user_name,
               }

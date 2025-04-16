@@ -14,7 +14,7 @@ const StudentsContents = () => {
 
   useEffect(() => {
     axios
-      .get("https://denture-design-studio.onrender.com/lecture")
+      .get("https://e20-co227-denture-design-studio.onrender.com/lecture")
       .then((response) => {
         setMaterials(response.data);
       })
@@ -29,7 +29,7 @@ const StudentsContents = () => {
     console.log("Material ID:", videoId);
 
     axios
-      .put("https://denture-design-studio.onrender.com/progress/edit", {
+      .put("https://e20-co227-denture-design-studio.onrender.com/progress/edit", {
         user_name,
         videoId,
       })

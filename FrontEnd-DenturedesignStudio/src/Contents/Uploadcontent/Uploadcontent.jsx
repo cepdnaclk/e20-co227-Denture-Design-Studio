@@ -47,7 +47,7 @@ function Uploadcontent({ onUpload, onback }) {
           onUpload({ title, file: videoUrl, description });
           try {
             axios.post(
-              "https://denture-design-studio.onrender.com/lecture/add",
+              "https://e20-co227-denture-design-studio.onrender.com/lecture/add",
               {
                 title,
                 videoUrl,

@@ -21,14 +21,14 @@ const VerifyEmail = () => {
       try {
         // Try to verify as a student
         await axios.get(
-          `https://denture-design-studio.onrender.com/student/verify/${token}?id=${userid}`
+          `https://e20-co227-denture-design-studio.onrender.com/student/verify/${token}?id=${userid}`
         );
         setIsVerified(true);
       } catch {
         // If student verification fails, try as an assessor
         try {
           await axios.get(
-            `https://denture-design-studio.onrender.com/assessor/verify/${token}?id=${userid}`
+            `https://e20-co227-denture-design-studio.onrender.com/assessor/verify/${token}?id=${userid}`
           );
           setIsVerified(true);
         } catch {
@@ -39,7 +39,7 @@ const VerifyEmail = () => {
       try {
         // Fetch user data
         const response = await axios.post(
-          `https://denture-design-studio.onrender.com/student/get`,
+          `https://e20-co227-denture-design-studio.onrender.com/student/get`,
           { user_name }
         );
         if (response.data?.student?.isVerified) {
@@ -48,7 +48,7 @@ const VerifyEmail = () => {
       } catch {
         try {
           const response = await axios.post(
-            `https://denture-design-studio.onrender.com/assessor/get`,
+            `https://e20-co227-denture-design-studio.onrender.com/assessor/get`,
             { user_name }
           );
           if (response.data?.assessor?.isVerified) {

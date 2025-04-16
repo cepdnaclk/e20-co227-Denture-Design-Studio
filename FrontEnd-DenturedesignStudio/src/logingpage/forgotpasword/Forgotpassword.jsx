@@ -10,7 +10,7 @@ function Forgotpassword({ cancel, sentemail }) {
   const handlesentreset = () => {
     axios
       .post(
-        "https://denture-design-studio.onrender.com/student/reset-password",
+        "https://e20-co227-denture-design-studio.onrender.com/student/reset-password",
         {
           email: enteredemail,
         }
@@ -22,7 +22,7 @@ function Forgotpassword({ cancel, sentemail }) {
       .catch((err) => {
         axios
           .post(
-            "https://denture-design-studio.onrender.com/assessor/reset-password",
+            "https://e20-co227-denture-design-studio.onrender.com/assessor/reset-password",
             {
               email: enteredemail,
             }

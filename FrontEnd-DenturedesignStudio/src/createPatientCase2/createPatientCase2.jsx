@@ -42,14 +42,14 @@ function CreatePatientStep2() {
   const handleCreateButton = () => {
     const toastId = toast.loading("creating Case...");
     axios
-      .post("https://denture-design-studio.onrender.com/progress/get", {
+      .post("https://e20-co227-denture-design-studio.onrender.com/progress/get", {
         user_name,
       })
       .then((response) => {
         const currentCreatedCases = response.data.progress.createCase;
         const newCreatedCases = currentCreatedCases + 1;
         axios
-          .put("https://denture-design-studio.onrender.com/progress/edit", {
+          .put("https://e20-co227-denture-design-studio.onrender.com/progress/edit", {
             user_name,
             createCase: newCreatedCases,
           })

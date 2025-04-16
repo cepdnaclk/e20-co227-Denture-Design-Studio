@@ -7,8 +7,12 @@ import bcrypt from "bcryptjs";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import Swal from "sweetalert2";
 import Forgotpassword from "./forgotpasword/Forgotpassword";
-import { toast } from "react-toastify"; // Import Toast
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { GoogleLogin } from "@react-oauth/google";
+import { jwtDecode } from "jwt-decode";
+
+
 function Loginpage() {
   let navigate = useNavigate();
 
@@ -42,7 +46,7 @@ function Loginpage() {
       const toastId = toast.loading("Searching account...");
       try {
         response = await Axios.post(
-          "https://denture-design-studio.onrender.com/student/get",
+          "https://e20-co227-denture-design-studio.onrender.com/student/get",
           {
             user_name,
           }
@@ -55,7 +59,7 @@ function Loginpage() {
       } catch (studentError) {
         try {
           response = await Axios.post(
-            "https://denture-design-studio.onrender.com/assessor/get",
+            "https://e20-co227-denture-design-studio.onrender.com/assessor/get",
             {
               user_name,
             }
@@ -71,7 +75,7 @@ function Loginpage() {
         } catch (assessorError) {
           try {
             response = await Axios.post(
-              "https://denture-design-studio.onrender.com/admin/get",
+              "https://e20-co227-denture-design-studio.onrender.com/admin/get",
               {
                 user_name,
               }
@@ -119,6 +123,41 @@ function Loginpage() {
   const matchPassword = async (enteredPassword, storedHashedPassword) => {
     return await bcrypt.compare(enteredPassword, storedHashedPassword);
   };
+  const handleGoogleLoginSuccess = async (credentialResponse) => {
+    try {
+      const decoded = jwtDecode(credentialResponse.credential);
+
+      console.log("Google User:", decoded); // shows name, email, etc.
+  
+      const toastId = toast.loading("Signing in with Google...");
+  
+      // // Make a request to your backend to get the user by email
+      // const res = await Axios.post("https://e20-co227-denture-design-studio.onrender.com/student/getByEmail", {
+      //   email: decoded.email,
+      // });
+  
+      const userdata = res.data.student;
+  
+      if (!userdata) {
+        throw new Error("User not registered");
+      }
+  
+      toast.update(toastId, {
+        render: "Logged in with Google!",
+        type: "success",
+        isLoading: false,
+        autoClose: 1000,
+      });
+  
+      // Navigate to student home or wherever you want
+      clickhandle("/studenthome", userdata);
+    } catch (err) {
+      console.error(err);
+      toast.error("Google login failed: " + err.message);
+    }
+  };
+  
+
 
   return (
     <div className="logingpage">
@@ -162,7 +201,17 @@ function Loginpage() {
             <button type="submit" className="login2">
               Login
             </button>
+            <div style={{ marginTop: "1rem", display: "flex", justifyContent: "center" }}>
+        <GoogleLogin
+              onSuccess={handleGoogleLoginSuccess}
+              onError={() => toast.error("Google Login Failed")}
+        />
+      </div>
           </div>
+
+
+                
+
         </div>
       </form>
       {forgotpassword && (

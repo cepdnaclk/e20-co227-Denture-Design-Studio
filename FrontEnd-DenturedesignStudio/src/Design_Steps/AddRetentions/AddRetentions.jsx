@@ -73,7 +73,7 @@ function AddRetentions() {
     startTimeRef.current = Date.now();
 
     axios
-      .post("https://denture-design-studio.onrender.com/progress/get", {
+      .post("https://e20-co227-denture-design-studio.onrender.com/progress/get", {
         user_name,
       })
       .then((response) => {
@@ -100,7 +100,7 @@ function AddRetentions() {
 
           // Save the updated lecture time in the backend
           axios
-            .put("https://denture-design-studio.onrender.com/progress/edit", {
+            .put("https://e20-co227-denture-design-studio.onrender.com/progress/edit", {
               user_name,
               solveTime: newSolveTimem,
             })
