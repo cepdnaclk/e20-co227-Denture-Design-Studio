@@ -49,7 +49,7 @@ function Editdetails({ userdata, cancel, save, user }) {
       if (first_name && last_name && user_name) {
         try {
           axios
-            .put(`https://denture-design-studio.onrender.com${role}/edit`, {
+            .put(`https://e20-co227-denture-design-studio.onrender.com${role}/edit`, {
               first_name: first_name,
               last_name: last_name,
               user_name: userdata.user_name,
