@@ -1,35 +1,37 @@
+
 {
+    "title": "Denture Design Studio",
     "team": [
-        {
-            "name": "Samarakoon S.M.P.H.",
-            "email": "e20346@eng.pdn.ac.lk",
-            "eNumber": "E/20/346"
-        },
-        {
-            "name": "Senavirathna D.B.C.M.",
-            "email": "e20367@eng.pdn.ac.lk",
-            "eNumber": "E/20/367"
-        },
-        {
-            "name": "Wikkramasinghe J.M.W.G.R.L.",
-            "email": "e20439@eng.pdn.ac.lk",
-            "eNumber": "E/20/439"
-        },
-        {
-            "name": "Wakkumbura M.M.S.S.",
-            "email": "e20419@eng.pdn.ac.lk",
-            "eNumber": "E/20/419"
-        }
+    {
+        "name": "Wircamasingha J.M.W.G.R.L.",
+        "email": "e20439@eng.pdn.ac.lk",
+        "eNumber": "E/20/439"
+    },
+    {
+        "name": "Wakkumbura W.M.S.S.",
+        "email": "e20419@eng.pdn.ac.lk",
+        "eNumber": "E/20/419"
+    },
+    {
+        "name": "Samarakoon S.M.P.H.",
+        "email": "e20346@eng.pdn.ac.lk",
+        "eNumber": "E/20/346"
+    },
+    {
+        "name": "Senavirathne D.B.C.M.",
+        "email": "e20367@eng.pdn.ac.lk",
+        "eNumber": "E/20/367"
+    }
     ],
     "supervisors": [
-        {
-            "name": "Dr. Isuru Nawinne",
-            "email": "isurunawinne@eng.pdn.ac.lk"
-        },
-        {
-            "name": "Dr. Sumudu Rasanayaka",
-            "email": "srasnayaka@dental.pdn.ac.lk"
-        }
+    {
+        "name": "Dr. Isuru Nawinne",
+        "email": "isurunawinne@eng.pdn.ac.lk"
+    },
+    {
+        "name": "Dr. Sumudu Rasanayake",
+        "email": "srasnayaka@dental.pdn.ac.lk"
+    }
     ],
-    "tags": []
+    "tags": ["Web", "Dental"]
 }
