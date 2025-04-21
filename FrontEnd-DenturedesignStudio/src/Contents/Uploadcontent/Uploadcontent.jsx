@@ -22,7 +22,8 @@ function Uploadcontent({ onUpload, onback }) {
     }
 
     const currentDate = new Date().toISOString().split("T")[0];
-    const publicId = `${title}_${currentDate}`;
+
+
 
     // Determine folder based on file type
     const isVideo = file.type.startsWith("video");
@@ -35,7 +36,7 @@ function Uploadcontent({ onUpload, onback }) {
 
     // Determine Cloudinary resource type
     const resourceType = isVideo ? "video" : isPdf ? "raw" : "image";
-
+    const publicId = `${folderName}/${title}_${currentDate}`; 
     const formData = new FormData();
     formData.append("file", file);
     formData.append("upload_preset", "bkkv4t3d"); // Your unsigned preset

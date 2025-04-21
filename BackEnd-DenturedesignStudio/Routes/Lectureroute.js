@@ -47,13 +47,30 @@ router.delete("/delete/:id", async (req, res) => {
       return res.status(404).send({ status: "Lecture not found" });
     }
 
-    const urlParts = lecture.videoUrl.split("/");
-    const fileName = urlParts[urlParts.length - 1].split(".")[0]; 
-    const publicId = `lectures/${fileName}`;
-
+    const videoUrl = lecture.videoUrl;
+    const urlParts = videoUrl.split("/");
+    
+    // Extract file name without extension
+    const fileNameWithExt = urlParts[urlParts.length - 1];
+    const fileName = fileNameWithExt.split(".")[0];
+    
+    // Extract folder name by removing domain + cloudinary base
+    const folderPathParts = urlParts.slice(urlParts.indexOf("upload") + 1, urlParts.length - 1);
+    const folderPath = folderPathParts.join("/");
+    
+    // Full public_id
+    const publicId = `${folderPath}/${fileName}`;
+    
+    // Detect resource type
+    let resource_type = "image";
+    if (videoUrl.includes("/video/")) resource_type = "video";
+    else if (videoUrl.endsWith(".pdf")) resource_type = "raw";
+    
+    // Delete from Cloudinary
     await cloudinary.uploader.destroy(publicId, {
-      resource_type: "video", 
+      resource_type,
     });
+    
 
     // Delete from MongoDB
     await lecturecontent.findByIdAndDelete(id);
