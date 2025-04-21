@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const lecturecontent = require("../model/Lecturecontent");
+const cloudinary = require("../cloudinary");
 
 router.post("/add", async (req, res) => {
   const { title, videoUrl, description } = req.body;
@@ -36,22 +37,34 @@ router.get("/", async (req, res) => {
     });
 });
 
+
 router.delete("/delete/:id", async (req, res) => {
   try {
     const { id } = req.params;
     const lecture = await lecturecontent.findById(id);
 
-    if (lecture) {
-      await lecturecontent.findOneAndDelete(id);
-      return res.status(200).send({ status: "lecture delete", lecture });
-    } else {
-      res.status(404).send({ status: "lecture not found" });
+    if (!lecture) {
+      return res.status(404).send({ status: "Lecture not found" });
     }
+
+    const urlParts = lecture.videoUrl.split("/");
+    const fileName = urlParts[urlParts.length - 1].split(".")[0]; 
+    const publicId = `lectures/${fileName}`;
+
+    await cloudinary.uploader.destroy(publicId, {
+      resource_type: "video", 
+    });
+
+    // Delete from MongoDB
+    await lecturecontent.findByIdAndDelete(id);
+
+    return res.status(200).send({ status: "Lecture deleted successfully" });
   } catch (err) {
-    console.log(err.message);
-    res.status(500).send({ status: "Error delete user", error: err.message });
+    console.error("Deletion error:", err);
+    return res.status(500).send({ status: "Error deleting lecture", error: err.message });
   }
 });
+
 
 router.put("/edit", async (req, res) => {
   try {

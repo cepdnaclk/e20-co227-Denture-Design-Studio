@@ -1,28 +1,23 @@
 import "./Removecontent.css";
 import axios from "axios";
-import { doc, deleteDoc, getDocs, collection } from "firebase/firestore";
-import { ref, deleteObject } from "firebase/storage";
-import { db, storage } from "../../../firebase.config";
 import icon from "./materialIcon.png";
+
 function Removecontent({ back, remove, material }) {
-  const removehandle = async (material) => {
+  const removehandle = async () => {
     try {
-      const fileRef = ref(storage, material.videoUrl);
-      await deleteObject(fileRef);
-      axios
-        .delete(
-          `https://e20-co227-denture-design-studio.onrender.com/lecture/delete/${material._id}`
-        )
-        .then((response) => {
-          console.log("Response:", response.data);
-          remove(material);
-        })
-        .catch((error) => {
-          console.error("There was an error deleting the lecture!", error);
-          alert("Failed to delete lecture1");
-        });
+      // Send delete request to your backend
+      const res = await axios.delete(
+        `https://e20-co227-denture-design-studio.onrender.com/lecture/delete/${material._id}`,
+        {
+          data: { publicUrl: material.videoUrl },
+        }
+      );
+      console.log("Deleted:", res.data);
+
+      // Inform parent component
+      remove(material);
     } catch (error) {
-      console.error("There was an error deleting the lecture!", error);
+      console.error("Failed to delete lecture:", error);
       alert("Failed to delete lecture");
     }
   };
@@ -33,10 +28,10 @@ function Removecontent({ back, remove, material }) {
       <div className="remove-content">
         <h1>Do you want to remove this content?</h1>
         <h2>
-          <img src={icon} alt="" />
+          <img src={icon} alt="icon" />
           {material.title}
         </h2>
-        <button className="remove-btn" onClick={() => removehandle(material)}>
+        <button className="remove-btn" onClick={removehandle}>
           Remove
         </button>
         <button className="back-btn" onClick={back}>
