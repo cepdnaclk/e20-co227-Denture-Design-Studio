@@ -20,12 +20,8 @@ function Uploadcontent({ onUpload, onback }) {
       setErrorMessage("Please select a file!");
       return;
     }
-
+  
     const currentDate = new Date().toISOString().split("T")[0];
-
-
-
-    // Determine folder based on file type
     const isVideo = file.type.startsWith("video");
     const isPdf = file.type === "application/pdf";
     const folderName = isVideo
@@ -33,56 +29,63 @@ function Uploadcontent({ onUpload, onback }) {
       : isPdf
       ? "lectures/pdfs"
       : "lectures/images";
-
-    // Determine Cloudinary resource type
+  
     const resourceType = isVideo ? "video" : isPdf ? "raw" : "image";
-    const publicId = `${folderName}/${title}_${currentDate}`; 
-    const formData = new FormData();
-    formData.append("file", file);
-    formData.append("upload_preset", "bkkv4t3d"); // Your unsigned preset
-    formData.append("folder", folderName);
-    formData.append("public_id", publicId);
-
+    const publicId = `${folderName}/${title}_${currentDate}`;
+  
     try {
+      // 🔐 Get signature from your backend
+      const sigRes = await axios.post("https://e20-co227-denture-design-studio.onrender.com/api/cloudinary-signature", {
+        public_id: publicId,
+        folder: folderName,
+      });
+  
+      const { signature, timestamp, apiKey, cloudName } = sigRes.data;
+  
+      // 🔼 Upload to Cloudinary with signed data
+      const formData = new FormData();
+      formData.append("file", file);
+      formData.append("api_key", apiKey);
+      formData.append("signature", signature);
+      formData.append("timestamp", timestamp);
+      formData.append("public_id", publicId);
+      formData.append("folder", folderName);
+  
       const uploadRes = await axios.post(
-        `https://api.cloudinary.com/v1_1/dktoulisw/${resourceType}/upload`, // Replace with your Cloud name
+        `https://api.cloudinary.com/v1_1/${cloudName}/${resourceType}/upload`,
         formData,
         {
           onUploadProgress: (progressEvent) => {
-            const progress =
-              (progressEvent.loaded / progressEvent.total) * 100;
+            const progress = (progressEvent.loaded / progressEvent.total) * 100;
             setUploadProgress(progress);
-          }
+          },
         }
       );
-
+  
       const uploadedUrl = uploadRes.data.secure_url;
-
-      // Notify parent
+  
+      // 🔔 Notify parent
       onUpload({ title, file: uploadedUrl, description });
-
-      // Save to your database
-      await axios.post(
-        "https://e20-co227-denture-design-studio.onrender.com/lecture/add",
-        {
-          title,
-          videoUrl: uploadedUrl,
-          description,
-        }
-      );
-
-      // Reset form
+  
+      // 🧾 Store lecture metadata
+      await axios.post("https://e20-co227-denture-design-studio.onrender.com/lecture/add", {
+        title,
+        videoUrl: uploadedUrl,
+        description,
+      });
+  
+      // 🔁 Reset form
       setTitle("");
       setFile(null);
       setDescription("");
       setUploadProgress(0);
       setErrorMessage("");
-
     } catch (error) {
       console.error("Upload failed:", error);
       setErrorMessage("Upload failed. Please try again.");
     }
   };
+  
 
   return (
     <div>
