@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import AddImage from "./AddImage";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 const AddAnswer = ({
   handleClose,
@@ -15,8 +15,19 @@ const AddAnswer = ({
 }) => {
   let navigate = useNavigate();
   const [isImageUpload, setIsImageUpload] = useState(false);
-  setisImageUpload(isImageUpload);
-  console.log(isImageUpload);
+  
+  // Use useEffect to update parent component state when local state changes
+  useEffect(() => {
+    setisImageUpload(isImageUpload);
+  }, [isImageUpload, setisImageUpload]);
+
+  // Function to handle image upload from AddImage component
+  const handleImageUpload = (img) => {
+    // Call the parent's answerImage function with the image
+    answerImage(img);
+    // Update local state
+    setIsImageUpload(true);
+  };
 
   return (
     <div className="AAoverly">
@@ -31,8 +42,8 @@ const AddAnswer = ({
         {isAddImageOpen && (
           <AddImage
             handleClose={closeAddImage}
-            setIsImageUpload={(state) => setIsImageUpload(state)}
-            answerImage={(url) => answerImage(url)}
+            setIsImageUpload={setIsImageUpload}
+            answerImage={handleImageUpload}
           />
         )}
         <button
@@ -43,7 +54,7 @@ const AddAnswer = ({
               assessor: true,
               teethdata: selectedData,
             };
-            setisImageUpload(true);
+            setIsImageUpload(true);
             navigate("/addSaddles", {
               state: { userdata: updateduserdata, imgData },
             });

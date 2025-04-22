@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { TimeProvider } from "./Timecontext";
 import { ToastContainer } from 'react-toastify';
+import { Toaster } from "react-hot-toast";
 import Homepage from "./first-page/Homepage";
 import Loginpage from "./logingpage/Logingpage";
 import Signup from "./Signinpage/signup";
@@ -119,6 +120,7 @@ function App() {
           />
         </Routes>
         <ToastContainer position="top-center" autoClose={2000} />
+        <Toaster position="top-center " toastOptions={{style:{color:"black"}}}/>
       </Router>
     </TimeProvider>
   );

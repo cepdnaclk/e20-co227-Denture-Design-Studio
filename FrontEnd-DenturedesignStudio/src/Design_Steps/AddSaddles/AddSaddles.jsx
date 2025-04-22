@@ -238,7 +238,6 @@ function AddSaddles() {
       <Demo videoSrc={SaddleDemo} />
 
       <div className="AddSaddles">
-        <ToastContainer />
         <div>
           <link
             rel="stylesheet"
@@ -251,7 +250,7 @@ function AddSaddles() {
               style={{
                 width: problemDescription ? "12vw" : "17vw",
                 position: "relative",
-                top: "3vh",
+                top: "-2vh",
               }}
             />
             {problemDescription && (
@@ -264,9 +263,10 @@ function AddSaddles() {
                 style={{
                   fontSize: "0.9vw",
                   padding: "0",
-                  margin: 0,
+                  margin: "1vh",
                   position: "relative",
-                  top: "-1vh",
+                  top: "-3vh",
+
                 }}
                 href={supportMaterial}
                 target="_blank"

@@ -67,7 +67,14 @@ function CreatePatientStep2() {
     setTimeout(() => {
       html2canvas(CreateRef.current).then((canvas) => {
         const imgData = canvas.toDataURL("image/png");
+        toast.update(toastId, {
+          render: "Case created successfully!",
+          type: "success",
+          isLoading: false,
+          autoClose: 2000,
+        });
         navigate("/addSaddles", { state: { userdata, imgData } });
+
       });
     }, 5);
   };

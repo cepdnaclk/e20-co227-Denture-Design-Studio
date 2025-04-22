@@ -174,7 +174,7 @@ function AddRetentions() {
               style={{
                 width: problemDescription ? "12vw" : "17vw",
                 position: "relative",
-                top: "3vh",
+                top: "-2vh",
               }}
             />
             {problemDescription && (

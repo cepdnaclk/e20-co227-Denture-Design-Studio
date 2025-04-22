@@ -235,7 +235,6 @@ function UploadeAnswerandMaterial() {
       />
       <h1 className="UAMHeader">Upload Answer/ Material/ Description</h1>
       <div className="assessor-case-teeth" ref={captureRef}>
-        <ToastContainer style={{ zIndex: 999 }} />
         <Teeth
           setMissingtooth={false}
           selectRest={{ selectrest: false }}

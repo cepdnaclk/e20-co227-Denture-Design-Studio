@@ -33,6 +33,12 @@ function ActualorAssessor({ cancel, solve, userdata }) {
         const supportMaterial = data.supportMaterialUrl;
         const answerImage = data.AnswerUrl;
         console.log(answerImage);
+        toast.update(toastId, {
+          render: "Case Found!",
+          type: "success",
+          isLoading: false,
+          autoClose: 2000,
+        });
         navigate("/addSaddles", {
           state: {
             userdata,

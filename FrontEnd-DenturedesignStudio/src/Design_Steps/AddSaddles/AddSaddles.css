@@ -27,6 +27,9 @@ body {
   background: #a3d1d4;
   border-radius: 2.6vw;
   align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .Questionbox img {
@@ -38,8 +41,8 @@ body {
 
 .yourQuestion {
   position: absolute;
-  width: 38.23vw;
-  height: 6.11vh;
+  width: auto;
+  height: auto;
   left: 11vw;
   top: 13vh;
 
@@ -236,11 +239,9 @@ body {
   width: 23vw;
   max-height: 16vh;
   position: relative;
-  left: 0.5vw;
   overflow-y: auto;
   overflow-x: hidden;
   padding: 0;
-  top: 2vh;
   background-color: rgba(0, 0, 0, 0.1);
   border-radius: 10px;
 }

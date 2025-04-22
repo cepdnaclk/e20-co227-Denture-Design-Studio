@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 import { WiCloudUp } from "react-icons/wi";
-import Swal from "sweetalert2";
-import { ToastContainer, toast } from "react-toastify";
-import axios from "axios";
+import { toast } from "react-hot-toast";
 import "react-toastify/dist/ReactToastify.css";
 
 const AddImage = ({ handleClose, setIsImageUpload, answerImage }) => {
   const [img, setImg] = useState(null);
+  const [uploading, setUploading] = useState(false);
 
   const handleClick = (e) => {
     const file = e.target.files[0];
@@ -22,36 +21,25 @@ const AddImage = ({ handleClose, setIsImageUpload, answerImage }) => {
       return;
     }
 
-    console.log("Image to upload:", img);
-    
-
     try {
-
-      answerImage(img);
+      setUploading(true);
+      await answerImage(img); // Your backend logic
+      setImg(null);
+      setIsImageUpload(false);
       handleClose();
-      toast.update(toastId, {
-        render: "Image uploaded successfully!",
-        type: "success",
-        isLoading: false,
-        autoClose: 3000,
-      });
+      toast.success("Image selected!");
     } catch (error) {
       console.error("Upload error:", error);
-      toast.update(toast, {
-        render: "Error uploading image!",
-        type: "error",
-        isLoading: false,
-        autoClose: 3000,
-      });
+      toast.error("Error uploading image!");
+    } finally {
+      setUploading(false);
     }
   };
 
   return (
     <div className="AIoverly">
       <div className="AIcontent">
-        <button className="AIclose-button" onClick={handleClose}>
-          X
-        </button>
+        <button className="AIclose-button" onClick={handleClose}>X</button>
         <h2 className="AIheader">Upload Image</h2>
         <p className="AIformat">Supported formats: .png, .jpg, .jpeg</p>
         <div
@@ -64,14 +52,10 @@ const AddImage = ({ handleClose, setIsImageUpload, answerImage }) => {
             onChange={handleClick}
             hidden
           />
-          {img ? (
-            <h4>{img.name}</h4>
-          ) : (
-            <WiCloudUp size={"4vw"} color="black" opacity={0.55} />
-          )}
+          {img ? <h4>{img.name}</h4> : <WiCloudUp size={"4vw"} color="black" opacity={0.55} />}
         </div>
-        <button className="AIUpload" onClick={uploadImg}>
-          Upload Image
+        <button className="AIUpload" onClick={uploadImg} disabled={uploading}>
+          {uploading ? "Uploading..." : "Upload Image"}
         </button>
       </div>
     </div>

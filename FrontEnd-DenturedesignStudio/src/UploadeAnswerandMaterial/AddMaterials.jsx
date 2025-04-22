@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { WiCloudUp } from "react-icons/wi";
 import Swal from "sweetalert2";
-import { ToastContainer, toast } from "react-toastify";
+import {  toast } from "react-hot-toast";
 import axios from "axios";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -21,10 +21,11 @@ const AddMaterial = ({ handleClose, answerMaterial }) => {
       return;
     }
 
-    const toastId = toast.loading("Uploading material...");
     try {
       answerMaterial(img); // Pass URL to parent
       handleClose(); 
+      toast.success("Material selected!");
+
     } catch (error) {
       console.error("Upload error:", error);
       toast.update(toastId, {
@@ -33,13 +34,14 @@ const AddMaterial = ({ handleClose, answerMaterial }) => {
         isLoading: false,
         autoClose: 3000,
       });
+    }finally {
+      toast.dismiss(toastId); // Dismiss the toast after upload
     }
   };
 
   return (
     <div className="AMoverly">
       <div className="AMcontent">
-        <ToastContainer />
         <button className="AMclose-button" onClick={handleClose}>
           X
         </button>
