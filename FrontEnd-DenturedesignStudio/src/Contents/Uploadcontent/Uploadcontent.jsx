@@ -25,10 +25,10 @@ function Uploadcontent({ onUpload, onback }) {
     const isVideo = file.type.startsWith("video");
     const isPdf = file.type === "application/pdf";
     const folderName = isVideo
-      ? "lectures/videos"
+      ? "Denture-Design-Studio/lectures/videos"
       : isPdf
-      ? "lectures/pdfs"
-      : "lectures/images";
+      ? "Denture-Design-Studio/lectures/pdfs"
+      : "Denture-Design-Studio/lectures/images";
   
     const resourceType = isVideo ? "video" : isPdf ? "raw" : "image";
     const publicId = `${folderName}/${title}_${currentDate}`;

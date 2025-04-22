@@ -8,7 +8,7 @@ const AddAnswer = ({
   isAddImageOpen,
   closeAddImage,
   setisImageUpload,
-  answerImageUrl,
+  answerImage,
   imgData,
   userdata,
   selectedData,
@@ -17,7 +17,6 @@ const AddAnswer = ({
   const [isImageUpload, setIsImageUpload] = useState(false);
   setisImageUpload(isImageUpload);
   console.log(isImageUpload);
-  console.log(imgData);
 
   return (
     <div className="AAoverly">
@@ -33,7 +32,7 @@ const AddAnswer = ({
           <AddImage
             handleClose={closeAddImage}
             setIsImageUpload={(state) => setIsImageUpload(state)}
-            answerImageurl={(url) => answerImageUrl(url)}
+            answerImage={(url) => answerImage(url)}
           />
         )}
         <button

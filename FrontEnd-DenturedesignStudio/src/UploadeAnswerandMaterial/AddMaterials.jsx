@@ -1,71 +1,45 @@
 import React, { useState } from "react";
-import {
-  getStorage,
-  ref,
-  uploadBytesResumable,
-  getDownloadURL,
-} from "firebase/storage";
-import { storage } from "../../firebase.config";
 import { WiCloudUp } from "react-icons/wi";
 import Swal from "sweetalert2";
-import { ToastContainer, toast } from "react-toastify"; // Import Toast
+import { ToastContainer, toast } from "react-toastify";
+import axios from "axios";
 import "react-toastify/dist/ReactToastify.css";
 
-const AddMaterial = ({ handleClose, answerMaterialUrl }) => {
+const AddMaterial = ({ handleClose, answerMaterial }) => {
   const [img, setImg] = useState(null);
 
-  const uploadImg = () => {
+  const handleClick = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setImg(file);
+    }
+  };
+
+  const uploadImg = async () => {
     if (!img) {
-      console.error("No image selected for upload");
+      toast.error("No file selected for upload!");
       return;
     }
-    const fileName = `${new Date().toTimeString()} ${img.name}`;
-    const imgRef = ref(
-      storage,
-      `ActualQuestions/${new Date().toDateString()}/materials_${fileName}`
-    );
-    const uploadTask = uploadBytesResumable(imgRef, img);
-    const toastId = toast.loading("Uploading image...");
 
-    uploadTask.on(
-      "state_changed",
-      null,
-      (error) => {
-        console.error("Error uploading image: ", error);
-        toast.update(toastId, {
-          render: "Error uploading support material!",
-          type: "error",
-          isLoading: false,
-          autoClose: 3000, // Close after 3 seconds
-        });
-      },
-      async () => {
-        const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
-        console.log("File available at", downloadURL);
-        toast.update(toastId, {
-          render: "support material uploaded successfully!",
-          position: "top-center",
-          type: "success",
-          isLoading: false,
-          autoClose: 2000, // Close after 2 seconds
-        });
-        Swal.fire({
-          icon: "success",
-          title: "Done",
-          text: "Your answer image has been uploaded successfully",
-          background: "#30505b",
-          color: "#d3ecff",
-          confirmButtonColor: "#66d8d8",
-        }).then(() => {
-          answerMaterialUrl(downloadURL);
-          handleClose();
-        });
-      }
-    );
+    const toastId = toast.loading("Uploading material...");
+    try {
+      answerMaterial(img); // Pass URL to parent
+      handleClose(); 
+    } catch (error) {
+      console.error("Upload error:", error);
+      toast.update(toastId, {
+        render: "Error uploading material!",
+        type: "error",
+        isLoading: false,
+        autoClose: 3000,
+      });
+    }
   };
+
   return (
     <div className="AMoverly">
       <div className="AMcontent">
+        <ToastContainer />
         <button className="AMclose-button" onClick={handleClose}>
           X
         </button>
@@ -78,7 +52,8 @@ const AddMaterial = ({ handleClose, answerMaterialUrl }) => {
           <input
             className="inputimage"
             type="file"
-            onChange={(e) => setImg(e.target.files[0])}
+            accept="image/png, image/jpeg, image/jpg"
+            onChange={handleClick}
             hidden
           />
           {img ? (

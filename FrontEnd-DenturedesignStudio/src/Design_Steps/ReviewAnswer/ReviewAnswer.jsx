@@ -9,10 +9,9 @@ import { useRef, useState, useEffect } from "react";
 import { useTime } from "../../Timecontext";
 import axios from "axios";
 import html2canvas from "html2canvas";
-import { ref, uploadString, getDownloadURL } from "firebase/storage";
-import { storage } from "../../../firebase.config.js";
 import { ToastContainer, toast } from "react-toastify"; // Import Toast
 import "react-toastify/dist/ReactToastify.css";
+
 function Reviewanswer() {
   const navigate = useNavigate();
   const location = useLocation();
@@ -100,13 +99,13 @@ function Reviewanswer() {
   }, [user_name, setWatchVideoTime, currentsolvetime, isActive]);
 
   const FinishSolvecase = () => {
+    // Get current case solved data
     axios
       .post("https://e20-co227-denture-design-studio.onrender.com/progress/get", {
         user_name,
       })
       .then((response) => {
-        currentSolvedCases = response.data.progress.solveCase;
-
+        let currentSolvedCases = response.data.progress.solveCase;
         const newSolvedCases = currentSolvedCases + 1;
         axios
           .put("https://e20-co227-denture-design-studio.onrender.com/progress/edit", {
@@ -114,7 +113,7 @@ function Reviewanswer() {
             solveCase: newSolvedCases,
           })
           .then((response) => {
-            console.log("Lecture time updated:", response.data);
+            console.log("Updated solve case:", response.data);
             navigate("/modelanswer", {
               state: {
                 curves,
@@ -135,59 +134,31 @@ function Reviewanswer() {
         console.log(err.message);
       });
 
-    if (userdata.assessor) {
-      if (captureRef.current) {
-        const toastId = toast.loading("Uploading patient case answer...");
-        html2canvas(captureRef.current, {
-          scale: window.devicePixelRatio,
-          useCORS: true,
-          willReadFrequently: true,
-        })
-          .then((canvas) => {
-            const imgData = canvas.toDataURL("image/png");
-            const storageRef = ref(
-              storage,
-              `ActualQuestions/${new Date().toDateString()}/answer_${new Date().toTimeString()}.png`
-            );
-            uploadString(storageRef, imgData, "data_url")
-              .then(async (snapshot) => {
-                console.log("Uploaded to Firebase successfully!");
-                toast.update(toastId, {
-                  render: "create Patient case successful!",
-                  type: "success",
-                  isLoading: false,
-                  autoClose: 2000, // Close after 2 seconds
-                });
-                const downloadURL = await getDownloadURL(storageRef);
-                setTimeout(() => {
-                  navigate("/uploadanswerandmaterial", {
-                    state: {
-                      userdata,
-                      answerImageUrl: downloadURL,
-                      selectedData: userdata.teethdata,
-                      isImageUpload: true,
-                    },
-                  });
-                }, 2000);
-              })
-              .catch((error) => {
-                toast.update(toastId, {
-                  render: "Error uploading to Firebase!",
-                  type: "error",
-                  isLoading: false,
-                  autoClose: 3000,
-                });
-                console.error("Error uploading to Firebase:", error);
-              });
-          })
-          .catch((error) => {
-            console.error("Error capturing image:", error);
+    if (userdata.assessor && captureRef.current) {
+      const toastId = toast.loading("Uploading patient case answer...");
+      html2canvas(captureRef.current, {
+        scale: window.devicePixelRatio,
+        useCORS: true,
+        willReadFrequently: true,
+      })
+        .then((canvas) => {
+          const imgData = canvas.toDataURL("image/png");
+          navigate("/uploadanswerandmaterial", {
+            state: {
+              userdata,
+              answerImage: imgData,
+              selectedData: userdata.teethdata,
+              isImageUpload: true,
+            },
           });
-      } else {
-        console.error("Capture element not found");
-      }
+        }).catch((error) => {
+          console.error("Error capturing image:", error);
+        });
+    } else {
+      console.error("Capture element not found");
     }
   };
+
 
   return (
     <div className="designPage">

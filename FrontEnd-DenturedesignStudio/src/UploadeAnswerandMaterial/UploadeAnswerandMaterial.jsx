@@ -8,11 +8,9 @@ import AddMaterial from "./AddMaterials.jsx";
 import AddAnswer from "./AddAnswer.jsx";
 import Teeth from "../TeethComp/Teeth.jsx";
 import Swal from "sweetalert2";
-import { storage } from "../../firebase.config.js";
-import { getDownloadURL, ref, uploadString } from "firebase/storage";
 import html2canvas from "html2canvas";
 import axios from "axios";
-import { ToastContainer, toast } from "react-toastify"; // Import Toast
+import { ToastContainer, toast } from "react-toastify"; 
 import "react-toastify/dist/ReactToastify.css";
 
 function UploadeAnswerandMaterial() {
@@ -42,13 +40,12 @@ function UploadeAnswerandMaterial() {
           undercuts: null,
         }
   );
-  const [answerImageUrl, setanswerImageUrl] = useState(
-    location.state?.answerImageUrl
+  const [answerImage, setanswerImage] = useState(
+    location.state?.answerImage
   );
-  console.log(answerImageUrl);
+  console.log(answerImage);
   const [answerDescription, setAnswerDescription] = useState("");
-  const [answerMaterialUrl, setanswerMaterialUrl] = useState("");
-  const [ProblemImageUrl, setProblemImageUrl] = useState("");
+  const [answerMaterial, setanswerMaterial] = useState("");
   const [imgData, setImgForSolved] = useState("");
   console.log(selectedData);
   const setData = (data) => {
@@ -112,91 +109,114 @@ function UploadeAnswerandMaterial() {
     setIsAddImageOpen(true);
     document.body.classList.remove("active-popup");
   };
-  console.log(isImageUpload);
-  console.log(answerImageUrl);
-  console.log(ProblemImageUrl);
-  console.log(answerMaterialUrl);
-  console.log(answerDescription);
-  const storeImage = () => {
-    if (captureRef.current) {
-      const toastId = toast.loading("Uploading patient case..."); // Show loading notification
+  const storeImage = async () => {
+    if (!captureRef.current) {
+      toast.error("Capture element not found!");
+      return;
+    }
 
-      html2canvas(captureRef.current, {
+    const toastId = toast.loading("Uploading patient case...");
+    const now = new Date();
+
+    // Round down to the nearest 5 minutes
+    const minutes = now.getMinutes();
+    const roundedMinutes = Math.floor(minutes / 5) * 5;
+
+    now.setMinutes(roundedMinutes);
+    now.setSeconds(0);
+    now.setMilliseconds(0);
+
+    // Format the date and time as a folder name: "YYYY-MM-DD_HH-mm"
+    const year = now.getFullYear();
+    const month = (now.getMonth() + 1).toString().padStart(2, '0');
+    const day = now.getDate().toString().padStart(2, '0');
+    const hours = now.getHours().toString().padStart(2, '0');
+    const mins = now.getMinutes().toString().padStart(2, '0');
+
+    const currentDate = `${year}-${month}-${day}_${hours}-${mins}`;
+    console.log(currentDate); 
+    const folderName = `Denture-Design-Studio/actual_questions/${currentDate}`;
+
+
+    try {
+      const canvas = await html2canvas(captureRef.current, {
         scale: window.devicePixelRatio,
         useCORS: true,
         willReadFrequently: true,
-      })
-        .then((canvas) => {
-          const imgData = canvas.toDataURL("image/png");
-
-          const storageRef = ref(
-            storage,
-            `ActualQuestions/${new Date().toDateString()}/problem_${new Date().toTimeString()}.png`
+      });
+      const imgData = canvas.toDataURL("image/png");
+      const images = [
+        { file: answerImage, name: "answer" },
+        { file: answerMaterial, name: "material" },
+        { file: imgData, name: "problem" },
+      ];
+      
+      const uploadedUrls = [];
+      
+      for (const { file, name } of images) {
+        if (file) {
+          const publicId = `${folderName}/${name}_Image_${new Date().getTime()}`;      
+          const sigRes = await axios.post(
+            "https://e20-co227-denture-design-studio.onrender.com/api/cloudinary-signature",
+            {
+              public_id: publicId,
+              folder: folderName,
+            }
           );
-          uploadString(storageRef, imgData, "data_url")
-            .then(async (snapshot) => {
-              const downloadURL = await getDownloadURL(storageRef);
-              setProblemImageUrl(downloadURL);
-              return downloadURL;
-            })
-            .then((downloadURL) => {
-              axios
-                .post(
-                  "https://e20-co227-denture-design-studio.onrender.com/actualcase/add",
-                  {
-                    AnswerUrl: answerImageUrl,
-                    ProblemUrl: downloadURL,
-                    description: answerDescription,
-                    supportMaterialUrl: answerMaterialUrl,
-                  }
-                )
-                .then((response) => {
-                  toast.update(toastId, {
-                    render: "create Patient case successful!",
-                    type: "success",
-                    isLoading: false,
-                    autoClose: 2000, // Close after 2 seconds
-                  });
-                  console.log(response);
+      
+          const { signature, timestamp, apiKey, cloudName } = sigRes.data;
+      
+          const formData = new FormData();
+          formData.append("file", file);
+          formData.append("api_key", apiKey);
+          formData.append("signature", signature);
+          formData.append("timestamp", timestamp);
+          formData.append("public_id", publicId);
+          formData.append("folder", folderName);
+      
+          const cloudinaryRes = await axios.post(
+            `https://api.cloudinary.com/v1_1/${cloudName}/image/upload`,
+            formData
+          );
+      
+          const downloadURL = cloudinaryRes.data.secure_url;
+          uploadedUrls.push({ type: name, url: downloadURL }); // Save with label
 
-                  setTimeout(() => {
-                    navigate("/assessorhome", { state: { userdata } });
-                  }, 2000); // Navigate after the success notification
-                })
-                .catch((error) => {
-                  toast.update(toastId, {
-                    render: "Error uploading data to server!",
-                    type: "error",
-                    isLoading: false,
-                    autoClose: 3000,
-                  });
-                  console.error("Error with axios post:", error);
-                });
-            })
-            .catch((error) => {
-              toast.update(toastId, {
-                render: "Error uploading to Firebase!",
-                type: "error",
-                isLoading: false,
-                autoClose: 3000,
-              });
-              console.error("Error uploading to Firebase:", error);
-            });
-        })
-        .catch((error) => {
-          toast.update(toastId, {
-            render: "Error capturing image!",
-            type: "error",
-            isLoading: false,
-            autoClose: 3000,
-          });
-          console.error("Error capturing image:", error);
-        });
-    } else {
-      toast.error("Capture element not found!");
-      console.error("Capture element not found");
+      }
+      console.log("Uploaded URLs:", uploadedUrls);
+
+  }
+      await axios.post(
+        "https://e20-co227-denture-design-studio.onrender.com/actualcase/add",
+        {
+          AnswerUrl: uploadedUrls.find((img) => img.type === "answer")?.url,
+          ProblemUrl: uploadedUrls.find((img) => img.type === "problem")?.url,
+          description: answerDescription,
+          supportMaterialUrl: uploadedUrls.find((img) => img.type === "material")?.url,
+        }
+      );
+
+      toast.update(toastId, {
+        render: "Patient case created successfully!",
+        type: "success",
+        isLoading: false,
+        autoClose: 2000,
+      });
+
+      setTimeout(() => {
+        navigate("/assessorhome", { state: { userdata } });
+      }, 2000);
+    } catch (err) {
+      toast.update(toastId, {
+        render: "Failed to upload image or save data!",
+        type: "error",
+        isLoading: false,
+        autoClose: 3000,
+      });
+      console.error(err);
     }
   };
+
   return (
     <div className="designPage">
       <Home
@@ -240,7 +260,7 @@ function UploadeAnswerandMaterial() {
             isAddImageOpen={isAddImageOpen}
             closeAddImage={closeAddAnswer}
             setisImageUpload={(state) => setisImageUpload(state)}
-            answerImageUrl={(url) => setanswerImageUrl(url)}
+            answerImage={(img) => setanswerImage(img)}
             imgData={imgData}
             userdata={userdata}
             selectedData={selectedData}
@@ -273,7 +293,7 @@ function UploadeAnswerandMaterial() {
         {isAddMaterialsOpen && (
           <AddMaterial
             handleClose={closeAddMaterials}
-            answerMaterialUrl={(url) => setanswerMaterialUrl(url)}
+            answerMaterial={(url) => setanswerMaterial(url)}
           />
         )}
         {
