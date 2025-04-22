@@ -41,25 +41,28 @@ router.delete("/delete/:id", async (req, res) => {
 
     const videoUrl = lecture.videoUrl;
 
-    // Extract public_id
+    // ✅ Extract the correct public_id for Cloudinary
     const url = new URL(videoUrl);
-    const pathParts = url.pathname.split("/");
+    const path = url.pathname; // e.g. /video/upload/v1234567890/folder/file.mp4
 
-    // Remove filename and version
-    const fileNameWithExt = pathParts.pop(); // e.g., kk_2025-04-22.mp4
-    const version = pathParts.pop(); // e.g., v1745310443 (skip)
+    // Remove version number and file extension
+    const publicIdWithVersion = path.split("/upload/")[1]; // get everything after /upload/
+    const publicIdParts = publicIdWithVersion.split("/");
+    const version = publicIdParts[0]; // v1234567890 (ignore)
+    const fileParts = publicIdParts.slice(1); // folder/.../filename.ext
 
-    const fileName = fileNameWithExt.split(".")[0]; // kk_2025-04-22
-    const folderPath = pathParts.slice(pathParts.indexOf("upload") + 1).join("/");
+    const fileNameWithExt = fileParts.pop(); // e.g., kk_2025-04-22.mp4
+    const fileName = fileNameWithExt.replace(/\.[^/.]+$/, ""); // remove extension
 
-    const publicId = `${folderPath}/${fileName}`;
+    const folderPath = fileParts.join("/");
+    const publicId = folderPath ? `${folderPath}/${fileName}` : fileName;
 
     // Detect resource type
     let resource_type = "image";
     if (videoUrl.includes("/video/")) resource_type = "video";
     else if (videoUrl.endsWith(".pdf")) resource_type = "raw";
 
-    // DEBUG LOG (optional)
+    // Debug log
     console.log("Attempting to delete from Cloudinary:", {
       publicId,
       resource_type,
