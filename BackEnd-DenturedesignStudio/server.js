@@ -23,6 +23,7 @@ const adminrouter = require("../BackEnd-DenturedesignStudio/Routes/Adminroute.js
 const progressrouter = require("../BackEnd-DenturedesignStudio/Routes/Progressroute.js");
 const lecturerouter = require("../BackEnd-DenturedesignStudio/Routes/Lectureroute.js");
 const actualcaserouter = require("../BackEnd-DenturedesignStudio/Routes/Actualcaseroute.js");
+const cloudinarySignatureRoute = require("../BackEnd-DenturedesignStudio/Routes/cloudinarySignature.js");
 
 app.use("/student", studentrouter);
 app.use("/assessor", assessorrouter);
@@ -30,6 +31,8 @@ app.use("/admin", adminrouter);
 app.use("/progress", progressrouter);
 app.use("/lecture", lecturerouter);
 app.use("/actualcase", actualcaserouter);
+app.use("/api/cloudinary-signature", cloudinarySignatureRoute);
+
 
 const connection = mongoose.connection;
 connection.once("open", () => {
