@@ -199,13 +199,14 @@ function AddSaddles() {
         const imgData = data.ProblemUrl;
         const problemDescription = data.description;
         const supportMaterial = data.supportMaterialUrl;
-        const answerImage = data.answerImageUrl;
+        const answerImage = data.AnswerUrl;
 
         // Update the state with the new data
         setimgData(imgData);
         setproblemDescription(problemDescription);
         setsupportMaterial(supportMaterial);
         setanswerImage(answerImage);
+        console.log(answerImage);
 
         // Show success notification after updating data
         toast.update(toastId, {
