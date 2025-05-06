@@ -92,7 +92,7 @@ function Assessorpwreset() {
               your user name: <h2 className="your-user-name">{user_name}</h2>
             </h1>
             <h2>You can now log in with your new password</h2>
-            <a href="/login">Go to Login</a>
+            <a href="/">Go to Login</a>
           </>
         )}
       </div>
