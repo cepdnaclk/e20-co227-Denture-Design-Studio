@@ -62,7 +62,7 @@ title: Denture Design Studio
 - **Frontend**: React.js for building the user interface.
 - **Backend**: Node.js for handling server-side operations.
 - **Database**: MongoDB for storing user data and designs.
-- **Deployment**: Vercel for deployment of web application.
+- **Deployment**: Render for deployment of web application.
 
 ---
 
