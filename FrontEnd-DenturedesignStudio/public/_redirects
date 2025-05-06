@@ -1,0 +1,3 @@
+/verify/*                    /index.html   200
+/reset-password/student/*   /index.html   200
+/reset-password/assessor/*  /index.html   200
