@@ -1,0 +1,17 @@
+html {
+  box-sizing: border-box;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+body {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  overflow: hidden;
+  font-family: 'Salsa', sans-serif;
+  /* line-height: 1.5; /* Consider adding a global line-height */
+}

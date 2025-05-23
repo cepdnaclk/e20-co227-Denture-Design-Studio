@@ -3,17 +3,19 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 40vw;
-  height: 45vh;
-  padding: 0;
+  width: clamp(300px, 40vw, 500px);
+  height: clamp(280px, 45vh, 400px);
+  padding: 1rem; /* Added padding */
   background: #30505b;
   color: #bff9f2;
-  border-radius: 2vw;
-  box-shadow: 0.668vw 0.668vw 0.668vw rgba(0, 0, 0, 0.3);
+  border-radius: 1rem; /* Was 2vw */
+  box-shadow: 0.3rem 0.3rem 0.3rem rgba(0, 0, 0, 0.3); /* Was 0.668vw */
   z-index: 1100;
   text-align: center;
   display: flex;
-  justify-content: center;
+  flex-direction: column; /* Stack buttons vertically */
+  justify-content: center; /* Center buttons vertically */
+  align-items: center; /* Center buttons horizontally */
 }
 .ActualorAssessor-overlay {
   position: fixed;
@@ -30,54 +32,91 @@
   background-color: transparent;
   color: #000;
   border: none;
-  border-radius: 0.8vw;
+  border-radius: 0.4rem; /* Was 0.8vw */
   cursor: pointer;
   position: absolute;
-  font-family: "salsa";
-  font-size: 1.5vw;
-  left: 35vw;
-  top: 2vh;
+  font-size: clamp(0.9rem, 1.5vw, 1.2rem); /* Was 1.5vw */
+  right: 1rem; /* Adjusted from left: 35vw */
+  top: 1rem;   /* Adjusted from 2vh */
   margin: 0;
-  text-shadow: #000 0 0 0.5vw;
+  text-shadow: #000 0 0 0.2rem; /* Was 0.5vw */
 }
 .genarate-btn {
   background-color: #66d8d8;
   color: #000;
   border: none;
-  border-radius: 0.8vw;
+  border-radius: 0.5rem; /* Was 0.8vw */
   cursor: pointer;
-  position: absolute;
-  font-family: "salsa";
-  font-size: 2vw;
-  margin: 0;
-  width: 20vw;
-  height: 3.5vw;
-  top: 12vh;
+  /* position: absolute; Removed, will be handled by flex */
+  font-size: clamp(1rem, 2vw, 1.5rem); /* Was 2vw */
+  margin: 0.75rem 0; /* Added margin for spacing */
+  width: clamp(180px, 20vw, 250px); /* Was 20vw */
+  height: auto; /* Was 3.5vw */
+  padding: clamp(0.5rem, 0.8vw, 0.75rem) 0; /* Added padding */
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0.67vw 0.53vw 0.8vw rgba(0, 0, 0, 0.35);
+  box-shadow: 0.2rem 0.2rem 0.3rem rgba(0, 0, 0, 0.35); /* Was vw units */
 }
 .actual-btn {
   background-color: #66d8d8;
   color: #000;
   border: none;
-  border-radius: 0.8vw;
+  border-radius: 0.5rem; /* Was 0.8vw */
   cursor: pointer;
-  position: absolute;
-  font-family: "salsa";
-  font-size: 2vw;
-  top: 26vh;
-  margin: 0;
-  width: 20vw;
-  height: 3.5vw;
+  /* position: absolute; Removed, will be handled by flex */
+  font-size: clamp(1rem, 2vw, 1.5rem); /* Was 2vw */
+  margin: 0.75rem 0; /* Added margin for spacing */
+  width: clamp(180px, 20vw, 250px); /* Was 20vw */
+  height: auto; /* Was 3.5vw */
+  padding: clamp(0.5rem, 0.8vw, 0.75rem) 0; /* Added padding */
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0.67vw 0.53vw 0.8vw rgba(0, 0, 0, 0.35);
+  box-shadow: 0.2rem 0.2rem 0.3rem rgba(0, 0, 0, 0.35); /* Was vw units */
 }
-.TeethBackground-auto {
+.TeethBackground-auto { /* This class name seems specific, ensure it's not a typo for a component */
   position: absolute;
-  left: 28vw;
+  left: 50%; /* Was 28vw - this is relative to parent, which is now flex centered */
+  transform: translateX(-50%);
+  bottom: 1rem; /* Example positioning, needs context */
   color: red;
+  font-size: clamp(0.7rem, 1vw, 0.9rem); /* Added example font size */
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  /* Tablet adjustments */
+  .ActualorAssessor {
+    width: clamp(280px, 50vw, 450px);
+    height: clamp(250px, 40vh, 350px);
+  }
+  .genarate-btn, .actual-btn {
+    width: clamp(160px, 25vw, 220px);
+    font-size: clamp(0.9rem, 1.8vw, 1.3rem);
+  }
+}
+
+@media (max-width: 480px) {
+  /* Mobile adjustments */
+  .ActualorAssessor {
+    width: clamp(250px, 80vw, 320px); /* Full width approach */
+    height: clamp(220px, 50vh, 300px); /* Adjust height */
+    padding: 0.75rem;
+  }
+  .cancel-btn {
+    font-size: clamp(0.8rem, 1.2vw, 1rem);
+    right: 0.5rem;
+    top: 0.5rem;
+  }
+  .genarate-btn, .actual-btn {
+    width: clamp(150px, 60vw, 200px); /* Ensure buttons are wide enough */
+    font-size: clamp(0.9rem, 2.5vw, 1.2rem); /* Adjust font size */
+    margin: 0.5rem 0;
+    padding: clamp(0.4rem, 0.7vw, 0.6rem) 0;
+  }
+  .TeethBackground-auto {
+    font-size: clamp(0.6rem, 0.9vw, 0.8rem);
+    bottom: 0.5rem;
+  }
 }
