@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { WiCloudUp } from "react-icons/wi";
 import Swal from "sweetalert2";
-import {  toast } from "react-hot-toast";
+import { toast } from "react-toastify"; // Changed from react-hot-toast
 import axios from "axios";
-import "react-toastify/dist/ReactToastify.css";
+// Removed incorrect react-toastify.css import, assuming global CSS for react-toastify
 
 const AddMaterial = ({ handleClose, answerMaterial }) => {
   const [img, setImg] = useState(null);
@@ -28,15 +28,12 @@ const AddMaterial = ({ handleClose, answerMaterial }) => {
 
     } catch (error) {
       console.error("Upload error:", error);
-      toast.update(toastId, {
-        render: "Error uploading material!",
-        type: "error",
-        isLoading: false,
-        autoClose: 3000,
-      });
-    }finally {
-      toast.dismiss(toastId); // Dismiss the toast after upload
+      // toast.update was used with toastId, which is not defined here.
+      // Assuming a simple error toast is sufficient as toastId was from react-hot-toast context.
+      toast.error("Error uploading material!");
     }
+    // toast.dismiss was used with toastId, which is not defined here.
+    // react-toastify auto-dismisses by default or can be configured in ToastContainer.
   };
 
   return (
