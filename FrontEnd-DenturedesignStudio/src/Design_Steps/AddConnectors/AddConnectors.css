@@ -1,12 +1,13 @@
 .Done {
   position: absolute;
-  width: 9.14vw;
-  height: 3.37vw;
-  left: 26vw;
-  top: 33vw;
-  border-radius: 1vw;
+  width: min(9.14vw, 150px);
+  height: auto;
+  padding: clamp(0.4rem, 0.8vw, 0.7rem) clamp(0.8rem, 1.2vw, 1rem);
+  left: 26vw; /* Will adjust in media queries */
+  top: 33vw;  /* Will adjust in media queries */
+  border-radius: clamp(0.5rem, 1vw, 0.8rem);
   background: #66d8d8;
-  box-shadow: 0.67vw 0.53vw 0.8vw rgba(0, 0, 0, 0.35);
+  box-shadow: 0.67vw 0.53vw 0.8vw rgba(0, 0, 0, 0.35); /* Consider rem for shadow later */
   cursor: pointer;
   border: none;
 }
@@ -15,62 +16,60 @@
   transition: all 0.5s ease;
 }
 .DoneText {
-  position: absolute;
-  height: 4.07vh;
-  width: 40vw;
-  left: 1.25vw;
-  right: 0.83vw;
-  top: calc(50% - 4.07vh / 2);
+  position: absolute; /* Assuming this is relative to .Done button */
+  height: auto; /* Adjusted */
+  width: auto;  /* Adjusted, let padding control size */
+  left: 1.25vw; /* This might need to be 0 or small rem if parent has padding */
+  right: 0.83vw;/* This might need to be 0 or small rem if parent has padding */
+  top: 50%;
+  transform: translateY(-50%); /* Better vertical centering */
 
-  font-family: "Salsa";
   font-style: normal;
   font-weight: 400;
-  font-size: 1.67vw;
-  line-height: 134.77%;
+  font-size: clamp(0.9rem, 1.67vw, 1.4rem);
+  line-height: 1.2; /* Adjusted */
   display: flex;
   align-items: center;
   text-align: center;
 
   color: #000000;
-  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); /* Consider rem for shadow later */
 }
 
-.AddConnectors {
+.AddConnectors { /* Main title for the section */
   position: absolute;
-  height: 4.63vh;
-  left: 10vw;
-  right: 49.58vw;
-  width: 50vw;
-  top: 0.25vw;
+  height: auto; /* Adjusted */
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(50vw, 90%); /* Adjusted, max-width can be e.g. 500px */
+  max-width: 500px;
+  top: 0.25vw; /* Will adjust in media queries */
 
-  font-family: "Salsa";
   font-style: normal;
   font-weight: 400;
-  font-size: 2.5vw;
-  line-height: 134.77%;
+  font-size: clamp(1.2rem, 2.5vw, 2rem);
+  line-height: 1.2; /* Adjusted */
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 
   display: flex;
   align-items: center;
   text-align: center;
   color: #92dada;
-  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 
-.connectors {
-  position: relative;
-  width: 22.81vw;
-  height: 6.39vh;
-  top: 6%;
+.connectors { /* Label for the list of connectors */
+  position: relative; /* This might need to be static or adjusted based on layout */
+  width: auto; /* Adjusted */
+  height: auto; /* Adjusted */
+  top: 6%; /* This is % of parent height, might need review */
 
-  font-family: "Salsa";
   font-style: normal;
   font-weight: 400;
-  line-height: 134.77%;
+  line-height: 1.2; /* Adjusted */
   display: flex;
   align-items: center;
-
+  /* font-size should be inherited or set if needed, e.g. clamp(1rem, 1.8vw, 1.5rem); */
   color: #d1ecec;
 }
 
@@ -79,21 +78,24 @@
 }
 
 ul.connectors-list {
-  position: absolute;
+  position: absolute; /* This is absolute to its nearest positioned ancestor */
   list-style-type: none;
-  left: 25%;
-  font-size: 1.56vw;
+  left: 25%; /* This is % of parent width, might need review */
+  font-size: clamp(0.8rem, 1.56vw, 1.3rem);
   padding: 0;
   margin: 0;
+  /* Consider adding width: auto or max-width if items overflow */
 }
 
 ul.connectors-list li {
-  position: absolute;
+  position: absolute; /* This is absolute to the ul.connectors-list */
   padding-left: 0;
-  white-space: nowrap;
-  left: 22vw;
+  white-space: normal; /* Changed from nowrap */
+  left: 22vw; /* This is a large offset from the UL's left, might need significant reduction or % */
+  /* Example: left: 10%; or left: 2rem; */
   cursor: pointer;
   transition: color 0.3s ease-in-out;
+  /* width: auto; or a max-width to help with wrapping */
 }
 
 ul.connectors-list li:hover {
@@ -103,37 +105,107 @@ ul.connectors-list li:hover {
   cursor: pointer;
 }
 
+/* The following IDs are for specific connector parts. Reviewing positions. */
 #upper {
-  top: 0vh;
+  top: 0rem; /* Was 0vh */
 }
 #lower {
   position: relative;
   transition: top 0.3s ease-in-out, color 0.3s ease-in-out;
+  /* top/left not specified, might be dynamic or default */
 }
 #major {
   position: absolute;
-  left: 0vw;
+  left: 0%; /* Was 0vw */
 }
 #minor {
   position: absolute;
-  left: 0vw;
-  top: 5vh;
+  left: 0%; /* Was 0vw */
+  top: 1.5rem; /* Was 5vh, assuming ~16-20px base font, 5vh is large, adjusting to rem */
 }
 .lower-connector {
   transition: all 0.5s ease;
   position: absolute;
-  left: 25vw;
-  top: 10vh;
+  left: 15%; /* Was 25vw, making it % of parent */
+  top: 3rem;  /* Was 10vh, adjusting to rem */
 }
 .upper-connector {
   transition: all 0.5s ease;
   position: absolute;
-  left: 3vw;
-  top: 3vh;
+  left: 5%;  /* Was 3vw, making it % of parent */
+  top: 1rem;   /* Was 3vh, adjusting to rem */
 }
 #upper-major {
-  top: 0vh;
+  top: 0rem; /* Was 0vh */
 }
 #upper-minor {
-  top: 5vh;
+  top: 1.5rem; /* Was 5vh, adjusting to rem */
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  /* Tablet adjustments */
+  .Done {
+    /* Example: Adjust position and size */
+    /* top: 40vw; */
+    /* left: 50%; */
+    /* transform: translateX(-50%); */
+    /* width: min(20vw, 120px); */
+  }
+  .AddConnectors {
+    /* top: 1rem; */
+    /* width: min(70vw, 90%); */
+  }
+  ul.connectors-list {
+    /* left: 10%; */
+  }
+  ul.connectors-list li {
+    /* left: 1rem; /* Greatly reduce offset for tablets */
+    /* font-size: clamp(0.7rem, 1.4vw, 1.1rem); */
+  }
+  /* Placeholder for specific connector part adjustments */
+  /* #minor { top: 1.2rem; left: 0.2rem; } */
+}
+
+@media (max-width: 480px) {
+  /* Mobile adjustments */
+  .Done {
+    top: 80%; /* Example: Move to bottom */
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(40vw, 180px);
+    padding: clamp(0.5rem, 1vw, 0.8rem) clamp(1rem, 2vw, 1.5rem);
+  }
+  .DoneText {
+    /* font-size: clamp(0.8rem, 1.5vw, 1.2rem); */
+  }
+  .AddConnectors {
+    top: 0.5rem; /* Adjust for smaller screens */
+    width: min(85vw, 95%);
+    /* font-size: clamp(1rem, 2vw, 1.8rem); */
+  }
+  .connectors { /* Label for the list */
+    /* top: 5%; */
+  }
+  ul.connectors-list {
+    left: 5%; /* Adjust list position */
+    /* Consider making position relative and width 100% for stacking */
+  }
+  ul.connectors-list li {
+    position: relative; /* Stack items */
+    left: 0; /* Reset left for stacking */
+    margin-bottom: 0.5rem; /* Add space between stacked items */
+    /* font-size: clamp(0.7rem, 1.3vw, 1rem); */
+    /* width: 100%; */
+  }
+
+  /* Placeholder for specific connector part adjustments - these will likely need significant changes */
+  /* #upper { top: 0.5rem; } */
+  /* #lower { top: 0.5rem; } */
+  /* #major { left: 0.2rem; } */
+  /* #minor { top: 1rem; left: 0.2rem; } */
+  /* .lower-connector { left: 2%; top: 2rem; } */
+  /* .upper-connector { left: 2%; top: 0.5rem; } */
+  /* #upper-major { top: 0.5rem; } */
+  /* #upper-minor { top: 1rem; } */
 }

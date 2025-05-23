@@ -1,12 +1,12 @@
 .teethBackground2 {
   position: relative;
-  width: 23.9vw;
+  width: clamp(250px, 24vw, 400px);
   margin: 0;
   padding: 0;
   aspect-ratio: 459 / 700;
 
   background: #d3ecff;
-  border-radius: 2.6vw;
+  border-radius: 15px;
 
   background-size: cover;
 }
@@ -20,14 +20,16 @@
   background: transparent;
   margin: 0;
   padding: 0;
-  width: 2vw;
-  height: 2vw;
+  width: clamp(24px, 2.5vw, 35px);
+  height: clamp(24px, 2.5vw, 35px);
   opacity: 1;
   transition: opacity 0.2s ease;
   z-index: 5;
 
   img {
-    width: 2.3vw;
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Ensures the image scales within the button bounds while maintaining aspect ratio */
   }
 }
 
@@ -42,129 +44,81 @@
 .teeth-btn:nth-child(1) {
   left: 19.5%;
   top: 40.83%;
-  img {
-    width: 3.1vw;
-  }
 }
 
 .teeth-btn:nth-child(2) {
   left: 20.6%;
   top: 34%;
-  img {
-    width: 3vw;
-  }
 }
 
 .teeth-btn:nth-child(3) {
   left: 22%;
   top: 26%;
-  img {
-    width: 3vw;
-  }
 }
 
 .teeth-btn:nth-child(4) {
   left: 24%;
   top: 21.3%;
-  img {
-    width: 2.4vw;
-  }
 }
 
 .teeth-btn:nth-child(5) {
   left: 25%;
   top: 15.5%;
-  img {
-    width: 2.5vw;
-  }
 }
 
 .teeth-btn:nth-child(6) {
   left: 28%;
   top: 10%;
-  img {
-    width: 2vw;
-  }
 }
 
 .teeth-btn:nth-child(7) {
   left: 32%;
   top: 5%;
-  img {
-    width: 2.2vw;
-  }
 }
 
 .teeth-btn:nth-child(8) {
   left: 40.6%;
   top: 3%;
-  img {
-    width: 2.56vw;
-  }
 }
 
 .teeth-btn:nth-child(9) {
   left: 51.5%;
   top: 3.3%;
-  img {
-    width: 2.5vw;
-  }
 }
 
 .teeth-btn:nth-child(10) {
   left: 62%;
   top: 5%;
-  img {
-    width: 2.1vw;
-  }
 }
 
 .teeth-btn:nth-child(11) {
   left: 67%;
   top: 10%;
-  img {
-    width: 2vw;
-  }
 }
 
 .teeth-btn:nth-child(12) {
   left: 67.5%;
   top: 15.5%;
-  img {
-    width: 2.5vw;
-  }
 }
 
 .teeth-btn:nth-child(13) {
   left: 69%;
   top: 21%;
-  img {
-    width: 2.5vw;
-  }
 }
 
 .teeth-btn:nth-child(14) {
   left: 68.5%;
   top: 26%;
-  img {
-    width: 3vw;
-  }
 }
 
 .teeth-btn:nth-child(15) {
   left: 70%;
   top: 34%;
-  img {
-    width: 3vw;
-  }
 }
 
 .teeth-btn:nth-child(16) {
   left: 70.5%;
   top: 40.83%;
-  img {
-    width: 2.8vw;
-  }
 }
 
 /*lower half*/
@@ -172,127 +126,169 @@
 .teeth-btn:nth-child(17) {
   left: 70%;
   top: 53.5%;
-  img {
-    width: 2.5vw;
-  }
 }
 
 .teeth-btn:nth-child(18) {
   left: 69%;
   top: 60.5%;
-  img {
-    width: 3vw;
-  }
 }
 
 .teeth-btn:nth-child(19) {
   left: 68%;
   top: 68%;
-  img {
-    width: 3vw;
-  }
 }
 
 .teeth-btn:nth-child(20) {
   left: 68%;
   top: 76.5%;
-  img {
-    width: 2.5vw;
-  }
 }
 
 .teeth-btn:nth-child(21) {
   left: 65%;
   top: 82.5%;
-  img {
-    width: 2.3vw;
-  }
 }
 
 .teeth-btn:nth-child(22) {
   left: 63%;
   top: 87.5%;
-  img {
-    width: 2vw;
-  }
 }
 
 .teeth-btn:nth-child(23) {
   left: 57%;
   top: 89%;
-  img {
-    width: 1.7vw;
-  }
 }
 
 .teeth-btn:nth-child(24) {
   left: 50.5%;
   top: 90.3%;
-  img {
-    width: 1.6vw;
-  }
 }
 
 .teeth-btn:nth-child(25) {
   left: 43.7%;
   top: 90.2%;
-  img {
-    width: 1.6vw;
-  }
 }
 
 .teeth-btn:nth-child(26) {
   left: 37.5%;
   top: 89.2%;
-  img {
-    width: 1.68vw;
-  }
 }
 
 .teeth-btn:nth-child(27) {
   left: 31%;
   top: 87.5%;
-  img {
-    width: 2vw;
-  }
 }
 
 .teeth-btn:nth-child(28) {
   left: 27.5%;
   top: 82.7%;
-  img {
-    width: 2.18vw;
-  }
 }
 
 .teeth-btn:nth-child(29) {
   left: 24.5%;
   top: 76.5%;
-  img {
-    width: 2.6vw;
-  }
 }
 
 .teeth-btn:nth-child(30) {
   left: 22.7%;
   top: 68%;
-  img {
-    width: 3vw;
-  }
 }
 
 .teeth-btn:nth-child(31) {
   left: 21%;
   top: 60.5%;
-  img {
-    width: 3vw;
-  }
 }
 
 .teeth-btn:nth-child(32) {
   left: 21.9%;
   top: 53.5%;
-  img {
-    width: 2.44vw;
+}
+
+/* For tablets and larger phones */
+@media (max-width: 768px) {
+  /* .teethBackground2 adjustments if needed */
+  /* .teeth-btn adjustments if needed */
+
+  /* Example for .teeth-btn:nth-child(1) - adjust left/top as needed */
+  /*
+  .teeth-btn:nth-child(1) {
+    left: 18%; 
+    top: 40%;
   }
+  */
+  /* .teeth-btn:nth-child(2) { left: X%; top: Y%; } */
+  /* .teeth-btn:nth-child(3) { left: X%; top: Y%; } */
+  /* .teeth-btn:nth-child(4) { left: X%; top: Y%; } */
+  /* .teeth-btn:nth-child(5) { left: X%; top: Y%; } */
+  /* .teeth-btn:nth-child(6) { left: X%; top: Y%; } */
+  /* .teeth-btn:nth-child(7) { left: X%; top: Y%; } */
+  /* .teeth-btn:nth-child(8) { left: X%; top: Y%; } */
+  /* .teeth-btn:nth-child(9) { left: X%; top: Y%; } */
+  /* .teeth-btn:nth-child(10) { left: X%; top: Y%; } */
+  /* .teeth-btn:nth-child(11) { left: X%; top: Y%; } */
+  /* .teeth-btn:nth-child(12) { left: X%; top: Y%; } */
+  /* .teeth-btn:nth-child(13) { left: X%; top: Y%; } */
+  /* .teeth-btn:nth-child(14) { left: X%; top: Y%; } */
+  /* .teeth-btn:nth-child(15) { left: X%; top: Y%; } */
+  /* .teeth-btn:nth-child(16) { left: X%; top: Y%; } */
+  /* .teeth-btn:nth-child(17) { left: X%; top: Y%; } */
+  /* .teeth-btn:nth-child(18) { left: X%; top: Y%; } */
+  /* .teeth-btn:nth-child(19) { left: X%; top: Y%; } */
+  /* .teeth-btn:nth-child(20) { left: X%; top: Y%; } */
+  /* .teeth-btn:nth-child(21) { left: X%; top: Y%; } */
+  /* .teeth-btn:nth-child(22) { left: X%; top: Y%; } */
+  /* .teeth-btn:nth-child(23) { left: X%; top: Y%; } */
+  /* .teeth-btn:nth-child(24) { left: X%; top: Y%; } */
+  /* .teeth-btn:nth-child(25) { left: X%; top: Y%; } */
+  /* .teeth-btn:nth-child(26) { left: X%; top: Y%; } */
+  /* .teeth-btn:nth-child(27) { left: X%; top: Y%; } */
+  /* .teeth-btn:nth-child(28) { left: X%; top: Y%; } */
+  /* .teeth-btn:nth-child(29) { left: X%; top: Y%; } */
+  /* .teeth-btn:nth-child(30) { left: X%; top: Y%; } */
+  /* .teeth-btn:nth-child(31) { left: X%; top: Y%; } */
+  /* .teeth-btn:nth-child(32) { left: X%; top: Y%; } */
+}
+
+/* For small mobile phones */
+@media (max-width: 480px) {
+  /* .teethBackground2 adjustments if needed */
+  /* .teeth-btn adjustments if needed */
+
+  /* Example for .teeth-btn:nth-child(1) - adjust left/top as needed */
+  /*
+  .teeth-btn:nth-child(1) {
+    left: 18%; 
+    top: 40%;
+  }
+  */
+  /* .teeth-btn:nth-child(2) { left: X%; top: Y%; } */
+  /* .teeth-btn:nth-child(3) { left: X%; top: Y%; } */
+  /* .teeth-btn:nth-child(4) { left: X%; top: Y%; } */
+  /* .teeth-btn:nth-child(5) { left: X%; top: Y%; } */
+  /* .teeth-btn:nth-child(6) { left: X%; top: Y%; } */
+  /* .teeth-btn:nth-child(7) { left: X%; top: Y%; } */
+  /* .teeth-btn:nth-child(8) { left: X%; top: Y%; } */
+  /* .teeth-btn:nth-child(9) { left: X%; top: Y%; } */
+  /* .teeth-btn:nth-child(10) { left: X%; top: Y%; } */
+  /* .teeth-btn:nth-child(11) { left: X%; top: Y%; } */
+  /* .teeth-btn:nth-child(12) { left: X%; top: Y%; } */
+  /* .teeth-btn:nth-child(13) { left: X%; top: Y%; } */
+  /* .teeth-btn:nth-child(14) { left: X%; top: Y%; } */
+  /* .teeth-btn:nth-child(15) { left: X%; top: Y%; } */
+  /* .teeth-btn:nth-child(16) { left: X%; top: Y%; } */
+  /* .teeth-btn:nth-child(17) { left: X%; top: Y%; } */
+  /* .teeth-btn:nth-child(18) { left: X%; top: Y%; } */
+  /* .teeth-btn:nth-child(19) { left: X%; top: Y%; } */
+  /* .teeth-btn:nth-child(20) { left: X%; top: Y%; } */
+  /* .teeth-btn:nth-child(21) { left: X%; top: Y%; } */
+  /* .teeth-btn:nth-child(22) { left: X%; top: Y%; } */
+  /* .teeth-btn:nth-child(23) { left: X%; top: Y%; } */
+  /* .teeth-btn:nth-child(24) { left: X%; top: Y%; } */
+  /* .teeth-btn:nth-child(25) { left: X%; top: Y%; } */
+  /* .teeth-btn:nth-child(26) { left: X%; top: Y%; } */
+  /* .teeth-btn:nth-child(27) { left: X%; top: Y%; } */
+  /* .teeth-btn:nth-child(28) { left: X%; top: Y%; } */
+  /* .teeth-btn:nth-child(29) { left: X%; top: Y%; } */
+  /* .teeth-btn:nth-child(30) { left: X%; top: Y%; } */
+  /* .teeth-btn:nth-child(31) { left: X%; top: Y%; } */
+  /* .teeth-btn:nth-child(32) { left: X%; top: Y%; } */
 }
