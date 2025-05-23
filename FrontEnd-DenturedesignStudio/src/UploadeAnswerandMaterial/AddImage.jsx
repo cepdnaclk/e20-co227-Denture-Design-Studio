@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { WiCloudUp } from "react-icons/wi";
-import { toast } from "react-toastify";
-// Removed incorrect react-toastify.css import, assuming global CSS for react-toastify
+import { toast } from "react-hot-toast";
+import "react-toastify/dist/ReactToastify.css";
 
 const AddImage = ({ handleClose, setIsImageUpload, answerImage }) => {
   const [img, setImg] = useState(null);

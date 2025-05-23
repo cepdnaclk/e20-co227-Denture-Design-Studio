@@ -12,15 +12,18 @@ app.use(bodyParser.json());
 
 const URL = process.env.MONGODB_URL;
 
-mongoose.connect(URL);
+mongoose.connect(URL, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
 
-const studentrouter = require("./Routes/Studentroute.js");
-const assessorrouter = require("./Routes/Assessorroute.js");
-const adminrouter = require("./Routes/Adminroute.js");
-const progressrouter = require("./Routes/Progressroute.js");
-const lecturerouter = require("./Routes/Lectureroute.js");
-const actualcaserouter = require("./Routes/Actualcaseroute.js");
-const cloudinarySignatureRoute = require("./Routes/cloudinarySignature.js");
+const studentrouter = require("../BackEnd-DenturedesignStudio/Routes/Studentroute.js");
+const assessorrouter = require("../BackEnd-DenturedesignStudio/Routes/Assessorroute.js");
+const adminrouter = require("../BackEnd-DenturedesignStudio/Routes/Adminroute.js");
+const progressrouter = require("../BackEnd-DenturedesignStudio/Routes/Progressroute.js");
+const lecturerouter = require("../BackEnd-DenturedesignStudio/Routes/Lectureroute.js");
+const actualcaserouter = require("../BackEnd-DenturedesignStudio/Routes/Actualcaseroute.js");
+const cloudinarySignatureRoute = require("../BackEnd-DenturedesignStudio/Routes/cloudinarySignature.js");
 
 app.use("/student", studentrouter);
 app.use("/assessor", assessorrouter);

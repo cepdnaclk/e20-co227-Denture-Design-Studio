@@ -2,8 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { TimeProvider } from "./Timecontext";
 import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css'; // Added global CSS for react-toastify
-// import { Toaster } from "react-hot-toast"; // Removed react-hot-toast
+import { Toaster } from "react-hot-toast";
 import Homepage from "./first-page/Homepage";
 import Loginpage from "./logingpage/Logingpage";
 import Signup from "./Signinpage/signup";
@@ -30,6 +29,7 @@ import UserEngage from "./userengage/Usserengage";
 import Studentprogress from "./studentProgress/Studentprogress";
 import Myaccountview from "./Myaccountview/Myaccountview";
 import Teeth from "./TeethComp/Teeth";
+import Rests from "./TeethComp/Teeth";
 import Viewcontent from "./viewContent/Viewcontent";
 import UploadeAnswerandMaterial from "./UploadeAnswerandMaterial/UploadeAnswerandMaterial";
 import VerifyEmail from "./Signinpage/verify/Verify";
@@ -51,7 +51,7 @@ function App() {
           <Route exact path="/uploadpatient" element={<UploadPatientCase />} />
           <Route
             exact
-            path="/assessorcreatepatientcase"
+            path="/asessorcreatepatientcase"
             element={<AssessorCreatePatientStep2 />}
           />
           <Route exact path="/addSaddles" element={<AddSaddles />} />
@@ -99,6 +99,7 @@ function App() {
               />
             }
           />
+          <Route exact path="/rests" element={<Rests />} />
           <Route exact path="/viewcontent" element={<Viewcontent />} />
           <Route
             exact
@@ -119,7 +120,7 @@ function App() {
           />
         </Routes>
         <ToastContainer position="top-center" autoClose={2000} />
-        {/* <Toaster position="top-center " toastOptions={{style:{color:"black"}}}/> Removed react-hot-toast Toaster */}
+        <Toaster position="top-center " toastOptions={{style:{color:"black"}}}/>
       </Router>
     </TimeProvider>
   );
