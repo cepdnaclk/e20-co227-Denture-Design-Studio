@@ -602,6 +602,7 @@
 /* Customize the font size and style of the notification box */
 .Toastify__toast {
   font-size: 1vw; /* Adjust the font size */
+  font-family: "salsa";
   line-height: 150%; /* Adjust the font style */
 }
 

@@ -1,3 +1,10 @@
+body {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  overflow: hidden;
+}
 .Homepage::before {
   content: "";
   position: absolute;
@@ -15,16 +22,17 @@
 }
 .appname {
   position: absolute;
-  width: min(60vw, 905px);
-  max-width: 905px; /* Kept for clarity, though min() handles it */
-  height: auto;
+  width: 60vw;
+  max-width: 905px;
+  height: 15vw;
   right: 40%;
   top: 30%;
 
+  font-family: "Salsa";
   font-style: normal;
   font-weight: 400;
-  font-size: clamp(2rem, 6vw, 4.5rem);
-  line-height: 1.2;
+  font-size: 6vw;
+  line-height: 8vw;
   display: flex;
   align-items: center;
   text-align: center;
@@ -40,24 +48,24 @@
 
 .logo {
   position: absolute;
-  width: clamp(80px, 15vw, 150px);
-  height: auto;
-  aspect-ratio: 15/12;
+  width: 15vw;
+  height: 12vw;
   left: 2%;
   top: 2%;
 }
 
 .welcome {
   position: absolute;
-  width: min(48vw, 719px);
-  max-width: 719px; /* Kept for clarity */
-  height: auto;
+  width: 48vw;
+  max-width: 719px;
+  height: 7vw;
   left: 15%;
   top: 20%;
 
+  font-family: "Salsa";
   font-style: normal;
   font-weight: 400;
-  font-size: clamp(1.5rem, 4vw, 3rem);
+  font-size: 4vw;
   line-height: 1.2;
   display: flex;
   align-items: center;
@@ -71,20 +79,20 @@
   /* Button  */
 
   position: absolute;
-  width: min(20vw, 200px);
-  max-width: 292px; /* Kept for clarity */
-  height: auto;
-  padding: clamp(0.5rem, 1vw, 0.8rem) clamp(1rem, 2vw, 1.5rem);
+  width: 20vw;
+  max-width: 292px;
+  height: 4.6vw;
   left: 7%;
   top: 82%;
   background: #66d8d8;
   border-bottom: 3px solid #000000;
   box-shadow: 10px 8px 12px rgba(0, 0, 0, 0.35);
-  border-radius: 0.8rem;
+  border-radius: 1.336vw;
+  font-family: "Salsa";
   font-style: normal;
   font-weight: 400;
-  font-size: clamp(1rem, 2.1vw, 1.5rem);
-  line-height: 1.2; /* Adjusted from 134.77% for consistency */
+  font-size: 2.138vw;
+  line-height: 134.77%;
   border: none;
   transition: all 0.5s ease;
 }
@@ -96,21 +104,20 @@
 
 .signup {
   position: absolute;
-  width: min(20vw, 200px);
-  max-width: 292px; /* Kept for clarity */
-  height: auto;
-  padding: clamp(0.5rem, 1vw, 0.8rem) clamp(1rem, 2vw, 1.5rem);
+  width: 20vw;
+  max-width: 292px;
+  height: 4.6vw;
   left: 30%;
   top: 82%;
   background: #66d8d8;
   border-bottom: 3px solid #000000;
   box-shadow: 10px 8px 12px rgba(0, 0, 0, 0.35);
-  border-radius: 0.8rem;
+  border-radius: 1.336vw;
   font-family: "Salsa";
   font-style: normal;
   font-weight: 400;
-  font-size: clamp(1rem, 2.1vw, 1.5rem);
-  line-height: 1.2; /* Adjusted from 134.77% for consistency */
+  font-size: 2.138vw;
+  line-height: 134.77%;
   border: none;
   transition: all 0.5s ease;
 }
@@ -120,56 +127,64 @@
   border: none;
 }
 @media (max-width: 768px) {
-  /* .appname font-size should be handled by clamp() in base styles */
-  /* .welcome font-size should be handled by clamp() in base styles */
+  .appname {
+    font-size: 8vw;
+  }
+
+  .welcome {
+    font-size: 4vw;
+  }
 
   .login,
   .signup {
-    /* font-size should be handled by clamp() in base styles */
-    /* Adjust top position for tablets */
-    top: 75%; /* Example adjustment, verify visually */
-    /* width could also be adjusted if min(20vw, 200px) is not ideal */
-    /* width: min(25vw, 180px); */
+    font-size: 2.138vw;
+    top: 60%;
   }
-  /* Hover styles are inherited from base, no need to repeat if only transform changes */
+  .login:hover,
+  .signup:hover {
+    font-size: 2.138vw;
+    top: 60%;
+  }
 }
 
 @media (max-width: 480px) {
   .appname {
-    /* font-size: clamp(2.5rem, 10vw, 3.5rem); /* Example if base clamp isn't enough */
-    /* width: min(69vw, 90%); */ /* Using percentage for max to relate to screen */
-    width: min(85vw, 90%); /* Adjusted for potentially better fit */
-    left: 50%;
-    transform: translateX(-50%); /* Centering technique */
-    right: auto; /* Override base 'right' */
-    top: 25%; /* Adjust top for smaller screens */
+    font-size: 10vw;
+
+    width: 69vw;
+    left: 10%;
   }
 
   .welcome {
-    /* font-size: clamp(1.8rem, 8vw, 2.5rem); /* Example if base clamp isn't enough */
-    top: 15%; /* Adjust top for smaller screens */
-    width: min(80vw, 90%);
-    left: 50%;
-    transform: translateX(-50%);
+    font-size: 8vw;
   }
 
   .login {
-    /* font-size should be handled by clamp() in base styles, or use a specific rem value like 1.2rem */
-    /* font-size: 1.2rem; */
-    left: 50%;
-    transform: translateX(-110%); /* Position left button: -100% for its width, -10% for spacing */
-    width: min(35vw, 140px); /* Adjust width for smaller screens */
-    top: 70%; /* Adjust top for button group */
-    /* height is auto, padding is clamped */
+    font-size: 5vw;
+    left: 15%;
+    width: 25vw;
+    height: 7vw;
+    top: 60%;
   }
   .signup {
-    /* font-size should be handled by clamp() in base styles, or use a specific rem value like 1.2rem */
-    /* font-size: 1.2rem; */
-    left: 50%;
-    transform: translateX(10%); /* Position right button: 10% for spacing from center */
-    width: min(35vw, 140px); /* Adjust width for smaller screens */
-    top: 70%; /* Adjust top for button group */
-    /* height is auto, padding is clamped */
+    font-size: 5vw;
+    left: 45%;
+    top: 60%;
+    width: 25vw;
+    height: 7vw;
   }
-  /* Hover styles are inherited from base, no need to repeat if only transform changes */
+  .login:hover {
+    font-size: 5vw;
+    left: 15%;
+    width: 25.5vw;
+    height: 7.5vw;
+    top: 60%;
+  }
+  .signup:hover {
+    font-size: 5vw;
+    left: 45%;
+    top: 60%;
+    width: 25.5vw;
+    height: 7.5vw;
+  }
 }

@@ -36,6 +36,7 @@
   border-radius: 1vw;
   cursor: pointer;
   position: absolute;
+  font-family: "salsa";
   font-size: 1.5vw;
   top: 15vw;
   left: 3vw;
@@ -48,6 +49,7 @@
   border-radius: 1vw;
   cursor: pointer;
   position: absolute;
+  font-family: "salsa";
   font-size: 1.5vw;
   top: 15vw;
   right: 3vw;
@@ -56,6 +58,7 @@
   margin: 2vw;
   font-weight: 400;
   font-size: 2.5vw;
+  font-family: "salsa";
   color: #e8e9e9;
   text-decoration-line: underline;
 }
@@ -63,6 +66,7 @@
   margin: 1vw;
   font-weight: 400;
   font-size: 1.5vw;
+  font-family: "salsa";
   color: #e8e9e9;
 }
 .request-username {

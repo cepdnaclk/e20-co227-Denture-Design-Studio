@@ -18,7 +18,7 @@
   display: flex;
   align-items: center;
   width: 100%;
-  padding: 1rem;
+  padding: 1vw;
   justify-content: center;
   background: linear-gradient(
     270deg,
@@ -30,58 +30,61 @@
 
 .homeicon {
   position: absolute;
-  left: 1rem; /* Adjusted from 1vw */
+  left: 1vw;
   background: none;
 }
 
-.userheader h1 { /* Assuming .header h1 was meant to be .userheader h1 */
-  font-size: clamp(1.5rem, 3vw, 2.5rem);
+.header h1 {
+  font-size: 3vw;
   color: #bff9f2;
   margin: 0;
 }
 
 .account-list {
   position: absolute;
+
   display: flex;
   flex-direction: column;
   margin-top: 0;
-  margin-left: 0; /* This is fine if width is calculated based on left */
-  top: 4.5rem; /* Adjusted (1rem padding + ~2.5rem font + 1rem space) */
-  left: 1.5rem;
-  width: calc(100% - 3rem);
+  margin-left: 0;
+  top: 10vw;
+  left: 5vw;
+  width: 90vw;
   overflow-y: auto;
-  height: calc(100vh - 5rem); /* Adjusted (4.5rem top + 0.5rem bottom space) */
+  height: calc(100vh - 10vw);
 }
 
 .account-item {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-radius: 0.5rem;
-  padding: 0.75rem 1.5rem;
-  margin-bottom: 0.75rem;
-  box-shadow: 0 0.2rem 0.3rem rgba(0, 0, 0, 0.1);
+  border-radius: 1vw;
+  padding: 1vw 2vw;
+  margin-bottom: 1vw;
+  box-shadow: 0 0.4vw 0.6vw rgba(0, 0, 0, 0.1);
 }
 
 .useraccountname {
-  font-size: clamp(1rem, 2.1vw, 1.6rem);
+  font-family: "Salsa", sans-serif;
+  font-size: 2.1vw;
   color: #ffffff;
   display: flex;
   align-items: center;
 }
 .user-role {
-  font-size: clamp(0.8rem, 1.4vw, 1.1rem);
+  font-family: "Salsa", sans-serif;
+  font-size: 1.4vw;
   color: #ffffff;
   position: relative;
-  right: 0.5rem;
+  right: 1vw;
   display: flex;
   justify-content: center;
   align-items: center;
   margin-left: auto;
-  margin-right: 1rem;
+  margin-right: 3vw;
   width: fit-content;
-  border-radius: 0.5rem;
-  padding: 0.4rem 0.8rem;
+  border-radius: 1vw;
+  padding: 0.5vw 1vw;
   p {
     margin: 0;
     padding: 0;
@@ -89,37 +92,33 @@
 }
 .user-icon-account {
   position: relative;
-  width: clamp(2.5rem, 4vw, 3.5rem);
-  height: clamp(2.5rem, 4vw, 3.5rem);
+  width: 4vw;
+  height: 4vw;
   background-size: contain;
   background-repeat: no-repeat;
-  margin-right: 0.75rem;
+  margin-right: 1vw;
 }
 
 .delete-button {
-  font-size: clamp(0.8rem, 1.5vw, 1.2rem);
-  padding: 0.6rem 1rem;
-  margin-left: 0.75rem;
+  font-family: "Salsa", sans-serif;
+  font-size: 1.5vw;
+  padding: 1vw;
+  margin-left: 1vw;
   border: none;
-  border-radius: 0.5rem; /* Standardized */
+  border-radius: 1vw;
   cursor: pointer;
   transition: all 0.3s ease;
   background: #66d8d8;
   color: #000;
-  box-shadow: 0.2rem 0.2rem 0.4rem rgba(0, 0, 0, 0.35);
+  box-shadow: 0.67vw 0.53vw 0.8vw rgba(0, 0, 0, 0.35);
+  border-radius: 1.3vw;
 }
 
 .reset-button {
-  font-size: clamp(0.8rem, 1.5vw, 1.2rem); /* Added for consistency */
-  padding: 0.6rem 1rem; /* Added for consistency */
-  margin-left: 0.75rem; /* Added for consistency */
-  border: none; /* Added for consistency */
   background: #66d8d8;
   color: #000;
-  box-shadow: 0.2rem 0.2rem 0.4rem rgba(0, 0, 0, 0.35);
-  border-radius: 0.5rem; /* Standardized */
-  cursor: pointer; /* Added for consistency */
-  transition: all 0.3s ease; /* Added for consistency */
+  box-shadow: 0.67vw 0.53vw 0.8vw rgba(0, 0, 0, 0.35);
+  border-radius: 0.8vw;
 }
 
 .delete-button:hover,
@@ -141,71 +140,4 @@
 
 .confirmation-dialog p {
   margin-bottom: 1rem;
-}
-
-/* Media Queries */
-@media (max-width: 768px) {
-  /* Tablet adjustments */
-  .account-list {
-    top: 4rem; /* Slightly adjust if header is smaller */
-    height: calc(100vh - 4.5rem);
-  }
-   .userheader h1 {
-     /* font-size: clamp(1.4rem, 2.5vw, 2rem); /* Example adjustment */
-   }
-   .useraccountname {
-     /* font-size: clamp(0.9rem, 1.8vw, 1.4rem); */
-   }
-   .user-role {
-     /* font-size: clamp(0.7rem, 1.2vw, 1rem); */
-   }
-   .delete-button, .reset-button {
-     /* font-size: clamp(0.7rem, 1.3vw, 1rem); */
-     /* padding: 0.5rem 0.8rem; */
-   }
-}
-
-@media (max-width: 480px) {
-  /* Mobile adjustments */
-  .userheader {
-    padding: 0.75rem;
-  }
-  .userheader h1 {
-    font-size: clamp(1.2rem, 4vw, 1.8rem); /* Adjust for smaller screens */
-  }
-  .account-list {
-    top: 3.5rem; /* Adjust based on new header height */
-    left: 0.5rem;
-    width: calc(100% - 1rem);
-    height: calc(100vh - 4rem);
-  }
-  .account-item {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 0.75rem; /* Adjusted padding for column layout */
-  }
-  .useraccountname {
-    margin-bottom: 0.5rem;
-    font-size: clamp(1rem, 3vw, 1.4rem); /* Slightly larger for readability */
-  }
-  .user-icon-account {
-    width: clamp(2rem, 5vw, 2.5rem); /* Smaller icon */
-    height: clamp(2rem, 5vw, 2.5rem);
-    margin-bottom: 0.5rem;
-    margin-right: 0; /* No right margin when stacked */
-  }
-  .user-role {
-    margin-left: 0; /* Align to left */
-    margin-bottom: 0.5rem;
-    right: auto; /* Reset relative positioning */
-    font-size: clamp(0.8rem, 2.5vw, 1rem);
-  }
-  .delete-button,
-  .reset-button {
-    width: 100%;
-    margin-left: 0;
-    margin-top: 0.5rem;
-    padding: 0.75rem;
-    font-size: clamp(0.9rem, 2.8vw, 1.1rem);
-  }
 }
